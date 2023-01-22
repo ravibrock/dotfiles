@@ -1,0 +1,22 @@
+# Filesystem
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Git
+alias "ga"="git add"
+alias "ga*"="git add --all"
+alias "gadog"="git log --all --decorate --oneline --graph"
+alias "gc"="git checkout"
+alias "gcm"="git commit -m"
+alias "gcmi"="git commit -m 'Initial commit'"
+alias "gi"="git init"
+alias "gi*"="gi; ga*; gcmi"
+alias "gp"="git push"
+alias "gpsom"="git push --set-upstream origin master"
+
+# Miscellaneous
+alias "clear"="clear; startup_printout"
+alias "py"="python3"
+alias "zshrc"="code $CONFIG/.zshrc"
