@@ -7,6 +7,7 @@ export PATH=$PATH":$HOME/bin"
 export PATH=$PATH:/usr/local/sbin
 export PYTHONDONTWRITEBYTECODE="TRUE"
 export CONFIG="${"$(readlink "${(%):-%x}")"%/*}"
+export DOTFILES="$CONFIG/.."
 
 # Initializes private environemnt variables from untracked file - leave at bottom
 . $CONFIG/.private
