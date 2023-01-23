@@ -1,3 +1,8 @@
+# Config files
+alias "zshalias"="code $CONFIG/.zshalias"
+alias "zshenv"="code $CONFIG/.zshenv"
+alias "zshrc"="code $CONFIG/.zshrc"
+
 # Filesystem
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -19,4 +24,4 @@ alias "gpsom"="git push --set-upstream origin master"
 # Miscellaneous
 alias "clear"="clear; startup_printout"
 alias "py"="python3"
-alias "zshrc"="code $CONFIG/.zshrc"
+alias "ytdl"="youtube-dl"
