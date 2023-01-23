@@ -60,7 +60,19 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 # Enables ZSH anonymous commands with spaces
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=5000
+HISTDUP=erase
+
+setopt appendhistory
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 setopt histignorespace
+setopt incappendhistory
+setopt sharehistory
 
 
 # Fig post block - keep at bottom of file
