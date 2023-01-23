@@ -13,20 +13,31 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
+" Text encoding
+set encoding=utf8
+
+" Filetype
+set ffs=unix,dos,mac
+
+" Spaces vs. tabs
+set expandtab
+
 " Show current position
 set ruler
 
-" Configure search
-set ignorecase
-set smartcase
-set magic
+" Enable line numbers
+set number
 
-" Don't redraw
-set lazyredraw
+" Syntax highlighting
+syntax enable
+highlight LineNr ctermfg=grey
 
 " Show matching brackets
 set showmatch
 set mat=2
+
+" Return to last cursor position when reopening file
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Disable bells
 set noerrorbells
@@ -37,40 +48,29 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-" Enable line numbers
-set number
+" Configure search
+set ignorecase
+set smartcase
+set magic
+
+" Regex
+set regexpengine=0
+
+" Visual mode searching for current selection
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> " :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+" Don't redraw
+set lazyredraw
 
 " Enable autoread
 set autoread
 au FocusGained,BufEnter * checktime
 
-" Syntax highlighting
-syntax enable
-highlight LineNr ctermfg=grey
-
-" Return to last cursor position when reopening file
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-" Regex
-set regexpengine=0
-
-" Text encoding
-set encoding=utf8
-
-" Filetype
-set ffs=unix,dos,mac
-
-" Bacup
+" Backup
 set nobackup
 set nowb
 set noswapfile
-
-" Spaces vs. tabs
-set expandtab
-
-" Visual mode searching for current selection
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> " :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 " Remapping
 map 0 ^
@@ -85,4 +85,3 @@ endfun
 if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
-
