@@ -23,5 +23,5 @@ alias "gpsom"="git push --set-upstream origin master"
 
 # Miscellaneous
 alias "clear"="clear; startup_printout"
-alias "py"="python3"
+alias "py"="conda_setup; python3"
 alias "ytdl"="youtube-dl"
