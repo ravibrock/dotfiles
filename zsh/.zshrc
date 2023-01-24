@@ -23,6 +23,11 @@ startup_printout
 
 
 # Prompt
+DISABLE_AUTO_TITLE="true"
+precmd () {
+  echo -en  "\033]0;${${PWD:/~/\~}/#~/~} ($USER@$HOST)"
+}
+
 prompt_pwd () {
   local p=${${PWD:/~/\~}/#~\//\~/}
   psvar[1]="${(@j[/]M)${(@s[/]M)p##*/}##(.|)?}$p:t"
