@@ -25,6 +25,9 @@ set expandtab
 " Show current position
 set ruler
 
+" Show current file
+set title
+
 " Enable line numbers
 set number
 
