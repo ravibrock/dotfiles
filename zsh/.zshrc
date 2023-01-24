@@ -5,7 +5,7 @@
 # Loads functions
 for file in $CONFIG/functions/*
 do
-  autoload -z $file
+  autoload -Uz $file
   alias -g $( basename $file .zsh )=$( basename $file )
 done
 
@@ -41,7 +41,8 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 # Allows for Zsh timing
-zmodload zsh/zprof
+zmodload zsh/zprof  # Use `zprof` to start timing
+zload () { for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit; done; }
 
 
 # Enables Zsh anonymous commands with spaces
