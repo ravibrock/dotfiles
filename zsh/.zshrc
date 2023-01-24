@@ -32,15 +32,19 @@ precmd_functions+=( prompt_pwd )
 PS1='%F{cyan}%1v%f $ '
 
 
-# Configures ZSH syntax highlighting
+# Configures Zsh syntax highlighting
 syntax_highlight_config
 
 
-# Initializes ZSH autocompletions
+# Initializes Zsh autocompletions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
-# Enables ZSH anonymous commands with spaces
+# Allows for Zsh timing
+zmodload zsh/zprof
+
+
+# Enables Zsh anonymous commands with spaces
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=5000
