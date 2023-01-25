@@ -27,6 +27,7 @@ set ruler
 
 " Show current file
 set title
+set titlestring=%f\ (%{$USER}@%{hostname()})\ %a%r%m 
 
 " Enable line numbers
 set number
