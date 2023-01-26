@@ -25,7 +25,7 @@ startup_printout
 # Prompt
 DISABLE_AUTO_TITLE="true"
 precmd () {
-  echo -en  "\033]0;${${PWD:/~/\~}/#~/~}"
+  echo -en  "\033]0;${${PWD:/~/~}/#~/~}"
 }
 
 prompt_pwd () {

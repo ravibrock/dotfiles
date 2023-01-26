@@ -27,7 +27,7 @@ set ruler
 
 " Show current file
 set title
-set titlestring=%f\ %a%r%m 
+set titlestring=%F\ %r\ %m
 
 " Enable line numbers
 set number
