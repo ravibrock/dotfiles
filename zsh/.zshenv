@@ -10,6 +10,7 @@ export BRAVE="/Applications/Brave.app/Contents/MacOS/Brave Browser"
 export CONFIG="${"$(readlink "${(%):-%x}")"%/*}"
 export DOTFILES="$CONFIG/.."
 export CONDA_INITIALIZED=0
+export HOMEBREW_NO_ANALYTICS=1
 export PATH=$PATH":$HOME/bin"
 export PATH=$PATH:/usr/local/sbin
 export PYTHONDONTWRITEBYTECODE="TRUE"
