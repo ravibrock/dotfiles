@@ -24,7 +24,7 @@ alias "gcmi"="git commit -m 'Initial commit'"
 alias "gi"="git init"
 alias "gi*"="gi; ga*; gcmi"
 alias "gp"="git push"
-alias "gpsom"="git push --set-upstream origin master"
+alias "gpsom"="git push --set-upstream origin main"
 
 # Miscellaneous
 alias "clear"="clear; startup_printout"
