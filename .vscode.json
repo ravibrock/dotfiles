@@ -1,0 +1,27 @@
+{
+  "editor.accessibilitySupport": "off",
+  "gitlens.codeLens.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "python.defaultInterpreterPath": "~/opt/anaconda3/bin/python",
+  "python.linting.enabled": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "terminal.integrated.inheritEnv": false,
+  "workbench.colorTheme": "Framer Syntax",
+  "workbench.startupEditor": "none",
+  "terminal.external.osxExec": "Hyper.app",
+  "terminal.integrated.enableBell": true,
+  "editor.inlineSuggest.enabled": true,
+  "livePreview.notifyOnOpenLooseFile": false,
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "diffEditor.wordWrap": "on",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true
+}
