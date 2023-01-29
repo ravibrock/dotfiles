@@ -1,5 +1,6 @@
 .DS_Store
 .private
+Brewfile
 gitconfig
 hyper.js
 rayconfig
