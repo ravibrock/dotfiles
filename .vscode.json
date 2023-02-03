@@ -7,9 +7,6 @@
   "python.linting.enabled": true,
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.defaultProfile.osx": "zsh",
-  "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
-  },
   "terminal.integrated.inheritEnv": false,
   "workbench.colorTheme": "Framer Syntax",
   "workbench.startupEditor": "none",
@@ -23,5 +20,6 @@
   "diffEditor.wordWrap": "on",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": true
+  "files.trimTrailingWhitespace": true,
+  "git.openRepositoryInParentFolders": "always"
 }

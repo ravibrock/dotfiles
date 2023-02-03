@@ -1,3 +1,12 @@
+# Homebrew
+alias bi="brew install"
+alias bic="brew install --cask --no-quarantine"
+alias bl="brew list"
+alias blc="brew list --cask"
+alias bo="brew outdated"
+alias bu="brew uninstall"
+alias bup="brew update"
+
 # Cloudconvert
 alias "clc"="cloudconvert convert -f"
 alias "clm"="cloudconvert merge"

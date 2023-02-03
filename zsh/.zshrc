@@ -1,6 +1,3 @@
-# Fig pre block - keep at top of file
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-
 # Loads functions
 for file in $CONFIG/functions/*
 do
@@ -54,6 +51,3 @@ setopt hist_find_no_dups
 setopt histignorespace
 setopt incappendhistory
 setopt sharehistory
-
-# Fig post block - keep at bottom of file
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
