@@ -20,6 +20,8 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 " Spaces vs. tabs
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 " Show current position
@@ -89,3 +91,8 @@ endfun
 if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
+
+" Vim-plug initialization
+call plug#begin()
+    Plug 'tmsvg/pear-tree'
+call plug#end()
