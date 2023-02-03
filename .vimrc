@@ -1,3 +1,14 @@
+" Vim-plug initialization
+call plug#begin()
+    Plug 'tmsvg/pear-tree'
+call plug#end()
+
+" Disable vi compatibility
+set nocompatible
+
+" Stops comments from being extended to newlines
+autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
+
 " History
 set history=100
 
@@ -31,8 +42,8 @@ set ruler
 set title
 set titlestring=%F\ %r\ %m
 
-" Enable line numbers
-set number
+" Enable line numbers and relative numbering
+set number    " set relativenumber <- Enable for line numbers to be relative
 
 " Syntax highlighting
 syntax enable
@@ -41,6 +52,9 @@ highlight LineNr ctermfg=grey
 " Show matching brackets
 set showmatch
 set mat=2
+
+" Enables yank to system clipboard, use `unnamedplus` if broken on Linux
+set clipboard=unnamed
 
 " Return to last cursor position when reopening file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -57,7 +71,14 @@ endif
 " Configure search
 set ignorecase
 set smartcase
+set incsearch
 set magic
+
+" Mouse support (depends on terminal)
+set mouse+=a
+
+" Enable hidden buffers
+set hidden
 
 " Regex
 set regexpengine=0
@@ -78,6 +99,9 @@ set nobackup
 set nowb
 set noswapfile
 
+" Shows commands
+set showcmd
+
 " Remapping
 map 0 ^
 fun! CleanExtraSpaces()
@@ -91,8 +115,3 @@ endfun
 if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
-
-" Vim-plug initialization
-call plug#begin()
-    Plug 'tmsvg/pear-tree'
-call plug#end()
