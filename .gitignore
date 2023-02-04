@@ -2,7 +2,6 @@
 .private
 brewfile
 gitconfig
-hyper.js
 rayconfig
 vimrc
 vscode.json

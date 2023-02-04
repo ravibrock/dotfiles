@@ -1,8 +1,8 @@
 # Dotfiles
 Dotfiles that I've spent time configuring.
 
-## Hyper
-`.Hyper.js` is the config file for the Hyper terminal. It has settings about things like extensions, theme, and where the bell sound is stored. A lot of these things will have to be installed on the local machine after downloading the dotfile.
+## iTerm2
+In `Settings` > `General` > `Preferences` enable "Load preferences from a custom folder or URL" and change to the iTerm2 folder.
 
 ## Raycast
 The `.rayconfig` file is encrypted since it contains credentials. I left it in the repo for personal use but it isn't accessible otherwise.

@@ -17,7 +17,7 @@ startup_printout
 # Window title
 DISABLE_AUTO_TITLE="true"
 precmd () {
-  echo -en  "\033]0;${${PWD:/~/~}/#~/~}"
+  echo -en "\e]0;$(dirs)\a"
 }
 
 # Prompt
