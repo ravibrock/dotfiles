@@ -43,7 +43,8 @@ set title
 set titlestring=%F\ %r\ %m
 
 " Enable line numbers and relative numbering
-set number    " set relativenumber <- Enable for line numbers to be relative
+set number
+set relativenumber 
 
 " Syntax highlighting
 syntax enable
