@@ -36,7 +36,7 @@ set shiftwidth=4
 set expandtab
 
 " Show current position
-set ruler
+set laststatus=1
 
 " Show current file
 set title
@@ -74,6 +74,7 @@ set ignorecase
 set smartcase
 set incsearch
 set magic
+nnoremap <CR> :noh<CR><CR>:<backspace>
 
 " Mouse support (depends on terminal)
 set mouse+=a
