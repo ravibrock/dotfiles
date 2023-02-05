@@ -1,6 +1,7 @@
 " Vim-plug initialization
 call plug#begin()
-    Plug 'tmsvg/pear-tree'
+    Plug 'tmsvg/pear-tree'  " Automatically pairs parentheses etc.
+    Plug 'tpope/vim-commentary'  " Improves commenting/uncommenting lines
 call plug#end()
 
 " Disable vi compatibility
