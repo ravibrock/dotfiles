@@ -920,6 +920,8 @@
 	<false/>
 	<key>WindowNumber</key>
 	<true/>
+	<key>WordCharacters</key>
+	<string>/-+\~_.</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
