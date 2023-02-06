@@ -1,5 +1,6 @@
 " Vim-plug initialization
 call plug#begin()
+    Plug 'github/copilot.vim'  " Adds GitHub Copilot support
     Plug 'tmsvg/pear-tree'  " Automatically pairs parentheses etc.
     Plug 'tpope/vim-commentary'  " Improves commenting/uncommenting lines
 call plug#end()
