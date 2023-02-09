@@ -21,6 +21,12 @@ set nocompatible
 " Stops comments from being extended to newlines
 autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 
+" Configure syntax checking
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
 " History
 set history=100
 
