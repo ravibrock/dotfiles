@@ -6,7 +6,6 @@ call plug#begin()
     Plug 'jez/vim-superman'  " Adds support for calling man pages in vim
     Plug 'jistr/vim-nerdtree-tabs'  " Adds support for tabs in NERDTree
     Plug 'majutsushi/tagbar'  " Adds support for viewing tags
-    Plug 'nathanaelkane/vim-indent-guides'  " Adds indentation guides
     Plug 'scrooloose/nerdtree'  " Adds support for a file tree
     Plug 'scrooloose/syntastic'  " Adds syntax checking
     Plug 'szw/vim-tags'  " Adds support for ctags
