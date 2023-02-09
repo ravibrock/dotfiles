@@ -1,8 +1,18 @@
 " Vim-plug initialization
 call plug#begin()
+    Plug 'airblade/vim-gitgutter'  " Adds Git diff markers
+    Plug 'aymericbeaumet/vim-symlink'  " Opens symlinks in their targets
     Plug 'github/copilot.vim'  " Adds GitHub Copilot support
+    Plug 'jez/vim-superman'  " Adds support for calling man pages in vim
+    Plug 'jistr/vim-nerdtree-tabs'  " Adds support for tabs in NERDTree
+    Plug 'majutsushi/tagbar'  " Adds support for viewing tags
+    Plug 'nathanaelkane/vim-indent-guides'  " Adds indentation guides
+    Plug 'scrooloose/nerdtree'  " Adds support for a file tree
+    Plug 'scrooloose/syntastic'  " Adds syntax checking
+    Plug 'szw/vim-tags'  " Adds support for ctags
     Plug 'tmsvg/pear-tree'  " Automatically pairs parentheses etc.
     Plug 'tpope/vim-commentary'  " Improves commenting/uncommenting lines
+    Plug 'tpope/vim-fugitive'  " Adds Git support
 call plug#end()
 
 " Disable vi compatibility
@@ -97,6 +107,9 @@ set lazyredraw
 " Enable autoread
 set autoread
 au FocusGained,BufEnter * checktime
+
+" Adjust gitgutter appearance to linenumber column
+highlight! link SignColumn LineNr
 
 " Backup
 set nobackup
