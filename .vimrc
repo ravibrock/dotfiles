@@ -1,35 +1,59 @@
 " Vim-plug initialization
 call plug#begin()
-    Plug 'airblade/vim-gitgutter'  " Adds Git diff markers
-    Plug 'aymericbeaumet/vim-symlink'  " Opens symlinks in their targets
-    Plug 'github/copilot.vim'  " Adds GitHub Copilot support
-    Plug 'jez/vim-superman'  " Adds support for calling man pages in vim
-    Plug 'jistr/vim-nerdtree-tabs'  " Adds support for tabs in NERDTree
-    Plug 'majutsushi/tagbar'  " Adds support for viewing tags
-    Plug 'scrooloose/nerdtree'  " Adds support for a file tree
-    Plug 'scrooloose/syntastic'  " Adds syntax checking
-    Plug 'szw/vim-tags'  " Adds support for ctags
-    Plug 'tmsvg/pear-tree'  " Automatically pairs parentheses etc.
-    Plug 'tpope/vim-commentary'  " Improves commenting/uncommenting lines
-    Plug 'tpope/vim-fugitive'  " Adds Git support
+    " Active plugins
+        Plug 'airblade/vim-gitgutter'  " Adds Git diff markers
+        Plug 'aymericbeaumet/vim-symlink'  " Opens symlinks in their targets
+        Plug 'github/copilot.vim'  " Adds GitHub Copilot support
+        Plug 'majutsushi/tagbar'  " Adds support for viewing tags
+        Plug 'scrooloose/nerdtree'  " Adds support for a file tree
+        Plug 'scrooloose/syntastic'  " Adds syntax checking
+        Plug 'tmsvg/pear-tree'  " Automatically pairs parentheses etc.
+        Plug 'tpope/vim-commentary'  " Improves commenting/uncommenting lines
+        Plug 'tpope/vim-fugitive'  " Adds Git support
+
+    " Inactive plugins
+        " Plug 'jez/vim-superman'  " Adds support for calling man pages in vim
+        " Plug 'jistr/vim-nerdtree-tabs'  " Adds support for tabs in NERDTree
+        " Plug 'szw/vim-tags'  " Adds support for ctags
+        " Plug 'Yggdroot/indentLine'  " Adds support for indent guides
 call plug#end()
 
-" Disable vi compatibility
-set nocompatible
+" Fugitive config
+map <silent> <C-g> :Gwrite \| <CR> \| :G commit <CR>
 
-" Stops comments from being extended to newlines
-autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
+" Gitgutter config
+highlight! link SignColumn LineNr
 
-" Configure syntax checking
+" IndentLine config
+let g:indentLine_char = '│'
+
+" NERDTree config
+let g:NERDTreeWinSize=45
+map <silent> <C-o> :NERDTreeToggle <CR>
+
+" Syntastic config
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
+" Tagbar config
+map <silent> <C-t> :TagbarToggle <CR>
+
+" Disable vi compatibility
+set nocompatible
+
+" Configure working directory
+autocmd BufEnter * lcd %:p:h
+
+" Stops comments from being extended to newlines
+autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
+
 " History
 set history=100
 
 " Filetype plugins
+filetype on
 filetype plugin on
 filetype indent on
 
@@ -52,14 +76,12 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Show current position
-set laststatus=1
-
-" Show current file
+" Show current file and status bar
 set title
 set titlestring=%F\ %r\ %m
+set laststatus=2
 
-" Enable line numbers and relative numbering
+" Line numbers
 set number
 set relativenumber 
 
@@ -82,9 +104,6 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
 
 " Configure search
 set ignorecase
@@ -113,9 +132,6 @@ set lazyredraw
 set autoread
 au FocusGained,BufEnter * checktime
 
-" Adjust gitgutter appearance to linenumber column
-highlight! link SignColumn LineNr
-
 " Backup
 set nobackup
 set nowb
@@ -125,7 +141,12 @@ set noswapfile
 set showcmd
 
 " Remapping
-map 0 ^
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Remove trailing whitespace on save
 fun! CleanExtraSpaces()
     let save_cursor = getpos(".")
     let old_query = getreg('/')
