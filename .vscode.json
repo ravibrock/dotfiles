@@ -26,5 +26,6 @@
   "vim.vimrc.path": "$HOME/.vimrc",
   "[python]": {
     "editor.formatOnType": true
-  }
+  },
+  "telemetry.telemetryLevel": "off"
 }
