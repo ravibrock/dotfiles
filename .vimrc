@@ -6,14 +6,16 @@ call plug#begin()
         Plug 'github/copilot.vim'  " Adds GitHub Copilot support
         Plug 'majutsushi/tagbar'  " Adds support for viewing tags
         Plug 'scrooloose/nerdtree'  " Adds support for a file tree
-        Plug 'scrooloose/syntastic'  " Adds syntax checking
         Plug 'tmsvg/pear-tree'  " Automatically pairs parentheses etc.
         Plug 'tpope/vim-commentary'  " Improves commenting/uncommenting lines
         Plug 'tpope/vim-fugitive'  " Adds Git support
+        Plug 'vim-airline/vim-airline'  " Improves status bar
+        Plug 'w0rp/ale'  " Adds support for asynchronous linting
 
     " Inactive plugins
         " Plug 'jez/vim-superman'  " Adds support for calling man pages in vim
         " Plug 'jistr/vim-nerdtree-tabs'  " Adds support for tabs in NERDTree
+        " Plug 'scrooloose/syntastic'  " Adds syntax checking
         " Plug 'szw/vim-tags'  " Adds support for ctags
         " Plug 'Yggdroot/indentLine'  " Adds support for indent guides
 call plug#end()
@@ -39,6 +41,9 @@ let g:syntastic_check_on_wq = 0
 
 " Tagbar config
 map <silent> <C-t> :TagbarToggle <CR>
+
+" Airline config
+let g:airline_section_z = airline#section#create(['%l/%L %p%%'])
 
 " Disable vi compatibility
 set nocompatible
@@ -83,7 +88,7 @@ set laststatus=2
 
 " Line numbers
 set number
-set relativenumber 
+set relativenumber
 
 " Syntax highlighting
 syntax enable
