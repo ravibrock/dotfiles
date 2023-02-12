@@ -6,10 +6,12 @@ call plug#begin()
         Plug 'github/copilot.vim'  " Adds GitHub Copilot support
         Plug 'majutsushi/tagbar'  " Adds support for viewing tags
         Plug 'scrooloose/nerdtree'  " Adds support for a file tree
+        Plug 'turbio/bracey.vim'  " Adds support for live HTML preview
         Plug 'tmsvg/pear-tree'  " Automatically pairs parentheses etc.
         Plug 'tpope/vim-commentary'  " Improves commenting/uncommenting lines
         Plug 'tpope/vim-fugitive'  " Adds Git support
         Plug 'vim-airline/vim-airline'  " Improves status bar
+        Plug 'vim-airline/vim-airline-themes'  " Adds themes for vim-airline
         Plug 'w0rp/ale'  " Adds support for asynchronous linting
 
     " Inactive plugins
@@ -19,6 +21,40 @@ call plug#begin()
         " Plug 'szw/vim-tags'  " Adds support for ctags
         " Plug 'Yggdroot/indentLine'  " Adds support for indent guides
 call plug#end()
+
+" Airline config
+let g:airline_section_z = airline#section#create(['%l/%L %p%%'])
+let g:airline#extensions#ale#enabled = 1
+let airline#extensions#ale#error_symbol = ''
+let airline#extensions#ale#warning_symbol = ''
+let airline#extensions#ale#show_line_numbers = 1
+let airline#extensions#ale#open_lnum_symbol = ' (L'
+let airline#extensions#ale#close_lnum_symbol = ')'
+let g:airline_theme = 'lessnoise'
+" let g:airline_theme = 'lighthaus'
+" let g:airline_theme = 'fruit_punch'
+" let g:airline_theme = 'cyberpunk'
+let g:airline_mode_map = {
+      \ '__'     : '-',
+      \ 'c'      : 'C',
+      \ 'i'      : 'I',
+      \ 'ic'     : 'I',
+      \ 'ix'     : 'I',
+      \ 'n'      : 'N',
+      \ 'multi'  : 'M',
+      \ 'ni'     : 'N',
+      \ 'no'     : 'N',
+      \ 'R'      : 'R',
+      \ 'Rv'     : 'R',
+      \ 's'      : 'S',
+      \ 'S'      : 'S',
+      \ 't'      : 'T',
+      \ 'v'      : 'V',
+      \ 'V'      : 'V',
+      \ }
+
+" Bracey config
+map <silent> <C-w>b :Bracey <CR>
 
 " Fugitive config
 map <silent> <C-g> :Gwrite \| <CR> \| :G commit <CR>
@@ -41,9 +77,6 @@ let g:syntastic_check_on_wq = 0
 
 " Tagbar config
 map <silent> <C-t> :TagbarToggle <CR>
-
-" Airline config
-let g:airline_section_z = airline#section#create(['%l/%L %p%%'])
 
 " Disable vi compatibility
 set nocompatible
