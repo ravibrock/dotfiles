@@ -12,11 +12,9 @@ call plug#begin()
         Plug 'tpope/vim-fugitive'  " Adds Git support
         Plug 'vim-airline/vim-airline'  " Improves status bar
         Plug 'vim-airline/vim-airline-themes'  " Adds themes for vim-airline
-        Plug 'w0rp/ale'  " Adds support for asynchronous linting
+        Plug 'dense-analysis/ale'  " Adds support for asynchronous linting
 
     " Inactive plugins
-        " Plug 'jez/vim-superman'  " Adds support for calling man pages in vim
-        " Plug 'jistr/vim-nerdtree-tabs'  " Adds support for tabs in NERDTree
         " Plug 'scrooloose/syntastic'  " Adds syntax checking
         " Plug 'szw/vim-tags'  " Adds support for ctags
         " Plug 'Yggdroot/indentLine'  " Adds support for indent guides
