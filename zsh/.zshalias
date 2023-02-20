@@ -36,9 +36,9 @@ alias "gp"="git push"
 alias "gpsom"="git push --set-upstream origin main"
 
 # Miscellaneous
-alias "clear"="clear; startup_printout"
+alias "clear"="clear; startup_printout; printf '\e[3J'"
 alias "py"="python3"
 alias "python3"="conda_initialization; python3"
 alias "vim"="nvim"
-alias "wipe"="clear; cd ~/Desktop"
-alias "ytdl"="youtube-dl"
+alias "wipe"="printf '\033c'; printf '\e[3J'; source ~/.zshrc"
+alias "ytdl"="yt-dlp -S ext:mp4:m4a"
