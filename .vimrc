@@ -4,6 +4,7 @@ call plug#begin()
         Plug 'airblade/vim-gitgutter'  " Adds Git diff markers
         Plug 'aymericbeaumet/vim-symlink'  " Opens symlinks in their targets
         Plug 'github/copilot.vim'  " Adds GitHub Copilot support
+        Plug 'lervag/vimtex'  " Adds support for LaTeX
         Plug 'majutsushi/tagbar'  " Adds support for viewing tags
         Plug 'scrooloose/nerdtree'  " Adds support for a file tree
         Plug 'turbio/bracey.vim'  " Adds support for live HTML preview
@@ -123,6 +124,7 @@ set relativenumber
 
 " Syntax highlighting
 syntax enable
+hi MatchParen cterm=none ctermbg=white ctermfg=black
 highlight LineNr ctermfg=grey
 
 " Show matching brackets
