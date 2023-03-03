@@ -6,11 +6,14 @@ call plug#begin()
         Plug 'github/copilot.vim'  " Adds GitHub Copilot support
         Plug 'lervag/vimtex'  " Adds support for LaTeX
         Plug 'majutsushi/tagbar'  " Adds support for viewing tags
+        Plug 'neoclide/coc.nvim', { 'branch': 'release' }  " Adds things like IDE variables
+        Plug 'nvim-zh/better-escape.vim'  " Improves keybinds for escaping insert mode
         Plug 'scrooloose/nerdtree'  " Adds support for a file tree
         Plug 'turbio/bracey.vim'  " Adds support for live HTML preview
         Plug 'tmsvg/pear-tree'  " Automatically pairs parentheses etc.
         Plug 'tpope/vim-commentary'  " Improves commenting/uncommenting lines
         Plug 'tpope/vim-fugitive'  " Adds Git support
+        Plug 'tpope/vim-surround'  " Adds support for surrounding text
         Plug 'vim-airline/vim-airline'  " Improves status bar
         Plug 'vim-airline/vim-airline-themes'  " Adds themes for vim-airline
         Plug 'dense-analysis/ale'  " Adds support for asynchronous linting
@@ -55,11 +58,17 @@ let g:airline_mode_map = {
 " Bracey config
 map <silent> <C-w>b :Bracey <CR>
 
+" Coc config
+imap <expr> <CR> pumvisible() ? coc#_select_confirm() : "\<Plug>(PearTreeExpand)"
+imap <C-J> <C-N>
+imap <C-K> <C-P>
+
 " Fugitive config
 map <silent> <C-g> :Gwrite \| <CR> \| :G commit <CR>
 
 " Gitgutter config
 highlight! link SignColumn LineNr
+set signcolumn=yes
 
 " IndentLine config
 let g:indentLine_char = '│'
@@ -67,6 +76,11 @@ let g:indentLine_char = '│'
 " NERDTree config
 let g:NERDTreeWinSize=45
 map <silent> <C-o> :NERDTreeToggle <CR>
+
+" PearTree config
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_smart_closers = 1
+let g:pear_tree_smart_backspace = 1
 
 " Syntastic config
 let g:syntastic_always_populate_loc_list = 1
@@ -79,6 +93,9 @@ map <silent> <C-t> :TagbarToggle <CR>
 
 " Disable vi compatibility
 set nocompatible
+
+" Map the leader key to a spacebar
+map <Space> <leader>
 
 " Configure working directory
 autocmd BufEnter * lcd %:p:h
