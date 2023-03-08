@@ -56,7 +56,7 @@ let g:airline_mode_map = {
       \ }
 
 " Bracey config
-map <silent> <C-w>b :Bracey <CR>
+map <silent> <leader>bb :Bracey <CR>
 
 " Coc config
 imap <expr> <CR> pumvisible() ? coc#_select_confirm() : "\<Plug>(PearTreeExpand)"
