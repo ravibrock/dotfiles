@@ -44,6 +44,7 @@ alias "ytdlt"="yt-dlp --skip-download --write-thumbnail --convert-thumbnails jpg
 # Miscellaneous
 alias "clear"="clear; startup_printout; printf '\e[3J'"
 alias "py"="python3"
-alias "python3"="conda_initialization; python3"
+alias "python"="python3"
+alias "python3"="py_init; python3"
 alias "vim"="nvim"
 alias "wipe"="printf '\033c'; printf '\e[3J'; source ~/.zshrc"

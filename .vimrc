@@ -155,8 +155,8 @@ set clipboard=unnamed
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Disable bells
+set visualbell
 set noerrorbells
-set novisualbell
 set t_vb=
 set tm=500
 
