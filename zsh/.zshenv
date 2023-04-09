@@ -7,13 +7,14 @@ export PATH="$PNPM_HOME:$PATH"
 
 # Sets up custom environment variables
 export BRAVE="/Applications/Brave.app/Contents/MacOS/Brave Browser"
+export CONDA_INITIALIZED=0
 export CONFIG="${"$(readlink "${(%):-%x}")"%/*}"
 export DOTFILES="$CONFIG/.."
-export CONDA_INITIALIZED=0
+export GREP_OPTIONS='--color=auto'
 export HOMEBREW_NO_ANALYTICS=1
 export PATH=$PATH":$HOME/bin"
 export PATH=$PATH:/usr/local/sbin
 export PYTHONDONTWRITEBYTECODE="TRUE"
 
 # Initializes private environment variables from untracked file - leave at bottom
-. $CONFIG/.private
+. $CONFIG/.zprivate

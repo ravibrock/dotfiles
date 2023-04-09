@@ -26,7 +26,14 @@ prompt_pwd () {
   psvar[1]="${(@j[/]M)${(@s[/]M)p##*/}##(.|)?}$p:t"
 }
 precmd_functions+=( prompt_pwd )
-PS1='%F{cyan}%1v%f $ '
+PS1='%F{cyan}%1v%f ❯ '
+
+# Sets up Zsh vim mode
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
+ZVM_VI_HIGHLIGHT_FOREGROUND=black
+ZVM_VI_HIGHLIGHT_BACKGROUND=cyan
 
 # Configures Zsh syntax highlighting
 syntax_highlight_config
