@@ -1,7 +1,8 @@
-.DS_Store
-.private
+.zprivate
+.gitconfig_local
 brewfile
 gitconfig
+gitignore_global
 rayconfig
 vimrc
 vscode.json
