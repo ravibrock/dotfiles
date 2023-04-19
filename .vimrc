@@ -2,7 +2,6 @@
 call plug#begin()
     " Active plugins
         Plug 'airblade/vim-gitgutter'  " Adds Git diff markers
-        Plug 'aymericbeaumet/vim-symlink'  " Opens symlinks in their targets
         Plug 'github/copilot.vim'  " Adds GitHub Copilot support
         Plug 'lervag/vimtex'  " Adds support for LaTeX
         Plug 'majutsushi/tagbar'  " Adds support for viewing tags
@@ -200,6 +199,29 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Follow symlinks to target
+function! MyFollowSymlink(...)
+    if exists('w:no_resolve_symlink') && w:no_resolve_symlink
+        return
+    endif
+    let fname = a:0 ? a:1 : expand('%')
+    if fname =~ '^\w\+:/'
+        " do not mess with 'fugitive://' etc
+        return
+    endif
+    let fname = simplify(fname)
+    let resolvedfile = resolve(fname)
+    if resolvedfile == fname
+        return
+    endif
+    let resolvedfile = fnameescape(resolvedfile)
+    echohl WarningMsg | echomsg 'Resolved symlink' fname '-->' resolvedfile | echohl None
+    exec 'file ' . resolvedfile
+endfunction
+command! FollowSymlink call MyFollowSymlink()
+command! ToggleFollowSymlink let w:no_resolve_symlink = !get(w:, 'no_resolve_symlink', 0) | echo "w:no_resolve_symlink =>" w:no_resolve_symlink
+au BufReadPost * call MyFollowSymlink(expand('<afile>'))
 
 " Remove trailing whitespace on save
 fun! CleanExtraSpaces()
