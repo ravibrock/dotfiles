@@ -2,11 +2,10 @@
     path = ~/.gitconfig_local
 [core]
     excludesfile = ~/.gitignore_global
-    editor = vim
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    editor = nvim
 [init]
-	defaultBranch = main
+    defaultBranch = main
+[commit]
+    gpgSign = true
+[tag]
+    gpgSign = true

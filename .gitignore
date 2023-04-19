@@ -1,5 +1,5 @@
-.zprivate
 .gitconfig_local
+.zprivate
 brewfile
 gitconfig
 gitignore_global
