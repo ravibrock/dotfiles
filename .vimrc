@@ -137,11 +137,14 @@ set laststatus=2
 " Line numbers
 set number
 set relativenumber
+set cursorline
+highlight LineNr ctermfg=grey
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE
+highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=white
 
 " Syntax highlighting
 syntax enable
-hi MatchParen cterm=none ctermbg=white ctermfg=black
-highlight LineNr ctermfg=grey
+highlight MatchParen cterm=none ctermbg=white ctermfg=black
 
 " Show matching brackets
 set showmatch
@@ -151,7 +154,7 @@ set mat=2
 set clipboard=unnamed
 
 " Return to last cursor position when reopening file
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Disable bells
 set visualbell
@@ -184,7 +187,7 @@ set lazyredraw
 
 " Enable autoread
 set autoread
-au FocusGained,BufEnter * checktime
+autocmd FocusGained,BufEnter * checktime
 
 " Backup
 set nobackup
@@ -218,10 +221,11 @@ function! MyFollowSymlink(...)
     let resolvedfile = fnameescape(resolvedfile)
     echohl WarningMsg | echomsg 'Resolved symlink' fname '-->' resolvedfile | echohl None
     exec 'file ' . resolvedfile
+    silent! w!  " Workaround for 'file exists' error on write
 endfunction
 command! FollowSymlink call MyFollowSymlink()
 command! ToggleFollowSymlink let w:no_resolve_symlink = !get(w:, 'no_resolve_symlink', 0) | echo "w:no_resolve_symlink =>" w:no_resolve_symlink
-au BufReadPost * call MyFollowSymlink(expand('<afile>'))
+autocmd BufReadPost * call MyFollowSymlink(expand('<afile>'))
 
 " Remove trailing whitespace on save
 fun! CleanExtraSpaces()

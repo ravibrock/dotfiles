@@ -22,7 +22,9 @@ function link_in_repo() {
 
 # Defines function that symlinks into home directory
 function link_to_home() {
+    ln -sf $DIR/.nuxtrc $HOME/.nuxtrc
     ln -sf $DIR/.vimrc $HOME/.vimrc
+    ln -sf $DIR/.vimrc $HOME/.ideavimrc
     ln -sf $DIR/git/.gitconfig $HOME/.gitconfig
     ln -sf $DIR/git/.gitignore_global $HOME/.gitignore_global
     ln -sf $DIR/.vscode.json $HOME/.config/Code/User/settings.json
