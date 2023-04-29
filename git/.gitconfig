@@ -1,10 +1,17 @@
 [include]
+    path = ~/.gitalias
     path = ~/.gitconfig_local
 [core]
     excludesfile = ~/.gitignore_global
     editor = nvim
+    autocrlf = input
+    whitespace = fix,blank-at-eol,blank-at-eof,tab-in-indent,-space-before-tab
 [init]
     defaultBranch = main
+[diff]
+    algorithm = histogram
+[push]
+    default = current
 [commit]
     gpgSign = true
 [tag]

@@ -25,7 +25,6 @@ alias .....="cd ../../../.."
 # Git
 alias "ga"="git add"
 alias "ga*"="git add --all"
-alias "gadog"="git log --all --decorate --oneline --graph"
 alias "gc"="git checkout"
 alias "gcm"="git commit -m"
 alias "gcmi"="git commit -m 'Initial commit'"

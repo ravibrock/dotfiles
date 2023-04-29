@@ -12,6 +12,7 @@ function link_in_repo() {
     ln -sf $DIR/.rayconfig $DIR/rayconfig
     ln -sf $DIR/.vimrc $DIR/vimrc
     ln -sf $DIR/.vscode.json $DIR/vscode.json
+    ln -sf $DIR/git/.gitalias $DIR/git/gitalias
     ln -sf $DIR/git/.gitconfig $DIR/git/gitconfig
     ln -sf $DIR/git/.gitignore_global $DIR/git/gitignore_global
     ln -sf $DIR/zsh/.zprofile $DIR/zsh/zprofile
@@ -25,6 +26,7 @@ function link_to_home() {
     ln -sf $DIR/.nuxtrc $HOME/.nuxtrc
     ln -sf $DIR/.vimrc $HOME/.vimrc
     ln -sf $DIR/.vimrc $HOME/.ideavimrc
+    ln -sf $DIR/git/.gitalias $HOME/.gitalias
     ln -sf $DIR/git/.gitconfig $HOME/.gitconfig
     ln -sf $DIR/git/.gitignore_global $HOME/.gitignore_global
     ln -sf $DIR/.vscode.json $HOME/.config/Code/User/settings.json

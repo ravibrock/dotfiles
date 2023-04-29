@@ -1,0 +1,19 @@
+[alias]
+    st = status -sb
+    ci = commit
+    adog = log --all --decorate --oneline --graph
+    all = commit -am
+    br = branch
+    co = checkout
+    di = diff
+    dic = diff --cached
+    lf = log --pretty=fuller
+    lg = log -p
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    ign = ls-files -o -i --exclude-standard
+    shoot = push origin --delete
+    unstage = reset HEAD --
+    prev = checkout -
+    discard = checkout --
