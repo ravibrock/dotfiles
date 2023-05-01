@@ -1,5 +1,6 @@
-# Initializes zsh-defer
-source ~/.zsh/zsh-defer/zsh-defer.plugin.zsh
+# Window title
+DISABLE_AUTO_TITLE="true"
+precmd () { echo -en "\e]0;$(dirs)\a" }
 
 # Adjusts starting folder for terminal
 cd ~/Desktop
@@ -13,7 +14,7 @@ startup_printout () {
             echo
             fastfetch \
                 --multithreading true \
-                --structure Title:Separator:OS:Host:CPU:GPU:Bios:WM:WMTheme:Shell:Packages:Terminal:TerminalFont:Packages:Uptime:Date:Time
+                --structure Title:Separator:OS:Host:CPU:GPU:Bios:WM:WMTheme:Shell:Processes:Terminal:TerminalFont:Packages:Uptime:Date:Time
             echo
     fi
 }
@@ -34,26 +35,6 @@ ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
 ZVM_VI_HIGHLIGHT_FOREGROUND=black
 ZVM_VI_HIGHLIGHT_BACKGROUND=cyan
 
-# Window title
-DISABLE_AUTO_TITLE="true"
-precmd () { echo -en "\e]0;$(dirs)\a" }
-
-# Sets aliases
-zsh-defer source $CONFIG/.zshalias
-
-# Load functions
-zsh-defer source $CONFIG/.zfunc
-
-# Configures Zsh syntax highlighting
-zsh-defer source $CONFIG/functions/syntax_highlight_config.zsh
-
-# Initializes Zsh autocompletions
-zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Allows for Zsh timing
-zsh-defer zmodload zsh/zprof  # Use `zprof` to start timing
-zsh-defer zload () { for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit | grep "real"; done; }
-
 # Zsh history settings
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -67,3 +48,15 @@ setopt hist_find_no_dups
 setopt histignorespace
 setopt incappendhistory
 setopt sharehistory
+
+# Defers certain commands
+source ~/.zsh/zsh-defer/zsh-defer.plugin.zsh
+deferred_commands () {
+    source $CONFIG/.zshalias
+    source $CONFIG/.zfunc
+    source $CONFIG/functions/syntax_highlight_config.zsh
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+    zmodload zsh/zprof
+    zload () { for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit | grep "real"; done; }
+}
+zsh-defer deferred_commands
