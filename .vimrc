@@ -209,8 +209,7 @@ function! MyFollowSymlink(...)
         return
     endif
     let fname = a:0 ? a:1 : expand('%')
-    if fname =~ '^\w\+:/'
-        " do not mess with 'fugitive://' etc
+    if fname =~ '^\w\+:/'  " Don't mess with 'fugitive://' etc.
         return
     endif
     let fname = simplify(fname)
