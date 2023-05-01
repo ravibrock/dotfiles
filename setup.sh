@@ -44,6 +44,12 @@ function install_plug() {
     fi
 }
 
+function zsh_plugins() {
+    mkdir -p ~/.zsh
+    git clone https://github.com/romkatv/zsh-defer ~/.zsh/zsh-defer &> /dev/null
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions &> /dev/null
+}
+
 # Initialize private files
 function private_files() {
     printf "[user]\n    name = [GIT USERNAME HERE]\n    email = [GIT EMAIL HERE]\n    signingkey = [GIT GPG KEYID HERE]" > $DIR/git/.gitconfig_local
@@ -62,6 +68,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     link_to_home
     install_plug
     private_files
+    zsh_plugins
     ln -sf $DIR/.vscode.json $HOME/Library/Application\ Support/Code/User/settings.json
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     printf "This set of dotfiles was designed for MacOS. You'll need to manually install packages and symlink \`.vscode.json\`. Proceed with setup? [y/n]: "
@@ -71,6 +78,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
         link_to_home
         install_plug
         private_files
+        zsh_plugins
     fi
 else
     echo "Unsupported OS. Use Mac or Linux."
