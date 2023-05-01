@@ -52,8 +52,15 @@ function zsh_plugins() {
 
 # Initialize private files
 function private_files() {
-    printf "[user]\n    name = [GIT USERNAME HERE]\n    email = [GIT EMAIL HERE]\n    signingkey = [GIT GPG KEYID HERE]" > $DIR/git/.gitconfig_local
-    printf "export PRIVATE_VARIABLE=\"[PRIVATE VARIABLE HERE]\"" > $DIR/zsh/.zprivate
+    # Initialize .gitconfig_local if needed
+    if ! [[ -f "$DIR/git/.gitconfig_local" ]]; then
+        printf "[user]\n    name = [GIT USERNAME HERE]\n    email = [GIT EMAIL HERE]\n    signingkey = [GIT GPG KEYID HERE]" > $DIR/git/.gitconfig_local
+    fi
+
+    # Initialize .zprivate if needed
+    if ! [[ -f "$DIR/zsh/.zprivate" ]]; then
+        printf "export PRIVATE_VARIABLE=\"[PRIVATE VARIABLE HERE]\"" > $DIR/zsh/.zprivate
+    fi
 }
 
 # OS specific commands

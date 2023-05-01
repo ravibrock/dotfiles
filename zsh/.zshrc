@@ -7,15 +7,14 @@ cd ~/Desktop
 
 # Startup info
 startup_printout () {
-    if [ ${IS_PYCHARM+1} ]
-        then
-            echo Current user: $(whoami)@$(hostname -s) with $(spoofed_mac_address)
-        else
-            echo
-            fastfetch \
-                --multithreading true \
-                --structure Title:Separator:OS:Host:CPU:GPU:Bios:WM:WMTheme:Shell:Processes:Terminal:TerminalFont:Packages:Uptime:Date:Time
-            echo
+    if [ ${TERM_PROGRAM+1} ]; then
+        echo
+        fastfetch \
+            --multithreading true \
+            --structure Title:Separator:OS:Host:CPU:GPU:Bios:WM:WMTheme:Shell:Processes:Terminal:TerminalFont:Packages:Uptime:Date:Time
+        echo
+    else
+        echo Current user: $(whoami)@$(hostname -s) with $(ifconfig en0 | grep ether | awk '{print $2}')
     fi
 }
 startup_printout
@@ -28,17 +27,10 @@ prompt_pwd () {
 precmd_functions+=( prompt_pwd )
 PS1='%F{cyan}%1v%f ❯ '
 
-# Sets up Zsh vim mode
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
-ZVM_VI_HIGHLIGHT_FOREGROUND=black
-ZVM_VI_HIGHLIGHT_BACKGROUND=cyan
-
 # Zsh history settings
-HISTSIZE=5000
+HISTSIZE=500
 HISTFILE=~/.zsh_history
-SAVEHIST=5000
+SAVEHIST=1000
 HISTDUP=erase
 setopt appendhistory
 setopt hist_ignore_all_dups
@@ -49,13 +41,46 @@ setopt histignorespace
 setopt incappendhistory
 setopt sharehistory
 
+# Zsh vi mode settings
+bindkey -v
+echo -ne "\e[1 q"
+export KEYTIMEOUT=1
+zle_highlight=( region:bg=cyan,fg=black )
+
+zle-line-init () {
+    zle -K viins
+    echo -ne "\e[1 q"
+}
+zle -N zle-line-init
+
 # Defers certain commands
 source ~/.zsh/zsh-defer/zsh-defer.plugin.zsh
 deferred_commands () {
+    # More Zsh config
     source $CONFIG/.zshalias
     source $CONFIG/.zfunc
+
+    # Syntax highlighting
     source $CONFIG/functions/syntax_highlight_config.zsh
+
+    # Autosuggestions
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+    # Vi mode final config
+    zle-keymap-select () {
+        if [[ ${KEYMAP} == vicmd ]] ||
+           [[ $1 = 'block' ]]; then
+                echo -ne '\e[2 q'
+        elif [[ ${KEYMAP} == main ]] ||
+           [[ ${KEYMAP} == viins ]] ||
+           [[ ${KEYMAP} = '' ]] ||
+           [[ $1 = 'beam' ]]; then
+                echo -ne '\e[1 q'
+        fi
+    }
+    zle -N zle-keymap-select
+
+    # Zsh timing
     zmodload zsh/zprof
     zload () { for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit | grep "real"; done; }
 }
