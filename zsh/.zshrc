@@ -1,6 +1,6 @@
 # Window title
-DISABLE_AUTO_TITLE="true"
-precmd () { echo -en "\e]0;$(dirs)\a" }
+DISABLE_AUTO_TITLE="TRUE"
+precmd () { echo -en "\e]0; $(dirs)\a" }
 
 # Adjusts starting folder for terminal
 cd ~/Desktop
@@ -46,11 +46,7 @@ bindkey -v
 echo -ne "\e[1 q"
 export KEYTIMEOUT=1
 zle_highlight=( region:bg=cyan,fg=black )
-
-zle-line-init () {
-    zle -K viins
-    echo -ne "\e[1 q"
-}
+zle-line-init () { zle -K viins; echo -ne "\e[1 q" }
 zle -N zle-line-init
 
 # Automatically change directories
@@ -66,11 +62,7 @@ deferred_commands () {
 
     # Load compinit
     autoload -Uz compinit
-    if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-        compinit -u
-    else
-        compinit -C
-    fi
+    compinit -u
 
     # More Zsh config
     source $CONFIG/.zshalias

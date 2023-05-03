@@ -11,11 +11,6 @@ alias "clc"="cloudconvert convert -f"
 alias "clm"="cloudconvert merge"
 alias "clo"="cloudconvert optimize --overwrite"
 
-# Config files
-alias "zshalias"="code $CONFIG/.zshalias"
-alias "zshenv"="code $CONFIG/.zshenv"
-alias "zshrc"="code $CONFIG/.zshrc"
-
 # Filesystem
 alias ..='cd ..'
 alias ...='cd ../..'
