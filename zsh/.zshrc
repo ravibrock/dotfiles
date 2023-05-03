@@ -53,18 +53,31 @@ zle-line-init () {
 }
 zle -N zle-line-init
 
+# Automatically change directories
+setopt autocd
+setopt autopushd
+setopt pushdignoredups
+
 # Defers certain commands
 source ~/.zsh/zsh-defer/zsh-defer.plugin.zsh
 deferred_commands () {
+    # Autosuggestions
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+    # Load compinit
+    autoload -Uz compinit
+    if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+        compinit -u
+    else
+        compinit -C
+    fi
+
     # More Zsh config
     source $CONFIG/.zshalias
     source $CONFIG/.zfunc
 
     # Syntax highlighting
     source $CONFIG/functions/syntax_highlight_config.zsh
-
-    # Autosuggestions
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
     # Vi mode final config
     zle-keymap-select () {

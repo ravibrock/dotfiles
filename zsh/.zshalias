@@ -4,7 +4,7 @@ alias bi="brew install --no-quarantine"
 alias bl="brew list"
 alias blc="brew list --cask"
 alias bo="brew outdated"
-alias bu="brew update"
+alias bu="brew upgrade"
 
 # Cloudconvert
 alias "clc"="cloudconvert convert -f"
