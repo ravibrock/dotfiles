@@ -1,6 +1,6 @@
 # Window title
-DISABLE_AUTO_TITLE="TRUE"
-precmd () { echo -en "\e]0; $(dirs)\a" }
+DISABLE_AUTO_TITLE="True"
+precmd () { echo -en "\e]0; $(print -rD $PWD)\a" }
 
 # Adjusts starting folder for terminal
 cd ~/Desktop
@@ -9,9 +9,7 @@ cd ~/Desktop
 startup_printout () {
     if [ ${TERM_PROGRAM+1} ]; then
         echo
-        fastfetch \
-            --multithreading true \
-            --structure Title:Separator:OS:Host:CPU:GPU:Bios:WM:WMTheme:Shell:Processes:Terminal:TerminalFont:Packages:Uptime:Date:Time
+        flashfetch --multithreading true
         echo
     else
         echo Current user: $(whoami)@$(hostname -s) with $(ifconfig en0 | grep ether | awk '{print $2}')
