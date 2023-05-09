@@ -42,7 +42,6 @@ brew "w3m"
 brew "wget"
 brew "wifi-password"
 brew "yt-dlp"
-brew "zsh-syntax-highlighting"
 brew "qmk/qmk/qmk"
 brew "ravibrock/fastfetch/fastfetch", args: ["HEAD"]
 cask "alt-tab"

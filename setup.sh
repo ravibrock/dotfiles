@@ -48,6 +48,7 @@ function zsh_plugins() {
     mkdir -p ~/.zsh
     git clone https://github.com/romkatv/zsh-defer ~/.zsh/zsh-defer &> /dev/null
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions &> /dev/null
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting &> /dev/null
 }
 
 # Initialize private files
