@@ -82,9 +82,5 @@ deferred_commands () {
         fi
     }
     zle -N zle-keymap-select
-
-    # Zsh timing
-    zmodload zsh/zprof
-    zload () { for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit | grep "real"; done; }
 }
 zsh-defer deferred_commands
