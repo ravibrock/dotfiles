@@ -1,8 +1,10 @@
 .gitconfig_local
+.luarc.json
 .zprivate
 brewfile
 gitconfig
 gitignore_global
+lazy-lock.json
 rayconfig
 vimrc
 vscode.json
