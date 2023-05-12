@@ -2,11 +2,8 @@
 call plug#begin()
     " Active plugins
         Plug 'airblade/vim-gitgutter'  " Adds Git diff markers
-        Plug 'github/copilot.vim'  " Adds GitHub Copilot support
         Plug 'lervag/vimtex'  " Adds support for LaTeX
-        Plug 'majutsushi/tagbar'  " Adds support for viewing tags
-        Plug 'neoclide/coc.nvim', { 'branch': 'release' }  " Adds things like IDE variables
-        Plug 'nvim-zh/better-escape.vim'  " Improves keybinds for escaping insert mode
+        Plug 'preservim/tagbar'  " Adds support for viewing tags
         Plug 'scrooloose/nerdtree'  " Adds support for a file tree
         Plug 'turbio/bracey.vim'  " Adds support for live HTML preview
         Plug 'tmsvg/pear-tree'  " Automatically pairs parentheses etc.
@@ -18,6 +15,7 @@ call plug#begin()
         Plug 'dense-analysis/ale'  " Adds support for asynchronous linting
 
     " Inactive plugins
+        " Plug 'nvim-zh/better-escape.vim'  " Improves keybinds for escaping insert mode
         " Plug 'scrooloose/syntastic'  " Adds syntax checking
         " Plug 'szw/vim-tags'  " Adds support for ctags
         " Plug 'Yggdroot/indentLine'  " Adds support for indent guides
@@ -32,9 +30,6 @@ let airline#extensions#ale#show_line_numbers = 1
 let airline#extensions#ale#open_lnum_symbol = ' (L'
 let airline#extensions#ale#close_lnum_symbol = ')'
 let g:airline_theme = 'lessnoise'
-" let g:airline_theme = 'lighthaus'
-" let g:airline_theme = 'fruit_punch'
-" let g:airline_theme = 'cyberpunk'
 let g:airline_mode_map = {
       \ '__'     : '-',
       \ 'c'      : 'C',
@@ -57,11 +52,6 @@ let g:airline_mode_map = {
 " Bracey config
 map <silent> <leader>bb :Bracey <CR>
 
-" Coc config
-imap <expr> <CR> pumvisible() ? coc#_select_confirm() : "\<Plug>(PearTreeExpand)"
-imap <C-J> <C-N>
-imap <C-K> <C-P>
-
 " Fugitive config
 map <silent> <C-g> :Gwrite \| <CR> \| :G commit <CR>
 
@@ -74,7 +64,7 @@ let g:indentLine_char = '│'
 
 " NERDTree config
 let g:NERDTreeWinSize=45
-map <silent> <C-o> :NERDTreeToggle <CR>
+map <silent> <leader>o :NERDTreeToggle <CR>
 
 " PearTree config
 let g:pear_tree_smart_openers = 1
@@ -88,7 +78,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 " Tagbar config
-map <silent> <C-t> :TagbarToggle <CR>
+map <silent> <leader>t :TagbarToggle <CR>
 
 " Disable vi compatibility
 set nocompatible
@@ -209,7 +199,7 @@ function! MyFollowSymlink(...)
         return
     endif
     let fname = a:0 ? a:1 : expand('%')
-    if fname =~ '^\w\+:/'  " Don't mess with 'fugitive://' etc.
+    if fname =~ '^\w+:\/'  " Don't mess with 'fugitive://' etc.
         return
     endif
     let fname = simplify(fname)
