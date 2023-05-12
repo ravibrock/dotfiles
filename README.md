@@ -13,6 +13,9 @@ In `Settings` > `General` > `Preferences` enable "Load preferences from a custom
 ### Raycast
 The `.rayconfig` file is encrypted since it contains credentials. I left it in the repo for personal use but it isn't accessible otherwise.
 
+### Neovim
+I borrowed heavily from [LazyVim](https://github.com/LazyVim/LazyVim) to write the Lua config.
+
 ### Zsh
 Add API keys and personal info to `zsh/.zprivate`.
 
