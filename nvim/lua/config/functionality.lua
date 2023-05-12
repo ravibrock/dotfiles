@@ -9,6 +9,9 @@ vim.cmd('filetype indent on')
 -- Ignore compiled files
 vim.opt.wildignore = { '*.o', '*~', '*.pyc', '*pycache*', '*/.git/*', '*/.hg/*', '*/.svn/*', '*/.DS_Store' }
 
+-- Configure working directory
+vim.opt.autochdir = true
+
 -- Text encoding
 vim.opt.encoding = 'utf-8'
 
