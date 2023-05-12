@@ -78,11 +78,11 @@ function config.setup()
             lualine_z = {'%l/%L'}
         },
         inactive_sections = {
-            lualine_a = {{ 'mode', fmt = function(str) return str:sub(1,1) end }},
+            lualine_a = {'filename'},
             lualine_b = {},
-            lualine_c = {'filename'},
-            lualine_x = {'searchcount', 'encoding', 'fileformat', { 'filetype', icons_enabled = false }},
-            lualine_y = {},
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {'encoding'},
             lualine_z = {}
         },
         tabline = {},
