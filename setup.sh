@@ -23,12 +23,14 @@ function link_in_repo() {
 
 # Defines function that symlinks into home directory
 function link_to_home() {
+    mkdir -p $HOME/.config/Code/User
     ln -sf $DIR/.nuxtrc $HOME/.nuxtrc
     ln -sf $DIR/.vimrc $HOME/.vimrc
     ln -sf $DIR/.vimrc $HOME/.ideavimrc
     ln -sf $DIR/git/.gitalias $HOME/.gitalias
     ln -sf $DIR/git/.gitconfig $HOME/.gitconfig
     ln -sf $DIR/git/.gitignore_global $HOME/.gitignore_global
+    ln -sf $DIR/nvim $HOME/.config/nvim
     ln -sf $DIR/.vscode.json $HOME/.config/Code/User/settings.json
     ln -sf $DIR/zsh/.zprofile $HOME/.zprofile
     ln -sf $DIR/zsh/.zshenv $HOME/.zshenv
@@ -40,7 +42,7 @@ function install_plug() {
     printf "Install vim-plug? [y/n]: "
     read -r response
     if [[ "$response" == "y" ]]; then
-        curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     fi
 }
 
