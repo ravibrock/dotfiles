@@ -3,6 +3,7 @@ return {
     {
         'airblade/vim-gitgutter',
         "folke/trouble.nvim",
+        "echasnovski/mini.bufremove",
     },
     {
         'nvim-treesitter/nvim-treesitter',
@@ -61,6 +62,17 @@ return {
         },
     },
     {
+        "akinsho/bufferline.nvim",
+        event = "VeryLazy",
+        keys = {
+            { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+            { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+        },
+        config = function()
+            require(prefix .. "bufferline").setup()
+        end,
+    },
+    {
         "goolord/alpha-nvim",
         event = "VimEnter",
         opts = function ()
@@ -69,5 +81,22 @@ return {
         config = function(_, dashboard)
             require(prefix .. "alpha-nvim").config(_, dashboard)
         end,
-    }
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        event = { "BufReadPost", "BufNewFile" },
+        opts = {
+            char = "│",
+            filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
+            show_trailing_blankline_indent = false,
+            show_current_context = false,
+        },
+        config = function ()
+            require("indent_blankline").setup {
+                show_current_context = true,
+                show_current_context_start = true,
+                space_char_blankline = " ",
+            }
+        end
+    },
 }

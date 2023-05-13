@@ -16,6 +16,7 @@ function options.setup()
             "rust",
             "vim",
         },
+        indent = { enable = true },
         highlight = {
             disable = { "latex" },
             enable = true,
