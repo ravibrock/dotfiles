@@ -25,6 +25,7 @@ local kind_icons = {
     Event = "",
     Operator = "󰆕",
     TypeParameter = "󰅲",
+    Copilot = "",
 }
 
 local options = {
@@ -33,6 +34,7 @@ local options = {
         format = function(entry, vim_item)
             vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
             vim_item.menu = ({
+                copilot = "",
                 buffer = "󰂡",
                 latex_symbols = "󰍘",
                 luasnip = "⋗",
@@ -71,6 +73,7 @@ local options = {
         }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
+        { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "buffer" },
