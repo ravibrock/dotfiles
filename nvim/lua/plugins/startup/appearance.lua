@@ -19,6 +19,34 @@ return {
         end,
     },
     {
+        "catppuccin/nvim",
+        lazy = true,
+        name = "catppuccin",
+        config = function ()
+            require("catppuccin").setup({
+                transparent_background = true,
+            })
+        end
+    },
+    {
+        "folke/tokyonight.nvim",
+        lazy = true,
+        config = function()
+            require("tokyonight").setup({
+                transparent = true,
+            })
+        end,
+    },
+    {
+        "projekt0n/github-nvim-theme", version = 'v0.0.7',
+        lazy = true,
+        config = function()
+            require("github-theme").setup({
+                transparent = true,
+            })
+        end,
+    },
+    {
         "folke/todo-comments.nvim",
         cmd = { "TodoTrouble", "TodoTelescope" },
         event = { "BufReadPost", "BufNewFile" },
