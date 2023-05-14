@@ -21,7 +21,11 @@ return {
     {
         "lervag/vimtex",
         ft = { "tex" },
-        keys = { { "<leader>ll", "<cmd>VimtexCompile<CR>" } },
+        keys = {
+            { "<leader>ll", "<cmd>VimtexCompile<CR>" },
+            { "<leader>lv", "<cmd>VimtexView<CR>"}
+        },
+        init = function() vim.g.vimtex_view_method = "sioyek" end
     },
     {
         "folke/persistence.nvim",
