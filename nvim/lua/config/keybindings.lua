@@ -13,4 +13,3 @@ vim.keymap.set({'n', 'v'}, '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
 -- Enable mouse support
 vim.opt.mouse = 'a'
-
