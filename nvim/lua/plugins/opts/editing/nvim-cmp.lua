@@ -1,4 +1,4 @@
-local cmp = require('cmp')
+local cmp = require("cmp")
 local kind_icons = {
     Text = "",
     Method = "󰆧",
@@ -30,9 +30,9 @@ local kind_icons = {
 
 local options = {
     formatting = {
-        fields = {'menu', 'abbr', 'kind'},
+        fields = {"menu", "abbr", "kind"},
         format = function(entry, vim_item)
-            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
             vim_item.menu = ({
                 copilot = "",
                 buffer = "󰂡",
@@ -48,7 +48,7 @@ local options = {
     window = {
         documentation = cmp.config.window.bordered(),
         completion = cmp.config.window.bordered({
-            winhighlight = 'Normal:CmpPmenu,CursorLine:PmenuSel,Search:None'
+            winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None"
         }),
     },
     completion = {
@@ -66,18 +66,18 @@ local options = {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<S-CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
-        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        }),
     }),
     sources = cmp.config.sources({
         { name = "copilot" },
+        { name = "luasnip", option = { show_autosnippets = true } },
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "buffer" },
-        { name = "luasnip" },
     }),
     experimental = {
         ghost_text = {

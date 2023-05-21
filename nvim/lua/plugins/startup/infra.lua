@@ -22,10 +22,15 @@ return {
         "lervag/vimtex",
         ft = { "tex" },
         keys = {
+            { "<leader>lc", "<cmd>VimtexClean<CR>"},
             { "<leader>ll", "<cmd>VimtexCompile<CR>" },
-            { "<leader>lv", "<cmd>VimtexView<CR>"}
+            { "<leader>lv", "<cmd>VimtexView<CR>"},
         },
-        init = function() vim.g.vimtex_view_method = "sioyek" end
+        init = function()
+            vim.g.vimtex_view_method = "sioyek"
+            vim.g.tex_conceal = "abdmg"
+            vim.opt.conceallevel = 2
+        end
     },
     {
         "folke/persistence.nvim",

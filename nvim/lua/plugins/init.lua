@@ -22,4 +22,5 @@ require("lazy").setup({
     checker = { enabled = true },
 })
 
-vim.cmd('colorscheme catppuccin')
+vim.cmd("colorscheme catppuccin")
+require("lazy").sync({ show = false })

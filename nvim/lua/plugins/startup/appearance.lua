@@ -1,9 +1,23 @@
 local prefix = "plugins.opts.appearance."
 return {
     {
-        'airblade/vim-gitgutter',
         "folke/trouble.nvim",
         "echasnovski/mini.bufremove",
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup({
+                signs = {
+                    add          = { text = '+' },
+                    change       = { text = '│' },
+                    delete       = { text = '_' },
+                    topdelete    = { text = '‾' },
+                    changedelete = { text = '~' },
+                    untracked    = { text = '┆' },
+                },
+            })
+        end
     },
     {
         'nvim-treesitter/nvim-treesitter',
@@ -11,6 +25,12 @@ return {
         config = function()
             require(prefix .. "nvim-treesitter").setup()
         end,
+    },
+    {
+        "folke/twilight.nvim",
+        keys = {
+            { "<leader>i", "<cmd>Twilight<cr>", desc = "Toggle Twilight" },
+        },
     },
     {
         'nvim-lualine/lualine.nvim',
@@ -26,6 +46,7 @@ return {
         config = function ()
             require("catppuccin").setup({
                 transparent_background = true,
+                flavour = "mocha",
             })
         end
     },
