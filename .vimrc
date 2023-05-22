@@ -3,6 +3,7 @@ call plug#begin()
     " Active plugins
         Plug 'airblade/vim-gitgutter'  " Adds Git diff markers
         Plug 'lervag/vimtex'  " Adds support for LaTeX
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Adds popup menu
         Plug 'preservim/tagbar'  " Adds support for viewing tags
         Plug 'scrooloose/nerdtree'  " Adds support for a file tree
         Plug 'turbio/bracey.vim'  " Adds support for live HTML preview
@@ -51,6 +52,11 @@ let g:airline_mode_map = {
 
 " Bracey config
 map <silent> <leader>bb :Bracey <CR>
+
+" Coc config
+imap <expr> <CR> pumvisible() ? coc#_select_confirm() : "\<Plug>(PearTreeExpand)"
+imap <C-J> <C-N>
+imap <C-K> <C-P>
 
 " Fugitive config
 map <silent> <C-g> :Gwrite \| <CR> \| :G commit <CR>
