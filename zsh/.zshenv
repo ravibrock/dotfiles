@@ -11,7 +11,10 @@ export CONDA_INITIALIZED=0
 export CONFIG="${"$(readlink "${(%):-%x}")"%/*}"
 export DOTFILES="$CONFIG/.."
 export GREP_OPTIONS='--color=auto'
+export HOMEBREW_AUTOREMOVE=1
+export HOMEBREW_CASK_OPTS="--no-quarantine"
 export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_ENV_HINTS=1
 export PATH=$PATH":$HOME/bin"
 export PATH=$PATH:/usr/local/sbin
 export PYTHONDONTWRITEBYTECODE="TRUE"

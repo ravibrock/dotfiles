@@ -1,6 +1,6 @@
 # Homebrew
 alias bbd="brew bundle dump --force --file=$DOTFILES/.brewfile"
-alias bi="brew install --no-quarantine"
+alias bi="brew install"
 alias bl="brew list"
 alias blc="brew list --cask"
 alias bo="brew outdated"
