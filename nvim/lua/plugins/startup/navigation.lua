@@ -6,6 +6,27 @@ return {
         "MunifTanjim/nui.nvim",
     },
     {
+        "ggandor/leap.nvim",
+        keys = {
+            { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
+            { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+            { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
+        },
+        config = function()
+            require('leap').add_default_mappings()
+        end,
+    },
+    {
+        "ggandor/flit.nvim",
+        keys = {
+            { "f", mode = { "n", "x", "o" }, desc = "Flit forward to" },
+            { "F", mode = { "n", "x", "o" }, desc = "Flit backward to" },
+        },
+        config = function()
+            require("flit").setup()
+        end,
+    },
+    {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
         requires = {
@@ -29,7 +50,7 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
-        version = false, -- telescope did only one release, so use HEAD for now
+        version = false,
         keys = function ()
             return require(prefix .. "telescope").keys
         end,
@@ -38,9 +59,9 @@ return {
         end
     },
     {
-        'stevearc/aerial.nvim',
+        "stevearc/aerial.nvim",
         opts = {},
-        keys = { { "<leader>t", "<cmd>AerialToggle<cr>", desc = "Aerial" } },
+        keys = {{ "<leader>t", "<cmd>AerialToggle<cr>", desc = "Aerial" }},
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons"
