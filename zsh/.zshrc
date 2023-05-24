@@ -28,7 +28,7 @@ PS1='%F{cyan}%1v%f ❯ '
 # Zsh history settings
 HISTSIZE=500
 HISTFILE=~/.zsh_history
-SAVEHIST=1000
+SAVEHIST=5000
 HISTDUP=erase
 setopt appendhistory
 setopt hist_ignore_all_dups
