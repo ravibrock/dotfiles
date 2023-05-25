@@ -2,7 +2,7 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- Stop commenting new lines
 autocmd('BufEnter', {
-  command = ":setlocal formatoptions-=ro"
+    command = ":setlocal formatoptions-=ro"
 })
 
 -- Enable autoread

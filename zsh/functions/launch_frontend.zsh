@@ -1,8 +1,8 @@
 cd ~/Archive/Business/.Frontends/$1
 if [ $1 = 'uniswap' ] || [ $1 = 'Uniswap' ]
 then
-cd build/
+    cd build/
 else
-cd dist/
+    cd dist/
 fi
 serve
