@@ -11,7 +11,6 @@ function link_in_repo() {
     ln -sf $DIR/.brewfile $DIR/brewfile
     ln -sf $DIR/.rayconfig $DIR/rayconfig
     ln -sf $DIR/.vimrc $DIR/vimrc
-    ln -sf $DIR/.vscode.json $DIR/vscode.json
     ln -sf $DIR/git/.gitalias $DIR/git/gitalias
     ln -sf $DIR/git/.gitconfig $DIR/git/gitconfig
     ln -sf $DIR/git/.gitignore_global $DIR/git/gitignore_global
@@ -31,7 +30,6 @@ function link_to_home() {
     ln -sf $DIR/git/.gitconfig $HOME/.gitconfig
     ln -sf $DIR/git/.gitignore_global $HOME/.gitignore_global
     ln -sf $DIR/nvim $HOME/.config/nvim
-    ln -sf $DIR/.vscode.json $HOME/.config/Code/User/settings.json
     ln -sf $DIR/zsh/.zprofile $HOME/.zprofile
     ln -sf $DIR/zsh/.zshenv $HOME/.zshenv
     ln -sf $DIR/zsh/.zshrc $HOME/.zshrc
@@ -81,7 +79,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     zsh_plugins
     ln -sf $DIR/.vscode.json $HOME/Library/Application\ Support/Code/User/settings.json
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    printf "This set of dotfiles was designed for MacOS. You'll need to manually install packages and symlink \`.vscode.json\`. Proceed with setup? [y/n]: "
+    printf "This set of dotfiles was designed for MacOS. You'll need to manually install packages. Proceed with setup? [y/n]: "
     read -r response
     if [[ "$response" == "y" ]]; then
         link_in_repo
