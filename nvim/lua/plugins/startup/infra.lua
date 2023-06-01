@@ -1,14 +1,26 @@
 local prefix = "plugins.opts.infra."
 return {
     {
+        "farmergreg/vim-lastplace",
+    },
+    {
         "neovim/nvim-lspconfig",
+        event = "VeryLazy",
         config = function()
             require(prefix .. "nvim-lspconfig")
         end,
     },
     {
+        "stevearc/stickybuf.nvim",
+        opts = {},
+        setup = function()
+            require("stickybuf").setup()
+        end,
+    },
+    {
         "folke/neodev.nvim",
-        opts = { experimental = { pathStrict = true } }
+        event = "VeryLazy",
+        opts = { experimental = { pathStrict = true } },
     },
     {
         "turbio/bracey.vim",
@@ -16,6 +28,8 @@ return {
         build = "npm install --prefix server",
         keys = {
             { "<leader>bb", "<cmd>Bracey<CR>" },
+            { "<leader>br", "<cmd>BraceyReload<CR>" },
+            { "<leader>bs", "<cmd>BraceyStop<CR>" },
         },
     },
     {
@@ -30,7 +44,7 @@ return {
             vim.g.vimtex_view_method = "sioyek"
             vim.g.tex_conceal = "abdmg"
             vim.opt.conceallevel = 2
-        end
+        end,
     },
     {
         "folke/persistence.nvim",
@@ -41,8 +55,5 @@ return {
             { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
             { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
         },
-    },
-    {
-        "farmergreg/vim-lastplace",
     },
 }

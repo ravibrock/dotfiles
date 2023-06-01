@@ -1,5 +1,5 @@
 local all = {}
-all.opts = function ()
+all.opts = function()
     local dashboard = require("alpha.themes.dashboard")
     local logo = [[
         ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z

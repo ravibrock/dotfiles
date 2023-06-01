@@ -20,6 +20,7 @@ require("lazy").setup({
         version = false,
     },
     checker = { enabled = true },
+    ui = { border = "rounded" },
 })
 
 vim.cmd("colorscheme catppuccin")

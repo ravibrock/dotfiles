@@ -1,7 +1,7 @@
 local options = {}
 function options.setup()
     local treesitter = require("nvim-treesitter.configs")
-    treesitter.setup{
+    treesitter.setup({
         ensure_installed = {
             "bash",
             "c",
@@ -20,8 +20,8 @@ function options.setup()
         highlight = {
             disable = { "latex" },
             enable = true,
-            additional_vim_regex_highlighting = false
+            additional_vim_regex_highlighting = false,
         },
-    }
+    })
 end
 return options

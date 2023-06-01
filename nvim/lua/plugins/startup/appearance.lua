@@ -5,22 +5,24 @@ return {
         "echasnovski/mini.bufremove",
     },
     {
-        'lewis6991/gitsigns.nvim',
+        "lewis6991/gitsigns.nvim",
+        event = "VeryLazy",
         config = function()
-            require('gitsigns').setup({
+            require("gitsigns").setup({
                 signs = {
-                    add          = { text = '+' },
-                    change       = { text = '│' },
-                    delete       = { text = '_' },
-                    topdelete    = { text = '‾' },
-                    changedelete = { text = '~' },
-                    untracked    = { text = '┆' },
+                    add          = { text = "│" },
+                    change       = { text = "│" },
+                    delete       = { text = "_" },
+                    topdelete    = { text = "‾" },
+                    changedelete = { text = "~" },
+                    untracked    = { text = "┆" },
                 },
             })
-        end
+        end,
     },
     {
-        'nvim-treesitter/nvim-treesitter',
+        "nvim-treesitter/nvim-treesitter",
+        event = "VeryLazy",
         build = ":TSUpdate",
         config = function()
             require(prefix .. "nvim-treesitter").setup()
@@ -29,12 +31,12 @@ return {
     {
         "folke/twilight.nvim",
         keys = {
-            { "<leader>i", "<cmd>Twilight<cr>", desc = "Toggle Twilight" },
+            { "<leader>i", "<cmd>Twilight<cr>", desc = "Toggle Twilight", },
         },
     },
     {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+        "nvim-lualine/lualine.nvim",
+        requires = { "nvim-tree/nvim-web-devicons", opt = true },
         config = function()
             require(prefix .. "lualine").setup()
         end,
@@ -43,28 +45,10 @@ return {
         "catppuccin/nvim",
         lazy = true,
         name = "catppuccin",
-        config = function ()
+        config = function()
             require("catppuccin").setup({
                 transparent_background = true,
                 flavour = "mocha",
-            })
-        end
-    },
-    {
-        "folke/tokyonight.nvim",
-        lazy = true,
-        config = function()
-            require("tokyonight").setup({
-                transparent = true,
-            })
-        end,
-    },
-    {
-        "projekt0n/github-nvim-theme", version = 'v0.0.7',
-        lazy = true,
-        config = function()
-            require("github-theme").setup({
-                transparent = true,
             })
         end,
     },
@@ -96,7 +80,7 @@ return {
     {
         "goolord/alpha-nvim",
         event = "VimEnter",
-        opts = function ()
+        opts = function()
             return require(prefix .. "alpha-nvim").opts()
         end,
         config = function(_, dashboard)
@@ -112,12 +96,12 @@ return {
             show_trailing_blankline_indent = false,
             show_current_context = false,
         },
-        config = function ()
+        config = function()
             require("indent_blankline").setup {
                 show_current_context = true,
                 show_current_context_start = true,
                 space_char_blankline = " ",
             }
-        end
+        end,
     },
 }

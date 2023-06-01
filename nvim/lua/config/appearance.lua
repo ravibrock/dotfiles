@@ -1,21 +1,21 @@
 -- Configure terminal title
 vim.opt.title = true
-vim.opt.titlestring = '%F %r %m'
+vim.opt.titlestring = "%F %r %m"
 vim.opt.laststatus = 2
 
 -- Configure line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
-vim.cmd('highlight LineNr ctermfg=gray')
-vim.cmd('highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE')
-vim.cmd('highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=white')
+vim.cmd("highlight LineNr ctermfg=gray")
+vim.cmd("highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE")
+vim.cmd("highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=white")
 
 -- Enable syntax highlighting
-vim.cmd('syntax enable')
-vim.cmd('highlight MatchParen cterm=none ctermbg=white ctermfg=black')
-vim.cmd('highlight! link SignColumn LineNr')
-vim.opt.signcolumn = 'yes'
+vim.cmd("syntax enable")
+vim.cmd("highlight MatchParen cterm=none ctermbg=white ctermfg=black")
+vim.cmd("highlight! link SignColumn LineNr")
+vim.opt.signcolumn = "yes"
 
 -- Show matching brackets
 vim.opt.showmatch = true

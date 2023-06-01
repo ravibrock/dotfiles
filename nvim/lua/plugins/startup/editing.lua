@@ -10,7 +10,11 @@ return {
     },
     {
         "tpope/vim-surround",
-        event = "VeryLazy"
+        event = "VeryLazy",
+    },
+    {
+        "tpope/vim-repeat",
+        event = "VeryLazy",
     },
     {
         "zbirenbaum/copilot.lua",
@@ -23,33 +27,32 @@ return {
     },
     {
         "zbirenbaum/copilot-cmp",
-        config = function ()
+        config = function()
             require("copilot_cmp").setup()
-        end
-    },
-    {
-        "tpope/vim-repeat", event = "VeryLazy"
+        end,
     },
     {
         "numToStr/Comment.nvim",
         config = function()
             require("Comment").setup()
-        end
+        end,
     },
     {
         "windwp/nvim-autopairs",
+        event = "InsertEnter",
         config = function()
             require("nvim-autopairs").setup({})
-        end
+        end,
     },
     {
         "L3MON4D3/LuaSnip",
+        event = "VeryLazy",
         build = "make install_jsregexp",
         opts = { history = true, updateevents = "TextChanged,TextChangedI" },
         dependencies = { "rafamadriz/friendly-snippets" },
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
-        end
+        end,
     },
     {
         "iurimateus/luasnip-latex-snippets.nvim",
@@ -59,8 +62,8 @@ return {
         end,
         dependencies = {
             "L3MON4D3/LuaSnip",
-            "lervag/vimtex"
-        }
+            "lervag/vimtex",
+        },
     },
     {
         "hrsh7th/nvim-cmp",

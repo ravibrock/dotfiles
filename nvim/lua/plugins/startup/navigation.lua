@@ -13,7 +13,7 @@ return {
             { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
         },
         config = function()
-            require('leap').add_default_mappings()
+            require("leap").add_default_mappings()
         end,
     },
     {
@@ -43,28 +43,31 @@ return {
                 desc = "Explorer NeoTree",
             },
         },
-        opts = function ()
+        opts = function()
             return require(prefix .. "neo-tree")
-        end
+        end,
     },
     {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
         version = false,
-        keys = function ()
+        keys = function()
             return require(prefix .. "telescope").keys
         end,
-        opts = function ()
+        opts = function()
             return require(prefix .. "telescope").opts
-        end
+        end,
     },
     {
         "stevearc/aerial.nvim",
-        opts = {},
-        keys = {{ "<leader>t", "<cmd>AerialToggle<cr>", desc = "Aerial" }},
+        opts = { filter_kind = false },
+        keys = {{ "<leader>t", "<cmd>AerialToggle<cr>zM", desc = "Aerial" }},
+        setup = function()
+            require("aerial").setup({backends = { "lsp", "treesitter" }})
+        end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
+            "nvim-tree/nvim-web-devicons",
         },
-    }
+    },
 }
