@@ -2,6 +2,16 @@ local prefix = "plugins.opts.infra."
 return {
     {
         "farmergreg/vim-lastplace",
+        "williamboman/mason-lspconfig.nvim",
+    },
+    {
+        "williamboman/mason.nvim",
+        event = "VeryLazy",
+        dependencies = { "williamboman/mason-lspconfig.nvim" },
+        build = ":MasonUpdate",
+        init = function()
+            require(prefix .. "mason")
+        end
     },
     {
         "neovim/nvim-lspconfig",
