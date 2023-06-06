@@ -38,10 +38,6 @@ lspconfig.jsonls.setup({
     capabilities = capabilities,
 })
 
-lspconfig.ltex.setup({
-    language = "en-US",
-})
-
 lspconfig.rust_analyzer.setup({
     settings = {
         ["rust-analyzer"] = {
