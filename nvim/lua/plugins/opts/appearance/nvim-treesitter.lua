@@ -22,6 +22,7 @@ function options.setup()
             enable = true,
             additional_vim_regex_highlighting = false,
         },
+        matchup = { enable = true },
     })
 end
 return options
