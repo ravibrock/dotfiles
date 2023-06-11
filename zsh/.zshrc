@@ -19,8 +19,8 @@ startup_printout
 
 # Prompt
 prompt_pwd () {
-  local p=${${PWD:/~/\~}/#~\//\~/}
-  psvar[1]="${(@j[/]M)${(@s[/]M)p##*/}##(.|)?}$p:t"
+    local p=${${PWD:/~/\~}/#~\//\~/}
+    psvar[1]="${(@j[/]M)${(@s[/]M)p##*/}##(.|)?}$p:t"
 }
 precmd_functions+=( prompt_pwd )
 PS1='%F{cyan}%1v%f ❯ '
@@ -71,16 +71,28 @@ deferred_commands () {
 
     # Vi mode final config
     zle-keymap-select () {
-    if [[ ${KEYMAP} == vicmd ]] ||
-        [[ $1 = 'block' ]]; then
-            echo -ne '\e[2 q'
-        elif [[ ${KEYMAP} == main ]] ||
-            [[ ${KEYMAP} == viins ]] ||
-            [[ ${KEYMAP} = '' ]] ||
-            [[ $1 = 'beam' ]]; then
-                    echo -ne '\e[1 q'
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = 'block' ]]; then
+                echo -ne '\e[2 q'
+            elif [[ ${KEYMAP} == main ]] ||
+                [[ ${KEYMAP} == viins ]] ||
+                [[ ${KEYMAP} = '' ]] ||
+                [[ $1 = 'beam' ]]; then
+                        echo -ne '\e[1 q'
+        fi
+    }
+    zle -N zle-keymap-select
+
+    __conda_setup="$("$HOME/miniforge3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "$HOME/miniforge3/etc/profile.d/conda.sh" ]; then
+            . "$HOME/miniforge3/etc/profile.d/conda.sh"
+        else
+            export PATH="$HOME/miniforge3/bin:$PATH"
+        fi
     fi
-}
-zle -N zle-keymap-select
+    unset __conda_setup
 }
 zsh-defer deferred_commands
