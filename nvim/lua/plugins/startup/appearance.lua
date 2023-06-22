@@ -53,6 +53,17 @@ return {
         end,
     },
     {
+        "rose-pine/neovim",
+        lazy = true,
+        name = "rose-pine",
+        config = function()
+            require("rose-pine").setup({
+                disable_background = true,
+                variant = "moon",
+            })
+        end,
+    },
+    {
         "folke/todo-comments.nvim",
         cmd = { "TodoTrouble", "TodoTelescope" },
         event = { "BufReadPost", "BufNewFile" },
