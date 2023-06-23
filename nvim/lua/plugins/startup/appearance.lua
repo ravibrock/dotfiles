@@ -5,6 +5,10 @@ return {
         "echasnovski/mini.bufremove",
     },
     {
+        "MaximilianLloyd/ascii.nvim",
+        requires = { "MunifTanjim/nui.nvim" },
+    },
+    {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
         config = function()

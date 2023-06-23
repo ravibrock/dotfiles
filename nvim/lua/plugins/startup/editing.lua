@@ -9,8 +9,11 @@ return {
         "vim-scripts/ReplaceWithRegister",
     },
     {
-        "tpope/vim-surround",
+        "kylechui/nvim-surround",
         event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({})
+        end,
     },
     {
         "tpope/vim-repeat",
