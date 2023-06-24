@@ -6,7 +6,13 @@ pushd "$(dirname "$(readlink -f "$BASH_SOURCE")")" > /dev/null && {
     popd > /dev/null
 }
 
-# Defines function that symlinks within repo
+# Installs homebrew and packages
+function install_brew() {
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew bundle --file=$DIR/.brewfile
+}
+
+# Symlinks within repo for easy editing of hidden files
 function link_in_repo() {
     ln -sf $DIR/.brewfile $DIR/brewfile
     ln -sf $DIR/.rayconfig $DIR/rayconfig
@@ -20,9 +26,8 @@ function link_in_repo() {
     ln -sf $DIR/zsh/.zshrc $DIR/zsh/zshrc
 }
 
-# Defines function that symlinks into home directory
+# Symlinks dotfiles into home directory
 function link_to_home() {
-    mkdir -p $HOME/.config/Code/User
     ln -sf $DIR/.nuxtrc $HOME/.nuxtrc
     ln -sf $DIR/.vimrc $HOME/.vimrc
     ln -sf $DIR/.vimrc $HOME/.ideavimrc
@@ -37,11 +42,7 @@ function link_to_home() {
 
 # Install vim-plug
 function install_plug() {
-    printf "Install vim-plug? [y/n]: "
-    read -r response
-    if [[ "$response" == "y" ]]; then
-        curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    fi
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
 function zsh_plugins() {
@@ -51,43 +52,25 @@ function zsh_plugins() {
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting &> /dev/null
 }
 
-# Initialize private files
+# Initialize private files if they don't exist
 function private_files() {
-    # Initialize .gitconfig_local if needed
     if ! [[ -f "$DIR/git/.gitconfig_local" ]]; then
         printf "[user]\n    name = [GIT USERNAME HERE]\n    email = [GIT EMAIL HERE]\n    signingkey = [GIT GPG KEYID HERE]" > $DIR/git/.gitconfig_local
     fi
-
-    # Initialize .zprivate if needed
     if ! [[ -f "$DIR/zsh/.zprivate" ]]; then
         printf "export PRIVATE_VARIABLE=\"[PRIVATE VARIABLE HERE]\"" > $DIR/zsh/.zprivate
     fi
 }
 
-# OS specific commands
+# Validates OS and runs setup
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    printf "Install Homebrew and Brewfile packages? [y/n]: "
-    read -r response
-    if [[ "$response" == "y" ]]; then
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        brew bundle --file=$DIR/.brewfile
-    fi
+    touch ~/.hushlogin
+    install_brew
     link_in_repo
     link_to_home
     install_plug
     private_files
     zsh_plugins
-    ln -sf $DIR/.vscode.json $HOME/Library/Application\ Support/Code/User/settings.json
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    printf "This set of dotfiles was designed for MacOS. You'll need to manually install packages. Proceed with setup? [y/n]: "
-    read -r response
-    if [[ "$response" == "y" ]]; then
-        link_in_repo
-        link_to_home
-        install_plug
-        private_files
-        zsh_plugins
-    fi
 else
-    echo "Unsupported OS. Use Mac or Linux."
+    echo "Unsupported OS. Must be on MacOS."
 fi
