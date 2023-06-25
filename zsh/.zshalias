@@ -1,10 +1,19 @@
 # Homebrew
 alias bbd="brew bundle dump --force --file=$DOTFILES/.brewfile"
+alias bc="brew cleanup --prune=all"
+alias bca="brew cleanup --prune=all && find "$(brew --prefix)/Caskroom" -type f '(' -name '*.dmg' -or -name '*.pkg' ')' -delete"
+alias bcc="brew upgrade && bc"
 alias bi="brew install"
 alias bl="brew list"
 alias blc="brew list --cask"
 alias bo="brew outdated"
 alias bu="brew upgrade"
+alias bua="brew upgrade && brew upgrade --cask"
+alias buag="brew upgrade && brew upgrade --cask --greedy"
+alias buc="brew upgrade --cask"
+alias bucg="brew upgrade --cask --greedy"
+alias buh="brew upgrade --fetch-HEAD"
+alias bx="brew uninstall"
 
 # Cloudconvert
 alias "clc"="cloudconvert convert -f"
