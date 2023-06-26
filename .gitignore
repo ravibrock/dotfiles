@@ -2,12 +2,12 @@
 .luarc.json
 .zprivate
 brewfile
+gitalias
 gitconfig
 gitignore_global
 lazy-lock.json
 rayconfig
 vimrc
-vscode.json
 zprofile
 zshalias
 zshenv
