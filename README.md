@@ -2,10 +2,10 @@
 Dotfiles that I've spent time configuring.
 
 ## Setup
-After cloning the repo, `cd` into it, run `bash setup.sh`, and follow the prompts.
+Clone the repo (or download the .zip if git isn't installed yet), `cd` into it, and run `bash setup.sh`.
 
 ### Git
-Add personal credentials to `git/.gitignore_local`.
+Add personal credentials to `git/.gitconfig_local`.
 
 ### iTerm2
 In `Settings` > `General` > `Preferences` enable "Load preferences from a custom folder or URL" and change to the iTerm2 folder.
@@ -17,4 +17,4 @@ The `.rayconfig` file is encrypted since it contains credentials. I left it in t
 Add API keys and personal info to `zsh/.zprivate`.
 
 ## *Disclaimer*
-*All of these are set up for MacOS and my personal computer. I can't guarantee that they'll work on another OS or machine.*
+*All of these are set up for MacOS and my personal computer. I can't guarantee that they'll work on another machine.*
