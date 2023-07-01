@@ -23,7 +23,7 @@ prompt_pwd () {
     psvar[1]="${(@j[/]M)${(@s[/]M)p##*/}##(.|)?}$p:t"
 }
 precmd_functions+=( prompt_pwd )
-PS1='%F{cyan}%1v%f ❯ '
+PROMPT="%F{cyan}%1v%f ❯ "
 
 # Zsh history settings
 HISTSIZE=500
@@ -41,6 +41,10 @@ setopt sharehistory
 
 # Zsh vi mode settings
 bindkey -v
+bindkey -M viins ^H backward-char
+bindkey -M viins ^J down-line-or-history
+bindkey -M viins ^K up-line-or-search
+bindkey -M viins ^L forward-char
 echo -ne "\e[1 q"
 export KEYTIMEOUT=1
 zle_highlight=( region:bg=cyan,fg=black )
@@ -58,32 +62,13 @@ deferred_commands () {
     # Autosuggestions
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-    # Load compinit
+    # Completions setup
+    zstyle ":completion:*" matcher-list "m:{[:lower:]}={[:upper:]}"
     autoload -Uz compinit
     compinit -u
 
-    # More Zsh config
-    source $CONFIG/.zshalias
-    source $CONFIG/.zfunc
-
-    # Syntax highlighting
-    source $CONFIG/functions/syntax_highlight_config.zsh
-
-    # Vi mode final config
-    zle-keymap-select () {
-        if [[ ${KEYMAP} == vicmd ]] ||
-            [[ $1 = 'block' ]]; then
-                echo -ne '\e[2 q'
-            elif [[ ${KEYMAP} == main ]] ||
-                [[ ${KEYMAP} == viins ]] ||
-                [[ ${KEYMAP} = '' ]] ||
-                [[ $1 = 'beam' ]]; then
-                        echo -ne '\e[1 q'
-        fi
-    }
-    zle -N zle-keymap-select
-
-    __conda_setup="$("$HOME/miniforge3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+    # Conda init
+    __conda_setup="$("$HOME/miniforge3/bin/conda" "shell.zsh" "hook" 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
@@ -94,5 +79,27 @@ deferred_commands () {
         fi
     fi
     unset __conda_setup
+
+    # More Zsh config
+    source $CONFIG/.zshalias
+    source $CONFIG/.zfunc
+
+    # Syntax highlighting
+    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source $CONFIG/functions/syntax_highlight_config.zsh
+
+    # Vi mode final config
+    zle-keymap-select () {
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = "block" ]]; then
+                echo -ne "\e[2 q"
+            elif [[ ${KEYMAP} == main ]] ||
+                [[ ${KEYMAP} == viins ]] ||
+                [[ ${KEYMAP} = "" ]] ||
+                [[ $1 = "beam" ]]; then
+                        echo -ne "\e[1 q"
+        fi
+    }
+    zle -N zle-keymap-select
 }
 zsh-defer deferred_commands
