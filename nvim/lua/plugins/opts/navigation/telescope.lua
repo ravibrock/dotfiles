@@ -60,9 +60,6 @@ config.keys = {
     { "<leader>fF", telescope_util("files", { cwd = false }), desc = "Find Files (cwd)" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
     { "<leader>fR", telescope_util("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
-    -- git
-    { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
-    { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
     -- search
     { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
     { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },

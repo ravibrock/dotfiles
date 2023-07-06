@@ -2,6 +2,7 @@ local prefix = "plugins.opts.infra."
 return {
     {
         "farmergreg/vim-lastplace",
+        "jghauser/mkdir.nvim",
         "williamboman/mason-lspconfig.nvim",
     },
     {
@@ -31,6 +32,19 @@ return {
         "folke/neodev.nvim",
         event = "VeryLazy",
         opts = { experimental = { pathStrict = true } },
+    },
+    {
+        "tpope/vim-fugitive",
+        cmd = { "G", "Git", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" },
+        keys = {
+            { "<leader>gb", "<cmd>Git blame<CR>", desc = "Blame current file" },
+            { "<leader>gc", "<cmd>Git commit -a<CR>", desc = "Commit" },
+            { "<leader>gd", "<cmd>Gdiffsplit<CR>", desc = "Diff" },
+            { "<leader>gp", "<cmd>Git push<CR>", desc = "Push" },
+            { "<leader>gl", "<cmd>Git pull<CR>", desc = "Pull" },
+            { "<leader>gr", "<cmd>Git rebase -i HEAD~10<CR>", desc = "Rebase" },
+            { "<leader>gs", "<cmd>Git<CR>", desc = "Status" },
+        },
     },
     {
         "turbio/bracey.vim",
