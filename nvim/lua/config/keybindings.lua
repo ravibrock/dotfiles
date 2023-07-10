@@ -2,13 +2,19 @@
 vim.g.mapleader = " "
 
 -- Remap window navigation commands
-vim.keymap.set({"n", "v"}, "<C-h>", "<C-w>h", { noremap = true, silent = true })
-vim.keymap.set({"n", "v"}, "<C-j>", "<C-w>j", { noremap = true, silent = true })
-vim.keymap.set({"n", "v"}, "<C-k>", "<C-w>k", { noremap = true, silent = true })
-vim.keymap.set({"n", "v"}, "<C-l>", "<C-w>l", { noremap = true, silent = true })
+vim.keymap.set({"n", "v"}, "<C-h>", "<C-w>h", { noremap = true })
+vim.keymap.set({"n", "v"}, "<C-j>", "<C-w>j", { noremap = true })
+vim.keymap.set({"n", "v"}, "<C-k>", "<C-w>k", { noremap = true })
+vim.keymap.set({"n", "v"}, "<C-l>", "<C-w>l", { noremap = true })
 
--- Spellcheck with <C-l> in insert mode
-vim.keymap.set("i", "<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { noremap = true, silent = true })
+-- Remap arrow keys in insert and command mode
+vim.keymap.set({"i", "c"}, "<C-h>", "<Left>", { noremap = true })
+vim.keymap.set({"i", "c"}, "<C-j>", "<Down>", { noremap = true })
+vim.keymap.set({"i", "c"}, "<C-k>", "<Up>", { noremap = true })
+vim.keymap.set({"i", "c"}, "<C-l>", "<Right>", { noremap = true })
+
+-- Spellcheck with <C-m> in insert mode
+vim.keymap.set("i", "<C-m>", "<C-g>u<Esc>[s1z=`]a<C-g>u", { noremap = true })
 
 -- Enable mouse support
 vim.opt.mouse = "a"
