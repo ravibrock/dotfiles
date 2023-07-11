@@ -40,11 +40,6 @@ function link_to_home() {
     ln -sf $DIR/zsh/.zshrc $HOME/.zshrc
 }
 
-# Install vim-plug
-function install_plug() {
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-}
-
 function zsh_plugins() {
     mkdir -p ~/.zsh
     git clone https://github.com/romkatv/zsh-defer ~/.zsh/zsh-defer &> /dev/null
@@ -68,7 +63,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     install_brew
     link_in_repo
     link_to_home
-    install_plug
     private_files
     zsh_plugins
 else
