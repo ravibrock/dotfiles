@@ -57,6 +57,12 @@ function private_files() {
     fi
 }
 
+function auto_upgrades {
+    chmod +x $DOTFILES/upgrades/upgrade_apps.sh
+    cp -f $DIR/upgrades/upgrades.plist $HOME/Library/LaunchAgents/upgrades.plist
+    launchctl load $HOME/Library/LaunchAgents/upgrades.plist
+}
+
 # Validates OS and runs setup
 if [[ "$OSTYPE" == "darwin"* ]]; then
     touch ~/.hushlogin
