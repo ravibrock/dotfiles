@@ -28,7 +28,6 @@ function link_in_repo() {
 
 # Symlinks dotfiles into home directory
 function link_to_home() {
-    ln -sf $DIR/.nuxtrc $HOME/.nuxtrc
     ln -sf $DIR/.vimrc $HOME/.vimrc
     ln -sf $DIR/.vimrc $HOME/.ideavimrc
     ln -sf $DIR/git/.gitalias $HOME/.gitalias
