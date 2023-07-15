@@ -8,16 +8,19 @@ require("mason").setup({
         },
     },
 })
-require("mason-lspconfig").setup({
-    ensure_installed = {
-        "bashls",
+
+require('mason-tool-installer').setup({
+  ensure_installed = {
+        "bash-language-server",
         "clangd",
-        "cssls",
-        "html",
-        "jsonls",
-        "lua_ls",
+        "css-lsp",
+        "html-lsp",
+        "json-lsp",
+        "lua-language-server",
         "pyright",
-        "rust_analyzer",
-        "vimls",
-    },
+        "rust-analyzer",
+        "shellcheck",
+        "vim-language-server",
+  },
+  auto_update = true,
 })

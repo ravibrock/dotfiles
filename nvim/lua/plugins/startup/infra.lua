@@ -3,13 +3,13 @@ return {
     {
         "farmergreg/vim-lastplace",
         "jghauser/mkdir.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     {
         "williamboman/mason.nvim",
         event = "VeryLazy",
-        dependencies = { "williamboman/mason-lspconfig.nvim" },
         build = ":MasonUpdate",
+        dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
         init = function()
             require(prefix .. "mason")
         end
