@@ -1,10 +1,13 @@
 local prefix = "plugins.opts.navigation."
 return {
     {
-        "andymass/vim-matchup",
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
+    },
+    {
+        "andymass/vim-matchup",
+        event = "InsertEnter",
     },
     {
         "ggandor/leap.nvim",

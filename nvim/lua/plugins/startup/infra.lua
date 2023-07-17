@@ -3,7 +3,10 @@ return {
     {
         "farmergreg/vim-lastplace",
         "jghauser/mkdir.nvim",
+    },
+    {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
+        event = "VeryLazy",
     },
     {
         "williamboman/mason.nvim",
