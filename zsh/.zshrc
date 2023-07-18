@@ -62,6 +62,14 @@ deferred_commands () {
     # Autosuggestions
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+    # Clean history automatically
+    autoload -Uz add-zsh-hook
+    command-not-found () {
+        (( ? == 127 )) &&
+        sed -in '$d' ~/.zsh_history
+    }
+    add-zsh-hook precmd command-not-found
+
     # Completions setup
     zstyle ":completion:*" matcher-list "m:{[:lower:]}={[:upper:]}"
     autoload -Uz compinit
