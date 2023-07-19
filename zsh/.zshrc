@@ -70,6 +70,30 @@ deferred_commands () {
     }
     add-zsh-hook precmd command-not-found
 
+    # Enables/disables virtual environments
+    function activator () {
+        if [[ -e "venv/bin/activate" ]]; then
+            if [[ $CURRENT_VENV != $PWD ]]; then
+                source venv/bin/activate
+                export CURRENT_VENV=$PWD
+            fi
+            cd $1
+        elif [[ $PWD == /Users/* ]]; then
+            cd ..
+            activator $1
+        else
+            if [[ -v VIRTUAL_ENV ]] deactivate
+            unset CURRENT_VENV
+            cd $1
+        fi
+    }
+    function activate_venv () {
+        add-zsh-hook -d chpwd activate_venv
+        activator $PWD
+        add-zsh-hook chpwd activate_venv
+    }
+    add-zsh-hook chpwd activate_venv && cd .
+
     # Completions setup
     zstyle ":completion:*" matcher-list "m:{[:lower:]}={[:upper:]}"
     autoload -Uz compinit
