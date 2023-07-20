@@ -1,9 +1,10 @@
-# Window title
-DISABLE_AUTO_TITLE="True"
-precmd () { echo -en "\e]0; $(print -rD $PWD)\a" }
-
 # Adjusts starting folder for terminal
 cd ~/Desktop
+
+# Automatically change directories
+setopt autocd
+setopt autopushd
+setopt pushdignoredups
 
 # Startup info
 startup_printout () {
@@ -17,6 +18,9 @@ startup_printout () {
 }
 startup_printout
 
+# Enable comments in interactive shells
+setopt interactive_comments
+
 # Prompt
 prompt_pwd () {
     local p=${${PWD:/~/\~}/#~\//\~/}
@@ -24,6 +28,10 @@ prompt_pwd () {
 }
 precmd_functions+=( prompt_pwd )
 PROMPT="%F{cyan}%1v%f ❯ "
+
+# Window title
+DISABLE_AUTO_TITLE="True"
+precmd () { echo -en "\e]0; $(print -rD $PWD)\a" }
 
 # Zsh history settings
 HISTSIZE=500
@@ -50,11 +58,6 @@ export KEYTIMEOUT=1
 zle_highlight=( region:bg=cyan,fg=black )
 zle-line-init () { zle -K viins; echo -ne "\e[1 q" }
 zle -N zle-line-init
-
-# Automatically change directories
-setopt autocd
-setopt autopushd
-setopt pushdignoredups
 
 # Defers certain commands
 source ~/.zsh/zsh-defer/zsh-defer.plugin.zsh
