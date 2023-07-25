@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
 # Sets current path
 pushd "$(dirname "$(readlink -f "$BASH_SOURCE")")" > /dev/null && {
@@ -28,15 +28,15 @@ function link_in_repo() {
 
 # Symlinks dotfiles into home directory
 function link_to_home() {
-    ln -sf $DIR/.vimrc $HOME/.vimrc
+    ln -sf $DIR/.vimrc $HOME
     ln -sf $DIR/.vimrc $HOME/.ideavimrc
-    ln -sf $DIR/git/.gitalias $HOME/.gitalias
-    ln -sf $DIR/git/.gitconfig $HOME/.gitconfig
-    ln -sf $DIR/git/.gitignore_global $HOME/.gitignore_global
-    ln -sf $DIR/nvim $HOME/.config/nvim
-    ln -sf $DIR/zsh/.zprofile $HOME/.zprofile
-    ln -sf $DIR/zsh/.zshenv $HOME/.zshenv
-    ln -sf $DIR/zsh/.zshrc $HOME/.zshrc
+    ln -sf $DIR/git/.gitalias $HOME
+    ln -sf $DIR/git/.gitconfig $HOME
+    ln -sf $DIR/git/.gitignore_global $HOME
+    ln -sf $DIR/nvim $HOME/.config/
+    ln -sf $DIR/zsh/.zprofile $HOME
+    ln -sf $DIR/zsh/.zshenv $HOME
+    ln -sf $DIR/zsh/.zshrc $HOME
 }
 
 function zsh_plugins() {
@@ -52,7 +52,8 @@ function private_files() {
         printf "[user]\n    name = [GIT USERNAME HERE]\n    email = [GIT EMAIL HERE]\n    signingkey = [GIT GPG KEYID HERE]" > $DIR/git/.gitconfig_local
     fi
     if ! [[ -f "$DIR/zsh/.zprivate" ]]; then
-        printf "export PRIVATE_VARIABLE=\"[PRIVATE VARIABLE HERE]\"" > $DIR/zsh/.zprivate
+        echo export BREW_PREFIX=\"$(brew --prefix)\" > $DIR/zsh/.zprivate
+        echo export PRIVATE_VARIABLE=\"[PRIVATE VARIABLE HERE]\" >> $DIR/zsh/.zprivate
     fi
 }
 

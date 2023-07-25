@@ -1,16 +1,21 @@
 #!/bin/zsh
 
-/opt/homebrew/bin/brew update
-/opt/homebrew/bin/brew upgrade
-/opt/homebrew/bin/brew upgrade --cask
-/opt/homebrew/bin/mas upgrade
+# Updates formulae, casks, and App Store apps
+$BREW_PREFIX/bin/brew upgrade
+$BREW_PREFIX/bin/brew upgrade --cask
+$BREW_PREFIX/bin/mas upgrade
 
-/opt/homebrew/bin/brew cleanup --prune=all
-/usr/bin/find /opt/homebrew/Caskroom -type f '(' -name '*.dmg' -or -name '*.pkg' ')' -delete
+# Updates Homebrew itself
+$BREW_PREFIX/bin/brew update
 
+# Cleans up old versions
+$BREW_PREFIX/bin/brew cleanup --prune=all
+/usr/bin/find $BREW_PREFIX/Caskroom -type f '(' -name '*.dmg' -or -name '*.pkg' ')' -delete
+
+# Updates zsh plugins if needed
 cd ~/.zsh
 for folder in *; do
     cd $folder
-    /opt/homebrew/bin/git pull
+    $BREW_PREFIX/bin/git pull
     cd ..
 done

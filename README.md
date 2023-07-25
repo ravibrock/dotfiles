@@ -2,7 +2,7 @@
 Dotfiles that I've spent time configuring.
 
 ## Setup
-Clone the repo (or download the .zip if git isn't installed yet), `cd` into it, and run `bash setup.sh`.
+Clone the repo (or download the .zip if git isn't installed yet), `cd` into it, and run `zsh setup.sh`.
 
 ### Git
 Add personal credentials to `git/.gitconfig_local`.
