@@ -1,5 +1,4 @@
-if [ -n "${2+1}" ]
-then
+if [ -n "${2+1}" ]; then
     file=$2
 else
     file="${1%.*}".pdf

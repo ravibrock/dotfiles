@@ -9,7 +9,6 @@ if [ -z "$1" ] || [ "$1" = "--help" ]; then
     return 0
 fi
 printf "%s\n" "Finding processes that match “$1”…"
-# sleep 1
 processes=($(pgrep -afil "$1"))
 if [ ${#processes[@]} -eq 0 ]; then
     printf "%s\n" "No apps found"
