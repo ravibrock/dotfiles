@@ -44,7 +44,6 @@ alias "ytdlF"="yt-dlp -F"
 alias "ytdlt"="yt-dlp --skip-download --write-thumbnail --convert-thumbnails jpg"
 
 # Miscellaneous
-alias "cat"="pygmentize -O style=github-dark -g"
 alias "clear"="clear; startup_printout; printf '\e[3J'"
 alias "code"="codium"
 alias "py"="python3"
