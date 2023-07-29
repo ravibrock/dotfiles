@@ -58,7 +58,7 @@ return {
     },
     {
         "rose-pine/neovim",
-        lazy = true,
+        lazy = false,
         name = "rose-pine",
         config = function()
             require("rose-pine").setup({
