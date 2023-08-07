@@ -8,6 +8,8 @@
 	<false/>
 	<key>Default Bookmark Guid</key>
 	<string>5ECB60D1-7D43-4E0D-9DC9-5AB29C265B44</string>
+	<key>DisableDocumentedEditedIndicator</key>
+	<true/>
 	<key>EnableDivisionView</key>
 	<true/>
 	<key>EnterCopyModeAutomatically</key>

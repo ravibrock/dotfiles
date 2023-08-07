@@ -10,7 +10,7 @@ setopt pushdignoredups
 startup_printout () {
     if [ ${TERM_PROGRAM+1} ]; then
         echo
-        flashfetch --multithreading true
+        flashfetch
         echo
     else
         echo Current user: $(whoami)@$(hostname -s) with $(ifconfig en0 | grep ether | awk '{print $2}')

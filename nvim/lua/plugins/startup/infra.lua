@@ -3,6 +3,7 @@ return {
     {
         "farmergreg/vim-lastplace",
         "jghauser/mkdir.nvim",
+        "tpope/vim-rhubarb",
     },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -38,10 +39,11 @@ return {
     },
     {
         "tpope/vim-fugitive",
+        dependencies = { "tpope/vim-rhubarb" },
         cmd = { "G", "Git", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" },
         keys = {
             { "<leader>gb", "<cmd>Git blame<CR>", desc = "Blame current file" },
-            { "<leader>gc", "<cmd>Git commit -a<CR>", desc = "Commit" },
+            { "<leader>gc", "<cmd>Git commit -a <BAR> startinsert<CR>", desc = "Commit" },
             { "<leader>gd", "<cmd>Gdiffsplit<CR>", desc = "Diff" },
             { "<leader>gp", "<cmd>Git push<CR>", desc = "Push" },
             { "<leader>gl", "<cmd>Git pull<CR>", desc = "Pull" },

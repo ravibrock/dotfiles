@@ -10,7 +10,7 @@ require("mason").setup({
 })
 
 require('mason-tool-installer').setup({
-  ensure_installed = {
+    ensure_installed = {
         "bash-language-server",
         "clangd",
         "css-lsp",
@@ -21,6 +21,6 @@ require('mason-tool-installer').setup({
         "rust-analyzer",
         "shellcheck",
         "vim-language-server",
-  },
-  auto_update = true,
+    },
+    auto_update = true,
 })
