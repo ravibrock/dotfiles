@@ -1,11 +1,6 @@
 local prefix = "plugins.opts.navigation."
 return {
     {
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons",
-        "MunifTanjim/nui.nvim",
-    },
-    {
         "andymass/vim-matchup",
         event = "InsertEnter",
     },
@@ -34,7 +29,7 @@ return {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
         lazy = false,
-        requires = {
+        dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
@@ -67,8 +62,8 @@ return {
         "stevearc/aerial.nvim",
         opts = { filter_kind = false },
         keys = {{ "<leader>t", "<cmd>AerialToggle<cr>zM", desc = "Aerial" }},
-        setup = function()
-            require("aerial").setup({backends = { "lsp", "treesitter" }})
+        init = function()
+            require("aerial").setup({ backends = { "lsp", "treesitter" } })
         end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",

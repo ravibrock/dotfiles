@@ -3,8 +3,6 @@ return {
     {
         "farmergreg/vim-lastplace",
         "jghauser/mkdir.nvim",
-        "tpope/vim-rhubarb",
-        "williamboman/mason-lspconfig.nvim",
     },
     {
         "lewis6991/hover.nvim",
@@ -53,8 +51,8 @@ return {
         "jay-babu/mason-null-ls.nvim",
         event = "VeryLazy",
         dependencies = {
-            "williamboman/mason.nvim",
             "jose-elias-alvarez/null-ls.nvim",
+            "williamboman/mason.nvim",
         },
         config = function()
             require(prefix .. "null-ls")
@@ -80,7 +78,7 @@ return {
     {
         "stevearc/stickybuf.nvim",
         opts = {},
-        setup = function()
+        init = function()
             require("stickybuf").setup()
         end,
     },

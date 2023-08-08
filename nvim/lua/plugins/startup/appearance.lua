@@ -6,7 +6,7 @@ return {
     },
     {
         "MaximilianLloyd/ascii.nvim",
-        requires = { "MunifTanjim/nui.nvim" },
+        dependencies = { "MunifTanjim/nui.nvim" },
     },
     {
         "lewis6991/gitsigns.nvim",
@@ -40,7 +40,7 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
-        requires = { "nvim-tree/nvim-web-devicons", opt = true },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require(prefix .. "lualine").setup()
         end,

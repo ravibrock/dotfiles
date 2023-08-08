@@ -1,11 +1,6 @@
 local prefix = "plugins.opts.editing."
 return {
     {
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "rafamadriz/friendly-snippets",
-        "saadparwaiz1/cmp_luasnip",
         "vim-scripts/ReplaceWithRegister",
     },
     {
