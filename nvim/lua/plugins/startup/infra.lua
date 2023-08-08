@@ -4,25 +4,77 @@ return {
         "farmergreg/vim-lastplace",
         "jghauser/mkdir.nvim",
         "tpope/vim-rhubarb",
+        "williamboman/mason-lspconfig.nvim",
     },
     {
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
-        event = "VeryLazy",
+        "lewis6991/hover.nvim",
+        init = function()
+            require("hover.providers.lsp")
+            require("hover.providers.gh")
+            require("hover.providers.gh_user")
+            require("hover.providers.jira")
+            require("hover.providers.man")
+            require("hover.providers.dictionary")
+        end,
+        config = function()
+            require("hover").setup({
+                preview_opts = { border = "rounded" },
+                preview_window = false,
+                title = true,
+            })
+        end,
+        keys = {
+            {
+                "K",
+                function()
+                    require("hover").hover()
+                end,
+                desc = "Hover",
+            },
+            {
+                "gK",
+                function()
+                    require("hover").hover_select()
+                end,
+                desc = "Hover (select)",
+            },
+        },
     },
     {
         "williamboman/mason.nvim",
         event = "VeryLazy",
         build = ":MasonUpdate",
-        dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+        dependencies = { "williamboman/mason-lspconfig.nvim" },
         init = function()
             require(prefix .. "mason")
-        end
+        end,
+    },
+    {
+        "jay-babu/mason-null-ls.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "jose-elias-alvarez/null-ls.nvim",
+        },
+        config = function()
+            require(prefix .. "null-ls")
+        end,
+        init = function()
+            require(prefix .. "mason-null-ls")
+        end,
     },
     {
         "neovim/nvim-lspconfig",
         event = "VeryLazy",
         config = function()
             require(prefix .. "nvim-lspconfig")
+        end,
+    },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        event = "VeryLazy",
+        config = function()
+            require(prefix .. "null-ls")
         end,
     },
     {

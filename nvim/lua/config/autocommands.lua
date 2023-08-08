@@ -27,14 +27,19 @@ autocmd("BufRead", {
 })
 
 -- Disable highlighting
-function clear_spellcheck()
+function ClearHL()
     vim.cmd("highlight clear SpellBad")
     vim.cmd("highlight clear SpellCap")
     vim.cmd("highlight clear SpellRare")
     vim.cmd("highlight clear SpellLocal")
+    vim.cmd("highlight clear DiagnosticUnderlineError")
+    vim.cmd("highlight clear DiagnosticUnderlineWarn")
+    vim.cmd("highlight clear DiagnosticUnderlineInfo")
+    vim.cmd("highlight clear DiagnosticUnderlineHint")
+    vim.cmd("highlight clear DiagnosticUnderlineOk")
 end
 autocmd("BufReadPre", {
-    command = "lua clear_spellcheck()"
+    command = "lua ClearHL()"
 })
 
 -- Remove trailing whitespace on save
