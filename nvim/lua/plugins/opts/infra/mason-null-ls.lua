@@ -1,10 +1,18 @@
 require("mason-null-ls").setup({
     ensure_installed = {
+        -- C, C++
+        "clangd",
+        "cpptools",
+
         -- CSS/HTML/JSON
         "css-lsp",
         "html-lsp",
         "json-lsp",
         "tidy",
+
+        -- JavaScript/TypeScript
+        "typescript-language-server",
+        "prettier",
 
         -- LaTeX
         "textidote",
@@ -16,6 +24,9 @@ require("mason-null-ls").setup({
         -- Python
         "pylint",
         "pyright",
+
+        -- Rust
+        "rust-analyzer",
 
         -- Shell
         "beautysh",

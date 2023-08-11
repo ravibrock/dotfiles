@@ -48,13 +48,14 @@ return {
         end,
     },
     {
-        "nvim-telescope/telescope.nvim",
+       "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
         version = false,
         keys = function()
             return require(prefix .. "telescope").keys
         end,
         opts = function()
+            -- Comment out mappings on lines 125-134 of the Telescope config if it's erroring
             return require(prefix .. "telescope").opts
         end,
     },

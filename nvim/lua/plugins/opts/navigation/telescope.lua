@@ -121,6 +121,7 @@ config.opts = {
     defaults = {
         prompt_prefix = " ",
         selection_caret = " ",
+        -- Comment out these mappings if Telescope is erroring on load
         mappings = {
             i = {
                 ["<C-j>"] = require("telescope.actions").move_selection_next,

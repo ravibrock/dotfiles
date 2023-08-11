@@ -7,6 +7,7 @@ function options.setup()
             "c",
             "css",
             "html",
+            "javascript",
             "json",
             "lua",
             "markdown",
