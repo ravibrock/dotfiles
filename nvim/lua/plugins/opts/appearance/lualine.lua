@@ -1,59 +1,9 @@
-local function theme()
-    local colors = {
-        black      = "#0e1117",
-        blue       = "#366adc",
-        cyan       = "#b6d4f8",
-        gray       = "#2f3030",
-        green      = "#98e491",
-        light_gray = "#89989b",
-        magenta    = "#caaaf9",
-        red        = "#ee8277",
-        white      = "#e4eaef",
-        yellow     = "#d29f67",
-    }
-
-    return {
-        visual = {
-            a = { fg = colors.gray, bg = colors.green, gui = "bold" },
-            b = { fg = colors.white, bg = colors.gray },
-            c = { fg = colors.black, bg = colors.light_gray },
-        },
-        replace = {
-            a = { fg = colors.gray, bg = colors.red, gui = "bold" },
-            b = { fg = colors.white, bg = colors.gray },
-            c = { fg = colors.black, bg = colors.light_gray },
-        },
-        command = {
-            a = { fg = colors.gray, bg = colors.cyan, gui = "bold" },
-            b = { fg = colors.gray, bg = colors.cyan },
-            c = { fg = colors.gray, bg = colors.cyan },
-        },
-        inactive = {
-            a = { fg = colors.light_gray, bg = colors.gray, gui = "bold" },
-            b = { fg = colors.light_gray, bg = colors.gray },
-            c = { fg = colors.light_gray, bg = colors.gray },
-        },
-        normal = {
-            a = { fg = colors.gray, bg = colors.cyan, gui = "bold" },
-            b = { fg = colors.white, bg = colors.gray },
-            c = { fg = colors.black, bg = colors.light_gray },
-        },
-        insert = {
-            a = { fg = colors.gray, bg = colors.magenta, gui = "bold" },
-            b = { fg = colors.white, bg = colors.gray },
-            c = { fg = colors.black, bg = colors.light_gray },
-        },
-    }
-end
-
-local config = {}
-
-function config.setup()
-    local lualine = require("lualine")
-    lualine.setup({
+local function nf() return [[]] end
+local function setup(colorscheme)
+    require("lualine").setup({
         options = {
             icons_enabled = true,
-            theme = theme(),
+            theme = colorscheme,
             component_separators = { left = "", right = "" },
             section_separators = { left = "", right = "" },
             disabled_filetypes = {
@@ -71,7 +21,10 @@ function config.setup()
         },
         sections = {
             lualine_a = { "mode" },
-            lualine_b = { "branch", "diff", "diagnostics" },
+            lualine_b = {
+                { "branch", "diff", "diagnostics" },
+                { nf, "diagnostics", cond = function() return vim.fn.finddir('.git', vim.fn.getcwd() .. ";") == "" end },
+            },
             lualine_c = { "filename" },
             lualine_x = { "encoding" },
             lualine_y = { "searchcount", "progress" },
@@ -92,4 +45,44 @@ function config.setup()
     })
 end
 
-return config
+local theme = {}
+theme.catppuccin = function()
+    local colors = require("catppuccin.palettes").get_palette()
+
+    local colorscheme = {
+        visual = {
+            a = { fg = colors.base, bg = colors.flamingo, gui = "bold" },
+            b = { fg = colors.text, bg = colors.surface0 },
+            c = { fg = colors.surface0, bg = colors.subtext0 },
+        },
+        replace = {
+            a = { fg = colors.base, bg = colors.red, gui = "bold" },
+            b = { fg = colors.text, bg = colors.surface0 },
+            c = { fg = colors.surface0, bg = colors.subtext0 },
+        },
+        command = {
+            a = { fg = colors.base, bg = colors.blue, gui = "bold" },
+            b = { fg = colors.base, bg = colors.blue },
+            c = { fg = colors.base, bg = colors.blue },
+        },
+        inactive = {
+            a = { fg = colors.surface0, bg = colors.subtext0, gui = "bold" },
+            b = { fg = colors.surface0, bg = colors.subtext0 },
+            c = { fg = colors.surface0, bg = colors.subtext0 },
+        },
+        normal = {
+            a = { fg = colors.base, bg = colors.blue, gui = "bold" },
+            b = { fg = colors.text, bg = colors.surface0 },
+            c = { fg = colors.surface0, bg = colors.subtext0 },
+        },
+        insert = {
+            a = { fg = colors.base, bg = colors.mauve, gui = "bold" },
+            b = { fg = colors.text, bg = colors.surface0 },
+            c = { fg = colors.surface0, bg = colors.subtext0 },
+        },
+    }
+
+    setup(colorscheme)
+end
+
+return theme

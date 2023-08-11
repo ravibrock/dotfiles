@@ -42,7 +42,7 @@ return {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            require(prefix .. "lualine").setup()
+            require(prefix .. "lualine").catppuccin()
         end,
     },
     {
