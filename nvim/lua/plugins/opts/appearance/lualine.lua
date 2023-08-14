@@ -20,7 +20,7 @@ local function setup(colorscheme)
             },
         },
         sections = {
-            lualine_a = { "mode" },
+            lualine_a = {{ "mode", fmt = function(str) return str:sub(1,1) end }},
             lualine_b = {
                 { "branch", "diff", "diagnostics" },
                 { nf, "diagnostics", cond = function() return vim.fn.finddir('.git', vim.fn.getcwd() .. ";") == "" end },

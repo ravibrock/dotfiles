@@ -4,6 +4,15 @@ return {
         "vim-scripts/ReplaceWithRegister",
     },
     {
+        "godlygeek/tabular",
+        cmd = { "Tab", "Tabularize" },
+        keys = {
+            { "<leader>t=", "<cmd>Tabularize /=<cr>", mode = { "n", "v" },  desc = "Tabularize on `=`"},
+            { "<leader>t:", "<cmd>Tabularize /:<cr>", mode = { "n", "v" }, desc = "Tabularize on `:`"},
+            { "<leader>tt", ":Tabularize /", mode = { "n", "v" },  desc = "Initiate tabularize"},
+        },
+    },
+    {
         "kylechui/nvim-surround",
         event = "VeryLazy",
         config = function()

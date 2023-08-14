@@ -97,7 +97,7 @@ return {
             { "<leader>gd", "<cmd>Gdiffsplit<CR>", desc = "Diff" },
             { "<leader>gp", "<cmd>Git push<CR>", desc = "Push" },
             { "<leader>gl", "<cmd>Git pull<CR>", desc = "Pull" },
-            { "<leader>gr", "<cmd>Git rebase -i HEAD~10<CR>", desc = "Rebase" },
+            { "<leader>gr", "<cmd>Git rebase -i --root<CR>", desc = "Rebase" },
             { "<leader>gs", "<cmd>Git<CR>", desc = "Status" },
         },
     },

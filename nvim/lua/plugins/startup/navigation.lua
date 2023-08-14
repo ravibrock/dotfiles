@@ -2,7 +2,6 @@ local prefix = "plugins.opts.navigation."
 return {
     {
         "andymass/vim-matchup",
-        event = "InsertEnter",
     },
     {
         "ggandor/leap.nvim",
@@ -62,7 +61,7 @@ return {
     {
         "stevearc/aerial.nvim",
         opts = { filter_kind = false },
-        keys = {{ "<leader>t", "<cmd>AerialToggle<cr>zM", desc = "Aerial" }},
+        keys = {{ "<leader>a", "<cmd>AerialToggle<cr>zM", desc = "Aerial" }},
         init = function()
             require("aerial").setup({ backends = { "lsp", "treesitter" } })
         end,

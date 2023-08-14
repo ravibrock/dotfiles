@@ -1,5 +1,8 @@
 require("mason-null-ls").setup({
     ensure_installed = {
+        -- Assembly
+        "asm-lsp",
+
         -- C, C++
         "clangd",
         "cpptools",
@@ -21,14 +24,21 @@ require("mason-null-ls").setup({
         "lua-language-server",
         "stylua",
 
+        -- Markdown
+        "marksman",
+
         -- Python
         "pylint",
         "pyright",
+
+        -- R
+        "r-languageserver",
 
         -- Rust
         "rust-analyzer",
 
         -- Shell
+        "bash-language-server",
         "beautysh",
         "shellcheck",
         "zsh",
@@ -39,6 +49,9 @@ require("mason-null-ls").setup({
         -- Vim
         "vim-language-server",
         "vint",
+
+        -- YAML
+        "yaml-language-server",
     },
     automatic_installation = true,
     handlers = {},
