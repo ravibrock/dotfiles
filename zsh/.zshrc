@@ -1,10 +1,3 @@
-# Open tmux
-if [[ -v TMUX ]]; then
-    tmux switch -t 0
-else
-    tmux
-fi
-
 # Adjusts starting folder for terminal
 cd ~/Desktop
 
@@ -55,17 +48,16 @@ setopt incappendhistory
 setopt sharehistory
 
 # Zsh vi mode settings
-ZVM_NORMAL_MODE_CURSOR="\e[2 q"
-ZVM_INSERT_MODE_CURSOR="\e[1 q"
-ZVM_VI_HIGHLIGHT_BACKGROUND="cyan"
-ZVM_VI_HIGHLIGHT_FOREGROUND="black"
-source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-function zvm_after_init () {
-    zvm_bindkey viins "^H" backward-char
-    zvm_bindkey viins "^J" down-line-or-history
-    zvm_bindkey viins "^K" up-line-or-search
-    zvm_bindkey viins "^L" forward-char
-}
+bindkey -v
+bindkey -M viins ^H backward-char
+bindkey -M viins ^J down-line-or-history
+bindkey -M viins ^K up-line-or-search
+bindkey -M viins ^L forward-char
+echo -ne "\e[1 q"
+export KEYTIMEOUT=1
+zle_highlight=( region:bg=cyan,fg=black )
+zle-line-init () { zle -K viins; echo -ne "\e[1 q" }
+zle -N zle-line-init
 
 # Defers certain commands
 source ~/.zsh/zsh-defer/zsh-defer.plugin.zsh
@@ -130,5 +122,15 @@ deferred_commands () {
     # Syntax highlighting
     source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source $CONFIG/functions/syntax_highlight_config.zsh
+
+    # Vi mode final config
+    zle-keymap-select () {
+        if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
+            echo -ne "\e[2 q"
+        elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
+            echo -ne "\e[1 q"
+        fi
+    }
+    zle -N zle-keymap-select
 }
 zsh-defer deferred_commands
