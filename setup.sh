@@ -17,6 +17,7 @@ function link_in_repo() {
     ln -sf $DIR/.brewfile $DIR/brewfile
     ln -sf $DIR/.rayconfig $DIR/rayconfig
     ln -sf $DIR/.vimrc $DIR/vimrc
+    ln -sf $DIR/.tmux.conf $DIR/tmux.conf
     ln -sf $DIR/git/.gitalias $DIR/git/gitalias
     ln -sf $DIR/git/.gitconfig $DIR/git/gitconfig
     ln -sf $DIR/git/.gitignore_global $DIR/git/gitignore_global
@@ -28,6 +29,7 @@ function link_in_repo() {
 
 # Symlinks dotfiles into home directory
 function link_to_home() {
+    ln -sf $DIR/.tmux.conf $HOME
     ln -sf $DIR/.vimrc $HOME
     ln -sf $DIR/.vimrc $HOME/.ideavimrc
     ln -sf $DIR/git/.gitalias $HOME
