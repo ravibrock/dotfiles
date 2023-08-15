@@ -43,9 +43,9 @@ function link_to_home() {
 
 function zsh_plugins() {
     mkdir -p ~/.zsh
+    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting &> /dev/null
     git clone https://github.com/romkatv/zsh-defer ~/.zsh/zsh-defer &> /dev/null
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions &> /dev/null
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting &> /dev/null
 }
 
 # Initialize private files if they don't exist

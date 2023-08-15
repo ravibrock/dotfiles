@@ -120,8 +120,8 @@ deferred_commands () {
     source $CONFIG/.zfunc
 
     # Syntax highlighting
-    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    source $CONFIG/functions/syntax_highlight_config.zsh
+    source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+    fast-theme $CONFIG/colorscheme.ini
 
     # Vi mode final config
     zle-keymap-select () {
