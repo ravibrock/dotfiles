@@ -13,7 +13,9 @@ export PYTHONDONTWRITEBYTECODE="TRUE"
 export BRAVE="/Applications/Brave.app/Contents/MacOS/Brave Browser"
 export CONFIG="${"$(readlink "${(%):-%x}")"%/*}"
 export DOTFILES="$CONFIG/.."
+export EDITOR="nvim -e"
 export GREP_OPTIONS='--color=auto'
+export NVIM="$DOTFILES/nvim"
 export PATH=$PATH":$HOME/bin"
 export PATH=$PATH:/usr/local/sbin
 export VISUAL="nvim"
