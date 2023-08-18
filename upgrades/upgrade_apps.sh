@@ -12,6 +12,9 @@ $BREW_PREFIX/bin/brew update
 $BREW_PREFIX/bin/brew cleanup --prune=all
 /usr/bin/find $BREW_PREFIX/Caskroom -type f '(' -name '*.dmg' -or -name '*.pkg' ')' -delete
 
+# Updates tldr documentation
+$BREW_PREFIX/bin/tldr --verbose --update
+
 # Updates zsh plugins if needed
 cd ~/.zsh
 for folder in *; do
