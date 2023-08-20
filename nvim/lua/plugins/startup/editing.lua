@@ -1,6 +1,7 @@
 local prefix = "plugins.opts.editing."
 return {
     {
+        "tpope/vim-repeat",
         "vim-scripts/ReplaceWithRegister",
     },
     {
@@ -14,14 +15,9 @@ return {
     },
     {
         "kylechui/nvim-surround",
-        event = "VeryLazy",
         config = function()
             require("nvim-surround").setup({})
         end,
-    },
-    {
-        "tpope/vim-repeat",
-        event = "VeryLazy",
     },
     {
         "zbirenbaum/copilot.lua",
@@ -34,6 +30,7 @@ return {
     },
     {
         "zbirenbaum/copilot-cmp",
+        event = "InsertEnter",
         config = function()
             require("copilot_cmp").setup()
         end,
@@ -46,13 +43,14 @@ return {
     },
     {
         "windwp/nvim-autopairs",
+        event = "InsertEnter",
         config = function()
             require("nvim-autopairs").setup({})
         end,
     },
     {
         "L3MON4D3/LuaSnip",
-        event = "VeryLazy",
+        event = "InsertEnter",
         build = "make install_jsregexp",
         opts = { history = true, updateevents = "TextChanged,TextChangedI" },
         dependencies = { "rafamadriz/friendly-snippets" },

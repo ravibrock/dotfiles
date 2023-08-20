@@ -5,6 +5,10 @@ return {
         "jghauser/mkdir.nvim",
     },
     {
+        "lambdalisue/suda.vim",
+        cmd = { "SudaWrite", "SudaRead" },
+    },
+    {
         "lewis6991/hover.nvim",
         init = function()
             require("hover.providers.lsp")
@@ -43,7 +47,7 @@ return {
         event = "VeryLazy",
         build = ":MasonUpdate",
         dependencies = { "williamboman/mason-lspconfig.nvim" },
-        init = function()
+        config = function()
             require(prefix .. "mason")
         end,
     },
@@ -84,7 +88,6 @@ return {
     },
     {
         "folke/neodev.nvim",
-        event = "VeryLazy",
         opts = { experimental = { pathStrict = true } },
     },
     {

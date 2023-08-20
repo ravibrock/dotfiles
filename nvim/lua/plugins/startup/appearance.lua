@@ -10,7 +10,6 @@ return {
     },
     {
         "lewis6991/gitsigns.nvim",
-        event = "VeryLazy",
         config = function()
             require("gitsigns").setup({
                 signs = {
@@ -26,7 +25,6 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        event = "VeryLazy",
         build = ":TSUpdate",
         config = function()
             require(prefix .. "nvim-treesitter").setup()
@@ -72,7 +70,6 @@ return {
     },
     {
         "akinsho/bufferline.nvim",
-        event = "VeryLazy",
         keys = {
             { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
             { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },

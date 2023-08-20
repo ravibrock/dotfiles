@@ -2,6 +2,7 @@ local prefix = "plugins.opts.navigation."
 return {
     {
         "andymass/vim-matchup",
+        event = "VeryLazy",
     },
     {
         "ggandor/leap.nvim",
@@ -61,8 +62,9 @@ return {
     {
         "stevearc/aerial.nvim",
         opts = { filter_kind = false },
+        cmd = { "AerialToggle" },
         keys = {{ "<leader>a", "<cmd>AerialToggle<cr>zM", desc = "Aerial" }},
-        init = function()
+        config = function()
             require("aerial").setup({ backends = { "lsp", "treesitter" } })
         end,
         dependencies = {
