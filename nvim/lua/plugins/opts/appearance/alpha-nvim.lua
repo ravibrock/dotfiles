@@ -3,15 +3,15 @@ all.opts = function()
     local dashboard = require("alpha.themes.dashboard")
     dashboard.section.header.val = require("ascii").art.text.neovim.dos_rebel
     dashboard.section.buttons.val = {
-        dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-        dashboard.button("f", "󰍉 " .. " Find file", ":Telescope find_files <CR>"),
-        dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-        dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
-        dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-        dashboard.button("m", "󱊍 " .. " Mason", ":Mason<CR>"),
-        dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
-        dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+        dashboard.button("n", " " .. " New file", "<CMD>ene <BAR> startinsert<CR>"),
+        dashboard.button("r", " " .. " Recent files", "<CMD>Telescope oldfiles<CR>"),
+        dashboard.button("f", "󰍉 " .. " Find file", "<CMD>Telescope find_files<CR>"),
+        dashboard.button("g", " " .. " Find text", "<CMD>Telescope live_grep<CR>"),
+        dashboard.button("s", " " .. " Restore Session", [[<CMD>lua require("persistence").load()<CR>]]),
+        dashboard.button("c", " " .. " Config", "<CMD>e $MYVIMRC<CR>"),
+        dashboard.button("m", "󱊍 " .. " Mason", "<CMD>Mason<CR>"),
+        dashboard.button("l", "󰒲 " .. " Lazy", "<CMD>Lazy<CR>"),
+        dashboard.button("q", " " .. " Quit", "<CMD>qa<CR>"),
     }
     for _, button in ipairs(dashboard.section.buttons.val) do
         button.opts.hl = "AlphaButtons"

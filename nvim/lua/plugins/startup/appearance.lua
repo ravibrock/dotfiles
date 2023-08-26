@@ -33,7 +33,7 @@ return {
     {
         "folke/twilight.nvim",
         keys = {
-            { "<leader>i", "<cmd>Twilight<cr>", desc = "Toggle Twilight", },
+            { "<leader>i", "<CMD>Twilight<CR>", desc = "Toggle Twilight", },
         },
     },
     {
@@ -62,17 +62,17 @@ return {
         keys = {
             { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
             { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-            { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-            { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-            { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-            { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+            { "<leader>xt", "<CMD>TodoTrouble<CR>", desc = "Todo (Trouble)" },
+            { "<leader>xT", "<CMD>TodoTrouble keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme (Trouble)" },
+            { "<leader>st", "<CMD>TodoTelescope<CR>", desc = "Todo" },
+            { "<leader>sT", "<CMD>TodoTelescope keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme" },
         },
     },
     {
         "akinsho/bufferline.nvim",
         keys = {
-            { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-            { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+            { "<leader>bp", "<CMD>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+            { "<leader>bP", "<CMD>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
         },
         config = function()
             require(prefix .. "bufferline").setup()

@@ -95,13 +95,13 @@ return {
         dependencies = { "tpope/vim-rhubarb" },
         cmd = { "G", "Git", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" },
         keys = {
-            { "<leader>gb", "<cmd>Git blame<CR>", desc = "Blame current file" },
-            { "<leader>gc", "<cmd>Git commit -a <BAR> startinsert<CR>", desc = "Commit" },
-            { "<leader>gd", "<cmd>Gdiffsplit<CR>", desc = "Diff" },
-            { "<leader>gp", "<cmd>Git push<CR>", desc = "Push" },
-            { "<leader>gl", "<cmd>Git pull<CR>", desc = "Pull" },
-            { "<leader>gr", "<cmd>Git rebase -i --root<CR>", desc = "Rebase" },
-            { "<leader>gs", "<cmd>Git<CR>", desc = "Status" },
+            { "<leader>gb", "<CMD>Git blame<CR>", desc = "Blame current file" },
+            { "<leader>gc", "<CMD>Git commit -a <BAR> startinsert<CR>", desc = "Commit" },
+            { "<leader>gd", "<CMD>Gdiffsplit<CR>", desc = "Diff" },
+            { "<leader>gp", "<CMD>Git push<CR>", desc = "Push" },
+            { "<leader>gl", "<CMD>Git pull<CR>", desc = "Pull" },
+            { "<leader>gr", "<CMD>Git rebase -i --root<CR>", desc = "Rebase" },
+            { "<leader>gs", "<CMD>Git<CR>", desc = "Status" },
         },
     },
     {
@@ -109,18 +109,18 @@ return {
         ft = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
         build = "npm install --prefix server",
         keys = {
-            { "<leader>bb", "<cmd>Bracey<CR>" },
-            { "<leader>br", "<cmd>BraceyReload<CR>" },
-            { "<leader>bs", "<cmd>BraceyStop<CR>" },
+            { "<leader>bb", "<CMD>Bracey<CR>" },
+            { "<leader>br", "<CMD>BraceyReload<CR>" },
+            { "<leader>bs", "<CMD>BraceyStop<CR>" },
         },
     },
     {
         "lervag/vimtex",
         ft = { "tex" },
         keys = {
-            { "<leader>lc", "<cmd>VimtexClean<CR>"},
-            { "<leader>ll", "<cmd>VimtexCompile<CR>" },
-            { "<leader>lv", "<cmd>VimtexView<CR>"},
+            { "<leader>lc", "<CMD>VimtexClean<CR>"},
+            { "<leader>ll", "<CMD>VimtexCompile<CR>" },
+            { "<leader>lv", "<CMD>VimtexView<CR>"},
         },
         init = function()
             vim.g.vimtex_view_method = "sioyek"

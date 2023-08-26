@@ -25,7 +25,7 @@ MUtils.CR = function()
         return npairs.autopairs_cr()
     end
 end
-remap("i", "<cr>", "v:lua.MUtils.CR()", { expr = true, noremap = true })
+remap("i", "<CR>", "v:lua.MUtils.CR()", { expr = true, noremap = true })
 
 MUtils.BS = function()
     if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info({ "mode" }).mode == "eval" then
