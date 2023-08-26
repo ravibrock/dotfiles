@@ -94,6 +94,18 @@ return {
         "tpope/vim-fugitive",
         dependencies = { "tpope/vim-rhubarb" },
         cmd = { "G", "Git", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" },
+        config = function()
+            local function forcepush()
+                local choice = vim.fn.input("Force push? [Y/n] ")
+                vim.cmd[[normal! :<C-u>]]
+                if choice == "Y" then
+                    vim.cmd("Git push --force-with-lease")
+                else
+                    print("Force push aborted.")
+                end
+            end
+            vim.api.nvim_create_user_command("GForcePush", forcepush, {})
+        end,
         keys = {
             { "<leader>gb", "<CMD>Git blame<CR>", desc = "Blame current file" },
             { "<leader>gc", "<CMD>Git commit -a <BAR> startinsert<CR>", desc = "Commit" },
@@ -102,6 +114,7 @@ return {
             { "<leader>gl", "<CMD>Git pull<CR>", desc = "Pull" },
             { "<leader>gr", "<CMD>Git rebase -i --root<CR>", desc = "Rebase" },
             { "<leader>gs", "<CMD>Git<CR>", desc = "Status" },
+            { "<leader>gf", "<CMD>GForcePush<CR>", desc = "Force push" },
         },
     },
     {
