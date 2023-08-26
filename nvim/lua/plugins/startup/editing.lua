@@ -5,6 +5,12 @@ return {
         "vim-scripts/ReplaceWithRegister",
     },
     {
+        "ku1ik/vim-pasta",
+        config = function()
+            vim.g.pasta_enabled_filetypes = { "markdown", "python", "yaml" }
+        end,
+    },
+    {
         "godlygeek/tabular",
         cmd = { "Tab", "Tabularize" },
         keys = {
