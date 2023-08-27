@@ -125,6 +125,16 @@ return {
         }}
     },
     {
+        "kevinhwang91/nvim-ufo",
+        dependencies = {
+            "kevinhwang91/promise-async",
+            "neovim/nvim-lspconfig",
+        },
+        config = function()
+            require(prefix .. "nvim-ufo")
+        end,
+    },
+    {
         "stevearc/stickybuf.nvim",
         opts = {},
         init = function()

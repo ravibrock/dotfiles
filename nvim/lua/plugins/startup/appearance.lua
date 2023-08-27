@@ -31,6 +31,29 @@ return {
         end,
     },
     {
+        "luukvbaal/statuscol.nvim",
+        dependencies = {
+            "lewis6991/gitsigns.nvim",
+            "mfussenegger/nvim-dap",
+        },
+        config = function()
+            local builtin = require("statuscol.builtin")
+            require("statuscol").setup({
+                ft_ignore = { "alpha" },
+                relculright = true,
+                segments = {
+                    -- Change `colwidth` to 2 for top two entries to improve spacing
+                    -- Can also update `auto` to false to reduce jitter in statuscol, or to true to reduce size when not needed
+                    { sign = { name = { ".*", " " }, maxwidth = 1, colwidth = 1, auto = false, wrap = true }, click = "v:lua.ScSa" },
+                    { sign = { name = { "Diagnostic", "Dap"  }, maxwidth = 1, colwidth = 1, auto = true }, click = "v:lua.ScSa" },
+                    { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa", },
+                    { text = { builtin.foldfunc, " " }, maxwidth = 1, colwidth = 2, click = "v:lua.ScFa" },
+                    { text = { "│ " } },
+                },
+            })
+        end,
+    },
+    {
         "folke/twilight.nvim",
         keys = {
             { "<leader>i", "<CMD>Twilight<CR>", desc = "Toggle Twilight", },
