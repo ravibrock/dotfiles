@@ -9,28 +9,6 @@ require("mason").setup({
     },
 })
 
-require("mason-lspconfig").setup()
-require("mason-lspconfig").setup_handlers({
-    function(server)
-        require("lspconfig")[server].setup({ capabilities = vim.lsp.protocol.make_client_capabilities() })
-    end,
-    ["lua_ls"] = function()
-        require("lspconfig").lua_ls.setup({
-            settings = {
-                Lua = {
-                    diagnostics = { globals = "vim" },
-                    runtime = { version = "LuaJIT" },
-                    telemetry = { enable = false },
-                    workspace = {
-                        library = vim.api.nvim_get_runtime_file("", true),
-                        checkThirdParty = false,
-                    },
-                },
-            },
-        })
-    end,
-})
-
 local M = {}
 function M.update_all()
     local registry = require("mason-registry")

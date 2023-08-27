@@ -46,9 +46,19 @@ return {
         "williamboman/mason.nvim",
         event = "VeryLazy",
         build = ":MasonUpdate",
-        dependencies = { "williamboman/mason-lspconfig.nvim" },
         config = function()
             require(prefix .. "mason")
+        end,
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "williamboman/mason.nvim",
+        },
+        config = function()
+            require(prefix .. "mason-lspconfig")
         end,
     },
     {
@@ -60,9 +70,18 @@ return {
         },
         config = function()
             require(prefix .. "null-ls")
-        end,
-        init = function()
             require(prefix .. "mason-null-ls")
+        end,
+    },
+    {
+        "williamboman/mason-nvim-dap.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "williamboman/mason.nvim",
+        },
+        config = function()
+            require(prefix .. "mason-nvim-dap")
         end,
     },
     {
@@ -78,6 +97,32 @@ return {
         config = function()
             require(prefix .. "null-ls")
         end,
+    },
+    {
+        "mfussenegger/nvim-dap",
+        event = "VeryLazy",
+        config = function()
+            vim.fn.sign_define("DapBreakpoint", { text="" })
+            vim.fn.sign_define("DapBreakpointCondition", { text="" })
+            vim.fn.sign_define("DapLogPoint", { text="" })
+            vim.fn.sign_define("DapBreakpointRejected", { text="" })
+        end,
+        keys = function()
+            require(prefix .. "nvim-dap")
+        end,
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap" },
+        config = function()
+            require("dapui").setup()
+        end,
+        keys = {{
+            "<leader>dd",
+            function() require("dapui").toggle() end,
+            mode = "n",
+            desc = "Toggle DAP UI"
+        }}
     },
     {
         "stevearc/stickybuf.nvim",
