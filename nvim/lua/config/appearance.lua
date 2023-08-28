@@ -15,7 +15,9 @@ vim.cmd("highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=white")
 vim.cmd("syntax enable")
 vim.cmd("highlight MatchParen cterm=none ctermbg=white ctermfg=black")
 vim.cmd("highlight! link SignColumn LineNr")
-vim.opt.signcolumn = "yes"
+
+-- Configure foldcolumn characters
+vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep:│,foldclose:]]
 
 -- Show matching brackets
 vim.opt.showmatch = true

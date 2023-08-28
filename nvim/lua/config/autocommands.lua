@@ -26,7 +26,7 @@ autocmd("BufRead", {
     command = "lua follow_symlink()"
 })
 
--- Disable highlighting
+-- Adjust highlighting
 function ClearHL()
     vim.cmd("highlight clear SpellBad")
     vim.cmd("highlight clear SpellCap")
@@ -37,6 +37,7 @@ function ClearHL()
     vim.cmd("highlight clear DiagnosticUnderlineInfo")
     vim.cmd("highlight clear DiagnosticUnderlineHint")
     vim.cmd("highlight clear DiagnosticUnderlineOk")
+    vim.cmd("highlight! link FoldColumn LineNr")
 end
 autocmd("BufReadPre", {
     command = "lua ClearHL()"
