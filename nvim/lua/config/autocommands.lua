@@ -1,18 +1,14 @@
 local autocmd = vim.api.nvim_create_autocmd
 
 -- Stop commenting new lines
-autocmd("BufEnter", {
-    command = "setlocal formatoptions-=ro"
-})
+autocmd("BufEnter", { command = "setlocal formatoptions-=ro" })
 
 -- Enable autoread
 vim.opt.autoread = true
-autocmd("FocusGained, BufEnter", {
-    command = "silent! checktime"
-})
+autocmd("FocusGained, BufEnter", { command = "silent! checktime" })
 
 -- Opens symlinks in their target:
-function follow_symlink()
+function FollowSymlink()
     local file = vim.fn.expand("%:p")
     local real_file = vim.fn.resolve(file)
     if (string.match(real_file, "[^%d]+:/") or real_file == file) then
@@ -22,9 +18,7 @@ function follow_symlink()
     vim.cmd("echohl WarningMsg | echomsg 'Resolved symlink " .. file:gsub(os.getenv("HOME"), "~") .. " ——⟶ " .. real_file:gsub(os.getenv("HOME"), "~") .. "' | echohl None")
     vim.cmd("silent! w!")  -- Workaround for "file exists" error on write
 end
-autocmd("BufRead", {
-    command = "lua follow_symlink()"
-})
+autocmd("BufRead", { command = "lua FollowSymlink()" })
 
 -- Adjust highlighting
 function ClearHL()
@@ -39,18 +33,14 @@ function ClearHL()
     vim.cmd("highlight clear DiagnosticUnderlineOk")
     vim.cmd("highlight! link FoldColumn LineNr")
 end
-autocmd("BufReadPre", {
-    command = "lua ClearHL()"
-})
+autocmd("BufReadPre", { command = "lua ClearHL()" })
 
 -- Remove trailing whitespace on save
-function clean_extra_spaces()
+function CleanSpaces()
     local save_cursor = vim.fn.getpos(".")
     local old_query = vim.fn.getreg("/")
     vim.cmd("silent %s/\\s\\+$//e")
     vim.fn.setpos(".", save_cursor)
     vim.fn.setreg("/", old_query)
 end
-autocmd("BufWritePre", {
-    command = "lua clean_extra_spaces()"
-})
+autocmd("BufWritePre", { command = "lua CleanSpaces()" })
