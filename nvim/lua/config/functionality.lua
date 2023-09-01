@@ -18,6 +18,10 @@ vim.opt.encoding = "utf-8"
 -- Filetype
 vim.opt.ffs = { "unix", "dos", "mac" }
 
+-- Persistent undo
+vim.opt.undofile = true
+vim.opt.undodir = "/tmp/nvim/undo"
+
 -- Spellchecking
 vim.opt_local.spell = true
 vim.opt.spelllang = "en_us"

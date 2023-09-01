@@ -48,8 +48,8 @@ local function telescope_util(builtin, opts)
     end
 end
 
-local config = {}
-config.keys = {
+local M = {}
+M.keys = {
     { "<leader>,", "<CMD>Telescope buffers show_all_buffers=true<CR>", desc = "Switch Buffer" },
     { "<leader>/", telescope_util("live_grep"), desc = "Grep (root dir)" },
     { "<leader>:", "<CMD>Telescope command_history<CR>", desc = "Command History" },
@@ -78,7 +78,7 @@ config.keys = {
     { "<leader>sR", "<CMD>Telescope resume<CR>", desc = "Resume" },
     { "<leader>sw", telescope_util("grep_string"), desc = "Word (root dir)" },
     { "<leader>sW", telescope_util("grep_string", { cwd = false }), desc = "Word (cwd)" },
-    { "<leader>uC", telescope_util("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    { "<leader>u", function() require("telescope").extensions.undo.undo() end, desc = "Undo tree" },
     {
         "<leader>ss",
         telescope_util("lsp_document_symbols", {
@@ -117,7 +117,7 @@ config.keys = {
     },
 }
 
-config.opts = {
+M.opts = {
     defaults = {
         prompt_prefix = " ",
         selection_caret = " ",
@@ -133,6 +133,7 @@ config.opts = {
             },
         },
     },
+    extensions = { undo = {} },
 }
 
-return config
+return M
