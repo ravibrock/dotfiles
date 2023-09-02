@@ -1,4 +1,5 @@
 local function nf() return [[]] end
+
 local function setup(colorscheme)
     require("lualine").setup({
         options = {
@@ -21,10 +22,7 @@ local function setup(colorscheme)
         },
         sections = {
             lualine_a = {{ "mode", fmt = function(str) return str:sub(1,1) end }},
-            lualine_b = {
-                { "branch", "diff", "diagnostics" },
-                { nf, "diagnostics", cond = function() return vim.fn.finddir('.git', vim.fn.getcwd() .. ";") == "" end },
-            },
+            lualine_b = { "branch", { nf, cond = function() return vim.fn.finddir(".git", vim.fn.getcwd() .. ";") == "" end }, "diff", "diagnostics" },
             lualine_c = { "filename" },
             lualine_x = { "encoding" },
             lualine_y = { "searchcount", "progress" },
