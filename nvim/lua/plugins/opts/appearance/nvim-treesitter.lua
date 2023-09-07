@@ -13,6 +13,7 @@ function options.setup()
             "markdown",
             "python",
             "query",
+            "racket",
             "regex",
             "rust",
             "vim",

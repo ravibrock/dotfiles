@@ -9,6 +9,11 @@ return {
         cmd = { "SudaWrite", "SudaRead" },
     },
     {
+        "eraserhd/parinfer-rust",
+        ft = { "racket" },
+        build = "cargo build --release",
+    },
+    {
         "lewis6991/hover.nvim",
         init = function()
             require("hover.providers.lsp")

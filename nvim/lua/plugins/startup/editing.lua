@@ -5,6 +5,10 @@ return {
         "vim-scripts/ReplaceWithRegister",
     },
     {
+        "guns/vim-sexp",
+        ft = { "racket" },
+    },
+    {
         "ku1ik/vim-pasta",
         config = function()
             vim.g.pasta_enabled_filetypes = { "markdown", "python", "yaml" }
@@ -31,7 +35,7 @@ return {
         cmd = "Copilot",
         build = ":Copilot auth",
         config = function()
-            require("copilot").setup({})
+            require("copilot").setup({ filetypes = { racket = false } })
         end,
     },
     {
@@ -51,7 +55,7 @@ return {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = function()
-            require("nvim-autopairs").setup({})
+            require("nvim-autopairs").setup({ disable_filetype = { "racket" } })
         end,
     },
     {
