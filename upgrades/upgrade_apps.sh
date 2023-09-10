@@ -1,9 +1,17 @@
 #!/bin/zsh
 
-# Updates formulae, casks, and App Store apps
+# Updates formulae and casks
 $BREW_PREFIX/bin/brew upgrade
 $BREW_PREFIX/bin/brew upgrade --cask
-$BREW_PREFIX/bin/mas upgrade
+
+# Updates App Store apps
+OUTDATED=$($BREW_PREFIX/bin/mas outdated | /usr/bin/awk '{print $2}')
+if [[ ! -z $OUTDATED ]]; then
+    /usr/bin/killall $(echo $OUTDATED)
+    $BREW_PREFIX/bin/mas upgrade
+    cd /Applications/
+    /usr/bin/open -a $(echo $OUTDATED)
+fi
 
 # Updates Homebrew itself
 $BREW_PREFIX/bin/brew update
