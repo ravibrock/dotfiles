@@ -35,7 +35,12 @@ return {
         cmd = "Copilot",
         build = ":Copilot auth",
         config = function()
-            require("copilot").setup({ filetypes = { racket = false } })
+            require("copilot").setup({
+                filetypes = {
+                    racket = false,
+                    tex = false,
+                },
+            })
         end,
     },
     {
