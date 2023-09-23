@@ -8,7 +8,7 @@ Clone the repo (or download the .zip if git isn't installed yet), `cd` into it, 
 Add personal credentials to `git/.gitconfig_local`.
 
 ### iTerm2
-In `Settings` > `General` > `Preferences` enable "Load preferences from a custom folder or URL" and change to the iTerm2 folder.
+In `Settings` > `General` > `Preferences` enable "Load preferences from a custom folder or URL" and change to the iTerm2 **folder**.
 
 ### Raycast
 The `.rayconfig` file is encrypted since it contains credentials. I left it in the repo for personal use but it isn't accessible otherwise.
