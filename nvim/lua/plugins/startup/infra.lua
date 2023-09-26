@@ -70,11 +70,11 @@ return {
         "jay-babu/mason-null-ls.nvim",
         event = "VeryLazy",
         dependencies = {
-            "jose-elias-alvarez/null-ls.nvim",
+            "nvimtools/none-ls.nvim",
             "williamboman/mason.nvim",
         },
         config = function()
-            require(prefix .. "null-ls")
+            require(prefix .. "none-ls")
             require(prefix .. "mason-null-ls")
         end,
     },
@@ -97,10 +97,10 @@ return {
         end,
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         event = "VeryLazy",
         config = function()
-            require(prefix .. "null-ls")
+            require(prefix .. "none-ls")
         end,
     },
     {
