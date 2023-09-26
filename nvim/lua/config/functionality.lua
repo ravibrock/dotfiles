@@ -20,7 +20,7 @@ vim.opt.ffs = { "unix", "dos", "mac" }
 
 -- Persistent undo
 vim.opt.undofile = true
-vim.opt.undodir = "/tmp/nvim/undo"
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undo/"
 
 -- Spellchecking
 vim.opt_local.spell = true
