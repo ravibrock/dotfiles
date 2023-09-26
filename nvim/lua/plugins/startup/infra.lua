@@ -195,7 +195,7 @@ return {
             { "<leader>ll", "<CMD>VimtexCompile<CR>" },
             { "<leader>lv", "<CMD>VimtexView<CR>"},
         },
-        init = function()
+        config = function()
             vim.g.vimtex_view_method = "sioyek"
             vim.g.tex_conceal = "abdmg"
             vim.opt.conceallevel = 2

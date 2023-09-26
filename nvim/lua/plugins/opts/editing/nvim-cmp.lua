@@ -76,7 +76,7 @@ local options = {
         { name = "copilot" },
         { name = "luasnip", option = { show_autosnippets = true } },
         { name = "nvim_lsp" },
-        { name = "path" },
+        { name = "async_path" },
         { name = "buffer" },
     }),
     experimental = {

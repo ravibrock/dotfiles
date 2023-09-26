@@ -2,7 +2,12 @@ local prefix = "plugins.opts.editing."
 return {
     {
         "tpope/vim-repeat",
+        "tpope/vim-speeddating",
         "vim-scripts/ReplaceWithRegister",
+    },
+    {
+        "glts/vim-radical",
+        dependencies = { "glts/vim-magnum" },
     },
     {
         "guns/vim-sexp",
@@ -91,7 +96,7 @@ return {
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
+            "FelipeLema/cmp-async-path",
             "hrsh7th/cmp-nvim-lua",
             "saadparwaiz1/cmp_luasnip",
         },
