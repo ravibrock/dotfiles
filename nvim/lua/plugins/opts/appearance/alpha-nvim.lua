@@ -7,7 +7,7 @@ all.opts = function()
         dashboard.button("r", " " .. " Recent files", "<CMD>Telescope oldfiles<CR>"),
         dashboard.button("f", "󰍉 " .. " Find file", "<CMD>Telescope find_files<CR>"),
         dashboard.button("g", " " .. " Find text", "<CMD>Telescope live_grep<CR>"),
-        dashboard.button("s", " " .. " Restore Session", [[<CMD>lua require("persistence").load()<CR>]]),
+        dashboard.button("s", " " .. " Restore Session", "<CMD>SessionLoadLast<CR>"),
         dashboard.button("c", " " .. " Config", "<CMD>e $MYVIMRC<CR>"),
         dashboard.button("m", "󱊍 " .. " Mason", "<CMD>Mason<CR>"),
         dashboard.button("l", "󰒲 " .. " Lazy", "<CMD>Lazy<CR>"),

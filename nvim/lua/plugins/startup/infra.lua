@@ -202,13 +202,23 @@ return {
         end,
     },
     {
-        "folke/persistence.nvim",
-        event = "BufReadPre",
-        opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals" } },
+        "olimorris/persisted.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("persisted").setup({
+                use_git_branch = true,
+                should_autosave = function()
+                    if vim.bo.filetype == "alpha" then
+                        return false
+                    end
+                    return true
+                end,
+            })
+            require("telescope").load_extension("persisted")
+        end,
         keys = {
-            { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
-            { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-            { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+            { "<leader>qs", "<CMD>SessionLoad<CR>", desc = "Restore Session" },
+            { "<leader>ql", "<CMD>SessionLoadLast<CR>", desc = "Restore Last Session" },
         },
     },
 }
