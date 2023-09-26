@@ -72,6 +72,7 @@ cask "unnaturalscrollwheels"
 cask "vial"
 cask "vlc"
 cask "vscodium"
+cask "whatsapp"
 mas "Amphetamine", id: 937984704
 mas "Bitwarden", id: 1352778147
 mas "iMovie", id: 408981434
