@@ -191,14 +191,37 @@ return {
         "lervag/vimtex",
         ft = { "tex" },
         keys = {
-            { "<leader>lc", "<CMD>VimtexClean<CR>"},
             { "<leader>ll", "<CMD>VimtexCompile<CR>" },
             { "<leader>lv", "<CMD>VimtexView<CR>"},
+            { "<leader>lc", "<CMD>VimtexWipe<CR>"},
         },
         config = function()
             vim.g.vimtex_view_method = "sioyek"
             vim.g.tex_conceal = "abdmg"
-            vim.opt.conceallevel = 2
+
+            function VimtexWipe()
+                local current_file = vim.fn.expand("%:t:r") -- Filename without extension
+                local extensions_to_delete = {
+                    ".aux",
+                    ".bbl",
+                    ".bcf",
+                    ".blg",
+                    ".fdb_latexmk",
+                    ".fls",
+                    ".log",
+                    ".out",
+                    ".run.xml",
+                    ".synctex.gz",
+                    ".toc",
+                }
+                for _, ext in ipairs(extensions_to_delete) do
+                    vim.fn.delete(current_file .. ext)
+                end
+                vim.cmd([[echo "VimTex: Compiler clean finished"]])
+            end
+
+            vim.api.nvim_create_user_command("VimtexWipe", VimtexWipe, {})
+            vim.api.nvim_create_autocmd("VimLeave", { command = "lua VimtexWipe()" })
         end,
     },
     {
