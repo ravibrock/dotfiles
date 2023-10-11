@@ -5,7 +5,7 @@ autocmd("BufEnter", { command = "setlocal formatoptions-=ro" })
 
 -- Enable autoread
 vim.opt.autoread = true
-autocmd("FocusGained, BufEnter", { command = "silent! checktime" })
+autocmd({ "FocusGained", "BufEnter" }, { command = "silent! checktime" })
 
 -- Opens symlinks in their target:
 function FollowSymlink()

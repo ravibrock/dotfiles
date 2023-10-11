@@ -16,5 +16,9 @@ vim.keymap.set({"i", "c"}, "<C-l>", "<Right>", { noremap = true })
 -- Spellcheck with <C-m> in insert mode
 vim.keymap.set("i", "<C-m>", "<C-g>u<Esc>[s1z=`]a<C-g>u", { noremap = true })
 
+-- Go to beginning of line when hitting { or } in normal mode
+vim.keymap.set("n", "{", "{0", { noremap = true })
+vim.keymap.set("n", "}", "}0", { noremap = true })
+
 -- Enable mouse support
 vim.opt.mouse = "a"
