@@ -71,7 +71,7 @@ return {
                 clickmod = "c",
                 relculright = true,
                 segments = {
-                    { sign = { name = { "Git" }, maxwidth = 1, colwidth = 2, auto = true }, click = "v:lua.ScSa" },
+                    { sign = { namespace = { "gitsigns" }, maxwidth = 1, colwidth = 2, auto = true }, click = "v:lua.ScSa" },
                     { sign = { name = { ".*"  }, maxwidth = 1, colwidth = 2, auto = true }, click = "v:lua.ScSa" },
                     { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
                     { text = { newfold, " " }, maxwidth = 1, colwidth = 2, click = "v:lua.ScFa" },

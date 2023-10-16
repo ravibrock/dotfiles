@@ -124,12 +124,12 @@ M.opts = {
         -- Comment out these mappings if Telescope is erroring on load
         mappings = {
             i = {
-                ["<C-j>"] = require("telescope.actions").move_selection_next,
-                ["<C-k>"] = require("telescope.actions").move_selection_previous,
-                ["<C-n>"] = require("telescope.actions").preview_scrolling_down,
-                ["<C-p>"] = require("telescope.actions").preview_scrolling_up,
+                ["<C-j>"] = "move_selection_next",
+                ["<C-k>"] = "move_selection_previous",
+                ["<C-n>"] = "preview_scrolling_down",
+                ["<C-p>"] = "preview_scrolling_up",
                 ["<C-t>"] = require("trouble.providers.telescope").open_with_trouble,
-                ["<esc>"] = require("telescope.actions").close,
+                ["<esc>"] = "close",
             },
         },
     },

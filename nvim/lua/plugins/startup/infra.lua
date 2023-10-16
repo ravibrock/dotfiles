@@ -180,7 +180,7 @@ return {
     {
         "turbio/bracey.vim",
         ft = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
-        build = "npm install --prefix server",
+        build = "npm install --no-package-lock --prefix server",
         keys = {
             { "<leader>bb", "<CMD>Bracey<CR>" },
             { "<leader>br", "<CMD>BraceyReload<CR>" },
