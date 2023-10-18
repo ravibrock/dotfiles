@@ -22,3 +22,6 @@ vim.keymap.set("n", "}", "}0", { noremap = true })
 
 -- Enable mouse support
 vim.opt.mouse = "a"
+
+-- Open current file in MacOS Finder
+vim.keymap.set("n", "<leader>fo", "<CMD>silent! !open -R %<CR>", { noremap = true })
