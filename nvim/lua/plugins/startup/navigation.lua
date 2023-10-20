@@ -67,7 +67,7 @@ return {
         "stevearc/aerial.nvim",
         opts = { filter_kind = false },
         cmd = { "AerialToggle" },
-        keys = {{ "<leader>a", "<CMD>AerialToggle<CR>zM", desc = "Aerial" }},
+        keys = {{ "<leader>a", "<CMD>AerialToggle<CR>", desc = "Aerial" }},
         config = function()
             require("aerial").setup({ backends = { "lsp", "treesitter" } })
         end,

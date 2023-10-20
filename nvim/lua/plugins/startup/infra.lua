@@ -196,6 +196,7 @@ return {
         },
         config = function()
             vim.g.vimtex_view_method = "sioyek"
+            vim.g.vimtex_view_sioyek_options = "--new-window"
             vim.g.tex_conceal = "abdmg"
 
             function VimtexWipe()
@@ -205,16 +206,18 @@ return {
                     ".bbl",
                     ".bcf",
                     ".blg",
+                    ".cps*",
                     ".fdb_latexmk",
                     ".fls",
                     ".log",
+                    ".mw",
                     ".out",
                     ".run.xml",
                     ".synctex.gz",
                     ".toc",
                 }
                 for _, ext in ipairs(extensions_to_delete) do
-                    vim.fn.delete(current_file .. ext)
+                    vim.cmd("silent! !rm " .. current_file .. ext)
                 end
                 vim.cmd([[echo "VimTex: Compiler clean finished"]])
             end

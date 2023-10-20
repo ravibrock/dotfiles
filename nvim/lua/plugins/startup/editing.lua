@@ -3,6 +3,7 @@ return {
     {
         "tpope/vim-repeat",
         "tpope/vim-speeddating",
+        "tpope/vim-unimpaired",
         "vim-scripts/ReplaceWithRegister",
     },
     {
