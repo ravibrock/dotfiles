@@ -2,7 +2,6 @@ local lspconfig = require("lspconfig")
 local lsp_defaults = lspconfig.util.default_config
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-require("lspconfig.ui.windows").default_options.border = "rounded"
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 lsp_defaults.capabilities = vim.tbl_deep_extend(
     "force",

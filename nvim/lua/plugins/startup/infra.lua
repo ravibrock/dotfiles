@@ -25,7 +25,6 @@ return {
         end,
         config = function()
             require("hover").setup({
-                preview_opts = { border = "rounded" },
                 preview_window = false,
                 title = true,
             })

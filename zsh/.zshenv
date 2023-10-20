@@ -1,3 +1,8 @@
+# Configures bat
+export BAT_PAGER=""
+export BAT_STYLE="plain"
+export BAT_THEME="Catppuccin-mocha"
+
 # Configures Homebrew
 export HOMEBREW_AUTOREMOVE=1
 export HOMEBREW_CASK_OPTS="--no-quarantine"

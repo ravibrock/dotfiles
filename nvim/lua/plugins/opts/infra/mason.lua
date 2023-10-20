@@ -1,6 +1,5 @@
 require("mason").setup({
     ui = {
-        border = "rounded",
         icons = {
             package_uninstalled = " ",
             package_pending = "󱑤 ",

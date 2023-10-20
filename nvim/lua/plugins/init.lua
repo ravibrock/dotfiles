@@ -21,7 +21,6 @@ require("lazy").setup({
     },
     change_detection = { notify = false },
     checker = { enabled = true },
-    ui = { border = "rounded" },
 })
 
 vim.cmd("colorscheme catppuccin")

@@ -45,12 +45,6 @@ local options = {
             return vim_item
         end,
     },
-    window = {
-        documentation = cmp.config.window.bordered(),
-        completion = cmp.config.window.bordered({
-            winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-        }),
-    },
     completion = {
         completeopt = "menu,menuone,noinsert",
     },

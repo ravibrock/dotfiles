@@ -96,12 +96,6 @@ return {
         "catppuccin/nvim",
         lazy = true,
         name = "catppuccin",
-        config = function()
-            require("catppuccin").setup({
-                transparent_background = true,
-                flavour = "mocha",
-            })
-        end,
     },
     {
         "folke/todo-comments.nvim",

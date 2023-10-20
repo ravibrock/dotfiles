@@ -7,13 +7,22 @@ pushd "$(dirname "$(readlink -f "$BASH_SOURCE")")" > /dev/null && {
 }
 
 # Installs homebrew and packages
-function install_brew() {
+function install_brew {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew bundle --file=$DIR/.brewfile
 }
 
+function bat_theme {
+    git clone https://github.com/catppuccin/bat /tmp/bat &> /dev/null
+    cd /tmp/bat
+    mkdir -p "$(bat --config-dir)/themes"
+    cp *.tmTheme "$(bat --config-dir)/themes"
+    bat cache --build &> /dev/null
+    cd $DIR
+}
+
 # Symlinks within repo for easy editing of hidden files
-function link_in_repo() {
+function link_in_repo {
     ln -sf $DIR/.brewfile $DIR/brewfile
     ln -sf $DIR/.rayconfig $DIR/rayconfig
     ln -sf $DIR/.vimrc $DIR/vimrc
@@ -28,7 +37,7 @@ function link_in_repo() {
 }
 
 # Symlinks dotfiles into home directory
-function link_to_home() {
+function link_to_home {
     ln -sf $DIR/.tmux.conf $HOME
     ln -sf $DIR/.vimrc $HOME
     ln -sf $DIR/.vimrc $HOME/.ideavimrc
@@ -41,7 +50,7 @@ function link_to_home() {
     ln -sf $DIR/zsh/.zshrc $HOME
 }
 
-function zsh_plugins() {
+function zsh_plugins {
     mkdir -p ~/.zsh
     git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting &> /dev/null
     git clone https://github.com/romkatv/zsh-defer ~/.zsh/zsh-defer &> /dev/null
@@ -49,7 +58,7 @@ function zsh_plugins() {
 }
 
 # Initialize private files if they don't exist
-function private_files() {
+function private_files {
     if ! [[ -f "$DIR/git/.gitconfig_local" ]]; then
         printf "[user]\n    name = [GIT USERNAME HERE]\n    email = [GIT EMAIL HERE]\n    signingkey = [GIT GPG KEYID HERE]" > $DIR/git/.gitconfig_local
     fi
@@ -73,6 +82,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     link_to_home
     private_files
     zsh_plugins
+    bat_theme
 else
     echo "Unsupported OS. Must be on MacOS."
 fi
