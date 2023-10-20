@@ -35,12 +35,13 @@ vim.opt.shiftwidth = 4
 vim.opt.clipboard = "unnamed"
 
 -- Configure search
+vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<backspace>")
+vim.opt.gdefault = true
 vim.opt.ignorecase = true
-vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.magic = true
 vim.opt.regexpengine = 0
-vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<backspace>")
+vim.opt.smartcase = true
 
 -- Set hidden buffers
 vim.opt.hidden = true
