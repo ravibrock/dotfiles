@@ -112,14 +112,17 @@ return {
         },
     },
     {
-        "akinsho/bufferline.nvim",
-        keys = {
-            { "<leader>bp", "<CMD>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-            { "<leader>bP", "<CMD>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+        "romgrk/barbar.nvim",
+        dependencies = {
+            "lewis6991/gitsigns.nvim",
+            "nvim-tree/nvim-web-devicons"
         },
-        config = function()
-            require(prefix .. "bufferline").setup()
-        end,
+        init = function() vim.g.barbar_auto_setup = false end,
+        opts = {
+            animation = false,
+            auto_hide  = 1,
+        },
+        version = '^1.0.0',
     },
     {
         "goolord/alpha-nvim",
