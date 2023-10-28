@@ -3,6 +3,7 @@ return {
     {
         "folke/trouble.nvim",
         "echasnovski/mini.bufremove",
+        "xiyaowong/nvim-cursorword",
     },
     {
         "MaximilianLloyd/ascii.nvim",

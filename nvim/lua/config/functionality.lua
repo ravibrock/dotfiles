@@ -5,6 +5,9 @@ vim.opt.history=100
 vim.cmd("filetype on")
 vim.cmd("filetype plugin on")
 vim.cmd("filetype indent on")
+vim.opt.autoindent = true
+vim.opt.cindent = true
+vim.opt.smartindent = true
 
 -- Ignore compiled files
 vim.opt.wildignore = { "*.o", "*~", "*.pyc", "*pycache*", "*/.git/*", "*/.hg/*", "*/.svn/*", "*/.DS_Store" }
