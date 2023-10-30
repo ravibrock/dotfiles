@@ -1,6 +1,7 @@
 local prefix = "plugins.opts.editing."
 return {
     {
+        -- "micangl/cmp-vimtex", Seems very buggy, maybe enable in future
         "tpope/vim-repeat",
         "tpope/vim-speeddating",
         "tpope/vim-unimpaired",

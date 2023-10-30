@@ -188,16 +188,19 @@ return {
     },
     {
         "lervag/vimtex",
-        ft = { "tex" },
+        lazy = false,
         keys = {
             { "<leader>ll", "<CMD>VimtexCompile<CR>" },
-            { "<leader>lv", "<CMD>VimtexView<CR>"},
-            { "<leader>lc", "<CMD>VimtexWipe<CR>"},
+            { "<leader>lv", "<CMD>VimtexView<CR>" },
+            { "<leader>lc", "<CMD>VimtexWipe<CR>" },
         },
-        config = function()
+        init = function()
             vim.g.vimtex_view_method = "sioyek"
             vim.g.vimtex_view_sioyek_options = "--new-window"
+            -- Should be disabled by default:
+            -- vim.g.vimtex_compiler_latexmk = { options = { "-shell-escape" } }
             vim.g.tex_conceal = "abdmg"
+            vim.keymap.set("i", "<C-x><CR>", "<plug>(vimtex-delim-close)", { silent = true })
 
             function VimtexWipe()
                 local current_file = vim.fn.expand("%:t:r") -- Filename without extension
@@ -223,7 +226,26 @@ return {
             end
 
             vim.api.nvim_create_user_command("VimtexWipe", VimtexWipe, {})
-            vim.api.nvim_create_autocmd("VimLeave", { command = "lua VimtexWipe()" })
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "VimtexEventQuit",
+                desc = "VimTeX: Clean up auxiliary files on exit",
+                command = "VimtexWipe"
+            })
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "VimtexEventViewReverse",
+                desc = "VimTeX: Return focus to vim after inverse search trigger in PDF",
+                command = vim.fn.system("osascript -e 'activate application \"iTerm\"'"),
+            })
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "VeryLazy",
+                desc = "VimTeX: Reload to fix symlink behavior",
+                command = "silent! VimtexReload",
+            })
+            vim.api.nvim_create_autocmd("InsertLeave", {
+                pattern = "*.tex, *.bib",
+                desc = "VimTeX: Auto replace double quotes in current line with `` and ''",
+                command = 'silent! s/\\"\\([^\\"]*\\)\\"/\\`\\`\\1\'\'/'
+            })
         end,
     },
     {
