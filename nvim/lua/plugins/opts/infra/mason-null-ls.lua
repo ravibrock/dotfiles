@@ -2,9 +2,9 @@ require("mason-null-ls").setup({
     ensure_installed = {
         "beautysh",
         "misspell",
-        "textidote",
         "tidy",
         "prettier",
+        "proselint",
         "pylint",
         "shellcheck",
         "stylua",
