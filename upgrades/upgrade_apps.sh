@@ -2,7 +2,7 @@
 
 # Updates formulae and casks
 $BREW_PREFIX/bin/brew upgrade
-$BREW_PREFIX/bin/brew cu --all --cleanup --no-brew-update --no-quarantine --yes
+$BREW_PREFIX/bin/brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes
 
 # Updates App Store apps
 OUTDATED=$($BREW_PREFIX/bin/mas outdated | /usr/bin/awk '{print $2}')

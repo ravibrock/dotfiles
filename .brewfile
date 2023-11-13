@@ -72,6 +72,7 @@ cask "r"
 cask "racket"
 cask "raycast"
 cask "rstudio"
+cask "selfcontrol"
 cask "sioyek"
 cask "stats"
 cask "unnaturalscrollwheels"
@@ -80,6 +81,7 @@ cask "vlc"
 cask "vscodium"
 cask "waterfox"
 cask "whatsapp"
+cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Bitwarden", id: 1352778147
 mas "iMovie", id: 408981434
