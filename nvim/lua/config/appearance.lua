@@ -26,6 +26,9 @@ vim.opt.mat = 2
 -- Show commands
 vim.opt.showcmd = true
 
+-- Hide mode notification
+vim.opt.showmode = false
+
 -- Disable bells
 vim.opt.visualbell = true
 vim.opt.errorbells = false
