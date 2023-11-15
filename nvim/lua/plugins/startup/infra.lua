@@ -192,44 +192,19 @@ return {
         keys = {
             { "<leader>ll", "<CMD>VimtexCompile<CR>" },
             { "<leader>lv", "<CMD>VimtexView<CR>" },
-            { "<leader>lc", "<CMD>VimtexWipe<CR>" },
+            { "<leader>lc", "<CMD>VimtexClean<CR>" },
         },
         init = function()
             vim.g.vimtex_view_method = "sioyek"
             vim.g.vimtex_view_sioyek_options = "--new-window"
-            -- Should be disabled by default:
-            -- vim.g.vimtex_compiler_latexmk = { options = { "-shell-escape" } }
-            vim.g.tex_conceal = "abdmg"
+            -- vim.g.vimtex_compiler_latexmk = { options = { "-shell-escape" } } -- Disable by default
             vim.keymap.set("i", "<C-x><CR>", "<plug>(vimtex-delim-close)", { silent = true })
+            vim.opt.conceallevel = 2 -- Enable VimTeX conceal
 
-            function VimtexWipe()
-                local current_file = vim.fn.expand("%:t:r") -- Filename without extension
-                local extensions_to_delete = {
-                    ".aux",
-                    ".bbl",
-                    ".bcf",
-                    ".blg",
-                    ".cps*",
-                    ".fdb_latexmk",
-                    ".fls",
-                    ".log",
-                    ".mw",
-                    ".out",
-                    ".run.xml",
-                    ".synctex.gz",
-                    ".toc",
-                }
-                for _, ext in ipairs(extensions_to_delete) do
-                    vim.cmd("silent! !rm " .. current_file .. ext)
-                end
-                vim.cmd([[echo "VimTex: Compiler clean finished"]])
-            end
-
-            vim.api.nvim_create_user_command("VimtexWipe", VimtexWipe, {})
             vim.api.nvim_create_autocmd("User", {
                 pattern = "VimtexEventQuit",
                 desc = "VimTeX: Clean up auxiliary files on exit",
-                command = "VimtexWipe"
+                command = "VimtexClean"
             })
             vim.api.nvim_create_autocmd("User", {
                 pattern = "VimtexEventViewReverse",

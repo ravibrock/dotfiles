@@ -30,6 +30,7 @@ function link_in_repo {
     ln -sf $DIR/git/.gitalias $DIR/git/gitalias
     ln -sf $DIR/git/.gitconfig $DIR/git/gitconfig
     ln -sf $DIR/git/.gitignore_global $DIR/git/gitignore_global
+    ln -sf $DIR/.latexmkrc $DIR/latexmkrc
     ln -sf $DIR/zsh/.zprofile $DIR/zsh/zprofile
     ln -sf $DIR/zsh/.zshalias $DIR/zsh/zshalias
     ln -sf $DIR/zsh/.zshenv $DIR/zsh/zshenv
@@ -45,6 +46,7 @@ function link_to_home {
     ln -sf $DIR/git/.gitalias $HOME
     ln -sf $DIR/git/.gitconfig $HOME
     ln -sf $DIR/git/.gitignore_global $HOME
+    ln -sf $DIR/.latexmkrc $HOME
     ln -sf $DIR/nvim $HOME/.config/
     ln -sf $DIR/zsh/.zprofile $HOME
     ln -sf $DIR/zsh/.zshenv $HOME

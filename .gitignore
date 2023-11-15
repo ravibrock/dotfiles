@@ -5,6 +5,7 @@ brewfile
 gitalias
 gitconfig
 gitignore_global
+latexmkrc
 lazy-lock.json
 rayconfig
 vimrc
