@@ -32,9 +32,7 @@ return {
     },
     {
         "kylechui/nvim-surround",
-        config = function()
-            require("nvim-surround").setup({})
-        end,
+        config = true,
     },
     {
         "zbirenbaum/copilot.lua",
@@ -53,15 +51,11 @@ return {
     {
         "zbirenbaum/copilot-cmp",
         event = "InsertEnter",
-        config = function()
-            require("copilot_cmp").setup()
-        end,
+        config = true,
     },
     {
         "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup()
-        end,
+        config = true,
     },
     {
         "windwp/nvim-autopairs",

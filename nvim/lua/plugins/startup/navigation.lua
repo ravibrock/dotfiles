@@ -21,9 +21,7 @@ return {
             { "f", mode = { "n", "x", "o" }, desc = "Flit forward to" },
             { "F", mode = { "n", "x", "o" }, desc = "Flit backward to" },
         },
-        config = function()
-            require("flit").setup()
-        end,
+        config = true,
     },
     {
         "nvim-neo-tree/neo-tree.nvim",

@@ -118,15 +118,13 @@ return {
     {
         "rcarriga/nvim-dap-ui",
         dependencies = { "mfussenegger/nvim-dap" },
-        config = function()
-            require("dapui").setup()
-        end,
+        config = true,
         keys = {{
             "<leader>dd",
             function() require("dapui").toggle() end,
             mode = "n",
             desc = "Toggle DAP UI"
-        }}
+        }},
     },
     {
         "kevinhwang91/nvim-ufo",
@@ -141,9 +139,7 @@ return {
     {
         "stevearc/stickybuf.nvim",
         opts = {},
-        init = function()
-            require("stickybuf").setup()
-        end,
+        config = true,
     },
     {
         "folke/neodev.nvim",
