@@ -16,5 +16,6 @@
     shoot = push origin --delete
     surm = submodule update --remote --merge
     unstage = reset HEAD --
+    rewind = reset "HEAD^"
     prev = checkout -
     discard = checkout --
