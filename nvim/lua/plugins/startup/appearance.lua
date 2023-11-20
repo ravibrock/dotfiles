@@ -1,9 +1,12 @@
 local prefix = "plugins.opts.appearance."
 return {
     {
-        "folke/trouble.nvim",
         "echasnovski/mini.bufremove",
         "xiyaowong/nvim-cursorword",
+    },
+    {
+        "folke/trouble.nvim",
+        keys = {{ "<leader>xt", "<CMD>TroubleToggle<CR>", desc = "Trouble" }},
     },
     {
         "MaximilianLloyd/ascii.nvim",
@@ -86,9 +89,7 @@ return {
     },
     {
         "folke/twilight.nvim",
-        keys = {
-            { "<leader>i", "<CMD>Twilight<CR>", desc = "Toggle Twilight", },
-        },
+        keys = {{ "<leader>i", "<CMD>Twilight<CR>", desc = "Toggle Twilight" }},
     },
     {
         "nvim-lualine/lualine.nvim",
