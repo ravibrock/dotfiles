@@ -15,16 +15,16 @@ return {
     },
     {
         "lewis6991/hover.nvim",
-        init = function()
-            require("hover.providers.lsp")
-            require("hover.providers.gh")
-            require("hover.providers.gh_user")
-            require("hover.providers.jira")
-            require("hover.providers.man")
-            require("hover.providers.dictionary")
-        end,
         config = function()
             require("hover").setup({
+                init = function()
+                    require("hover.providers.lsp")
+                    require("hover.providers.gh")
+                    require("hover.providers.gh_user")
+                    require("hover.providers.jira")
+                    require("hover.providers.man")
+                    require("hover.providers.dictionary")
+                end,
                 preview_window = false,
                 title = true,
             })
@@ -90,7 +90,7 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
-        event = "VeryLazy",
+        lazy = true,
         config = function()
             require(prefix .. "nvim-lspconfig")
         end,
@@ -128,6 +128,7 @@ return {
     },
     {
         "kevinhwang91/nvim-ufo",
+        event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             "kevinhwang91/promise-async",
             "neovim/nvim-lspconfig",
@@ -143,7 +144,8 @@ return {
     },
     {
         "folke/neodev.nvim",
-        opts = { experimental = { pathStrict = true } },
+        event = "VeryLazy",
+        opts = {},
     },
     {
         "tpope/vim-fugitive",
@@ -221,7 +223,11 @@ return {
     },
     {
         "olimorris/persisted.nvim",
-        event = "VeryLazy",
+        cmd = { "SessionLoad", "SessionLoadLast" },
+        keys = {
+            { "<leader>qs", "<CMD>SessionLoad<CR>", desc = "Restore Session" },
+            { "<leader>ql", "<CMD>SessionLoadLast<CR>", desc = "Restore Last Session" },
+        },
         config = function()
             require("persisted").setup({
                 use_git_branch = true,
@@ -234,9 +240,5 @@ return {
             })
             require("telescope").load_extension("persisted")
         end,
-        keys = {
-            { "<leader>qs", "<CMD>SessionLoad<CR>", desc = "Restore Session" },
-            { "<leader>ql", "<CMD>SessionLoadLast<CR>", desc = "Restore Last Session" },
-        },
     },
 }

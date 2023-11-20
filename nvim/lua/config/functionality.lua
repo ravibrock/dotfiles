@@ -2,12 +2,11 @@
 vim.opt.history=100
 
 -- Filetype plugins
-vim.cmd("filetype on")
-vim.cmd("filetype plugin on")
-vim.cmd("filetype indent on")
+vim.opt.filetype = "on"
 vim.opt.autoindent = true
 vim.opt.cindent = true
 vim.opt.smartindent = true
+vim.opt.ffs = { "unix", "dos", "mac" }
 
 -- Ignore compiled files
 vim.opt.wildignore = { "*.o", "*~", "*.pyc", "*pycache*", "*/.git/*", "*/.hg/*", "*/.svn/*", "*/.DS_Store" }
@@ -17,9 +16,6 @@ vim.opt.autochdir = true
 
 -- Text encoding
 vim.opt.encoding = "utf-8"
-
--- Filetype
-vim.opt.ffs = { "unix", "dos", "mac" }
 
 -- Persistent undo
 vim.opt.undofile = true

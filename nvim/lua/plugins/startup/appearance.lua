@@ -37,6 +37,7 @@ return {
     },
     {
         "lewis6991/gitsigns.nvim",
+        event = "VeryLazy",
         config = function()
             require("gitsigns").setup({
                 signs = {
@@ -52,13 +53,16 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
+        event = "VeryLazy",
         build = ":TSUpdate",
+        version = false,
         config = function()
             require(prefix .. "nvim-treesitter").setup()
         end,
     },
     {
         "luukvbaal/statuscol.nvim",
+        event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             "kevinhwang91/nvim-ufo",
             "lewis6991/gitsigns.nvim",
@@ -88,7 +92,18 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        init = function()
+            vim.g.lualine_laststatus = vim.o.laststatus
+            if vim.fn.argc(-1) > 0 then
+                -- set an empty statusline till lualine loads
+                vim.o.statusline = " "
+            else
+                -- hide the statusline on the starter page
+                vim.o.laststatus = 0
+            end
+        end,
         config = function()
             require(prefix .. "lualine").catppuccin()
         end,
@@ -122,6 +137,7 @@ return {
     },
     {
         "romgrk/barbar.nvim",
+        event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             "lewis6991/gitsigns.nvim",
             "nvim-tree/nvim-web-devicons",

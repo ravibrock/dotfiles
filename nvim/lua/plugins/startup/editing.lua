@@ -4,8 +4,12 @@ return {
         -- "micangl/cmp-vimtex", Seems very buggy, maybe enable in future
         "tpope/vim-repeat",
         "tpope/vim-speeddating",
-        "tpope/vim-unimpaired",
         "vim-scripts/ReplaceWithRegister",
+    },
+    {
+        "tummetott/unimpaired.nvim",
+        event = "VeryLazy",
+        config = true,
     },
     {
         "glts/vim-radical",
@@ -32,6 +36,7 @@ return {
     },
     {
         "kylechui/nvim-surround",
+        event = "VeryLazy",
         config = true,
     },
     {
@@ -55,6 +60,7 @@ return {
     },
     {
         "numToStr/Comment.nvim",
+        event = { "BufReadPost", "BufNewFile" },
         config = true,
     },
     {
