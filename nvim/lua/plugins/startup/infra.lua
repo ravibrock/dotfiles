@@ -58,6 +58,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         event = "VeryLazy",
         dependencies = {
+            "folke/neodev.nvim",
             "neovim/nvim-lspconfig",
             "williamboman/mason.nvim",
         },
@@ -144,7 +145,7 @@ return {
     },
     {
         "folke/neodev.nvim",
-        event = "VeryLazy",
+        lazy = true,
         opts = {},
     },
     {

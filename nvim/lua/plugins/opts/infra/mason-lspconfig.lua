@@ -21,19 +21,7 @@ require("mason-lspconfig").setup({
             require("lspconfig")[server].setup({ capabilities = vim.lsp.protocol.make_client_capabilities() })
         end,
         ["lua_ls"] = function()
-            require("lspconfig").lua_ls.setup({
-                settings = {
-                    Lua = {
-                        diagnostics = { globals = "vim" },
-                        runtime = { version = "LuaJIT" },
-                        telemetry = { enable = false },
-                        workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true),
-                            checkThirdParty = false,
-                        },
-                    },
-                },
-            })
+            require("neodev").setup()
         end,
     },
 })
