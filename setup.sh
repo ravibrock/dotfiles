@@ -39,6 +39,7 @@ function link_in_repo {
 
 # Symlinks dotfiles into home directory
 function link_to_home {
+    ln -sf $DIR/.mostrc $HOME
     ln -sf $DIR/.sioyek.conf "$HOME/Library/Application Support/sioyek/prefs_user.config"
     ln -sf $DIR/.tmux.conf $HOME
     ln -sf $DIR/.vimrc $HOME

@@ -21,6 +21,7 @@ export DOTFILES="$CONFIG/.."
 export EDITOR="nvim -e"
 export GREP_OPTIONS='--color=auto'
 export NVIM="$DOTFILES/nvim"
+export PAGER="most"
 export PATH=$PATH":$HOME/bin"
 export PATH=$PATH:/usr/local/sbin
 export VISUAL="nvim"
