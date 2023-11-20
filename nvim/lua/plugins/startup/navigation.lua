@@ -56,8 +56,9 @@ return {
     {
        "nvim-telescope/telescope.nvim",
         dependencies = {
-            "nvim-lua/plenary.nvim",
             "debugloop/telescope-undo.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-bibtex.nvim",
         },
         cmd = "Telescope",
         version = false,

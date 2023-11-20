@@ -50,6 +50,7 @@ end
 
 local M = {}
 M.keys = {
+    -- navigation
     { "<leader>,", "<CMD>Telescope buffers show_all_buffers=true<CR>", desc = "Switch Buffer" },
     { "<leader>/", telescope_util("live_grep"), desc = "Grep (root dir)" },
     { "<leader>:", "<CMD>Telescope command_history<CR>", desc = "Command History" },
@@ -78,7 +79,9 @@ M.keys = {
     { "<leader>sR", "<CMD>Telescope resume<CR>", desc = "Resume" },
     { "<leader>sw", telescope_util("grep_string"), desc = "Word (root dir)" },
     { "<leader>sW", telescope_util("grep_string", { cwd = false }), desc = "Word (cwd)" },
+    -- misc
     { "<leader>u", function() require("telescope").extensions.undo.undo() end, desc = "Undo tree" },
+    { "<leader>bx", function() require("telescope").extensions.bibtex.bibtex() end, desc = "BibTeX" },
     {
         "<leader>ss",
         telescope_util("lsp_document_symbols", {
@@ -133,7 +136,10 @@ M.opts = {
             },
         },
     },
-    extensions = { undo = {} },
+    extensions = {
+        bibtex = { context = true, context_fallback = true },
+        undo = {},
+    },
 }
 
 return M

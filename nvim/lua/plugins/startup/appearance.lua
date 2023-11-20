@@ -9,6 +9,17 @@ return {
         keys = {{ "<leader>xt", "<CMD>TroubleToggle<CR>", desc = "Trouble" }},
     },
     {
+        "ellisonleao/carbon-now.nvim",
+        cmd = "CarbonNow",
+        opts = {
+            open_cmd = "open",
+            options = {
+                titlebar = "Ravi Brock - @ravibrock",
+                theme = "dracula pro",
+            },
+        },
+    },
+    {
         "MaximilianLloyd/ascii.nvim",
         dependencies = { "MunifTanjim/nui.nvim" },
     },
@@ -62,6 +73,15 @@ return {
         config = function()
             require(prefix .. "nvim-treesitter").setup()
         end,
+    },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 500
+        end,
+        opts = {},
     },
     {
         "luukvbaal/statuscol.nvim",
@@ -118,6 +138,7 @@ return {
                 integrations = {
                     aerial = true,
                     barbar = true,
+                    which_key = true,
                 },
             })
         end,

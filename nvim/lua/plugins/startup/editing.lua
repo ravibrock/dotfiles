@@ -59,6 +59,17 @@ return {
         config = true,
     },
     {
+        "nvim-pack/nvim-spectre",
+        dependencies = "nvim-lua/plenary.nvim",
+        command = "Spectre",
+        keys = {
+            { "<leader>ft", function() require("spectre").toggle() end, mode = "n", desc = "Toggle Spectre" },
+            { "<leader>fv", function() require("spectre").open_visual({ select_word = true }) end, mode = "n", desc = "Search current word" },
+            { "<leader>fw", function() require("spectre").open_visual() end, mode = "v", desc = "Search current word" },
+            { "<leader>fp", function() require("spectre").open_file_search({ select_word = true }) end, mode = "n", desc = "Search on current file" },
+        },
+    },
+    {
         "numToStr/Comment.nvim",
         event = { "BufReadPost", "BufNewFile" },
         config = true,
