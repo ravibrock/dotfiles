@@ -19,6 +19,9 @@ vim.cmd("highlight! link SignColumn LineNr")
 -- Configure foldcolumn characters
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep:│,foldclose:]]
 
+-- Fix line wrapping
+vim.opt.linebreak = true
+
 -- Show matching brackets
 vim.opt.showmatch = true
 vim.opt.mat = 2
