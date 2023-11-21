@@ -192,18 +192,18 @@ return {
         ft = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
         build = "npm install --no-package-lock --prefix server",
         keys = {
-            { "<leader>bb", "<CMD>Bracey<CR>" },
-            { "<leader>br", "<CMD>BraceyReload<CR>" },
-            { "<leader>bs", "<CMD>BraceyStop<CR>" },
+            { "<leader>bb", "<CMD>Bracey<CR>", desc = "Start Bracey preview" },
+            { "<leader>br", "<CMD>BraceyReload<CR>", desc = "Reload Bracey" },
+            { "<leader>bs", "<CMD>BraceyStop<CR>", desc = "Stop Bracey preview" },
         },
     },
     {
         "lervag/vimtex",
         lazy = false,
         keys = {
-            { "<leader>ll", "<CMD>VimtexCompile<CR>" },
-            { "<leader>lv", "<CMD>VimtexView<CR>" },
-            { "<leader>lc", "<CMD>VimtexClean<CR>" },
+            { "<leader>ll", "<CMD>VimtexCompile<CR>", desc = "Start TeX compilation" },
+            { "<leader>lv", "<CMD>VimtexView<CR>", desc = "View compiled TeX document" },
+            { "<leader>lc", "<CMD>VimtexClean<CR>", desc = "Clean TeX auxfiles" },
         },
         init = function()
             require(prefix .. "vimtex")

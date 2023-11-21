@@ -34,7 +34,7 @@ vim.opt.shiftwidth = 4
 vim.opt.clipboard = "unnamed"
 
 -- Configure search
-vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<backspace>")
+vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<backspace>", { silent = true, noremap = true, desc = "Clear search highlight" })
 vim.opt.gdefault = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true

@@ -90,8 +90,8 @@ return {
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
             require("luasnip").config.setup({ enable_autosnippets = true })
-            vim.keymap.set({ "i", "s" }, "<C-I>", function() require("luasnip").jump(1) end, { silent = true })
-            vim.keymap.set({ "i", "s" }, "<C-U>", function() require("luasnip").jump(-1) end, { silent = true })
+            vim.keymap.set({ "i", "s" }, "<C-I>", function() require("luasnip").jump(1) end, { silent = true, desc = "Jump forward" })
+            vim.keymap.set({ "i", "s" }, "<C-U>", function() require("luasnip").jump(-1) end, { silent = true, desc = "Jump backward" })
         end,
     },
     {

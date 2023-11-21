@@ -3,7 +3,7 @@ vim.g.vimtex_view_sioyek_options = "--new-window"
 vim.g.tex_flavor = "latex"
 vim.g.vimtex_fold_enabled = 0
 -- vim.g.vimtex_compiler_latexmk = { options = { "-shell-escape" } } -- Disable by default
-vim.keymap.set("i", "<C-x><CR>", "<plug>(vimtex-delim-close)", { silent = true })
+vim.keymap.set("i", "<C-x><CR>", "<plug>(vimtex-delim-close)", { silent = true, desc = "Close delimiter" })
 vim.opt.conceallevel = 2 -- Enable VimTeX conceal
 
 vim.api.nvim_create_autocmd("User", {
