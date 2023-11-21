@@ -1,4 +1,5 @@
--- Map leader key to space
+-- Map leader and localleader
+vim.g.maplocalleader = ";"
 vim.g.mapleader = " "
 
 -- Remap window navigation commands
