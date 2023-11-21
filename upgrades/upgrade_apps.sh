@@ -23,9 +23,6 @@ $BREW_PREFIX/bin/brew cleanup --prune=all
 # Updates tldr documentation
 $BREW_PREFIX/bin/tldr --verbose --update
 
-# Syncs nvim plugins
-$BREW_PREFIX/bin/nvim --headless "+Lazy! sync" +qa
-
 # Updates zsh plugins if needed
 cd ~/.zsh
 for folder in *; do

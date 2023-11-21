@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     spec = { import = "plugins.startup" },
+    install = { colorscheme = { "catppuccin" } },
     defaults = {
         lazy = false,
         version = false,
@@ -25,3 +26,8 @@ require("lazy").setup({
 })
 
 vim.cmd("colorscheme catppuccin")
+vim.api.nvim_create_autocmd("User", {
+    pattern = "LazyVimStarted",
+    command = "lua require('lazy').sync({ show = false })",
+    desc = "Sync plugins",
+})
