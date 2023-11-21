@@ -9,6 +9,18 @@ return {
         cmd = { "SudaWrite", "SudaRead" },
     },
     {
+        "sontungexpt/url-open",
+        event = "VeryLazy",
+        keys = {{ "<leader>lo", "<CMD>URLOpenUnderCursor<CR>", desc = "Open URL under cursor" }},
+        config = function()
+            local status_ok, url_open = pcall(require, "url-open")
+            if not status_ok then
+                return
+            end
+            url_open.setup ({})
+        end,
+    },
+    {
         "eraserhd/parinfer-rust",
         ft = { "racket" },
         build = "cargo build --release",
