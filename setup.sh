@@ -74,8 +74,8 @@ function private_files {
 
 function auto_upgrades {
     chmod +x $DOTFILES/upgrades/upgrade_apps.sh
-    cp -f $DIR/upgrades/upgrades.plist $HOME/Library/LaunchAgents/upgrades.plist
-    launchctl load $HOME/Library/LaunchAgents/upgrades.plist
+    cp -f $DIR/upgrades/upgrade.apps.plist $HOME/Library/LaunchAgents/upgrade.apps.plist
+    launchctl load $HOME/Library/LaunchAgents/upgrade.apps.plist
 }
 
 # Validates OS and runs setup
