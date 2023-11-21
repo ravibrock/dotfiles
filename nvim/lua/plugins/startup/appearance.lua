@@ -5,10 +5,6 @@ return {
         "xiyaowong/nvim-cursorword",
     },
     {
-        "folke/trouble.nvim",
-        keys = {{ "<leader>xt", "<CMD>TroubleToggle<CR>", desc = "Trouble" }},
-    },
-    {
         "ellisonleao/carbon-now.nvim",
         cmd = "CarbonNow",
         opts = {
@@ -144,17 +140,26 @@ return {
         end,
     },
     {
+        "folke/trouble.nvim",
+        keys = {
+            { "<leader>xd", function() require("trouble").toggle("document_diagnostics") end, mode = "n", desc = "Trouble document diagnostics" },
+            { "<leader>xl", function() require("trouble").toggle("loclist") end, mode = "n", desc = "Trouble loclist" },
+            { "<leader>xq", function() require("trouble").toggle("quickfix") end, mode = "n", desc = "Trouble quickfix" },
+            { "<leader>xt", function() require("trouble").toggle("todo") end, desc = "Todo" },
+            { "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end, mode = "n", desc = "Trouble workspace diagnostics" },
+            { "<leader>xx", function() require("trouble").toggle() end, mode = "n", desc = "Toggle Trouble" },
+        },
+        opts = {},
+    },
+    {
         "folke/todo-comments.nvim",
         cmd = { "TodoTrouble", "TodoTelescope" },
         event = { "BufReadPost", "BufNewFile" },
         config = true,
         keys = {
-            { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-            { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-            { "<leader>xt", "<CMD>TodoTrouble<CR>", desc = "Todo (Trouble)" },
-            { "<leader>xT", "<CMD>TodoTrouble keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme (Trouble)" },
-            { "<leader>st", "<CMD>TodoTelescope<CR>", desc = "Todo" },
-            { "<leader>sT", "<CMD>TodoTelescope keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme" },
+            { "]t", function() require("todo-comments").jump_next() end, mode = "n", desc = "Next todo comment" },
+            { "[t", function() require("todo-comments").jump_prev() end, mode = "n", desc = "Previous todo comment" },
+            { "<leader>st", "<CMD>TodoTelescope<CR>", mode = "n", desc = "Todo Telescope" },
         },
     },
     {
