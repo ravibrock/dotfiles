@@ -6,6 +6,7 @@
     br = branch
     co = checkout
     di = diff
+    rebase = rebase --committer-date-is-author-date
     dic = diff --cached
     lf = log --pretty=fuller
     lg = log -p
