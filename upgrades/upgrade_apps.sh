@@ -1,5 +1,11 @@
 #!/bin/zsh
 
+# Checks internet connection
+if ! ping -q -c1 8.8.8.8 &> /dev/null; then
+    echo "No internet found. Aborting." >&2
+    exit 1
+fi
+
 # Updates formulae and casks
 $BREW_PREFIX/bin/brew upgrade
 $BREW_PREFIX/bin/brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes
