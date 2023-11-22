@@ -48,6 +48,7 @@ function link_to_home {
     ln -sf $DIR/git/.gitconfig $HOME
     ln -sf $DIR/git/.gitignore_global $HOME
     ln -sf $DIR/.latexmkrc $HOME
+    ln -sf $DIR/.lazygit.yml "$(lazygit --print-config-dir)/config.yml"
     ln -sf $DIR/nvim $HOME/.config/
     ln -sf $DIR/zsh/.zprofile $HOME
     ln -sf $DIR/zsh/.zshenv $HOME
