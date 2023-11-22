@@ -114,11 +114,13 @@ return {
         init = function()
             vim.g.lualine_laststatus = vim.o.laststatus
             if vim.fn.argc(-1) > 0 then
-                -- set an empty statusline till lualine loads
+                -- set an empty statusline and ruler until lualine loads
                 vim.o.statusline = " "
+                vim.o.ruler = false
             else
-                -- hide the statusline on the starter page
+                -- hide the statusline and ruler on the starter page
                 vim.o.laststatus = 0
+                vim.o.ruler = false
             end
         end,
         config = function()
