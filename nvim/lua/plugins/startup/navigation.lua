@@ -38,7 +38,7 @@ return {
                 function()
                     require("neo-tree.command").execute({ toggle = true })
                 end,
-                desc = "Explorer NeoTree",
+                desc = "Toggle NeoTree explorer",
             },
         },
         init = function()
