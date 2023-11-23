@@ -29,3 +29,8 @@ setkey bob "p"
 setkey goto_mark "'"
 setkey find_file "E"
 setkey edit "v"
+
+color normal default default
+color status red default
+color underline yellow default
+color overstrike brightcyan default
