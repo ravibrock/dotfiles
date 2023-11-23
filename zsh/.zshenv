@@ -3,7 +3,10 @@ export BAT_PAGER=""
 export BAT_STYLE="plain"
 export BAT_THEME="Catppuccin-mocha"
 
-# Configures Homebrew
+#  Configures delta
+export DELTA_PAGER="less"
+
+# Configures homebrew
 export HOMEBREW_AUTOREMOVE=1
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 export HOMEBREW_NO_ANALYTICS=1

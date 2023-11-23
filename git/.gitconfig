@@ -6,16 +6,26 @@
     editor = nvim
     autocrlf = input
     whitespace = fix,blank-at-eol,blank-at-eof,tab-in-indent,-space-before-tab
+    pager = delta
 [init]
     defaultBranch = main
 [diff]
+    colorMoved = default
     algorithm = histogram
+[interactive]
+    diffFilter = delta --diff-so-fancy --syntax-theme Catppuccin-mocha --paging=auto
+[merge]
+    conflictstyle = diff3
 [push]
     default = current
 [commit]
     gpgSign = true
 [tag]
     gpgSign = true
+[delta]
+    navigate = true
+    light = false
+    side-by-side = true
 [filter "lfs"]
     required = true
     clean = git-lfs clean -- %f
