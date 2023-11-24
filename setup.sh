@@ -68,7 +68,7 @@ function private_files {
         printf "[user]\n    name = [GIT USERNAME HERE]\n    email = [GIT EMAIL HERE]\n    signingkey = [GIT GPG KEYID HERE]" > $DIR/git/.gitconfig_local
     fi
     if ! [[ -f "$DIR/zsh/.zprivate" ]]; then
-        echo export BREW_PREFIX=\"$(brew --prefix)\" > $DIR/zsh/.zprivate
+        echo export BREW_PREFIX=\"$(brew --prefix)/bin\" > $DIR/zsh/.zprivate
         echo export PRIVATE_VARIABLE=\"[PRIVATE VARIABLE HERE]\" >> $DIR/zsh/.zprivate
     fi
 }
