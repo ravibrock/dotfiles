@@ -62,6 +62,8 @@ return {
         build = ":MasonUpdate",
         config = function()
             require(prefix .. "mason")
+            -- Try running following if Mason/Node can't install:
+            -- sudo chown -R $USER:$GROUP ~/.npm
         end,
     },
     {
