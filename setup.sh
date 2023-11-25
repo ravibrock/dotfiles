@@ -68,8 +68,10 @@ function private_files {
         printf "[user]\n    name = [GIT USERNAME HERE]\n    email = [GIT EMAIL HERE]\n    signingkey = [GIT GPG KEYID HERE]" > $DIR/git/.gitconfig_local
     fi
     if ! [[ -f "$DIR/zsh/.zprivate" ]]; then
-        echo export BREW_PREFIX=\"$(brew --prefix)/bin\" > $DIR/zsh/.zprivate
-        echo export PRIVATE_VARIABLE=\"[PRIVATE VARIABLE HERE]\" >> $DIR/zsh/.zprivate
+        echo "# Homebrew config - don't change" > $DIR/zsh/.zprivate
+        brew shellenv >> $DIR/zsh/.zprivate
+        echo -e "\n# User environment variables" >> $DIR/zsh/.zprivate
+        echo 'export PRIVATE_VARIABLE="[PRIVATE VARIABLE HERE]"' >> $DIR/zsh/.zprivate
     fi
 }
 

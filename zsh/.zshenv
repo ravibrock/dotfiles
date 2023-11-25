@@ -14,7 +14,6 @@ export HOMEBREW_NO_ENV_HINTS=1
 
 # Configures pnpm/python
 export PNPM_HOME='~/Library/pnpm'
-export PATH="$PNPM_HOME:$PATH"
 export PYTHONDONTWRITEBYTECODE="TRUE"
 
 # Other environment variables
@@ -25,10 +24,16 @@ export EDITOR="nvim -e"
 export GREP_OPTIONS='--color=auto'
 export NVIM="$DOTFILES/nvim"
 export PAGER="most"
-export PATH=$PATH":$HOME/bin"
-export PATH=$PATH:/usr/local/sbin
 export VISUAL="nvim"
 
+# Sets PATH
+PATH="$PNPM_HOME:$PATH"
+PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH"
+PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:$PATH"
+PATH=$PATH":$HOME/bin"
+PATH=$PATH:/usr/local/sbin
+export PATH
+
 # Initializes other environment variables
-. $CONFIG/.zprivate
-. $HOME/.cargo/env
+source $CONFIG/.zprivate
+source $HOME/.cargo/env
