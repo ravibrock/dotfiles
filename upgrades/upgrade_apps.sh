@@ -12,14 +12,14 @@ fi
 # Updates formulae and casks
 tag_log "brew upgrade"
 brew upgrade
-tag_log "brew cu"
+tag_log "brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes"
 brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes
 
 # Updates App Store apps
 OUTDATED=$(mas outdated | awk '{print $2}')
 if [[ ! -z $OUTDATED ]]; then
     killall $(echo $OUTDATED)
-    tag_log "[mas upgrade]"
+    tag_log "mas upgrade"
     mas upgrade
 fi
 
@@ -28,22 +28,22 @@ tag_log "brew update"
 brew update
 
 # Dumps brewfile
-tag_log "brew bundle dump"
+tag_log "brew bundle dump --force --file=$DOTFILES/.brewfile"
 brew bundle dump --force --file=$DOTFILES/.brewfile
 
 # Cleans up old versions
-tag_log "brew cleanup"
+tag_log "brew cleanup --prune=all"
 brew cleanup --prune=all
 
 # Updates tldr documentation
-tag_log "tldr --update"
+tag_log "tldr --verbose --update"
 tldr --verbose --update
 
 # Updates zsh plugins if needed
 cd ~/.zsh
-tag_log "zsh plugins update"
 for folder in *; do
     cd $folder
+    tag_log "git pull ($folder)"
     git pull
     cd ..
 done
