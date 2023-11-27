@@ -17,6 +17,11 @@ vim.api.nvim_create_autocmd("User", {
     command = vim.fn.system("osascript -e 'activate application \"iTerm\"'"),
 })
 vim.api.nvim_create_autocmd("User", {
+    pattern = "VimtexEventViewReverse",
+    desc = "VimTeX: Send cursor to last column after inverse search trigger in PDF",
+    command = "lua vim.api.nvim_win_set_cursor(0, {vim.fn.line('.'), vim.fn.col('$')})",
+})
+vim.api.nvim_create_autocmd("User", {
     pattern = "VeryLazy",
     desc = "VimTeX: Reload to fix symlink behavior",
     command = "silent! VimtexReload",
