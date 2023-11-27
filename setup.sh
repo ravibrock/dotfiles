@@ -6,10 +6,11 @@ pushd "$(dirname "$(readlink -f "$BASH_SOURCE")")" > /dev/null && {
     popd > /dev/null
 }
 
-# Installs homebrew and packages
-function install_brew {
+# Installs homebrew and tex packages
+function install_packages {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew bundle --file=$DIR/.brewfile
+    tlmgr install scheme-full
 }
 
 function bat_theme {
@@ -84,7 +85,7 @@ function auto_upgrades {
 # Validates OS and runs setup
 if [[ "$OSTYPE" == "darwin"* ]]; then
     touch ~/.hushlogin
-    install_brew
+    install_packages
     link_in_repo
     link_to_home
     private_files
