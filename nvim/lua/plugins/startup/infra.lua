@@ -2,7 +2,10 @@ local prefix = "plugins.opts.infra."
 return {
     {
         "farmergreg/vim-lastplace",
+    },
+    {
         "jghauser/mkdir.nvim",
+        event = "BufWritePre",
     },
     {
         "lambdalisue/suda.vim",
@@ -152,8 +155,8 @@ return {
     },
     {
         "stevearc/stickybuf.nvim",
+        event = "VeryLazy",
         opts = {},
-        config = true,
     },
     {
         "folke/neodev.nvim",

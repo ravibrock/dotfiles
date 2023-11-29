@@ -3,8 +3,14 @@ return {
     {
         -- "micangl/cmp-vimtex", Seems very buggy, maybe enable in future
         "tpope/vim-repeat",
+    },
+    {
         "tpope/vim-speeddating",
+        event = "VeryLazy",
+    },
+    {
         "vim-scripts/ReplaceWithRegister",
+        event = "VeryLazy",
     },
     {
         "tummetott/unimpaired.nvim",
@@ -13,6 +19,7 @@ return {
     },
     {
         "glts/vim-radical",
+        event = "VeryLazy",
         dependencies = { "glts/vim-magnum" },
     },
     {
@@ -21,9 +28,7 @@ return {
     },
     {
         "ku1ik/vim-pasta",
-        config = function()
-            vim.g.pasta_enabled_filetypes = { "markdown", "python", "yaml" }
-        end,
+        event = "VeryLazy",
     },
     {
         "godlygeek/tabular",

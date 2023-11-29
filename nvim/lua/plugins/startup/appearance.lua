@@ -1,8 +1,8 @@
 local prefix = "plugins.opts.appearance."
 return {
     {
-        "echasnovski/mini.bufremove",
         "xiyaowong/nvim-cursorword",
+        event = "VeryLazy",
     },
     {
         "ellisonleao/carbon-now.nvim",
