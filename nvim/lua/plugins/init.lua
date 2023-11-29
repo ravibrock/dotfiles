@@ -21,14 +21,9 @@ require("lazy").setup({
     },
     change_detection = { notify = false },
     checker = {
-        enabled = true,
+        enabled = false,
         notify = false,
     },
 })
 
 vim.cmd("colorscheme catppuccin")
-vim.api.nvim_create_autocmd("User", {
-    pattern = "LazyVimStarted",
-    command = "lua require('lazy').sync({ show = false })",
-    desc = "Sync plugins",
-})

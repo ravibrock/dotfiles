@@ -39,6 +39,11 @@ brew cleanup --prune=all
 tag_log "tldr --verbose --update"
 tldr --verbose --update
 
+# Updates nvim plugins
+tag_log 'nvim --headless "+Lazy! sync" +qa'
+nvim --headless "+Lazy! sync" +qa
+echo "" | tee /dev/stderr # Nvim doesn't add newline by default
+
 # Updates zsh plugins if needed
 cd ~/.zsh
 for folder in *; do
