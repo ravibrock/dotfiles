@@ -1,3 +1,8 @@
+color normal default default
+color status black lightgray
+color underline yellow default
+color overstrike brightcyan default
+
 unsetkey "^K"
 setkey up "^K"
 
@@ -10,6 +15,8 @@ setkey toggle_case ":c"
 setkey delete_file ":d"
 setkey exit ":q"
 
+unsetkey "g"
+unsetkey "G"
 setkey down "e"
 setkey down "E"
 setkey down "j"
@@ -25,12 +32,8 @@ setkey page_up "^B"
 setkey other_window "z"
 setkey other_window "w"
 setkey search_backward "?"
-setkey bob "p"
 setkey goto_mark "'"
 setkey find_file "E"
 setkey edit "v"
-
-color normal default default
-color status red default
-color underline yellow default
-color overstrike brightcyan default
+setkey bob "g"
+setkey eob "G"

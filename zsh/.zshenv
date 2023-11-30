@@ -1,10 +1,10 @@
-# Configures bat
+# Configures bat and pagers
 export BAT_PAGER=""
 export BAT_STYLE="plain"
 export BAT_THEME="Catppuccin-mocha"
-
-#  Configures delta
 export DELTA_PAGER="less"
+export MANPAGER="most"
+export PAGER="less"
 
 # Configures homebrew
 export HOMEBREW_AUTOREMOVE=1
@@ -23,7 +23,6 @@ export DOTFILES="$CONFIG/.."
 export EDITOR="nvim -e"
 export GREP_OPTIONS='--color=auto'
 export NVIM="$DOTFILES/nvim"
-export PAGER="most"
 export VISUAL="nvim"
 
 # Sets PATH
