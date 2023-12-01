@@ -179,10 +179,6 @@ return {
     {
         "goolord/alpha-nvim",
         event = "VimEnter",
-        dependencies = {
-            "MaximilianLloyd/ascii.nvim",
-            "MunifTanjim/nui.nvim",
-        },
         opts = function()
             return require(prefix .. "alpha-nvim").opts()
         end,
