@@ -138,6 +138,7 @@ M.opts = {
     },
     extensions = {
         bibtex = { context = true, context_fallback = true },
+        fzf = {},
         undo = {},
     },
 }

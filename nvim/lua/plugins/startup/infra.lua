@@ -214,6 +214,11 @@ return {
         end,
     },
     {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        lazy = true,
+        build = "make",
+    },
+    {
         "olimorris/persisted.nvim",
         cmd = { "SessionLoad", "SessionLoadLast" },
         keys = {

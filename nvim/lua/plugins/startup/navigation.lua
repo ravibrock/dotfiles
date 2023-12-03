@@ -59,6 +59,7 @@ return {
             "debugloop/telescope-undo.nvim",
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope-bibtex.nvim",
+            "nvim-telescope/telescope-fzf-native.nvim",
         },
         cmd = "Telescope",
         version = false,
