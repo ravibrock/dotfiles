@@ -1,7 +1,7 @@
 -- Configure terminal title
 vim.opt.title = true
 vim.opt.titlestring = "%F %r %m"
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 
 -- Configure line numbers
 vim.opt.number = true

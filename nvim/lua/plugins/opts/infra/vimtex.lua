@@ -9,7 +9,7 @@ vim.opt.conceallevel = 2 -- Enable VimTeX conceal
 vim.api.nvim_create_autocmd("User", {
     pattern = "VimtexEventQuit",
     desc = "VimTeX: Clean up auxiliary files on exit",
-    command = "VimtexClean"
+    command = "VimtexClean",
 })
 vim.api.nvim_create_autocmd("User", {
     pattern = "VimtexEventViewReverse",
@@ -29,5 +29,5 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd("InsertLeave", {
     pattern = "*.tex, *.bib",
     desc = "VimTeX: Auto replace double quotes in current line with `` and ''",
-    command = 'silent! s/\\"\\([^\\"]*\\)\\"/\\`\\`\\1\'\'/'
+    command = 'silent! s/\\"\\([^\\"]*\\)\\"/\\`\\`\\1\'\'/',
 })

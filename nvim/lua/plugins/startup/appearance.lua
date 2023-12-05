@@ -138,6 +138,11 @@ return {
         end,
     },
     {
+        "nvim-zh/colorful-winsep.nvim",
+        event = "WinNew",
+        config = true,
+    },
+    {
         "folke/trouble.nvim",
         keys = {
             { "<leader>xd", function() require("trouble").toggle("document_diagnostics") end, mode = "n", desc = "Trouble document diagnostics" },

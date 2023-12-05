@@ -36,8 +36,8 @@ tag_log "brew cleanup --prune=all"
 brew cleanup --prune=all
 
 # Updates tldr documentation
-tag_log "tldr --verbose --update"
-tldr --verbose --update
+tag_log "tldr --update"
+tldr --update
 
 # Updates nvim plugins
 tag_log 'nvim --headless "+Lazy! sync" +qa'
