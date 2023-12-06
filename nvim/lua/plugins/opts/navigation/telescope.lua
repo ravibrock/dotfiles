@@ -54,11 +54,11 @@ M.keys = {
     { "<leader>,", "<CMD>Telescope buffers show_all_buffers=true<CR>", desc = "Switch Buffer" },
     { "<leader>/", telescope_util("live_grep"), desc = "Grep (root dir)" },
     { "<leader>:", "<CMD>Telescope command_history<CR>", desc = "Command History" },
-    { "<leader><space>", telescope_util("files"), desc = "Find Files (root dir)" },
+    { "<leader><space>", telescope_util("files"), desc = "Find files (root dir)" },
     -- find
     { "<leader>fb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
-    { "<leader>ff", telescope_util("files"), desc = "Find Files (root dir)" },
-    { "<leader>fF", telescope_util("files", { cwd = false }), desc = "Find Files (cwd)" },
+    { "<leader>ff", telescope_util("files"), desc = "Find files (root dir)" },
+    { "<leader>fF", telescope_util("files", { cwd = false }), desc = "Find files (cwd)" },
     { "<leader>fr", "<CMD>Telescope oldfiles<CR>", desc = "Recent" },
     { "<leader>fR", telescope_util("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
     -- search

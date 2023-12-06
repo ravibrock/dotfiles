@@ -17,6 +17,9 @@ vim.keymap.set({"i", "c"}, "<C-l>", "<Right>", { noremap = true, desc = "Move cu
 -- Spellcheck with <C-m> in insert mode
 vim.keymap.set("i", "<C-m>", "<C-g>u<Esc>[s1z=`]a<C-g>u<Left>", { noremap = true, desc = "Fix last typo" })
 
+-- Clear search results with <CR> in normal mode
+vim.keymap.set("n", "<CR>", "<CMD>nohlsearch<CR><CMD>echon ''<CR>", { noremap = true, desc = "Clear search results" })
+
 -- Go to beginning of line when hitting { or } in normal mode
 vim.keymap.set("n", "{", "{0", { noremap = true, desc = "Go to last newline" })
 vim.keymap.set("n", "}", "}0", { noremap = true, desc = "Go to next newline" })

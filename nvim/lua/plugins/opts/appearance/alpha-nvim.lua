@@ -36,7 +36,7 @@ all.opts = function()
     return dashboard
 end
 all.config = function(_, dashboard)
-    if vim.o.filetype == "lazy" then
+    if vim.opt.filetype == "lazy" then
         vim.cmd.close()
         vim.api.nvim_create_autocmd("User", {
             pattern = "AlphaReady",
