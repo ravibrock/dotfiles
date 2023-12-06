@@ -1,5 +1,5 @@
 # Homebrew
-alias bbd="brew bundle dump --force --file=$DOTFILES/.brewfile"
+alias bbd="brew bundle dump --force --file="$DOTFILES/.brewfile""
 alias bc="brew cleanup --prune=all"
 alias bca="brew cleanup --prune=all && find "$(brew --prefix)/Caskroom" -type f '(' -name '*.dmg' -or -name '*.pkg' ')' -delete"
 alias bcc="brew upgrade && bc"

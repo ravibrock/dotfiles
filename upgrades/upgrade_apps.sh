@@ -16,9 +16,9 @@ tag_log "brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes"
 brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes
 
 # Updates App Store apps
-OUTDATED=$(mas outdated | awk '{print $2}')
-if [[ ! -z $OUTDATED ]]; then
-    killall $(echo $OUTDATED)
+OUTDATED="$(mas outdated | awk '{print $2}')"
+if [[ ! -z "$OUTDATED" ]]; then
+    killall "$(echo "$OUTDATED")"
     tag_log "mas upgrade"
     mas upgrade
 fi
@@ -28,8 +28,8 @@ tag_log "brew update"
 brew update
 
 # Dumps brewfile
-tag_log "brew bundle dump --force --file=$DOTFILES/.brewfile"
-brew bundle dump --force --file=$DOTFILES/.brewfile
+tag_log 'brew bundle dump --force --file="$DOTFILES/.brewfile"'
+brew bundle dump --force --file="$DOTFILES/.brewfile"
 
 # Cleans up old versions
 tag_log "brew cleanup --prune=all"

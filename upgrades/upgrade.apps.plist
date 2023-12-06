@@ -17,7 +17,7 @@
         <array>
             <string>/bin/zsh</string>
             <string>-c</string>
-            <string>$DOTFILES/upgrades/upgrade_apps.sh</string>
+            <string>"$DOTFILES/upgrades/upgrade_apps.sh"</string>
         </array>
 
         <key>StandardErrorPath</key>
