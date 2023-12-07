@@ -35,4 +35,3 @@ export PATH
 
 # Initializes other environment variables
 source $CONFIG/.zprivate
-source $HOME/.cargo/env
