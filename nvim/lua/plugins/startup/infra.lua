@@ -203,11 +203,12 @@ return {
     },
     {
         "lervag/vimtex",
-        lazy = false,
+        ft = { "tex" },
+        cmd = { "VimtexClean", "VimtexCompile", "VimtexInverseSearch", "VimtexView" },
         keys = {
+            { "<leader>lc", "<CMD>VimtexClean<CR>", desc = "Clean TeX auxfiles" },
             { "<leader>ll", "<CMD>VimtexCompile<CR>", desc = "Start TeX compilation" },
             { "<leader>lv", "<CMD>VimtexView<CR>", desc = "View compiled TeX document" },
-            { "<leader>lc", "<CMD>VimtexClean<CR>", desc = "Clean TeX auxfiles" },
         },
         init = function()
             require(prefix .. "vimtex")
