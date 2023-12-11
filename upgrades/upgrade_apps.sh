@@ -41,8 +41,12 @@ tldr --update
 
 # Updates nvim plugins
 tag_log 'nvim --headless "+Lazy! sync" +qa'
-nvim --headless "+Lazy! sync" +qa
-echo "" | tee /dev/stderr # Nvim doesn't add newline by default
+{ # Fix newlines in output
+    IFS=$'\n' read -r -d '' CAPTURED_STDERR;
+    IFS=$'\n' read -r -d '' CAPTURED_STDOUT;
+} < <((printf '\0%s\0' "$(nvim --headless "+Lazy! sync" +qa)" 1>&2) 2>&1)
+if [[ -n "${CAPTURED_STDOUT}" && -n "${CAPTURED_STDOUT//[:space:]/}" ]] printf "$CAPTURED_STDOUT\n"
+if [[ -n "${CAPTURED_STDERR}" && -n "${CAPTURED_STDERR//[:space:]/}" ]] printf "$CAPTURED_STDERR\n" >&2
 
 # Updates zsh plugins if needed
 cd ~/.zsh
