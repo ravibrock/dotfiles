@@ -2,7 +2,7 @@
 Dotfiles that I've spent time configuring.
 
 ## Setup
-Clone the repo (or download the .zip if git isn't installed yet), move it to wherever it should live, `cd` into it, and then run `zsh setup.sh`.
+First, `cd` into the folder you want the dotfiles repo to live in. Then, run `/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/ravibrock/dotfiles/main/BOOTSTRAP.sh)"` and follow the prompts.
 
 ### Git
 Add personal credentials to `git/.gitconfig_local`.

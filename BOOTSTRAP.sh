@@ -1,24 +1,41 @@
 #!/bin/zsh
 
-# Sets current path
-pushd "$(dirname "$(readlink -f "$BASH_SOURCE")")" > /dev/null
-DIR="$PWD"
-popd > /dev/null
+# Makes sure user is ready for installation
+function confirm {
+    printf "Have you backed up any existing config files you want to keep? [y/n]\n> " && read -r ANSWER
+    if [[ "$ANSWER" != "y" ]]; then
+        echo "Aborting installation."
+        exit 1
+    fi
+    printf "Are you in the directory you want the dotfiles repo to live in? [y/n]\n> " && read -r ANSWER
+    if [[ "$ANSWER" != "y" ]]; then
+        echo "Aborting installation."
+        exit 1
+    fi
+    printf "Are you ready to start the installation? It will likely take over an hour. [y/n]\n> " && read -r ANSWER
+    if [[ "$ANSWER" != "y" ]]; then
+        echo "Aborting installation."
+        exit 1
+    fi
+    echo "Starting installation. You'll likely be prompted for your password."
+}
+
+# Sets up from scratch
+function bootstrap {
+    if ! [[ -v HOMEBREW_PREFIX ]] /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install -q git
+    if ! [[ -d dotfiles ]] git clone https://github.com/ravibrock/dotfiles
+    cd "dotfiles"
+    pushd "$(dirname "$(readlink -f "$BASH_SOURCE")")" > /dev/null
+    DIR="$PWD"
+    popd > /dev/null
+    cd "$DIR"
+}
 
 # Installs homebrew and tex packages
 function install_packages {
-    if [[ -v $HOMEBREW_PREFIX ]] /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew bundle --file="$DIR/.brewfile"
     tlmgr install scheme-full
-}
-
-function bat_theme {
-    git clone https://github.com/catppuccin/bat /tmp/bat
-    cd /tmp/bat
-    mkdir -p "$(bat --config-dir)/themes"
-    cp -f *.tmTheme "$(bat --config-dir)/themes"
-    bat cache --build
-    cd "$DIR"
 }
 
 # Symlinks within repo for easy editing of hidden files
@@ -55,6 +72,15 @@ function link_to_home {
     ln -sf "$DIR/zsh/.zshrc" "$HOME"
 }
 
+function bat_theme {
+    git clone https://github.com/catppuccin/bat /tmp/bat
+    cd /tmp/bat
+    mkdir -p "$(bat --config-dir)/themes"
+    cp -f *.tmTheme "$(bat --config-dir)/themes"
+    bat cache --build
+    cd "$DIR"
+}
+
 function zsh_plugins {
     rm -rf ~/.zsh
     mkdir -p ~/.zsh
@@ -77,19 +103,27 @@ function private_files {
 }
 
 function auto_upgrades {
-    chmod +x "$DOTFILES/upgrades/upgrade_apps.sh"
-    launchctl load -w "$DOTFILES/upgrades/upgrade.apps.plist" &> /dev/null
+    chmod +x "$DIR/upgrades/upgrade_apps.sh"
+    launchctl load -w "$DIR/upgrades/upgrade.apps.plist" &> /dev/null
+}
+
+function wrap_up {
+    touch "$HOME/.hushlogin"
+    echo 'Installation complete! Switch from Terminal to iTerm2 and add credentials to `git/.gitconfig_local` and `zsh/.zprivate`.'
 }
 
 # Validates OS and runs setup
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    touch ~/.hushlogin
+    confirm
+    bootstrap
     install_packages
     link_in_repo
     link_to_home
-    private_files
-    zsh_plugins
     bat_theme
+    zsh_plugins
+    private_files
+    auto_upgrades
+    wrap_up
 else
     echo "Unsupported OS. Must be on MacOS."
 fi
