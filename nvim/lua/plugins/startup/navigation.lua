@@ -5,6 +5,14 @@ return {
         event = "VeryLazy",
     },
     {
+        "chrisgrieser/nvim-spider",
+        keys = {
+            { "b", mode = { "n", "o", "v", "x" }, function() require("spider").motion("b") end, desc = "Spider: b" },
+            { "e", mode = { "n", "o", "v", "x" }, function() require("spider").motion("e") end, desc = "Spider: e" },
+            { "w", mode = { "n", "o", "v", "x" }, function() require("spider").motion("w") end, desc = "Spider: w" },
+        },
+    },
+    {
         "ggandor/leap.nvim",
         keys = {
             { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },

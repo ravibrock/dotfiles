@@ -8,6 +8,31 @@ return {
         event = "BufWritePre",
     },
     {
+        "is0n/jaq-nvim",
+        cmd = "Jaq",
+        keys = {
+            { "<leader>jb", "<CMD>Jaq bang<CR>", desc = "Jaq small popop" },
+            { "<leader>ji", "<CMD>Jaq internal<CR>", desc = "Jaq internal" },
+            { "<leader>jj", "<CMD>Jaq<CR>", desc = "Jaq" },
+        },
+        config = function()
+            require("jaq-nvim").setup({
+                cmds = {
+                    internal = {
+                        lua = "luafile %",
+                        vim = "source %",
+                    },
+                    external = {
+                        bash     = "bash %",
+                        markdown = "glow %",
+                        python   = "python3 %",
+                        zsh      = "zsh %",
+                    },
+                },
+            })
+        end,
+    },
+    {
         "lambdalisue/suda.vim",
         cmd = { "SudaWrite", "SudaRead" },
     },
@@ -213,6 +238,7 @@ return {
             { "<leader>lc", "<CMD>VimtexClean<CR>", desc = "Clean TeX auxfiles" },
             { "<leader>ll", "<CMD>VimtexCompile<CR>", desc = "Start TeX compilation" },
             { "<leader>lv", "<CMD>VimtexView<CR>", desc = "View compiled TeX document" },
+            { "<leader>lw", "<CMD>VimtexCountWords<CR>", desc = "Count words in TeX file" },
         },
         init = function()
             require(prefix .. "vimtex")
