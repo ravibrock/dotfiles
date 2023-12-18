@@ -18,6 +18,7 @@ return {
         config = function()
             local status_ok, url_open = pcall(require, "url-open")
             if not status_ok then return end
+            ---@diagnostic disable-next-line: missing-parameter
             url_open.setup()
         end,
     },
@@ -46,6 +47,7 @@ return {
             {
                 "K",
                 function()
+                    ---@diagnostic disable-next-line: missing-parameter
                     require("hover").hover()
                 end,
                 desc = "Hover",
@@ -53,6 +55,7 @@ return {
             {
                 "gK",
                 function()
+                    ---@diagnostic disable-next-line: missing-parameter
                     require("hover").hover_select()
                 end,
                 desc = "Hover (select)",
@@ -107,6 +110,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         lazy = true,
+        dependencies = { "chrisgrieser/nvim-rulebook" },
         config = function()
             require(prefix .. "nvim-lspconfig")
         end,

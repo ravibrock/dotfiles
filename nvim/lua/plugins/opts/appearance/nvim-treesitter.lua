@@ -1,6 +1,7 @@
 local options = {}
 function options.setup()
     local treesitter = require("nvim-treesitter.configs")
+    ---@diagnostic disable-next-line: missing-fields
     treesitter.setup({
         ensure_installed = {
             "bash",

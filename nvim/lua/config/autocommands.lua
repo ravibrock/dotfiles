@@ -15,6 +15,7 @@ function FollowSymlink()
         return
     end
     vim.cmd("file " .. real_file)
+    ---@diagnostic disable-next-line: param-type-mismatch
     vim.cmd("echohl WarningMsg | echomsg 'Resolved symlink " .. file:gsub(os.getenv("HOME"), "~") .. " ——⟶ " .. real_file:gsub(os.getenv("HOME"), "~") .. "' | echohl None")
     vim.cmd("silent! w!")  -- Workaround for "file exists" error on write
 end
