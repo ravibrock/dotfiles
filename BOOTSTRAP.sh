@@ -56,11 +56,13 @@ function link_in_repo {
 
 # Symlinks dotfiles into home directory
 function link_to_home {
+    mkdir -p "$HOME/.vim/spell"
     ln -sf "$DIR/.mostrc" "$HOME"
     ln -sf "$DIR/.sioyek.conf" "$HOME/Library/Application Support/sioyek/prefs_user.config"
     ln -sf "$DIR/.tmux.conf" "$HOME"
     ln -sf "$DIR/.vimrc" "$HOME"
     ln -sf "$DIR/.vimrc" "$HOME/.ideavimrc"
+    ln -sf "$DIR/nvim/spellfile.txt" "$HOME/.vim/spell/spellfile.utf-8.add"
     ln -sf "$DIR/git/.gitalias" "$HOME"
     ln -sf "$DIR/git/.gitconfig" "$HOME"
     ln -sf "$DIR/git/.gitignore_global" "$HOME"
