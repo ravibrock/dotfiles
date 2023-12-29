@@ -69,7 +69,7 @@ local options = {
     sources = cmp.config.sources({
         { name = "copilot" },
         { name = "luasnip", option = { show_autosnippets = true } },
-        -- { name = "vimtex" }, Seems very buggy, maybe enable in future
+        { name = "vimtex" },
         { name = "nvim_lsp" },
         { name = "async_path" },
         { name = "buffer" },

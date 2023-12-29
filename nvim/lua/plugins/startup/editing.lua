@@ -5,8 +5,20 @@ return {
         event = "VeryLazy",
     },
     {
-        "vim-scripts/ReplaceWithRegister",
-        event = "VeryLazy",
+        "gbprod/substitute.nvim",
+        config = {
+            highlight_substituted_text = { enabled = false },
+        },
+        keys = {
+            { "gr", function() require("substitute").operator() end, mode = "n", desc = "Replace operator" },
+            { "gR", function() require("substitute").eol() end, mode = "n", desc = "Replace until EOL" },
+            { "grr", function() require("substitute").line() end, mode = "n", desc = "Replace line" },
+            { "gr", function() require("substitute").visual() end, mode = "x", desc = "Replace selection" },
+            { "gs", function() require("substitute.exchange").operator() end, mode = "n", desc = "Exchange operator" },
+            { "gss", function() require("substitute.exchange").line() end, mode = "n", desc = "Exchange line" },
+            { "gs", function() require("substitute.exchange").visual() end, mode = "x", desc = "Exchange selection" },
+            { "<ESC>", function() require("substitute.exchange").cancel() end, mode = "n", desc = "Cancel exchange" },
+        },
     },
     {
         "tummetott/unimpaired.nvim",
