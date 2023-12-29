@@ -101,7 +101,7 @@ M.keys = {
                 "Property",
             },
         }),
-        desc = "Goto Symbol",
+        desc = "Go to Symbol",
     },
     {
         "<leader>sS",
@@ -119,7 +119,7 @@ M.keys = {
                 "Property",
             },
         }),
-        desc = "Goto Symbol (Workspace)",
+        desc = "Go to Symbol (Workspace)",
     },
 }
 
@@ -142,6 +142,7 @@ M.opts = {
     extensions = {
         bibtex = { context = true, context_fallback = true },
         fzf = {},
+        persisted = {},
         undo = {},
     },
 }

@@ -30,7 +30,7 @@ local kind_icons = {
 
 local options = {
     formatting = {
-        fields = {"menu", "abbr", "kind"},
+        fields = { "menu", "abbr", "kind" },
         format = function(entry, vim_item)
             vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
             vim_item.menu = ({

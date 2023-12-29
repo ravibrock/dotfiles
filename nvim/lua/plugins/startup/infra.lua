@@ -2,6 +2,7 @@ local prefix = "plugins.opts.infra."
 return {
     {
         "farmergreg/vim-lastplace",
+        "tpope/vim-repeat",
     },
     {
         "jghauser/mkdir.nvim",
@@ -11,26 +12,24 @@ return {
         "is0n/jaq-nvim",
         cmd = "Jaq",
         keys = {
-            { "<leader>jb", "<CMD>Jaq bang<CR>", desc = "Jaq small popop" },
+            { "<leader>jb", "<CMD>Jaq bang<CR>", desc = "Jaq small popup" },
             { "<leader>ji", "<CMD>Jaq internal<CR>", desc = "Jaq internal" },
             { "<leader>jj", "<CMD>Jaq<CR>", desc = "Jaq" },
         },
-        config = function()
-            require("jaq-nvim").setup({
-                cmds = {
-                    internal = {
-                        lua = "luafile %",
-                        vim = "source %",
-                    },
-                    external = {
-                        bash     = "bash %",
-                        markdown = "glow %",
-                        python   = "python3 %",
-                        zsh      = "zsh %",
-                    },
+        config = {
+            cmds = {
+                internal = {
+                    lua = "luafile %",
+                    vim = "source %",
                 },
-            })
-        end,
+                external = {
+                    bash     = "bash %",
+                    markdown = "glow %",
+                    python   = "python3 %",
+                    zsh      = "zsh %",
+                },
+            },
+        },
     },
     {
         "lambdalisue/suda.vim",
@@ -54,20 +53,18 @@ return {
     },
     {
         "lewis6991/hover.nvim",
-        config = function()
-            require("hover").setup({
-                init = function()
-                    require("hover.providers.lsp")
-                    require("hover.providers.gh")
-                    require("hover.providers.gh_user")
-                    require("hover.providers.jira")
-                    require("hover.providers.man")
-                    require("hover.providers.dictionary")
-                end,
-                preview_window = false,
-                title = true,
-            })
-        end,
+        config = {
+            init = function()
+                require("hover.providers.lsp")
+                require("hover.providers.gh")
+                require("hover.providers.gh_user")
+                require("hover.providers.jira")
+                require("hover.providers.man")
+                require("hover.providers.dictionary")
+            end,
+            preview_window = false,
+            title = true,
+        },
         keys = {
             {
                 "K",
@@ -256,17 +253,14 @@ return {
             { "<leader>qs", "<CMD>SessionLoad<CR>", desc = "Restore Session" },
             { "<leader>ql", "<CMD>SessionLoadLast<CR>", desc = "Restore Last Session" },
         },
-        config = function()
-            require("persisted").setup({
-                use_git_branch = true,
-                should_autosave = function()
-                    if vim.bo.filetype == "alpha" then
-                        return false
-                    end
-                    return true
-                end,
-            })
-            require("telescope").load_extension("persisted")
-        end,
+        config = {
+            use_git_branch = true,
+            should_autosave = function()
+                if vim.bo.filetype == "alpha" then
+                    return false
+                end
+                return true
+            end,
+        },
     },
 }

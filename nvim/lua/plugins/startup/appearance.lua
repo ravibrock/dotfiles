@@ -44,18 +44,16 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
-        config = function()
-            require("gitsigns").setup({
-                signs = {
-                    add          = { text = "│" },
-                    change       = { text = "│" },
-                    delete       = { text = "_" },
-                    topdelete    = { text = "‾" },
-                    changedelete = { text = "~" },
-                    untracked    = { text = "┆" },
-                },
-            })
-        end,
+        config = {
+            signs = {
+                add          = { text = "│" },
+                change       = { text = "│" },
+                delete       = { text = "_" },
+                topdelete    = { text = "‾" },
+                changedelete = { text = "~" },
+                untracked    = { text = "┆" },
+            },
+        },
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -63,7 +61,7 @@ return {
         build = ":TSUpdate",
         version = false,
         config = function()
-            require(prefix .. "nvim-treesitter").setup()
+            require(prefix .. "nvim-treesitter")
         end,
     },
     {
@@ -127,15 +125,13 @@ return {
         "catppuccin/nvim",
         lazy = true,
         name = "catppuccin",
-        config = function()
-            require("catppuccin").setup({
-                integrations = {
-                    aerial = true,
-                    barbar = true,
-                    which_key = true,
-                },
-            })
-        end,
+        config = {
+            integrations = {
+                aerial = true,
+                barbar = true,
+                which_key = true,
+            },
+        },
     },
     {
         "nvim-zh/colorful-winsep.nvim",

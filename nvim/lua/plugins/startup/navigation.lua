@@ -85,9 +85,10 @@ return {
         opts = { filter_kind = false },
         cmd = { "AerialToggle" },
         keys = {{ "<leader>a", "<CMD>AerialToggle<CR>", desc = "Aerial" }},
-        config = function()
-            require("aerial").setup({ backends = { "lsp", "treesitter" } })
-        end,
+        config = {
+            backends = { "treesitter", "lsp", "markdown", "man" },
+            layout = { min_width = 30 },
+        },
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons",
