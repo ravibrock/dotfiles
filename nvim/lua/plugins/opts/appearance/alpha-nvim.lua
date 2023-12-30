@@ -1,19 +1,7 @@
 local all = {}
 all.opts = function()
     local dashboard = require("alpha.themes.dashboard")
-    local santa = [[                                                        *
-     *                                                          *
-                                  *                  *        .--.
-      \/ \/  \/  \/                                        ./   /=*
-        \/     \/      *            *                ...  (_____)
-         \ ^ ^/                                       \ \_((^o^))-.     *
-         (o)(O)--)--------\.              N V I M      \   (   ) \  \._.
-         |    |  ||================((~~~~~~~~~~~~~~~~~))|   ( )   |     \
-          \__/             ,|        \. * * * * * * ./  (~~~~~~~~~~~)    \
-   *        ||^||\.____./|| |          \___________/     ~||~~~~|~'\____/ *
-            || ||     || || A            ||    ||          ||    |
-     *      <> <>     <> <>          (___||____||_____)   ((~~~~~|   *]]
-    dashboard.section.header.val = vim.split(santa, "\n")
+    dashboard.section.header.val = require("ascii").art.text.neovim.dos_rebel
     dashboard.section.buttons.val = {
         dashboard.button("n", " " .. " New file", "<CMD>ene <BAR> startinsert<CR>"),
         dashboard.button("r", " " .. " Recent files", "<CMD>Telescope oldfiles<CR>"),
