@@ -5,6 +5,9 @@
         <key>Label</key>
         <string>upgrade.apps.plist</string>
 
+        <key>RunAtLoad</key>
+        <true/>
+
         <key>StartCalendarInterval</key>
         <dict>
             <key>Hour</key>
