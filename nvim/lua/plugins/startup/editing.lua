@@ -5,6 +5,11 @@ return {
         event = "VeryLazy",
     },
     {
+        "max397574/colortils.nvim",
+        cmd = "Colortils",
+        config = true,
+    },
+    {
         "gbprod/substitute.nvim",
         config = {
             highlight_substituted_text = { enabled = false },

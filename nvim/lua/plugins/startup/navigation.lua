@@ -81,6 +81,11 @@ return {
         end,
     },
     {
+        "nacro90/numb.nvim",
+        event = "VeryLazy",
+        config = true,
+    },
+    {
         "stevearc/aerial.nvim",
         opts = { filter_kind = false },
         cmd = { "AerialToggle" },

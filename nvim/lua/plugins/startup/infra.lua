@@ -5,6 +5,12 @@ return {
         "tpope/vim-repeat",
     },
     {
+        "akinsho/git-conflict.nvim",
+        event = "VeryLazy",
+        version = "*",
+        config = true,
+    },
+    {
         "jghauser/mkdir.nvim",
         event = "BufWritePre",
     },
@@ -196,7 +202,7 @@ return {
         config = function()
             local function forcepush()
                 local choice = vim.fn.input("Force push? [Y/n] ")
-                vim.cmd[[normal! :<C-u>]]
+                vim.cmd("normal! :<CR>")
                 if choice == "Y" then
                     vim.cmd("Git push --force-with-lease")
                 else

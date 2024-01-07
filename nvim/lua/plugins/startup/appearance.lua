@@ -5,6 +5,29 @@ return {
         event = "VeryLazy",
     },
     {
+        "pocco81/high-str.nvim",
+        keys = {
+            { "<leader>hh", ":<C-U>HSHighlight 1<CR><CMD>echo ''<CR>", mode = "v", desc = "Highlight string" },
+            { "<leader>hr", ":<C-U>HSRmHighlight<CR><CMD>echo ''<CR>", mode = "v", desc = "Remove highlight" },
+            { "<leader>hl", "<CMD>HSRmHighlight true<CR>", mode = { "n", "v" }, desc = "Remove all highlights" },
+        },
+    },
+    {
+        "NvChad/nvim-colorizer.lua",
+        event = "VeryLazy",
+        config = function()
+            require("colorizer").setup({
+                user_default_options = {
+                    mode = "foreground",
+                    names = false,
+                },
+            })
+            -- Doesn't work right without this
+            vim.cmd("ColorizerAttachToBuffer")
+        end,
+    },
+    {
+    {
         "ellisonleao/carbon-now.nvim",
         cmd = "CarbonNow",
         opts = {
@@ -14,6 +37,11 @@ return {
                 theme = "dracula pro",
             },
         },
+    },
+    {
+        "yorickpeterse/nvim-pqf",
+        event = "VeryLazy",
+        config = true,
     },
     {
         "hiphish/rainbow-delimiters.nvim",
