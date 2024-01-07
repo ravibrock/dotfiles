@@ -27,6 +27,13 @@ return {
         end,
     },
     {
+        "kosayoda/nvim-lightbulb",
+        lazy = true,
+        config = {
+            sign = { enabled = false },
+            virtual_text = { enabled = true, text = "󰌵" },
+        },
+    },
     {
         "ellisonleao/carbon-now.nvim",
         cmd = "CarbonNow",
