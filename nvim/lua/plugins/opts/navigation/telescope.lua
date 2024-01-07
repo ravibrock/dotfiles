@@ -140,6 +140,7 @@ M.opts = {
         },
     },
     extensions = {
+        ascii = {},
         bibtex = { context = true, context_fallback = true },
         fzf = {},
         persisted = {},

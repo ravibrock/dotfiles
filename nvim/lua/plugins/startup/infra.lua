@@ -230,11 +230,11 @@ return {
         "turbio/bracey.vim",
         ft = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
         build = "npm install --no-package-lock --prefix server",
-        keys = {
-            { "<leader>bb", "<CMD>Bracey<CR>", desc = "Start Bracey preview" },
-            { "<leader>br", "<CMD>BraceyReload<CR>", desc = "Reload Bracey" },
-            { "<leader>bs", "<CMD>BraceyStop<CR>", desc = "Stop Bracey preview" },
-        },
+        config = function()
+            vim.keymap.set("n", "<leader>bb", "<CMD>Bracey<CR>", { noremap = true, desc = "Start Bracey preview" })
+            vim.keymap.set("n", "<leader>br", "<CMD>BraceyReload<CR>", { noremap = true, desc = "Reload Bracey" })
+            vim.keymap.set("n", "<leader>bs", "<CMD>BraceyStop<CR>", { noremap = true, desc = "Stop Bracey preview" })
+        end,
     },
     {
         "lervag/vimtex",
@@ -246,7 +246,7 @@ return {
             { "<leader>lv", "<CMD>VimtexView<CR>", desc = "View compiled TeX document" },
             { "<leader>lw", "<CMD>VimtexCountWords<CR>", desc = "Count words in TeX file" },
         },
-        init = function()
+        config = function()
             require(prefix .. "vimtex")
         end,
     },

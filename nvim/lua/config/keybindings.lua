@@ -24,8 +24,15 @@ vim.keymap.set("n", "<CR>", "<CMD>nohlsearch<CR><CMD>echon ''<CR>", { noremap = 
 vim.keymap.set("n", "{", "{0", { noremap = true, desc = "Go to last newline" })
 vim.keymap.set("n", "}", "}0", { noremap = true, desc = "Go to next newline" })
 
+-- Switch buffers with <C-U> and <C-I> in normal mode
+vim.keymap.set("n", "<C-U>", "<CMD>BufferPrevious<CR>", { noremap = true, desc = "Switch to previous buffer" })
+vim.keymap.set("n", "<C-I>", "<CMD>BufferNext<CR>", { noremap = true, desc = "Switch to next buffer" })
+
 -- Enable mouse support
 vim.opt.mouse = "a"
+
+-- Delete word with <M-BS> in insert mode
+vim.keymap.set("i", "<M-BS>", "<C-w>", { noremap = true, desc = "Delete word" })
 
 -- Open current file in MacOS Finder
 vim.keymap.set("n", "<leader>fo", "<CMD>silent! !open -R %<CR>", { noremap = true, desc = "Show file in Finder" })
