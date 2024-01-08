@@ -17,7 +17,7 @@ vim.cmd("highlight MatchParen cterm=none ctermbg=white ctermfg=black")
 vim.cmd("highlight! link SignColumn LineNr")
 
 -- Configure foldcolumn characters
-vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep:│,foldclose:]]
+vim.opt.fillchars = "eob: ,fold: ,foldopen:,foldsep:│,foldclose:"
 
 -- Fix line wrapping
 vim.opt.linebreak = true

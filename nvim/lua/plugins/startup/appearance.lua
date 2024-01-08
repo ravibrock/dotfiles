@@ -9,7 +9,7 @@ return {
         keys = {
             { "<leader>hh", ":<C-U>HSHighlight 1<CR><CMD>echo ''<CR>", mode = "v", desc = "Highlight string" },
             { "<leader>hr", ":<C-U>HSRmHighlight<CR><CMD>echo ''<CR>", mode = "v", desc = "Remove highlight" },
-            { "<leader>hl", "<CMD>HSRmHighlight true<CR>", mode = { "n", "v" }, desc = "Remove all highlights" },
+            { "<leader>hl", "<CMD>HSRmHighlight rm_all<CR>", mode = { "n", "v" }, desc = "Remove all highlights" },
         },
     },
     {

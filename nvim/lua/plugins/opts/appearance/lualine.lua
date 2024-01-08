@@ -1,4 +1,4 @@
-local function nf() return [[]] end
+local function nf() return "" end
 
 local function setup(colorscheme)
     require("lualine").setup({
