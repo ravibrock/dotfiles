@@ -39,7 +39,7 @@ function M.fold_col()
 	local foldinfo = Cfold_info(wp, vim.v.lnum)
 	if foldinfo.start == vim.v.lnum then
 		if vim.fn.foldclosed(vim.v.lnum) ~= -1 then
-			return [[%#StatusColumnFoldClosed#]] .. [[▶]] .. [[%*]]
+			return "%#StatusColumnFoldClosed#" .. "▶" .. "%*"
 		end
 	end
 	return ""
@@ -52,8 +52,11 @@ vim.keymap.set("n", "zM", require("ufo").closeAllFolds, { desc = "Close all fold
 require("ufo").setup({
     fold_virt_text_handler = handler,
     provider_selector = function(_, ft, _)
+        if ft == "tex" then return "" end
         local nofoldlsp = { "markdown", "sh", "css", "html", "python" }
         if vim.tbl_contains(nofoldlsp, ft) then return { "treesitter", "indent" } end
         return { "lsp", "indent" }
     end,
 })
+
+vim.cmd("highlight Folded guibg=NONE")
