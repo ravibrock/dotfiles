@@ -5,6 +5,11 @@ return {
         event = "VeryLazy",
     },
     {
+        "fei6409/log-highlight.nvim",
+        ft = { "log" },
+        config = true,
+    },
+    {
         "pocco81/high-str.nvim",
         keys = {
             { "<leader>hh", ":<C-U>HSHighlight 1<CR><CMD>echo ''<CR>", mode = "v", desc = "Highlight string" },

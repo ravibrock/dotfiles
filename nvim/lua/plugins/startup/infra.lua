@@ -5,6 +5,11 @@ return {
         "tpope/vim-repeat",
     },
     {
+        "nmac427/guess-indent.nvim",
+        event = "BufRead",
+        config = true,
+    },
+    {
         "akinsho/git-conflict.nvim",
         event = "VeryLazy",
         version = "*",

@@ -36,6 +36,11 @@ function ClearHL()
 end
 autocmd("BufReadPre", { command = "lua ClearHL()" })
 
+-- Set filetype for output, error, and strace files
+autocmd("BufRead", { command = "if expand('%:e') == 'out' | set ft=log | endif" })
+autocmd("BufRead", { command = "if expand('%:e') == 'err' | set ft=log | endif" })
+autocmd("BufRead", { command = "if getline(1) =~ '^execve' | set ft=strace | endif" })
+
 -- Remove trailing whitespace on save
 function CleanSpaces()
     local save_cursor = vim.fn.getpos(".")

@@ -46,6 +46,7 @@ alias "ytdlt"="yt-dlp --skip-download --write-thumbnail --convert-thumbnails jpg
 # Miscellaneous
 alias "clear"="clear; startup_printout; printf '\e[3J'"
 alias "code"="codium"
+alias "ls"="ls --color=auto"
 alias "py"="python3"
 alias "python"="python3"
 alias "rm"="trash -F"

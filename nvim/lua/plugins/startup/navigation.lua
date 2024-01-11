@@ -90,7 +90,7 @@ return {
         cmd = { "AerialToggle" },
         keys = {{ "<leader>a", "<CMD>AerialToggle<CR>", desc = "Aerial" }},
         config = {
-            backends = { "treesitter", "lsp", "markdown", "man" },
+            backends = { "lsp", "treesitter", "markdown", "man" },
             layout = { min_width = 30 },
         },
         dependencies = {
