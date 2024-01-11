@@ -89,7 +89,7 @@ return {
         opts = { filter_kind = false },
         cmd = { "AerialToggle" },
         keys = {{ "<leader>a", "<CMD>AerialToggle<CR>", desc = "Aerial" }},
-        config = {
+        opts = {
             backends = { "lsp", "treesitter", "markdown", "man" },
             layout = { min_width = 30 },
         },

@@ -27,7 +27,7 @@ return {
             { "<leader>ji", "<CMD>Jaq internal<CR>", desc = "Jaq internal" },
             { "<leader>jj", "<CMD>Jaq<CR>", desc = "Jaq" },
         },
-        config = {
+        opts = {
             cmds = {
                 internal = {
                     lua = "luafile %",
@@ -64,7 +64,7 @@ return {
     },
     {
         "lewis6991/hover.nvim",
-        config = {
+        opts = {
             init = function()
                 require("hover.providers.lsp")
                 require("hover.providers.gh")
@@ -196,12 +196,12 @@ return {
     {
         "stevearc/stickybuf.nvim",
         event = "VeryLazy",
-        opts = {},
+        config = true,
     },
     {
         "folke/neodev.nvim",
         lazy = true,
-        opts = {},
+        config = true,
     },
     {
         "tpope/vim-fugitive",
@@ -267,7 +267,7 @@ return {
             { "<leader>qs", "<CMD>SessionLoad<CR>", desc = "Restore Session" },
             { "<leader>ql", "<CMD>SessionLoadLast<CR>", desc = "Restore Last Session" },
         },
-        config = {
+        opts = {
             use_git_branch = true,
             should_autosave = function()
                 if vim.bo.filetype == "alpha" then

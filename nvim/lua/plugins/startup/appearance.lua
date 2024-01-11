@@ -34,7 +34,7 @@ return {
     {
         "kosayoda/nvim-lightbulb",
         lazy = true,
-        config = {
+        opts = {
             sign = { enabled = false },
             virtual_text = { enabled = true, text = "󰌵" },
         },
@@ -84,7 +84,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
-        config = {
+        opts = {
             signs = {
                 add          = { text = "│" },
                 change       = { text = "│" },
@@ -111,7 +111,7 @@ return {
             vim.opt.timeout = true
             vim.opt.timeoutlen = 500
         end,
-        opts = {},
+        config = true,
     },
     {
         "luukvbaal/statuscol.nvim",
@@ -165,7 +165,7 @@ return {
         "catppuccin/nvim",
         lazy = true,
         name = "catppuccin",
-        config = {
+        opts = {
             integrations = {
                 aerial = true,
                 barbar = true,
@@ -188,7 +188,7 @@ return {
             { "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end, mode = "n", desc = "Trouble workspace diagnostics" },
             { "<leader>xx", function() require("trouble").toggle() end, mode = "n", desc = "Toggle Trouble" },
         },
-        opts = {},
+        config = true,
     },
     {
         "folke/todo-comments.nvim",

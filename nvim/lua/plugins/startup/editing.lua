@@ -11,7 +11,7 @@ return {
     },
     {
         "gbprod/substitute.nvim",
-        config = {
+        opts = {
             highlight_substituted_text = { enabled = false },
         },
         keys = {
@@ -62,7 +62,7 @@ return {
         event = "InsertEnter",
         cmd = "Copilot",
         build = ":Copilot auth",
-        config = {
+        opts = {
             filetypes = {
                 racket = false,
                 tex = false,
@@ -77,7 +77,7 @@ return {
     {
         "nvim-pack/nvim-spectre",
         dependencies = "nvim-lua/plenary.nvim",
-        command = "Spectre",
+        cmd = "Spectre",
         keys = {
             { "<leader>fs", function() require("spectre").toggle() end, mode = "n", desc = "Toggle Spectre" },
             { "<leader>fv", function() require("spectre").open_visual({ select_word = true }) end, mode = "n", desc = "[Spectre] Search current word" },
@@ -93,7 +93,7 @@ return {
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
-        config = {
+        opts = {
             disable_filetype = { "racket" },
         },
     },
