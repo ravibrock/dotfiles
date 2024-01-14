@@ -26,6 +26,7 @@ require("mason-lspconfig").setup({
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities.textDocument.foldingRange = foldsettings
             require("lspconfig")[server].setup({ capabilities = capabilities })
+            vim.cmd("LspStart") -- Workaround for language servers not starting automatically
         end,
         ["lua_ls"] = function()
             require("neodev").setup()

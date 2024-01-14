@@ -11,7 +11,7 @@ require("mason").setup({
 local M = {}
 function M.update_all()
     local registry = require("mason-registry")
-    local updated = 0
+    local updated = false
     registry.update(function(success, err)
         if not success then
             print("[mason-update-all] error fetching updates: " .. err)
@@ -20,7 +20,7 @@ function M.update_all()
         for _, pkg in ipairs(registry.get_installed_packages()) do
             pkg:check_new_version(function(new_available, version)
                 if new_available then
-                    updated = 1
+                    updated = true
                     print("[mason-update-all] updating " .. pkg.name)
                     pkg:install():on("closed", function()
                         print("[mason-update-all] updated " .. pkg.name .. " to " .. version.latest_version)
@@ -33,7 +33,7 @@ function M.update_all()
 end
 
 function M.usercmd()
-    if M.update_all() == 0 then
+    if not M.update_all() then
         print("[mason-update-all] all packages up-to-date")
     end
 end

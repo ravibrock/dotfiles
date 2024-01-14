@@ -93,6 +93,22 @@ return {
                 end,
                 desc = "Hover (select)",
             },
+            {
+                "<S-TAB>",
+                function()
+                    ---@diagnostic disable-next-line: missing-parameter
+                    require("hover").hover_switch("previous")
+                end,
+                desc = "Hover (previous)",
+            },
+            {
+                "<TAB>",
+                function()
+                    ---@diagnostic disable-next-line: missing-parameter
+                    require("hover").hover_switch("next")
+                end,
+                desc = "Hover (next)",
+            },
         },
     },
     {
