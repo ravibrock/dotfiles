@@ -1,4 +1,5 @@
 local all = {}
+vim.api.nvim_create_augroup("Alpha", {})
 all.opts = function()
     local dashboard = require("alpha.themes.dashboard")
     dashboard.section.header.val = require("ascii").art.text.neovim.dos_rebel
@@ -27,6 +28,7 @@ all.config = function(_, dashboard)
     if vim.opt.filetype == "lazy" then
         vim.cmd.close()
         vim.api.nvim_create_autocmd("User", {
+            group = "Alpha",
             pattern = "AlphaReady",
             callback = function()
                 require("lazy").show()
@@ -35,6 +37,7 @@ all.config = function(_, dashboard)
     end
     require("alpha").setup(dashboard.opts)
     vim.api.nvim_create_autocmd("User", {
+        group = "Alpha",
         pattern = "LazyVimStarted",
         callback = function()
             local stats = require("lazy").stats()

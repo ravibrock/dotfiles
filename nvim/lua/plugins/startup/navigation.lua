@@ -13,6 +13,11 @@ return {
         },
     },
     {
+        "chentoast/marks.nvim",
+        event = "VeryLazy",
+        config = true,
+    },
+    {
         "ggandor/leap.nvim",
         keys = {
             { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
@@ -28,6 +33,11 @@ return {
             { "f", mode = { "n", "x", "o" }, desc = "Flit forward to" },
             { "F", mode = { "n", "x", "o" }, desc = "Flit backward to" },
         },
+        config = true,
+    },
+    {
+        "stevearc/oil.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = true,
     },
     {
@@ -48,15 +58,6 @@ return {
                 desc = "Toggle NeoTree explorer",
             },
         },
-        init = function()
-            if vim.fn.argc(-1) == 1 then
-                ---@diagnostic disable-next-line: param-type-mismatch
-                local stat = vim.loop.fs_stat(vim.fn.argv(0))
-                if stat and stat.type == "directory" then
-                    require("neo-tree")
-                end
-            end
-        end,
         opts = function()
             return require(prefix .. "neo-tree")
         end,
@@ -86,10 +87,10 @@ return {
     },
     {
         "stevearc/aerial.nvim",
-        opts = { filter_kind = false },
         cmd = { "AerialToggle" },
         keys = {{ "<leader>a", "<CMD>AerialToggle<CR>", desc = "Aerial" }},
         opts = {
+            filter_kind = false,
             backends = { "lsp", "treesitter", "markdown", "man" },
             layout = { min_width = 30 },
         },

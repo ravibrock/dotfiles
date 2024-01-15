@@ -28,7 +28,12 @@ return {
     {
         "tummetott/unimpaired.nvim",
         event = "VeryLazy",
-        config = true,
+        opts = {
+            keymaps = {
+                bprevious = false,
+                bnext = false,
+            },
+        },
     },
     {
         "glts/vim-radical",

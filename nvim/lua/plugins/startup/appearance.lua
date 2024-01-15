@@ -123,7 +123,6 @@ return {
         },
         config = function()
             local builtin = require("statuscol.builtin")
-            local function newfold(args) return builtin.foldfunc(args):gsub(" ", "│") end
             require("statuscol").setup({
                 ft_ignore = { "alpha" },
                 clickmod = "c",
@@ -132,7 +131,7 @@ return {
                     { sign = { namespace = { "gitsigns" }, maxwidth = 1, colwidth = 2, auto = true }, click = "v:lua.ScSa" },
                     { sign = { name = { ".*"  }, maxwidth = 1, colwidth = 2, auto = true }, click = "v:lua.ScSa" },
                     { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
-                    { text = { newfold, " " }, maxwidth = 1, colwidth = 2, click = "v:lua.ScFa" },
+                    { text = { function(args) return builtin.foldfunc(args):gsub(" ", "│") end, " " }, maxwidth = 1, colwidth = 2, click = "v:lua.ScFa" },
                 },
             })
         end,

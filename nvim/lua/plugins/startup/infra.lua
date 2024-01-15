@@ -5,6 +5,17 @@ return {
         "tpope/vim-repeat",
     },
     {
+        "aymericbeaumet/vim-symlink",
+        dependencies = { "moll/vim-bbye" },
+    },
+    {
+        "moll/vim-bbye",
+        keys = {
+            { "[b", "<CMD>Bdelete<CR>", mode = "n", desc = "Delete buffer" },
+            { "]b", "<CMD>Bwipeout<CR>", mode = "n", desc = "Wipeout buffer" },
+        },
+    },
+    {
         "nmac427/guess-indent.nvim",
         event = "BufRead",
         config = true,

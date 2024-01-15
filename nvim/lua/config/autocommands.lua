@@ -7,20 +7,6 @@ autocmd("BufEnter", { command = "setlocal formatoptions-=ro" })
 vim.opt.autoread = true
 autocmd({ "FocusGained", "BufEnter" }, { command = "silent! checktime" })
 
--- Opens symlinks in their target:
-function FollowSymlink()
-    local file = vim.fn.expand("%:p")
-    local real_file = vim.fn.resolve(file)
-    if (string.match(real_file, "[^%d]+:/") or real_file == file) then
-        return
-    end
-    vim.cmd("file " .. real_file)
-    ---@diagnostic disable-next-line: param-type-mismatch
-    vim.cmd("echohl WarningMsg | echomsg 'Resolved symlink " .. file:gsub(os.getenv("HOME"), "~") .. " ——⟶ " .. real_file:gsub(os.getenv("HOME"), "~") .. "' | echohl None")
-    vim.cmd("silent! w!")  -- Workaround for "file exists" error on write
-end
-autocmd("BufRead", { command = "lua FollowSymlink()" })
-
 -- Adjust highlighting
 function ClearHL()
     vim.cmd("highlight clear SpellBad")
