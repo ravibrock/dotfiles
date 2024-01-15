@@ -89,6 +89,17 @@ return {
             { "<leader>fw", function() require("spectre").open_visual() end, mode = "v", desc = "[Spectre] Search current word" },
             { "<leader>fp", function() require("spectre").open_file_search({ select_word = true }) end, mode = "n", desc = "[Spectre] Search on current file" },
         },
+        build = [[
+            mkdir -p spectre_oxi/.cargo
+            printf "[build]\nrustflags = [\n  '-C', 'link-arg=-undefined',\n  '-C', 'link-arg=dynamic_lookup',\n]" > spectre_oxi/.cargo/config
+            ./build.sh nvim-oxi
+            rm -rf .cargo
+        ]],
+        opts = {
+            default = {
+                replace = { cmd = "oxi" },
+            },
+        },
     },
     {
         "numToStr/Comment.nvim",
