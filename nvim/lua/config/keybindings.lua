@@ -18,7 +18,7 @@ vim.keymap.set({ "i", "c" }, "<C-l>", "<Right>", { noremap = true, desc = "Move 
 vim.keymap.set("i", "<C-m>", "<C-g>u<Esc>[s1z=`]a<C-g>u<Left>", { noremap = true, desc = "Fix last typo" })
 
 -- Clear search results with <CR> in normal mode
-vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<backspace>", { silent = true, noremap = true, desc = "Clear search highlight" })
+vim.keymap.set("n", "<CR>", "<CMD>nohlsearch <BAR> echon ''<CR><CR>", { silent = true, noremap = true, desc = "Clear search highlight" })
 
 -- Go to beginning of line when hitting { or } in normal mode
 vim.keymap.set("n", "{", "{0", { noremap = true, desc = "Go to last newline" })

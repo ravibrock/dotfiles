@@ -275,6 +275,7 @@ return {
         keys = {
             { "<leader>lc", "<CMD>VimtexClean<CR>", desc = "Clean TeX auxfiles" },
             { "<leader>ll", "<CMD>VimtexCompile<CR>", desc = "Start TeX compilation" },
+            { "<leader>ls", "<CMD>silent! !sioyek --execute-command reload<CR>", desc = "Reload Sioyek instance" },
             { "<leader>lv", "<CMD>VimtexView<CR>", desc = "View compiled TeX document" },
             { "<leader>lw", "<CMD>VimtexCountWords<CR>", desc = "Count words in TeX file" },
         },

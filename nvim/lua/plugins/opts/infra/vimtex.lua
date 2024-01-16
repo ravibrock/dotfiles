@@ -36,12 +36,6 @@ vim.api.nvim_create_autocmd("User", {
     desc = "VimTeX: Send cursor to last column after inverse search trigger in PDF",
     command = "lua vim.fn.cursor(vim.fn.line('.'), vim.fn.col('$'))",
 })
-vim.api.nvim_create_autocmd("User", {
-    group = "VimTeX",
-    pattern = "VeryLazy",
-    desc = "VimTeX: Reload to fix symlink behavior",
-    command = "silent! VimtexReload",
-})
 vim.api.nvim_create_autocmd("InsertLeave", {
     group = "VimTeX",
     pattern = { "*.tex", "*.bib" },

@@ -29,7 +29,7 @@ vim.opt.undodir = vim.fn.stdpath("data") .. "/undo/"
 
 -- Spellchecking
 vim.opt.spellfile = os.getenv("HOME") .. "/.vim/spell/spellfile.utf-8.add"
-vim.opt_local.spell = true
+vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 
 -- Use spaces rather than tabs

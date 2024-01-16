@@ -34,7 +34,7 @@ brew "lazygit"
 brew "luarocks"
 brew "mas"
 brew "most"
-brew "neovim"
+brew "neovim", args: ["HEAD"]
 brew "pandoc"
 brew "pdftk-java"
 brew "pylint"
