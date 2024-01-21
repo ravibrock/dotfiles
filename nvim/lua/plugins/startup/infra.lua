@@ -16,6 +16,11 @@ return {
         },
     },
     {
+        "numToStr/BufOnly.nvim",
+        cmd = "BufOnly",
+        keys = {{ "[B", "<CMD>BufOnly<CR>", desc = "Close all buffers except current" }},
+    },
+    {
         "nmac427/guess-indent.nvim",
         event = "BufRead",
         config = true,

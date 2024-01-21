@@ -32,6 +32,7 @@ return {
             keymaps = {
                 bprevious = false,
                 bnext = false,
+                bfirst = false,
             },
         },
     },
