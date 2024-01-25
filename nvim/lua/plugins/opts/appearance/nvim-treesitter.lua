@@ -14,6 +14,7 @@ require("nvim-treesitter.configs").setup({
         "racket",
         "regex",
         "rust",
+        "ssh_config",
         "vim",
         "vimdoc",
     },

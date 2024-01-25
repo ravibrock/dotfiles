@@ -4,7 +4,6 @@ require("mason-null-ls").setup({
         "misspell",
         "tidy",
         "prettier",
-        "pylint",
         "shellcheck",
         "stylua",
         "vint",

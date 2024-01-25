@@ -7,13 +7,8 @@ vim.opt.laststatus = 3
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
-vim.cmd("highlight LineNr ctermfg=gray")
-vim.cmd("highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE")
-vim.cmd("highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=white")
 
--- Enable syntax highlighting
-vim.cmd("syntax enable")
-vim.cmd("highlight MatchParen cterm=none ctermbg=white ctermfg=black")
+-- Link sign column highlights to line number
 vim.cmd("highlight! link SignColumn LineNr")
 
 -- Configure foldcolumn characters

@@ -9,7 +9,6 @@ null_ls.setup({
         null_ls.builtins.hover.printenv.with({
             filetypes = { "sh", "dosbatch", "ps1", "zsh" },
         }),
-        null_ls.builtins.diagnostics.pylint,
         null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.diagnostics.vint,

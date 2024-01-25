@@ -15,6 +15,7 @@ require("mason-lspconfig").setup({
         "marksman",
         "pyright",
         "r_language_server",
+        "ruff_lsp",
         "rust_analyzer",
         "texlab",
         "tsserver",
@@ -31,7 +32,15 @@ require("mason-lspconfig").setup({
         ["lua_ls"] = function()
             require("neodev").setup()
             require("lspconfig").lua_ls.setup({
-                settings = { Lua = foldsettings },
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            disable = { "trailing-space" },
+                            globals = { "vim" },
+                        },
+                        unpack(foldsettings),
+                    },
+                },
             })
         end,
     },

@@ -97,7 +97,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        event = "VeryLazy",
+        event = { "BufNewFile", "BufReadPost" },
         build = ":TSUpdate",
         version = false,
         config = function()
