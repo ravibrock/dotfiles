@@ -15,7 +15,22 @@ vim.keymap.set({ "i", "c" }, "<C-k>", "<Up>", { noremap = true, desc = "Move cur
 vim.keymap.set({ "i", "c" }, "<C-l>", "<Right>", { noremap = true, desc = "Move cursor right" })
 
 -- Spellcheck with <C-m> in insert mode
-vim.keymap.set("i", "<C-m>", "<C-g>u<Esc>[s1z=`]a<C-g>u<Left>", { noremap = true, desc = "Fix last typo" })
+local function spellcheck()
+    local colnr = vim.fn.col(".")
+    local linenr = vim.fn.line(".")
+    local length = string.len(vim.fn.getline("."))
+    local window = vim.fn.winsaveview()
+    local foldstatus = vim.opt.foldenable
+    vim.opt.foldenable = false
+    vim.cmd("normal! [s")
+    if linenr == vim.fn.line(".") then vim.cmd("normal! 1z=") end
+    vim.fn.cursor({ linenr, "." })
+    local position = string.len(vim.fn.getline(".")) - (length - colnr)
+    vim.opt.foldenable = foldstatus
+    vim.fn.winrestview(window)
+    vim.fn.cursor({ ".", position })
+end
+vim.keymap.set("i", "<C-m>", spellcheck, { noremap = true, desc = "Fix last typo" })
 
 -- Clear search results with <CR> in normal mode
 vim.keymap.set("n", "<CR>", "<CMD>nohlsearch <BAR> echon ''<CR><CR>", { silent = true, noremap = true, desc = "Clear search highlight" })

@@ -5,6 +5,14 @@ return {
         event = "VeryLazy",
     },
     {
+        "psliwka/vim-dirtytalk",
+        event = "InsertEnter",
+        build = ":DirtytalkUpdate",
+        init = function()
+            vim.opt.spelllang = vim.opt.spelllang + { "programming" }
+        end,
+    },
+    {
         "max397574/colortils.nvim",
         cmd = "Colortils",
         config = true,

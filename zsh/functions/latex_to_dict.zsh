@@ -17,7 +17,10 @@ function gen {
 if [[ $1 == "gen" ]]; then
     gen $2
 elif [[ $1 == "diff" ]]; then
-    grep -vxif $3 $2
+    nvim --headless '+spelldump | w! /tmp/temp.txt | qa!' 2> /dev/null
+    sed -i '' -e 's/\/.*$//' /tmp/temp.txt
+    fgrep -vxif /tmp/temp.txt "$2"
+    rm /tmp/temp.txt
 else
-    echo "Usage: $0 <gen|diff> <file1> <file2>"
+    echo "Usage: $0 <gen|diff> <file>"
 fi
