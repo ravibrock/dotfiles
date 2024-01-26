@@ -34,9 +34,9 @@ DISABLE_AUTO_TITLE="True"
 precmd () { echo -en "\e]0; $(print -rD $PWD)\a" }
 
 # Zsh history settings
-HISTSIZE=500
+HISTSIZE=999999999
 HISTFILE=~/.zsh_history
-SAVEHIST=5000
+SAVEHIST=999999999
 HISTDUP=erase
 setopt appendhistory
 setopt hist_ignore_all_dups

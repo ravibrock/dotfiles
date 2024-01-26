@@ -290,6 +290,11 @@ return {
         end,
     },
     {
+        "rawnly/gist.nvim",
+        cmd = { "GistCreate", "GistCreateFromFile" },
+        config = true,
+    },
+    {
         "nvim-telescope/telescope-fzf-native.nvim",
         lazy = true,
         build = "make",
