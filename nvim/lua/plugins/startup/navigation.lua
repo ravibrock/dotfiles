@@ -6,6 +6,9 @@ return {
     },
     {
         "chrisgrieser/nvim-spider",
+        opts = {
+            customPatterns = { "%$*%w+" },
+        },
         keys = {
             { "b", mode = { "n", "o", "v", "x" }, function() require("spider").motion("b") end, desc = "Spider: b" },
             { "e", mode = { "n", "o", "v", "x" }, function() require("spider").motion("e") end, desc = "Spider: e" },
