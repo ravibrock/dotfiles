@@ -76,11 +76,6 @@ return {
         end,
     },
     {
-        "eraserhd/parinfer-rust",
-        ft = { "racket" },
-        build = "cargo build --release",
-    },
-    {
         "lewis6991/hover.nvim",
         opts = {
             init = function()

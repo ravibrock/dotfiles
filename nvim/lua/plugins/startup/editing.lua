@@ -50,10 +50,6 @@ return {
         dependencies = { "glts/vim-magnum" },
     },
     {
-        "guns/vim-sexp",
-        ft = { "racket" },
-    },
-    {
         "ku1ik/vim-pasta",
         event = "VeryLazy",
     },
@@ -77,10 +73,7 @@ return {
         cmd = "Copilot",
         build = ":Copilot auth",
         opts = {
-            filetypes = {
-                racket = false,
-                tex = false,
-            },
+            filetypes = { tex = false },
         },
     },
     {
@@ -118,9 +111,7 @@ return {
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
-        opts = {
-            disable_filetype = { "racket" },
-        },
+        config = true,
     },
     {
         "L3MON4D3/LuaSnip",
