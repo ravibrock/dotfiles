@@ -40,6 +40,17 @@ rm -f "$DIR/.brewfile.lock.json"
 tlmgr init-usertree
 tlmgr --usermode install scheme-full
 
+# Initialize private files if they don't exist
+if ! [[ -f "$DIR/git/.gitconfig_local" ]]; then
+    printf "[user]\n    name = [GIT USERNAME HERE]\n    email = [GIT EMAIL HERE]\n    signingkey = [GIT GPG KEYID HERE]" > "$DIR/git/.gitconfig_local"
+fi
+if ! [[ -f "$DIR/zsh/.zprivate" ]]; then
+    echo "# Homebrew config - don't change" > "$DIR/zsh/.zprivate"
+    brew shellenv >> "$DIR/zsh/.zprivate"
+    echo -e "\n# User environment variables" >> "$DIR/zsh/.zprivate"
+    echo 'export PRIVATE_VARIABLE="[PRIVATE VARIABLE HERE]"' >> "$DIR/zsh/.zprivate"
+fi
+
 # Symlinks within repo for easy editing of hidden files
 ln -sf "$DIR/.brewfile" "$DIR/brewfile"
 ln -sf "$DIR/.rayconfig" "$DIR/rayconfig"
@@ -63,6 +74,7 @@ ln -sf "$DIR/.vimrc" "$HOME/.ideavimrc"
 ln -sf "$DIR/nvim/spellfile.txt" "$HOME/.vim/spell/spellfile.utf-8.add"
 ln -sf "$DIR/git/.gitalias" "$HOME"
 ln -sf "$DIR/git/.gitconfig" "$HOME"
+ln -sf "$DIR/git/.gitconfig_local" "$HOME"
 ln -sf "$DIR/git/.gitignore_global" "$HOME"
 ln -sf "$DIR/.latexmkrc" "$HOME"
 ln -sf "$DIR/.lazygit.yml" "$(lazygit --print-config-dir)/config.yml"
@@ -86,17 +98,6 @@ mkdir -p ~/.zsh
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting
 git clone https://github.com/romkatv/zsh-defer ~/.zsh/zsh-defer
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-
-# Initialize private files if they don't exist
-if ! [[ -f "$DIR/git/.gitconfig_local" ]]; then
-    printf "[user]\n    name = [GIT USERNAME HERE]\n    email = [GIT EMAIL HERE]\n    signingkey = [GIT GPG KEYID HERE]" > "$DIR/git/.gitconfig_local"
-fi
-if ! [[ -f "$DIR/zsh/.zprivate" ]]; then
-    echo "# Homebrew config - don't change" > "$DIR/zsh/.zprivate"
-    brew shellenv >> "$DIR/zsh/.zprivate"
-    echo -e "\n# User environment variables" >> "$DIR/zsh/.zprivate"
-    echo 'export PRIVATE_VARIABLE="[PRIVATE VARIABLE HERE]"' >> "$DIR/zsh/.zprivate"
-fi
 
 # Setups up autoupgrades
 chmod +x "$DIR/upgrades/upgrade_apps.sh"
