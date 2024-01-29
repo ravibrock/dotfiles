@@ -82,7 +82,6 @@ return {
                 require("hover.providers.lsp")
                 require("hover.providers.gh")
                 require("hover.providers.gh_user")
-                require("hover.providers.jira")
                 require("hover.providers.man")
                 require("hover.providers.dictionary")
             end,
@@ -154,7 +153,6 @@ return {
             "williamboman/mason.nvim",
         },
         config = function()
-            require(prefix .. "none-ls")
             require(prefix .. "mason-null-ls")
         end,
     },
@@ -172,19 +170,9 @@ return {
     {
         "neovim/nvim-lspconfig",
         lazy = true,
-        dependencies = {
-            "chrisgrieser/nvim-rulebook",
-            "kosayoda/nvim-lightbulb",
-        },
+        dependencies = { "chrisgrieser/nvim-rulebook" },
         config = function()
             require(prefix .. "nvim-lspconfig")
-        end,
-    },
-    {
-        "nvimtools/none-ls.nvim",
-        event = "VeryLazy",
-        config = function()
-            require(prefix .. "none-ls")
         end,
     },
     {
@@ -225,11 +213,6 @@ return {
     {
         "stevearc/stickybuf.nvim",
         event = "VeryLazy",
-        config = true,
-    },
-    {
-        "folke/neodev.nvim",
-        lazy = true,
         config = true,
     },
     {

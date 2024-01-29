@@ -1,8 +1,11 @@
 local prefix = "plugins.opts.appearance."
 return {
     {
-        "xiyaowong/nvim-cursorword",
-        event = "VeryLazy",
+        "yamatsum/nvim-cursorline",
+        opts = {
+            cursorline = { enable = false },
+            cursorword = { min_length = 2 },
+        },
     },
     {
         "fei6409/log-highlight.nvim",
@@ -30,14 +33,6 @@ return {
             -- Doesn't work right without this
             vim.cmd("ColorizerAttachToBuffer")
         end,
-    },
-    {
-        "kosayoda/nvim-lightbulb",
-        lazy = true,
-        opts = {
-            sign = { enabled = false },
-            virtual_text = { enabled = true, text = "󰌵" },
-        },
     },
     {
         "ellisonleao/carbon-now.nvim",

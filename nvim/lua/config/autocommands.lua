@@ -8,7 +8,7 @@ vim.opt.autoread = true
 autocmd({ "FocusGained", "BufEnter" }, { command = "silent! checktime" })
 
 -- Adjust highlighting
-autocmd("BufReadPre", {
+autocmd({ "BufNewFile", "BufReadPre" }, {
     callback = function()
         vim.cmd("highlight clear SpellBad")
         vim.cmd("highlight clear SpellCap")

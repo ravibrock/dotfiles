@@ -5,20 +5,17 @@ local foldsettings = { -- Needed for nvim-ufo to work properly
 
 require("mason-lspconfig").setup({
     ensure_installed = {
-        "asm_lsp",
         "bashls",
         "clangd",
         "cssls",
         "html",
         "jsonls",
+        "ltex",
         "lua_ls",
         "marksman",
         "pyright",
-        "r_language_server",
         "ruff_lsp",
-        "rust_analyzer",
         "texlab",
-        "tsserver",
         "vimls",
         "yamlls",
     },
@@ -28,6 +25,21 @@ require("mason-lspconfig").setup({
             capabilities.textDocument.foldingRange = foldsettings
             require("lspconfig")[server].setup({ capabilities = capabilities })
             vim.cmd("LspStart") -- Workaround for language servers not starting automatically
+        end,
+        ["ltex"] = function()
+            require("lspconfig").ltex.setup({
+                settings = {
+                    ltex = {
+                        language = "en-us",
+                        disabledRules = {
+                            ["en-us"] = {
+                                "MORFOLOGIK_RULE_EN_US",
+                                "UPPERCASE_SENTENCE_START",
+                            },
+                        },
+                    },
+                },
+            })
         end,
         ["lua_ls"] = function()
             require("neodev").setup()

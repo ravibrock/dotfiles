@@ -1,9 +1,10 @@
-require("mason-null-ls").setup({
+local null_ls = require("null-ls")
+local mason_null_ls = require("mason-null-ls")
+mason_null_ls.setup({
     ensure_installed = {
         "beautysh",
         "misspell",
         "tidy",
-        "prettier",
         "shellcheck",
         "stylua",
         "vint",
@@ -11,4 +12,11 @@ require("mason-null-ls").setup({
     },
     automatic_installation = true,
     handlers = {},
+})
+null_ls.setup({
+    sources = {
+        null_ls.builtins.hover.printenv.with({
+            filetypes = { "sh", "dosbatch", "ps1", "zsh" },
+        }),
+    },
 })

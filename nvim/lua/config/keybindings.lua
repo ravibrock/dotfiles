@@ -27,6 +27,7 @@ local function spellcheck()
     vim.fn.cursor({ linenr, "." })
     local position = string.len(vim.fn.getline(".")) - (length - colnr)
     vim.opt.foldenable = foldstatus
+    ---@diagnostic disable-next-line: param-type-mismatch
     vim.fn.winrestview(window)
     vim.fn.cursor({ ".", position })
 end
