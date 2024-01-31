@@ -1,8 +1,18 @@
 local prefix = "plugins.opts.editing."
 return {
     {
+        "ku1ik/vim-pasta",
+        keys = {
+            { "p", "<Plug>AfterPasta", mode = "n", desc = "Paste after" },
+            { "P", "<Plug>BeforePasta", mode = "n", desc = "Paste before" },
+        },
+    },
+    {
         "tpope/vim-speeddating",
-        event = "VeryLazy",
+        keys = {
+            { "<C-A>", "<Plug>SpeedDatingUp", mode = "n", desc = "Paste after" },
+            { "<C-X>", "<Plug>SpeedDatingDown", mode = "n", desc = "Paste before" },
+        },
     },
     {
         "psliwka/vim-dirtytalk",
@@ -46,12 +56,14 @@ return {
     },
     {
         "glts/vim-radical",
-        event = "VeryLazy",
         dependencies = { "glts/vim-magnum" },
-    },
-    {
-        "ku1ik/vim-pasta",
-        event = "VeryLazy",
+        keys = {
+            { "gA", "<Plug>RadicalView", desc = "View radical representations" },
+            { "crb", "<Plug>RadicalCoerceToBinary", desc = "Coerce to binary" },
+            { "cro", "<Plug>RadicalCoerceToOctal", desc = "Coerce to octal" },
+            { "crx", "<Plug>RadicalCoerceToHex", desc = "Coerce to hex" },
+            { "crd", "<Plug>RadicalCoerceToDecimal", desc = "Coerce to decimal" },
+        }
     },
     {
         "godlygeek/tabular",

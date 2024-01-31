@@ -137,6 +137,8 @@ return {
             integrations = {
                 aerial = true,
                 barbar = true,
+                leap = true,
+                mason = true,
                 which_key = true,
             },
         },

@@ -33,6 +33,10 @@ local function spellcheck()
 end
 vim.keymap.set("i", "<C-m>", spellcheck, { noremap = true, desc = "Fix last typo" })
 
+-- Center screen when searching with n/N
+vim.keymap.set("n", "n", "nzz", { noremap = true, desc = "Center screen when searching forwards" })
+vim.keymap.set("n", "N", "Nzz", { noremap = true, desc = "Center screen when searching backwards" })
+
 -- Clear search results with <CR> in normal mode
 vim.keymap.set("n", "<CR>", "<CMD>nohlsearch <BAR> echon ''<CR><CR>", { silent = true, noremap = true, desc = "Clear search highlight" })
 

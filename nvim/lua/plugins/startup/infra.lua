@@ -2,8 +2,11 @@ local prefix = "plugins.opts.infra."
 return {
     {
         "farmergreg/vim-lastplace",
-        "micarmst/vim-spellsync",
         "tpope/vim-repeat",
+    },
+    {
+        "micarmst/vim-spellsync",
+        event = "VeryLazy",
     },
     {
         "aymericbeaumet/vim-symlink",
@@ -28,7 +31,7 @@ return {
     },
     {
         "akinsho/git-conflict.nvim",
-        event = "VeryLazy",
+        event = "BufReadPre",
         version = "*",
         config = true,
     },
@@ -66,13 +69,15 @@ return {
     },
     {
         "sontungexpt/url-open",
-        event = "VeryLazy",
         keys = {{ "<leader>lo", "<CMD>URLOpenUnderCursor<CR>", desc = "Open URL under cursor" }},
         config = function()
             local status_ok, url_open = pcall(require, "url-open")
             if not status_ok then return end
-            ---@diagnostic disable-next-line: missing-parameter
-            url_open.setup()
+            url_open.setup({
+                highlight_url = {
+                    cursor_move = { enabled = false },
+                },
+            })
         end,
     },
     {

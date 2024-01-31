@@ -2,7 +2,7 @@ local prefix = "plugins.opts.navigation."
 return {
     {
         "andymass/vim-matchup",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
     },
     {
         "chrisgrieser/nvim-spider",
