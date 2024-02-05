@@ -129,6 +129,12 @@ return {
         config = true,
     },
     {
+        "smjonas/inc-rename.nvim",
+        cmd = "IncRename",
+        keys = {{ "<leader>rn", ":IncRename ", mode = "n", desc = "Incremental rename" }},
+        config = true,
+    },
+    {
         "L3MON4D3/LuaSnip",
         event = "InsertEnter",
         build = "make install_jsregexp",

@@ -64,10 +64,6 @@ return {
         },
     },
     {
-        "lambdalisue/suda.vim",
-        cmd = { "SudaWrite", "SudaRead" },
-    },
-    {
         "sontungexpt/url-open",
         keys = {{ "<leader>lo", "<CMD>URLOpenUnderCursor<CR>", desc = "Open URL under cursor" }},
         config = function()
@@ -137,6 +133,16 @@ return {
             -- Try running following if Mason/Node can't install:
             -- sudo chown -R $USER:$GROUP ~/.npm
         end,
+    },
+    {
+        "tpope/vim-eunuch",
+        cmd = {
+            "Rename",
+            "Move",
+            "Delete",
+            "SudoWrite",
+            "SudoEdit",
+        },
     },
     {
         "williamboman/mason-lspconfig.nvim",

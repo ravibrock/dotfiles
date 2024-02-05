@@ -33,6 +33,19 @@ local function spellcheck()
 end
 vim.keymap.set("i", "<C-m>", spellcheck, { noremap = true, desc = "Fix last typo" })
 
+-- Export via pandoc
+vim.api.nvim_create_user_command(
+    "PandocExport",
+    function()
+        local filename = vim.fn.input("Filename: ")
+        vim.cmd("normal! :<CR>")
+        if filename == "" then return end
+        vim.cmd("!pandoc -s % -o " .. filename)
+    end,
+    {}
+)
+vim.keymap.set("n", "<leader>pe", "<CMD>PandocExport<CR>", { noremap = true, desc = "Export file via pandoc" })
+
 -- Center screen when searching with n/N
 vim.keymap.set("n", "n", "nzz", { noremap = true, desc = "Center screen when searching forwards" })
 vim.keymap.set("n", "N", "Nzz", { noremap = true, desc = "Center screen when searching backwards" })

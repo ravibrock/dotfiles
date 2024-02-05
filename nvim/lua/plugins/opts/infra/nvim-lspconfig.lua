@@ -25,7 +25,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder", unpack(opts) })
         vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder", unpack(opts) })
         vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Go to type definition", unpack(opts) })
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename", unpack(opts) })
         vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action", unpack(opts) })
     end,
     desc = "Create LSP keybinds",

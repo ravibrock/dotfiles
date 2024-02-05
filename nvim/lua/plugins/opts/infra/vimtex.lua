@@ -6,6 +6,7 @@ vim.g.vimtex_fold_enabled = 2
 vim.keymap.set("i", "<C-x><CR>", "<plug>(vimtex-delim-close)", { silent = true, desc = "Close delimiter" })
 vim.opt.conceallevel = 2 -- Enable VimTeX conceal
 
+-- Set up autocommands for VimTeX
 vim.api.nvim_create_augroup("VimTeX", {})
 vim.api.nvim_create_autocmd("User", {
     group = "VimTeX",
@@ -18,6 +19,12 @@ vim.api.nvim_create_autocmd("User", {
     pattern = "VimtexEventViewReverse",
     desc = "VimTeX: Return focus to vim after inverse search trigger in PDF",
     command = vim.fn.system("osascript -e 'activate application \"iTerm\"'"),
+})
+vim.api.nvim_create_autocmd("User", {
+    group = "VimTeX",
+    pattern = "VimtexEventViewReverse",
+    desc = "VimTeX: Center text vertically after inverse search trigger in PDF",
+    command = "normal! zz",
 })
 vim.api.nvim_create_autocmd("User", {
     group = "VimTeX",
