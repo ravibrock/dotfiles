@@ -18,9 +18,18 @@ brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes
 # Updates App Store apps
 OUTDATED="$(mas outdated | awk '{print $2}')"
 if [[ ! -z "$OUTDATED" ]]; then
+    for APP in $OUTDATED; do
+        if [[ ! "" == "$(pgrep -f "$APP")" ]] OPEN="$APP $OPEN"
+    done
+    OPEN="$(echo "$OPEN" | xargs)"
     killall "$(echo "$OUTDATED")"
     tag_log "mas upgrade"
     mas upgrade
+    if [[ ! -z "$OPEN" ]]; then
+        for APP in "$OPEN"; do
+            open -n "/Applications/$APP.app"
+        done
+    fi
 fi
 
 # Updates Homebrew itself

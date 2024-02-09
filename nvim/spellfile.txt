@@ -4,6 +4,7 @@ Bezout's
 Borel
 Brouwer
 Caratheodory
+Cayley
 Chebotarev
 Chebotarev's
 Chebyshev's
@@ -76,6 +77,7 @@ antichains
 anticommutative
 antiderivative
 antiderivatives
+associativity
 basepoint
 basepoints
 bijective
@@ -107,6 +109,7 @@ eigenspace
 eigenspaces
 equicontinuous
 equinumerous
+exponentiate
 fibered
 functorial
 gyrotop
@@ -114,6 +117,7 @@ holomorphic
 homeomorphism
 hypergeometric
 hypervolume
+iff
 infimum
 infimums
 injective
@@ -174,11 +178,13 @@ subrings
 subscheme
 subspaces
 subvariety
+summand
 supermartingale
 supermartingales
 supremum
 supremums
 surjective
 surjectivity
+triangularity
 ultrametric
 unramified

@@ -7,7 +7,6 @@ mason_null_ls.setup({
         "tidy",
         "shellcheck",
         "stylua",
-        "vint",
         "zsh",
     },
     automatic_installation = true,
