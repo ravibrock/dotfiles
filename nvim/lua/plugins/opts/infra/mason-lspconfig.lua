@@ -33,6 +33,7 @@ require("mason-lspconfig").setup({
                         language = "en-us",
                         disabledRules = {
                             ["en-us"] = {
+                                "MAC_OS",
                                 "MORFOLOGIK_RULE_EN_US",
                                 "UPPERCASE_SENTENCE_START",
                             },

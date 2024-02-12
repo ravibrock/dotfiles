@@ -36,13 +36,17 @@ vim.keymap.set("i", "<C-m>", spellcheck, { noremap = true, desc = "Fix last typo
 -- Export via pandoc
 vim.api.nvim_create_user_command(
     "PandocExport",
-    function()
-        local filename = vim.fn.input("Filename: ")
-        vim.cmd("normal! :<CR>")
+    function(filename)
+        if filename["args"] == "" then
+            filename = vim.fn.input("Filename: ")
+            vim.cmd("normal! :<CR>")
+        else
+            filename = filename["args"]
+        end
         if filename == "" then return end
         vim.cmd("!pandoc -s % -o " .. filename)
     end,
-    {}
+    { nargs = "?" }
 )
 vim.keymap.set("n", "<leader>pe", "<CMD>PandocExport<CR>", { noremap = true, desc = "Export file via pandoc" })
 
