@@ -2,7 +2,11 @@
 Dotfiles that I've spent time configuring.
 
 ## Setup
-First, `cd` into the folder you want the dotfiles repo to live in. Then, run `/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/ravibrock/dotfiles/main/BOOTSTRAP.sh)"` and follow the prompts.
+First, `cd` into the folder you want the dotfiles repo to live in. Then, run 
+```zsh
+/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/ravibrock/dotfiles/main/BOOTSTRAP.sh)"
+```
+and follow the prompts.
 
 ### Git
 Add personal credentials to `git/.gitconfig_local`.
