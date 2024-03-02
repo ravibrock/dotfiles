@@ -73,7 +73,7 @@ local options = {
         { name = "luasnip", option = { show_autosnippets = true } },
         { name = "vimtex" },
         { name = "nvim_lsp" },
-        { name = "async_path" },
+        { name = "path" },
         { name = "buffer" },
     }),
     experimental = {

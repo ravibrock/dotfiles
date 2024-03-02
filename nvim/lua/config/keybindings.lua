@@ -38,7 +38,7 @@ vim.api.nvim_create_user_command(
     "PandocExport",
     function(filename)
         if filename["args"] == "" then
-            filename = vim.fn.input("Filename: ")
+            filename = vim.fn.input("Filename: ", "", "file")
             vim.cmd("normal! :<CR>")
         else
             filename = filename["args"]
@@ -46,7 +46,7 @@ vim.api.nvim_create_user_command(
         if filename == "" then return end
         vim.cmd("!pandoc -s % -o " .. filename)
     end,
-    { nargs = "?" }
+    { nargs = "?", complete = "file" }
 )
 vim.keymap.set("n", "<leader>pe", "<CMD>PandocExport<CR>", { noremap = true, desc = "Export file via pandoc" })
 

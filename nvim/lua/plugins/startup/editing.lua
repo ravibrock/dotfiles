@@ -161,10 +161,10 @@ return {
         version = false,
         event = "InsertEnter",
         dependencies = {
-            "FelipeLema/cmp-async-path",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-path",
             "micangl/cmp-vimtex",
             "saadparwaiz1/cmp_luasnip",
         },

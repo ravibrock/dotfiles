@@ -55,7 +55,7 @@ return {
                 },
                 external = {
                     bash     = "bash %",
-                    c        = "gcc -std=c99 -Wall % -o tempout && ./tempout && rm tempout",
+                    c        = "gcc -std=c99 -Wall % -o tempout && ./tempout; rm -f tempout",
                     markdown = "glow %",
                     python   = "python3 %",
                     zsh      = "zsh %",
