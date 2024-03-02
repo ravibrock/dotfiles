@@ -95,8 +95,9 @@ cd "$DIR"
 # Installs zsh plugins
 rm -rf ~/.zsh
 mkdir -p ~/.zsh
-git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting
+git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/fzf-tab
 git clone https://github.com/romkatv/zsh-defer ~/.zsh/zsh-defer
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 # Setups up autoupgrades

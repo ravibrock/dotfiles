@@ -62,8 +62,10 @@ zle -N zle-line-init
 # Defers certain commands
 source ~/.zsh/zsh-defer/zsh-defer.plugin.zsh
 deferred_commands () {
-    # Autosuggestions
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+    # Completions setup
+    zstyle ":completion:*" matcher-list "m:{[:lower:]}={[:upper:]}"
+    autoload -Uz compinit
+    compinit -u
 
     # Clean history automatically
     autoload -Uz add-zsh-hook
@@ -97,11 +99,6 @@ deferred_commands () {
     }
     add-zsh-hook chpwd activate_venv && cd .
 
-    # Completions setup
-    zstyle ":completion:*" matcher-list "m:{[:lower:]}={[:upper:]}"
-    autoload -Uz compinit
-    compinit -u
-
     # Conda init
     __conda_setup="$("$HOME/miniforge3/bin/conda" "shell.zsh" "hook" 2> /dev/null)"
     if [ $? -eq 0 ]; then
@@ -119,8 +116,18 @@ deferred_commands () {
     source $CONFIG/.zshalias
     source $CONFIG/.zfunc
 
-    # Syntax highlighting
+    # Plugins
+    source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
     source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+    # Plugin config
+    zstyle ':completion:*:git-checkout:*' sort false
+    zstyle ':completion:*:descriptions' format '[%d]'
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+    zstyle ':completion:*' menu no
+    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+    zstyle ':fzf-tab:*' switch-group '<' '>'
     fast-theme $CONFIG/.zcolors.ini
 
     # Vi mode final config
