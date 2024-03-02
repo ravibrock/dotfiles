@@ -35,14 +35,38 @@ return {
         end,
     },
     {
-        "ellisonleao/carbon-now.nvim",
-        cmd = "CarbonNow",
-        opts = {
-            open_cmd = "open",
-            options = {
-                titlebar = "Ravi Brock - @ravibrock",
-                theme = "dracula pro",
+        "DrakulaD3a/silicon.lua",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        keys = {
+            {
+                "<leader>sx",
+                function()
+                    local window = vim.fn.winsaveview()
+                    local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+                    vim.cmd("normal! gg0vG")
+                    require("silicon").visualise_api({})
+                    vim.fn.winrestview(window)
+                    vim.api.nvim_feedkeys(esc, "x", false)
+                end,
+                mode = "n",
+                desc = "Export with Silicon"
             },
+            {
+                "<leader>sx",
+                function()
+                    vim.cmd("silent! normal! 2>gv")
+                    require("silicon").visualise_api({})
+                    vim.cmd("silent! undo")
+                end,
+                mode = "v",
+                desc = "Export with Silicon"
+            },
+        },
+        opts = {
+            bgColor = "#d3d3d3",
+            shadowColor = "#555",
+            gobble = true,
+            output = "~/Desktop/SILICON-${month}-${date}-${time}.png",
         },
     },
     {

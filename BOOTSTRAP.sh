@@ -83,13 +83,13 @@ ln -sf "$DIR/zsh/.zprofile" "$HOME"
 ln -sf "$DIR/zsh/.zshenv" "$HOME"
 ln -sf "$DIR/zsh/.zshrc" "$HOME"
 
-# Installs bat theme
-rm -rf /tmp/bat
-git clone https://github.com/catppuccin/bat /tmp/bat
-cd /tmp/bat
-mkdir -p "$(bat --config-dir)/themes"
-cp -f *.tmTheme "$(bat --config-dir)/themes"
+# Installs bat (and silicon) theme
+rm -rf "$(bat --config-dir)/syntaxes"
+mkdir -p "$(bat --config-dir)/syntaxes"
+cd "$(bat --config-dir)/syntaxes"
+git clone https://github.com/catppuccin/bat
 bat cache --build
+silicon --build-cache
 cd "$DIR"
 
 # Installs zsh plugins
