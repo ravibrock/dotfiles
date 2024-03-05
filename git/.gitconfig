@@ -16,6 +16,8 @@
     diffFilter = delta --diff-so-fancy --syntax-theme Catppuccin-mocha --paging=auto
 [merge]
     conflictstyle = diff3
+[pull]
+    ff = only
 [push]
     default = current
 [commit]
