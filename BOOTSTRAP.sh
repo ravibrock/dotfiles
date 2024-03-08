@@ -35,8 +35,7 @@ popd > /dev/null
 cd "$DIR"
 
 # Installs homebrew and tex packages
-brew bundle --file="$DIR/.brewfile"
-rm -f "$DIR/.brewfile.lock.json"
+brew bundle --no-lock --file="$DIR/.brewfile"
 tlmgr init-usertree
 tlmgr --usermode install scheme-full
 

@@ -51,6 +51,8 @@ return {
                 bprevious = false,
                 bnext = false,
                 bfirst = false,
+                tprevious = false,
+                tnext = false,
             },
         },
     },

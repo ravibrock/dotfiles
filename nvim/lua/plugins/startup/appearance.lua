@@ -57,6 +57,8 @@ return {
                     vim.cmd("silent! normal! 2>gv")
                     require("silicon").visualise_api({})
                     vim.cmd("silent! undo")
+                    local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+                    vim.api.nvim_feedkeys(esc, "x", false)
                 end,
                 mode = "v",
                 desc = "Export with Silicon"

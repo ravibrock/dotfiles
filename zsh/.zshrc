@@ -7,7 +7,7 @@ setopt autopushd
 setopt pushdignoredups
 
 # Startup info
-startup_printout () {
+function startup_printout {
     if [ ${TERM_PROGRAM+1} ]; then
         echo
         flashfetch
@@ -18,20 +18,25 @@ startup_printout () {
 }
 startup_printout
 
+# Hooks
+autoload -Uz add-zsh-hook
+
 # Enable comments in interactive shells
 setopt interactive_comments
 
 # Prompt
-prompt_pwd () {
+function prompt_pwd {
+    cd "$(readlink -f .)" # Capitalize directory names
     local p=${${PWD:/~/\~}/#~\//\~/}
     psvar[1]="${(@j[/]M)${(@s[/]M)p##*/}##(.|)?}$p:t"
 }
-precmd_functions+=( prompt_pwd )
+add-zsh-hook precmd prompt_pwd
 PROMPT="%F{cyan}%1v%f ❯ "
 
 # Window title
 DISABLE_AUTO_TITLE="True"
-precmd () { echo -en "\e]0; $(print -rD $PWD)\a" }
+function title { echo -en "\e]0; $(print -rD $PWD)\a" }
+add-zsh-hook precmd title
 
 # Zsh history settings
 HISTSIZE=999999999
@@ -56,27 +61,26 @@ bindkey -M viins ^L forward-char
 echo -ne "\e[1 q"
 export KEYTIMEOUT=1
 zle_highlight=( region:bg=cyan,fg=black )
-zle-line-init () { zle -K viins; echo -ne "\e[1 q" }
+function zle-line-init { zle -K viins; echo -ne "\e[1 q" }
 zle -N zle-line-init
 
 # Defers certain commands
 source ~/.zsh/zsh-defer/zsh-defer.plugin.zsh
-deferred_commands () {
+function deferred_commands {
     # Completions setup
     zstyle ":completion:*" matcher-list "m:{[:lower:]}={[:upper:]}"
     autoload -Uz compinit
     compinit -u
 
     # Clean history automatically
-    autoload -Uz add-zsh-hook
-    command-not-found () {
+    function command-not-found {
         (( ? == 127 )) &&
         sed -in '$d' ~/.zsh_history
     }
     add-zsh-hook precmd command-not-found
 
     # Enables/disables virtual environments
-    function activator () {
+    function activator {
         if [[ -e "venv/bin/activate" ]]; then
             if [[ $CURRENT_VENV != $PWD ]]; then
                 source venv/bin/activate
@@ -92,7 +96,7 @@ deferred_commands () {
             cd $1
         fi
     }
-    function activate_venv () {
+    function activate_venv {
         add-zsh-hook -d chpwd activate_venv
         activator $PWD
         add-zsh-hook chpwd activate_venv
@@ -130,7 +134,7 @@ deferred_commands () {
     fast-theme $CONFIG/.zcolors.ini
 
     # Vi mode final config
-    zle-keymap-select () {
+    function zle-keymap-select {
         if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
             echo -ne "\e[2 q"
         elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
