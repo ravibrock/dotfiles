@@ -81,20 +81,23 @@ function deferred_commands {
 
     # Enables/disables virtual environments
     function activator {
-        if [[ -e "venv/bin/activate" ]]; then
-            if [[ $CURRENT_VENV != $PWD ]]; then
-                source venv/bin/activate
-                export CURRENT_VENV=$PWD
+        while true; do
+            if [[ -e venv/bin/activate ]]; then
+                if [[ $CURRENT_VENV != $PWD ]]; then
+                    if [[ -v VIRTUAL_ENV ]] deactivate
+                    source venv/bin/activate
+                    export CURRENT_VENV=$PWD
+                fi
+                break
+            elif [[ $PWD == /Users/* ]]; then
+                cd ..
+            else
+                if [[ -v VIRTUAL_ENV ]] deactivate
+                unset CURRENT_VENV
+                break
             fi
-            cd $1
-        elif [[ $PWD == /Users/* ]]; then
-            cd ..
-            activator $1
-        else
-            if [[ -v VIRTUAL_ENV ]] deactivate
-            unset CURRENT_VENV
-            cd $1
-        fi
+        done
+        cd $1
     }
     function activate_venv {
         add-zsh-hook -d chpwd activate_venv
