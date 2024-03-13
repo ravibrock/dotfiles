@@ -39,18 +39,14 @@ function title { echo -en "\e]0; $(print -rD $PWD)\a" }
 add-zsh-hook precmd title
 
 # Zsh history settings
-HISTSIZE=999999999
 HISTFILE=~/.zsh_history
+HISTSIZE=999999999
 SAVEHIST=999999999
-HISTDUP=erase
-setopt appendhistory
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-setopt histignorespace
-setopt incappendhistory
-setopt sharehistory
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt INC_APPEND_HISTORY_TIME
 
 # Zsh vi mode settings
 bindkey -v
