@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration", unpack(opts) })
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", unpack(opts) })
+        vim.keymap.set("n", "gp", require("actions-preview").code_actions, { desc = "Preview code actions" })
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation", unpack(opts) })
         vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder", unpack(opts) })
         vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder", unpack(opts) })

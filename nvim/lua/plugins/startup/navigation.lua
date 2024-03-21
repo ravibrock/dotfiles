@@ -31,12 +31,15 @@ return {
         end,
     },
     {
-        "ggandor/flit.nvim",
+        "echasnovski/mini.jump",
+        opts = { delay = { highlight = 0 } },
         keys = {
-            { "f", mode = { "n", "x", "o" }, desc = "Flit forward to" },
-            { "F", mode = { "n", "x", "o" }, desc = "Flit backward to" },
+            { "f", mode = { "n", "x", "o" }, desc = "Forward search" },
+            { "F", mode = { "n", "x", "o" }, desc = "Backward search" },
         },
-        config = true,
+        init = function()
+            vim.cmd("highlight MiniJump guifg=#a6e3a1 gui=underline")
+        end,
     },
     {
         "stevearc/oil.nvim",

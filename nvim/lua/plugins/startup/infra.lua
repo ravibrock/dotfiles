@@ -181,7 +181,10 @@ return {
     {
         "neovim/nvim-lspconfig",
         lazy = true,
-        dependencies = { "chrisgrieser/nvim-rulebook" },
+        dependencies = {
+            "aznhe21/actions-preview.nvim",
+            "chrisgrieser/nvim-rulebook",
+        },
         config = function()
             require(prefix .. "nvim-lspconfig")
         end,

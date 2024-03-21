@@ -137,6 +137,16 @@ return {
         config = true,
     },
     {
+        "Wansmer/treesj",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        keys = {
+            { "<space>tj", function() require("treesj").join() end, mode = "n", desc = "Join trees" },
+            { "<space>tm", function() require("treesj").toggle() end, mode = "n", desc = "Toggle trees" },
+            { "<space>ts", function() require("treesj").split() end, mode = "n", desc = "Split trees" },
+        },
+        opts = { max_join_length = 240 },
+    },
+    {
         "L3MON4D3/LuaSnip",
         event = "InsertEnter",
         build = "make install_jsregexp",
