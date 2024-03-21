@@ -19,3 +19,4 @@
     rewind = reset "HEAD^"
     prev = checkout -
     discard = checkout --
+    open = ! git remote -v | awk '/origin.*push/ {print $2}' | xargs open
