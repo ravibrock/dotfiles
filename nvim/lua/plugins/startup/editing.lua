@@ -163,6 +163,13 @@ return {
         "iurimateus/luasnip-latex-snippets.nvim",
         ft = "tex",
         config = true,
+        init = function()
+            local ls = require("luasnip")
+            local dots = ls.parser.parse_snippet({ trig = "...", name = "Ellipses" }, "\\dots")
+            dots.condition = require("luasnip-latex-snippets.util.utils").is_math()
+            dots.priority = 101
+            ls.add_snippets("tex", { dots }, { type = "autosnippets" })
+        end,
         dependencies = {
             "L3MON4D3/LuaSnip",
             "lervag/vimtex",

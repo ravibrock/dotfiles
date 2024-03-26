@@ -34,8 +34,8 @@ return {
         "echasnovski/mini.jump",
         opts = { delay = { highlight = 0 } },
         keys = {
-            { "f", mode = { "n", "x", "o" }, desc = "Forward search" },
-            { "F", mode = { "n", "x", "o" }, desc = "Backward search" },
+            { "f", mode = { "n", "v" }, desc = "Forward search" },
+            { "F", mode = { "n", "v" }, desc = "Backward search" },
         },
         init = function()
             vim.cmd("highlight MiniJump guifg=#a6e3a1 gui=underline")
