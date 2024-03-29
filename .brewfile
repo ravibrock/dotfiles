@@ -1,6 +1,8 @@
 tap "buo/cask-upgrade"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "homebrew/services"
+tap "nextfire/tap"
 tap "osx-cross/arm"
 tap "ravibrock/formulae"
 brew "asymptote"
@@ -54,6 +56,7 @@ brew "tree"
 brew "wget"
 brew "wifi-password"
 brew "yt-dlp"
+brew "nextfire/tap/apple-music-discord-rpc"
 brew "ravibrock/formulae/auto-selfcontrol-rs", args: ["HEAD"]
 brew "ravibrock/formulae/fastfetch", args: ["HEAD"]
 cask "alt-tab"

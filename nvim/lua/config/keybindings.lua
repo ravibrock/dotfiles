@@ -18,6 +18,7 @@ vim.keymap.set({ "i", "c" }, "<C-l>", "<Right>", { noremap = true, desc = "Move 
 local function spellcheck()
     local colnr = vim.fn.col(".")
     local linenr = vim.fn.line(".")
+    --- @diagnostic disable-next-line: param-type-mismatch
     local length = string.len(vim.fn.getline("."))
     local window = vim.fn.winsaveview()
     local foldstatus = vim.opt.foldenable
@@ -25,6 +26,7 @@ local function spellcheck()
     vim.cmd("normal! [s")
     if linenr == vim.fn.line(".") then vim.cmd("normal! 1z=") end
     vim.fn.cursor({ linenr, "." })
+    --- @diagnostic disable-next-line: param-type-mismatch
     local position = string.len(vim.fn.getline(".")) - (length - colnr)
     vim.opt.foldenable = foldstatus
     ---@diagnostic disable-next-line: param-type-mismatch
