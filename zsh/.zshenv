@@ -1,3 +1,10 @@
+# Determines location
+export CONFIG="${"$(readlink "${(%):-%x}")"%/*}"
+export DOTFILES="$CONFIG/.."
+
+# Initializes other environment variables
+source $CONFIG/.zprivate
+
 # Configures bat and pagers
 export BAT_PAGER=""
 export BAT_STYLE="plain"
@@ -18,11 +25,10 @@ export PYTHONDONTWRITEBYTECODE="TRUE"
 
 # Other environment variables
 export BRAVE="/Applications/Brave.app/Contents/MacOS/Brave Browser"
-export CONFIG="${"$(readlink "${(%):-%x}")"%/*}"
-export DOTFILES="$CONFIG/.."
 export EDITOR="nvim -e"
 export GREP_OPTIONS='--color=auto'
 export NVIM="$DOTFILES/nvim"
+export SUDO_ASKPASS="$HOMEBREW_PREFIX/bin/ssh-askpass"
 export VISUAL="nvim"
 export FZF_DEFAULT_OPTS=" \
     --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
@@ -36,6 +42,3 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:$PATH"
 PATH=$PATH":$HOME/bin"
 PATH=$PATH:/usr/local/sbin
 export PATH
-
-# Initializes other environment variables
-source $CONFIG/.zprivate
