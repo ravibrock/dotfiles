@@ -54,9 +54,7 @@ return {
             {
                 "<leader>sx",
                 function()
-                    vim.cmd("silent! normal! 2>gv")
                     require("silicon").visualise_api({})
-                    vim.cmd("silent! undo")
                     local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
                     vim.api.nvim_feedkeys(esc, "x", false)
                 end,
@@ -67,6 +65,8 @@ return {
         opts = {
             bgColor = "#d3d3d3",
             shadowColor = "#555",
+            padHoriz = 40,
+            padVert = 40,
             gobble = true,
             output = "~/Desktop/SILICON-${month}-${date}-${time}.png",
         },
@@ -134,6 +134,13 @@ return {
     {
         "folke/twilight.nvim",
         keys = {{ "<leader>i", "<CMD>Twilight<CR>", desc = "Toggle Twilight" }},
+        opts = {
+            expand = {
+                "function",
+                "method",
+                "table",
+            },
+        },
     },
     {
         "nvim-lualine/lualine.nvim",

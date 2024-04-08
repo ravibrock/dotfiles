@@ -15,7 +15,6 @@ require("mason-lspconfig").setup({
         "marksman",
         "pyright",
         "ruff_lsp",
-        "texlab",
         "vimls",
         "yamlls",
     },
@@ -33,6 +32,7 @@ require("mason-lspconfig").setup({
                         language = "en-us",
                         disabledRules = {
                             ["en-us"] = {
+                                "EN_UNPAIRED_BRACKETS",
                                 "MAC_OS",
                                 "MORFOLOGIK_RULE_EN_US",
                                 "UPPERCASE_SENTENCE_START",

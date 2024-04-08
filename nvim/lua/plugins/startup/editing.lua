@@ -8,6 +8,11 @@ return {
         },
     },
     {
+        "inkarkat/vim-SpellCheck",
+        dependencies = { "inkarkat/vim-ingo-library" },
+        cmd = { "SpellCheck" },
+    },
+    {
         "tpope/vim-speeddating",
         keys = {
             { "<C-A>", "<Plug>SpeedDatingUp", mode = "n", desc = "Paste after" },

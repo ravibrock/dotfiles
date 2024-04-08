@@ -1,4 +1,5 @@
 return {
+    { "<leader>db", "<CMD>DapToggleBreakpoint<CR>", mode = "n", desc = "DAP toggle breakpoint" },
     { "<leader>df", "<CMD>DapContinue<CR>", mode = "n", desc = "DAP continue" },
     { "<leader>dl", "<CMD>DapStepInto<CR>", mode = "n", desc = "DAP step into" },
     { "<leader>dj", "<CMD>DapStepOver<CR>", mode = "n", desc = "DAP step over" },

@@ -191,7 +191,6 @@ return {
     },
     {
         "mfussenegger/nvim-dap",
-        event = "VeryLazy",
         config = function()
             vim.fn.sign_define("DapBreakpoint", { text="" })
             vim.fn.sign_define("DapBreakpointCondition", { text="" })
@@ -199,12 +198,15 @@ return {
             vim.fn.sign_define("DapBreakpointRejected", { text="" })
         end,
         keys = function()
-            require(prefix .. "nvim-dap")
+            return require(prefix .. "nvim-dap")
         end,
     },
     {
         "rcarriga/nvim-dap-ui",
-        dependencies = { "mfussenegger/nvim-dap" },
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "nvim-neotest/nvim-nio",
+        },
         config = true,
         keys = {{
             "<leader>dd",
