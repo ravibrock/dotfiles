@@ -1,6 +1,10 @@
 local prefix = "plugins.opts.appearance."
 return {
     {
+        "romainl/vim-cool",
+        event = { "BufReadPost", "BufNewFile" },
+    },
+    {
         "yamatsum/nvim-cursorline",
         opts = {
             cursorline = { enable = false },

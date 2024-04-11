@@ -23,6 +23,9 @@ autocmd({ "BufNewFile", "BufReadPre" }, {
     end,
 })
 
+-- Clear command palette when cursor moves or entering insert mode
+autocmd({ "CursorMoved", "InsertEnter" }, { command = "echon ''" })
+
 -- Set filetypes
 autocmd({ "BufRead", "BufNewFile" }, { command = "if match(expand('%:t'), '\\.gitalias$') != -1 | set ft=gitconfig | endif" })
 autocmd({ "BufRead", "BufNewFile" }, { command = "if expand('%:e') == 'err' | set ft=log | endif" })

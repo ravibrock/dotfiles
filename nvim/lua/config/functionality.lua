@@ -58,3 +58,10 @@ vim.opt.lazyredraw = true
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
+
+-- Run given command and send output to main register
+vim.api.nvim_create_user_command(
+    "Copy",
+    function(cmd) vim.cmd("redir @* | " .. cmd["args"] .. " | redir END") end,
+    { nargs = 1 }
+)

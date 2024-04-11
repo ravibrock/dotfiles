@@ -56,9 +56,6 @@ vim.keymap.set("n", "<leader>pe", "<CMD>PandocExport<CR>", { noremap = true, des
 vim.keymap.set("n", "n", "nzz", { noremap = true, desc = "Center screen when searching forwards" })
 vim.keymap.set("n", "N", "Nzz", { noremap = true, desc = "Center screen when searching backwards" })
 
--- Clear search results with <CR> in normal mode
-vim.keymap.set("n", "<CR>", "<CMD>nohlsearch <BAR> echon ''<CR><CR>", { silent = true, noremap = true, desc = "Clear search highlight" })
-
 -- Go to beginning of line when hitting { or } in normal mode
 vim.keymap.set("n", "{", "{0", { noremap = true, desc = "Go to last newline" })
 vim.keymap.set("n", "}", "}0", { noremap = true, desc = "Go to next newline" })
