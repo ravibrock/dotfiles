@@ -297,10 +297,6 @@ return {
     {
         "olimorris/persisted.nvim",
         cmd = { "SessionLoad", "SessionLoadLast" },
-        keys = {
-            { "<leader>qs", "<CMD>SessionLoad<CR>", desc = "Restore Session" },
-            { "<leader>ql", "<CMD>SessionLoadLast<CR>", desc = "Restore Last Session" },
-        },
         opts = {
             use_git_branch = true,
             should_autosave = function()

@@ -83,7 +83,12 @@ return {
     },
     {
         "kylechui/nvim-surround",
-        event = "VeryLazy",
+        keys = {
+            { "ds", "<Plug>(nvim-surround-delete)", mode = "n", desc = "Delete surrounding" },
+            { "cs", "<Plug>(nvim-surround-change)", mode = "n", desc = "Change surrounding" },
+            { "ys", "<Plug>(nvim-surround-normal)", mode = "n", desc = "Add surrounding" },
+            { "yss", "<Plug>(nvim-surround-normal-cur)", mode = "n", desc = "Surround line" },
+        },
         config = true,
     },
     {
@@ -127,7 +132,12 @@ return {
     },
     {
         "numToStr/Comment.nvim",
-        event = { "BufReadPost", "BufNewFile" },
+        keys = {
+            { "gb", mode = { "n", "x" }, desc = "Block comment selection" },
+            { "gbc", mode = "n", desc = "Block comment selection" },
+            { "gc", mode = { "n", "x" }, desc = "Comment selection" },
+            { "gcc", mode = "n", desc = "Comment line" },
+        },
         config = true,
     },
     {

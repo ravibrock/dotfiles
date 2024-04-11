@@ -69,6 +69,13 @@ return {
         end,
     },
     {
+        "milkypostman/vim-togglelist",
+        keys = {
+            { "<leader>ql", "<CMD>call ToggleLocationList()<CR>", mode = "n", desc = "Toggle location list" },
+            { "<leader>qf", "<CMD>call ToggleQuickfixList()<CR>", mode = "n", desc = "Toggle quickfix list" },
+        },
+    },
+    {
        "nvim-telescope/telescope.nvim",
         dependencies = {
             "debugloop/telescope-undo.nvim",
