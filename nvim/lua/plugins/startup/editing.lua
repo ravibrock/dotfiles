@@ -211,6 +211,7 @@ return {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-path",
+            "lukas-reineke/cmp-under-comparator",
             "micangl/cmp-vimtex",
             "saadparwaiz1/cmp_luasnip",
         },
