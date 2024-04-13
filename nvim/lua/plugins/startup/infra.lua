@@ -90,10 +90,10 @@ return {
             title = true,
         },
         keys = {
+            --- @diagnostic disable: missing-parameter
             {
                 "K",
                 function()
-                    ---@diagnostic disable-next-line: missing-parameter
                     require("hover").hover()
                 end,
                 desc = "Hover",
@@ -101,7 +101,6 @@ return {
             {
                 "gK",
                 function()
-                    ---@diagnostic disable-next-line: missing-parameter
                     require("hover").hover_select()
                 end,
                 desc = "Hover (select)",
@@ -109,7 +108,6 @@ return {
             {
                 "<S-TAB>",
                 function()
-                    ---@diagnostic disable-next-line: missing-parameter
                     require("hover").hover_switch("previous")
                 end,
                 desc = "Hover (previous)",
@@ -117,12 +115,12 @@ return {
             {
                 "<TAB>",
                 function()
-                    ---@diagnostic disable-next-line: missing-parameter
                     require("hover").hover_switch("next")
                 end,
                 desc = "Hover (next)",
             },
         },
+        --- @diagnostic enable: missing-parameter
     },
     {
         "williamboman/mason.nvim",

@@ -49,6 +49,7 @@ theme.catppuccin = function()
 
     local colorscheme = {
         visual = {
+            --- @diagnostic disable: need-check-nil
             a = { fg = colors.base, bg = colors.flamingo, gui = "bold" },
             b = { fg = colors.text, bg = colors.surface0 },
             c = { fg = colors.surface0, bg = colors.subtext0 },
@@ -78,6 +79,7 @@ theme.catppuccin = function()
             b = { fg = colors.text, bg = colors.surface0 },
             c = { fg = colors.surface0, bg = colors.subtext0 },
         },
+        --- @diagnostic enable: need-check-nil
     }
 
     setup(colorscheme)

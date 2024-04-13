@@ -1,6 +1,5 @@
 local null_ls = require("null-ls")
 local mason_null_ls = require("mason-null-ls")
----@diagnostic disable: missing-fields
 mason_null_ls.setup({
     ensure_installed = {
         "shfmt",

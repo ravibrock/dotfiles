@@ -48,7 +48,7 @@ end
 vim.keymap.set("n", "zR", require("ufo").openAllFolds, { desc = "Open all folds" })
 vim.keymap.set("n", "zM", require("ufo").closeAllFolds, { desc = "Close all folds" })
 
----@diagnostic disable-next-line: missing-fields
+--- @diagnostic disable-next-line: missing-fields
 require("ufo").setup({
     fold_virt_text_handler = handler,
     provider_selector = function(_, ft, _)
