@@ -5,15 +5,11 @@ return {
         event = { "BufReadPost", "BufNewFile" },
     },
     {
-        "nyngwang/murmur.lua",
-        event = "VeryLazy",
+        "ravibrock/nvim-cursorline",
+        event = { "BufReadPre", "BufNewFile" },
         opts = {
-            cursor_rgb = {
-                cterm = "underline",
-                gui = "underline",
-            },
-            max_len = 100,
-            min_len = 2,
+            cursorline = { enable = false },
+            cursorword = { min_length = 2 },
         },
     },
     {

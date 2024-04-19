@@ -40,6 +40,36 @@ return {
         event = "BufWritePre",
     },
     {
+        "kristijanhusak/vim-dadbod-ui",
+        dependencies = {
+            "tpope/vim-dadbod",
+            "kristijanhusak/vim-dadbod-completion",
+        },
+        keys = {{ "<leader>du", "<CMD>DBUIToggle<CR>", desc = "Toggle DB UI" }},
+        cmd = {
+            "DB",
+            "DBUI",
+            "DBUIToggle",
+            "DBUIAddConnection",
+            "DBUIFindBuffer",
+        },
+        init = function()
+            vim.g.db_ui_use_nerd_fonts = 1
+            vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+                pattern = { "*.*sql" },
+                callback = function()
+                    require("cmp").setup.buffer({ sources = {{ name = "vim-dadbod-completion" }} })
+                end,
+            })
+            vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+                pattern = { "*.dbout" },
+                callback = function()
+                    vim.opt_local.wrap = false
+                end,
+            })
+        end,
+    },
+    {
         "is0n/jaq-nvim",
         cmd = "Jaq",
         keys = {
