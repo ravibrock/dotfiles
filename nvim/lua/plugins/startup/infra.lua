@@ -55,13 +55,16 @@ return {
         },
         init = function()
             vim.g.db_ui_use_nerd_fonts = 1
+            vim.api.nvim_create_augroup("DBUI", {})
             vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+                group = "DBUI",
                 pattern = { "*.*sql" },
                 callback = function()
                     require("cmp").setup.buffer({ sources = {{ name = "vim-dadbod-completion" }} })
                 end,
             })
             vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+                group = "DBUI",
                 pattern = { "*.dbout" },
                 callback = function()
                     vim.opt_local.wrap = false
@@ -163,6 +166,24 @@ return {
         end,
     },
     {
+        "vyfor/cord.nvim",
+        event = "VeryLazy",
+        build = "./build",
+        opts = {
+            display = {
+                show_repository = false,
+                show_cursor_position = false,
+            },
+            text = {
+                viewing = "Coding ✍️",
+                editing = "Coding ✍️",
+                file_browser = "Browsing files 📑",
+                plugin_manager = "Managing plugins 🔌",
+                workspace = "",
+            },
+        },
+    },
+    {
         "tpope/vim-eunuch",
         cmd = {
             "Rename",
@@ -218,30 +239,21 @@ return {
         end,
     },
     {
-        "mfussenegger/nvim-dap",
-        config = function()
-            vim.fn.sign_define("DapBreakpoint", { text="" })
-            vim.fn.sign_define("DapBreakpointCondition", { text="" })
-            vim.fn.sign_define("DapLogPoint", { text="" })
-            vim.fn.sign_define("DapBreakpointRejected", { text="" })
-        end,
-        keys = function()
-            return require(prefix .. "nvim-dap")
-        end,
-    },
-    {
         "rcarriga/nvim-dap-ui",
         dependencies = {
             "mfussenegger/nvim-dap",
             "nvim-neotest/nvim-nio",
         },
         config = true,
-        keys = {{
-            "<leader>dd",
-            function() require("dapui").toggle() end,
-            mode = "n",
-            desc = "Toggle DAP UI"
-        }},
+        init = function()
+            vim.fn.sign_define("DapBreakpoint", { text="" })
+            vim.fn.sign_define("DapBreakpointCondition", { text="" })
+            vim.fn.sign_define("DapBreakpointRejected", { text="" })
+            vim.fn.sign_define("DapLogPoint", { text="" })
+        end,
+        keys = function()
+            return require(prefix .. "nvim-dap")
+        end,
     },
     {
         "kevinhwang91/nvim-ufo",
