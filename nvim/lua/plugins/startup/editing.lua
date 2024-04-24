@@ -97,10 +97,9 @@ return {
         cmd = "Copilot",
         build = ":Copilot auth",
         opts = {
-            filetypes = {
-                c   = false,
-                tex = false,
-            },
+            filetypes = { tex = false },
+            panel = { enabled = false },
+            suggestion = { enabled = false },
         },
     },
     {
