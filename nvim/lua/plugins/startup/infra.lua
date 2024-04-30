@@ -42,33 +42,36 @@ return {
     {
         "kristijanhusak/vim-dadbod-ui",
         dependencies = {
-            "tpope/vim-dadbod",
             "kristijanhusak/vim-dadbod-completion",
+            "pbogut/vim-dadbod-ssh",
+            "tpope/vim-dadbod",
         },
-        keys = {{ "<leader>du", "<CMD>DBUIToggle<CR>", desc = "Toggle DB UI" }},
+        keys = {{ "<leader>du", "<CMD>DBUITrigger<CR>", desc = "Trigger Dadbod UI" }},
         cmd = {
             "DB",
             "DBUI",
-            "DBUIToggle",
+            "DBUITrigger",
             "DBUIAddConnection",
             "DBUIFindBuffer",
         },
+        config = function()
+            require(prefix .. "dadbod")
+        end,
+    },
+    {
+        "tpope/vim-dotenv",
+        event = { "BufRead", "BufNewFile" },
         init = function()
-            vim.g.db_ui_use_nerd_fonts = 1
-            vim.api.nvim_create_augroup("DBUI", {})
             vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-                group = "DBUI",
-                pattern = { "*.*sql" },
                 callback = function()
-                    require("cmp").setup.buffer({ sources = {{ name = "vim-dadbod-completion" }} })
-                end,
-            })
-            vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-                group = "DBUI",
-                pattern = { "*.dbout" },
-                callback = function()
-                    vim.opt_local.wrap = false
-                end,
+                    local path = vim.fn.expand("%:p:h")
+                    while path ~= "/" do
+                        if vim.fn.filereadable(vim.fn.expand(path .. "/.env")) == 1 then
+                            vim.cmd("Dotenv " .. path)
+                        end
+                        path = vim.fn.fnamemodify(path, ":h")
+                    end
+                end
             })
         end,
     },

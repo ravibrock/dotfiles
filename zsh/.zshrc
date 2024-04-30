@@ -75,8 +75,15 @@ function deferred_commands {
     }
     add-zsh-hook precmd command-not-found
 
-    # Enables/disables virtual environments
+    # Enables/disables virtual environments and sources env files
     function activator {
+        while [[ $PWD == /Users/* ]]; do
+            if [[ -e .env ]] source .env
+            if [[ -e .envrc ]] source .envrc
+            cd ..
+        done
+        cd $1
+
         while true; do
             if [[ -e venv/bin/activate ]]; then
                 if [[ $CURRENT_VENV != $PWD ]]; then
