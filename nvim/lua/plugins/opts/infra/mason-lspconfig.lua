@@ -13,7 +13,7 @@ require("mason-lspconfig").setup({
         "ltex",
         "lua_ls",
         "marksman",
-        "pyright",
+        "pylsp",
         "ruff_lsp",
         "vimls",
         "yamlls",
@@ -52,6 +52,17 @@ require("mason-lspconfig").setup({
                             globals = { "vim" },
                         },
                         unpack(foldsettings),
+                    },
+                },
+            })
+        end,
+        ["pylsp"] = function()
+            require("lspconfig").pylsp.setup({
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            pycodestyle = { enabled = false },
+                        },
                     },
                 },
             })
