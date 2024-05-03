@@ -61,7 +61,10 @@ require("mason-lspconfig").setup({
                 settings = {
                     pylsp = {
                         plugins = {
+                            autopep8    = { enabled = false },
                             pycodestyle = { enabled = false },
+                            pyflakes    = { enabled = false },
+                            yapf        = { enabled = false },
                         },
                     },
                 },

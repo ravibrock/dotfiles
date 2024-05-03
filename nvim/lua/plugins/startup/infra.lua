@@ -117,6 +117,7 @@ return {
         opts = {
             init = function()
                 require("hover.providers.lsp")
+                require("hover.providers.dap")
                 require("hover.providers.gh")
                 require("hover.providers.gh_user")
                 require("hover.providers.man")
