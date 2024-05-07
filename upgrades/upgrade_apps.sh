@@ -6,6 +6,7 @@ function tag_log { echo "[$(date "+%Y-%m-%d %H:%M:%S %Z")] $1" | tee /dev/stderr
 # Checks internet connection
 if ! ping -q -c1 8.8.8.8 &> /dev/null; then
     tag_log "No internet connection. Aborting."
+    osascript -e 'display notification "Internet unavailable during update attempt." with title "Error"'
     exit 1
 fi
 

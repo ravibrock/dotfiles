@@ -25,8 +25,14 @@ fi
 echo "Starting installation. You'll likely be prompted for your password."
 
 # Sets up repo
+caffeinate &
 if ! [[ -v HOMEBREW_PREFIX ]] /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install -q git
+if [[ -f "/usr/local/opt/homebrew" ]]; then
+    eval "$(/usr/local/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+export SUDO_ASKPASS=""
 if ! [[ -d dotfiles ]] git clone https://github.com/ravibrock/dotfiles
 cd "dotfiles"
 pushd "$(dirname "$(readlink -f "$BASH_SOURCE")")" > /dev/null
@@ -83,10 +89,9 @@ ln -sf "$DIR/zsh/.zshenv" "$HOME"
 ln -sf "$DIR/zsh/.zshrc" "$HOME"
 
 # Installs bat (and silicon) theme
-rm -rf "$(bat --config-dir)/syntaxes"
-mkdir -p "$(bat --config-dir)/syntaxes"
-cd "$(bat --config-dir)/syntaxes"
-git clone https://github.com/catppuccin/bat
+rm -rf "$(bat --config-dir)/themes"
+mkdir -p "$(bat --config-dir)/themes"
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 bat cache --build
 silicon --build-cache
 cd "$DIR"
@@ -106,3 +111,5 @@ launchctl load -w "$DIR/upgrades/upgrade.apps.plist" &> /dev/null
 # Finishing touches
 touch "$HOME/.hushlogin"
 echo 'Installation complete! Switch from Terminal to iTerm2 and add credentials to `git/.gitconfig_local` and `zsh/.zprivate`.'
+echo "Caveats: MacOS settings, like the Dock, aren't synced. If using LaTeX, run \`tlmgr install scheme-full\` again to install remaining packages."
+killall caffeinate

@@ -8,7 +8,7 @@ source $CONFIG/.zprivate
 # Configures bat and pagers
 export BAT_PAGER=""
 export BAT_STYLE="plain"
-export BAT_THEME="Catppuccin-mocha"
+export BAT_THEME="Catppuccin Mocha"
 export DELTA_PAGER="less"
 export MANPAGER="most"
 export PAGER="less"
