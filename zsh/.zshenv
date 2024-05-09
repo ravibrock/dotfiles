@@ -19,15 +19,12 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_HINTS=1
 
-# Configures pnpm/python
-export PNPM_HOME='~/Library/pnpm'
-export PYTHONDONTWRITEBYTECODE="TRUE"
-
 # Other environment variables
 export BRAVE="/Applications/Brave.app/Contents/MacOS/Brave Browser"
 export EDITOR="nvim -e"
 export GREP_OPTIONS='--color=auto'
 export NVIM="$DOTFILES/nvim"
+export PYTHONDONTWRITEBYTECODE="TRUE"
 export SUDO_ASKPASS="$HOMEBREW_PREFIX/bin/ssh-askpass"
 export VISUAL="nvim"
 export FZF_DEFAULT_OPTS=" \
@@ -36,9 +33,10 @@ export FZF_DEFAULT_OPTS=" \
     --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 # Sets PATH
-PATH="$PNPM_HOME:$PATH"
 PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH"
 PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:$PATH"
-PATH=$PATH":$HOME/bin"
-PATH=$PATH:/usr/local/sbin
+PATH="$HOME/bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
+PATH="$HOMEBREW_PREFIX/bin:$PATH"
+PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 export PATH

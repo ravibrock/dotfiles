@@ -8,7 +8,6 @@ gitignore_global
 latexmkrc
 rayconfig
 vimrc
-zprofile
 zshalias
 zshenv
 zshrc
