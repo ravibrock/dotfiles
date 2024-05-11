@@ -100,6 +100,32 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
+        keys = {
+            {
+                "[g",
+                function()
+                    require("gitsigns").nav_hunk("prev")
+                    require("gitsigns").preview_hunk()
+                end,
+                mode = "n",
+                desc = "Previous hunk",
+            },
+            {
+                "]g",
+                function()
+                    require("gitsigns").nav_hunk("next")
+                    require("gitsigns").preview_hunk()
+                end,
+                mode = "n",
+                desc = "Next hunk",
+            },
+            {
+                "<leader>gh",
+                function() require("gitsigns").preview_hunk() end,
+                mode = "n",
+                desc = "Preview hunk",
+            },
+        },
         opts = {
             signs = {
                 add          = { text = "│" },
@@ -218,7 +244,7 @@ return {
         "folke/todo-comments.nvim",
         cmd = { "TodoTrouble", "TodoTelescope" },
         event = { "BufReadPost", "BufNewFile" },
-        config = true,
+        opts = { signs = false },
         keys = {
             { "]t", function() require("todo-comments").jump_next() end, mode = "n", desc = "Next todo comment" },
             { "[t", function() require("todo-comments").jump_prev() end, mode = "n", desc = "Previous todo comment" },
