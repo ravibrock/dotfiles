@@ -76,8 +76,9 @@ return {
         },
     },
     {
-       "nvim-telescope/telescope.nvim",
+        "nvim-telescope/telescope.nvim",
         dependencies = {
+            "2KAbhishek/nerdy.nvim",
             "debugloop/telescope-undo.nvim",
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope-bibtex.nvim",

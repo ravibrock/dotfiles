@@ -102,7 +102,7 @@ return {
         event = "VeryLazy",
         keys = {
             {
-                "[g",
+                "[h",
                 function()
                     require("gitsigns").nav_hunk("prev")
                     require("gitsigns").preview_hunk()
@@ -111,7 +111,7 @@ return {
                 desc = "Previous hunk",
             },
             {
-                "]g",
+                "]h",
                 function()
                     require("gitsigns").nav_hunk("next")
                     require("gitsigns").preview_hunk()

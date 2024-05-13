@@ -34,15 +34,15 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
 end
 
 function M.fold_col()
-	local Cfold_info = M.ffi.C.fold_info
-	local wp = M.ffi.C.find_window_by_handle(vim.g.statusline_winid, M.ffi.new("Error"))
-	local foldinfo = Cfold_info(wp, vim.v.lnum)
-	if foldinfo.start == vim.v.lnum then
-		if vim.fn.foldclosed(vim.v.lnum) ~= -1 then
-			return "%#StatusColumnFoldClosed#" .. "▶" .. "%*"
-		end
-	end
-	return ""
+    local Cfold_info = M.ffi.C.fold_info
+    local wp = M.ffi.C.find_window_by_handle(vim.g.statusline_winid, M.ffi.new("Error"))
+    local foldinfo = Cfold_info(wp, vim.v.lnum)
+    if foldinfo.start == vim.v.lnum then
+        if vim.fn.foldclosed(vim.v.lnum) ~= -1 then
+            return "%#StatusColumnFoldClosed#" .. "▶" .. "%*"
+        end
+    end
+    return ""
 end
 
 vim.keymap.set("n", "zR", require("ufo").openAllFolds, { desc = "Open all folds" })
