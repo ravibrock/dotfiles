@@ -64,6 +64,7 @@ return {
         init = function()
             vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
                 callback = function()
+                    if vim.bo.filetype == "oil" then return end
                     local path = vim.fn.expand("%:p:h")
                     while path ~= "/" do
                         if vim.fn.filereadable(vim.fn.expand(path .. "/.env")) == 1 then
