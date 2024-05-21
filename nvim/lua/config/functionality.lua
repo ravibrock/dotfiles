@@ -17,6 +17,10 @@ vim.opt.ffs = { "unix", "dos", "mac" }
 -- Ignore compiled files
 vim.opt.wildignore = { "*.o", "*~", "*.pyc", "*pycache*", "*/.git/*", "*/.hg/*", "*/.svn/*", "*/.DS_Store" }
 
+-- Silence deprecation warnings
+---@diagnostic disable-next-line: duplicate-set-field
+vim.deprecate = function() end
+
 -- Configure working directory
 vim.opt.autochdir = true
 

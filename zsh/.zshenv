@@ -14,7 +14,6 @@ export MANPAGER="most"
 export PAGER="less"
 
 # Configures homebrew
-export HOMEBREW_AUTOREMOVE=1
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_HINTS=1
