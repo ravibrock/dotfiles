@@ -1,8 +1,9 @@
 local prefix = "plugins.opts.appearance."
 return {
     {
-        "romainl/vim-cool",
+        "nvimdev/hlsearch.nvim",
         event = { "BufReadPost", "BufNewFile" },
+        config = true,
     },
     {
         "ravibrock/nvim-cursorline",
@@ -100,32 +101,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
-        keys = {
-            {
-                "[h",
-                function()
-                    require("gitsigns").nav_hunk("prev")
-                    require("gitsigns").preview_hunk()
-                end,
-                mode = "n",
-                desc = "Previous hunk",
-            },
-            {
-                "]h",
-                function()
-                    require("gitsigns").nav_hunk("next")
-                    require("gitsigns").preview_hunk()
-                end,
-                mode = "n",
-                desc = "Next hunk",
-            },
-            {
-                "<leader>gh",
-                function() require("gitsigns").preview_hunk() end,
-                mode = "n",
-                desc = "Preview hunk",
-            },
-        },
+        keys = function() require(prefix .. "gitsigns") end,
         opts = {
             signs = {
                 add          = { text = "│" },
