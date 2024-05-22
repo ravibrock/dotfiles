@@ -256,9 +256,7 @@ return {
             vim.fn.sign_define("DapBreakpointRejected", { text="" })
             vim.fn.sign_define("DapLogPoint", { text="" })
         end,
-        keys = function()
-            return require(prefix .. "nvim-dap")
-        end,
+        keys = require(prefix .. "nvim-dap"),
     },
     {
         "kevinhwang91/nvim-ufo",

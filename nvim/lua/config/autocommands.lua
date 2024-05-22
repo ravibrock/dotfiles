@@ -27,10 +27,13 @@ autocmd({ "BufNewFile", "BufReadPre" }, {
 autocmd({ "CursorMoved", "InsertEnter" }, { command = "echon ''" })
 
 -- Set filetypes
-autocmd({ "BufRead", "BufNewFile" }, { command = "if match(expand('%:t'), '\\.gitalias$') != -1 | set ft=gitconfig | endif" })
 autocmd({ "BufRead", "BufNewFile" }, { command = "if expand('%:e') == 'err' | set ft=log | endif" })
 autocmd({ "BufRead", "BufNewFile" }, { command = "if expand('%:e') == 'out' | set ft=log | endif" })
 autocmd({ "BufRead", "BufNewFile" }, { command = "if getline(1) =~ '^execve' | set ft=strace | endif" })
+autocmd(
+    { "BufRead", "BufNewFile" },
+    { command = "if match(expand('%:t'), '\\.gitalias$') != -1 | set ft=gitconfig | endif" }
+)
 
 -- Remove trailing whitespace on save
 autocmd("BufWritePre", {

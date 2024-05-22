@@ -64,9 +64,7 @@ return {
                 desc = "Toggle NeoTree explorer",
             },
         },
-        opts = function()
-            return require(prefix .. "neo-tree")
-        end,
+        opts = require(prefix .. "neo-tree"),
     },
     {
         "milkypostman/vim-togglelist",
@@ -86,13 +84,9 @@ return {
         },
         cmd = "Telescope",
         version = false,
-        keys = function()
-            return require(prefix .. "telescope").keys
-        end,
-        opts = function()
-            -- Comment out mappings on lines 125-134 of the Telescope config if it's erroring
-            return require(prefix .. "telescope").opts
-        end,
+        keys = require(prefix .. "telescope").keys,
+        -- Comment out mappings on lines 125-134 of the Telescope config if it's erroring
+        opts = require(prefix .. "telescope").opts
     },
     {
         "nacro90/numb.nvim",

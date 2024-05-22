@@ -14,6 +14,13 @@ return {
         },
     },
     {
+        "m4xshen/smartcolumn.nvim",
+        opts = {
+            colorcolumn = "120",
+            disabled_filetypes = { "help", "text", "markdown", "alpha", "lazy", "tex" },
+        },
+    },
+    {
         "fei6409/log-highlight.nvim",
         ft = { "log" },
         config = true,
@@ -101,7 +108,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
-        keys = function() require(prefix .. "gitsigns") end,
+        keys = require(prefix .. "gitsigns"),
         opts = {
             signs = {
                 add          = { text = "│" },
@@ -139,20 +146,7 @@ return {
             "lewis6991/gitsigns.nvim",
             "mfussenegger/nvim-dap",
         },
-        config = function()
-            local builtin = require("statuscol.builtin")
-            require("statuscol").setup({
-                ft_ignore = { "alpha" },
-                clickmod = "c",
-                relculright = true,
-                segments = {
-                    { sign = { namespace = { "gitsigns" }, maxwidth = 1, colwidth = 2, auto = true }, click = "v:lua.ScSa" },
-                    { sign = { name = { ".*"  }, maxwidth = 1, colwidth = 2, auto = true }, click = "v:lua.ScSa" },
-                    { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
-                    { text = { function(args) return builtin.foldfunc(args):gsub(" ", "│") end, " " }, maxwidth = 1, colwidth = 2, click = "v:lua.ScFa" },
-                },
-            })
-        end,
+        config = function() require(prefix .. "statuscol") end,
     },
     {
         "folke/twilight.nvim",
@@ -206,14 +200,7 @@ return {
     },
     {
         "folke/trouble.nvim",
-        keys = {
-            { "<leader>xd", function() require("trouble").toggle("document_diagnostics") end, mode = "n", desc = "Trouble document diagnostics" },
-            { "<leader>xl", function() require("trouble").toggle("loclist") end, mode = "n", desc = "Trouble loclist" },
-            { "<leader>xq", function() require("trouble").toggle("quickfix") end, mode = "n", desc = "Trouble quickfix" },
-            { "<leader>xt", function() require("trouble").toggle("todo") end, desc = "Todo" },
-            { "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end, mode = "n", desc = "Trouble workspace diagnostics" },
-            { "<leader>xx", function() require("trouble").toggle() end, mode = "n", desc = "Toggle Trouble" },
-        },
+        keys = require(prefix .. "trouble"),
         config = true,
     },
     {
@@ -250,9 +237,7 @@ return {
             "MaximilianLloyd/ascii.nvim",
             "MunifTanjim/nui.nvim",
         },
-        opts = function()
-            return require(prefix .. "alpha-nvim").opts()
-        end,
+        opts = require(prefix .. "alpha-nvim").opts,
         config = function(_, dashboard)
             require(prefix .. "alpha-nvim").config(_, dashboard)
         end,

@@ -24,7 +24,7 @@ all.opts = function()
     dashboard.opts.layout[1].val = 8
     return dashboard
 end
-all.config = function(_, dashboard)
+all.config = function(_, dash)
     if vim.opt.filetype == "lazy" then
         vim.cmd.close()
         vim.api.nvim_create_autocmd("User", {
@@ -35,7 +35,7 @@ all.config = function(_, dashboard)
             end,
         })
     end
-    require("alpha").setup(dashboard.opts)
+    require("alpha").setup(dash.opts)
     vim.api.nvim_create_autocmd("User", {
         group = "Alpha",
         pattern = "LazyVimStarted",
@@ -44,7 +44,7 @@ all.config = function(_, dashboard)
             local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
             local version = vim.version()
             local v = version.major .. "." .. version.minor .. "." .. version.patch
-            dashboard.section.footer.val = "⚡ Neovim v" .. v .. " loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+            dash.section.footer.val = "⚡ Neovim v" .. v .. " loaded " .. stats.count .. " plugins in " .. ms .. "ms"
             pcall(vim.cmd.AlphaRedraw)
         end,
     })

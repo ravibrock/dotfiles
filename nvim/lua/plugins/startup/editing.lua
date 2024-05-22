@@ -111,15 +111,14 @@ return {
         "nvim-pack/nvim-spectre",
         dependencies = "nvim-lua/plenary.nvim",
         cmd = "Spectre",
-        keys = {
-            { "<leader>fs", function() require("spectre").toggle() end, mode = "n", desc = "Toggle Spectre" },
-            { "<leader>fv", function() require("spectre").open_visual({ select_word = true }) end, mode = "n", desc = "[Spectre] Search current word" },
-            { "<leader>fw", function() require("spectre").open_visual() end, mode = "v", desc = "[Spectre] Search current word" },
-            { "<leader>fp", function() require("spectre").open_file_search({ select_word = true }) end, mode = "n", desc = "[Spectre] Search on current file" },
-        },
+        keys = require(prefix .. "spectre"),
         build = [[
             mkdir -p spectre_oxi/.cargo
-            printf "[build]\nrustflags = [\n  '-C', 'link-arg=-undefined',\n  '-C', 'link-arg=dynamic_lookup',\n]" > spectre_oxi/.cargo/config
+            echo "[build]" > spectre_oxi/.cargo/config
+            echo "rustflags = [" >> spectre_oxi/.cargo/config
+            echo "  '-C', 'link-arg=-undefined'," >> spectre_oxi/.cargo/config
+            echo "  '-C', 'link-arg=dynamic_lookup'," >> spectre_oxi/.cargo/config
+            echo "]" >> spectre_oxi/.cargo/config
             ./build.sh nvim-oxi
             rm -rf .cargo
         ]],
@@ -158,7 +157,10 @@ return {
             { "<space>tm", function() require("treesj").toggle() end, mode = "n", desc = "Toggle trees" },
             { "<space>ts", function() require("treesj").split() end, mode = "n", desc = "Split trees" },
         },
-        opts = { max_join_length = 240 },
+        opts = {
+            max_join_length = 120,
+            use_default_keymaps = false,
+        },
     },
     {
         "L3MON4D3/LuaSnip",
@@ -169,8 +171,18 @@ return {
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
             require("luasnip").config.setup({ enable_autosnippets = true })
-            vim.keymap.set({ "i", "s" }, "<C-I>", function() require("luasnip").jump(1) end, { silent = true, desc = "Jump forward" })
-            vim.keymap.set({ "i", "s" }, "<C-U>", function() require("luasnip").jump(-1) end, { silent = true, desc = "Jump backward" })
+            vim.keymap.set(
+                { "i", "s" },
+                "<C-I>",
+                function() require("luasnip").jump(1) end,
+                { silent = true, desc = "Jump forward" }
+            )
+            vim.keymap.set(
+                { "i", "s" },
+                "<C-U>",
+                function() require("luasnip").jump(-1) end,
+                { silent = true, desc = "Jump backward" }
+            )
         end,
     },
     {
@@ -192,13 +204,7 @@ return {
     {
         "andrewferrier/debugprint.nvim",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
-        keys = {
-            { "g?p", function() require("debugprint").debugprint() end, mode = "n", desc = "Debug print below" },
-            { "g?P", function() require("debugprint").debugprint({ above = true }) end, mode = "v", desc = "Debug print above" },
-            { "g?v", function() require("debugprint").debugprint({ variable = true }) end, mode = "n", desc = "Debug print variable" },
-            { "g?V", function() require("debugprint").debugprint({ variable = true, above = true }) end, mode = "v", desc = "Debug print variable" },
-            { "g?d", function() require("debugprint").deleteprints() end, mode = "n", desc = "Delete debug prints" },
-        },
+        keys = require(prefix .. "debugprint"),
         config = true,
     },
     {
