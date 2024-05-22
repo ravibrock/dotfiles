@@ -279,27 +279,33 @@ return {
         dependencies = { "tpope/vim-rhubarb" },
         cmd = { "G", "Git", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" },
         config = function()
-            local function forcepush()
-                local choice = vim.fn.input("Force push? [Y/n] ")
-                vim.cmd("normal! :<CR>")
-                if choice == "Y" then
-                    vim.cmd("Git push --force-with-lease")
-                else
-                    print("Force push aborted.")
-                end
-            end
-            vim.api.nvim_create_user_command("GForcePush", forcepush, {})
+            vim.api.nvim_create_user_command(
+                "GForcePush",
+                function()
+                    local choice = vim.fn.input("Force push? [Y/n] ")
+                    vim.cmd("normal! :<CR>")
+                    if choice == "Y" then
+                        vim.cmd("Git push --force-with-lease")
+                    else
+                        print("Force push aborted.")
+                    end
+                end,
+                {}
+            )
+            vim.api.nvim_create_user_command(
+                "Browse",
+                function(opts) vim.fn.system { "open", opts.fargs[1] } end,
+                { nargs = 1 }
+            )
         end,
         keys = {
+            { "<leader>ga", "<CMD>Git add .<CR>", desc = "Add current file" },
             { "<leader>gb", "<CMD>Git blame<CR>", desc = "Blame current file" },
-            { "<leader>gc", "<CMD>Git commit -a <BAR> startinsert<CR>", desc = "Commit" },
-            { "<leader>gd", "<CMD>Gdiffsplit<CR>", desc = "Diff" },
+            { "<leader>gc", "<CMD>Git commit <BAR> startinsert<CR>", desc = "Commit" },
             { "<leader>gf", "<CMD>GForcePush<CR>", desc = "Force push" },
             { "<leader>gl", "<CMD>Git pull<CR>", desc = "Pull" },
-            { "<leader>go", "<CMD>GBrowse<CR>", desc = "Open in GitHub" },
+            { "<leader>go", "<CMD>.GBrowse<CR>", desc = "Open in GitHub" },
             { "<leader>gp", "<CMD>Git push<CR>", desc = "Push" },
-            { "<leader>gr", "<CMD>Git rebase -i --root<CR>", desc = "Rebase" },
-            { "<leader>gs", "<CMD>Git<CR>", desc = "Status" },
         },
     },
     {
