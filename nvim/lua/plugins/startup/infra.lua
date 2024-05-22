@@ -306,6 +306,7 @@ return {
             { "<leader>gl", "<CMD>Git pull<CR>", desc = "Pull" },
             { "<leader>go", "<CMD>.GBrowse<CR>", desc = "Open in GitHub" },
             { "<leader>gp", "<CMD>Git push<CR>", desc = "Push" },
+            { "<leader>gu", "<CMD>Git unstage .<CR>", desc = "Unstage current file" },
         },
     },
     {

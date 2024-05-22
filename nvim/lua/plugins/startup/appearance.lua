@@ -17,7 +17,18 @@ return {
         "m4xshen/smartcolumn.nvim",
         opts = {
             colorcolumn = "120",
-            disabled_filetypes = { "help", "text", "markdown", "alpha", "lazy", "tex" },
+            disabled_filetypes = {
+                "Jaq",
+                "alpha",
+                "dbout",
+                "help",
+                "lazy",
+                "lspinfo",
+                "markdown",
+                "mason",
+                "tex",
+                "text",
+            },
         },
     },
     {

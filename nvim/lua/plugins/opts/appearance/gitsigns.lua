@@ -40,5 +40,23 @@ return {
         ":<C-U>Gitsigns select_hunk<CR>",
         mode = { "o", "x" },
         desc = "Select within hunk",
-    }
+    },
+    {
+        "<leader>gh",
+        function() require("gitsigns").stage_hunk() end,
+        mode = "n",
+        desc = "Stage hunk",
+    },
+    {
+        "<leader>gh",
+        function() require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end,
+        mode = "v",
+        desc = "Stage hunk",
+    },
+    {
+        "<leader>gr",
+        function() require("gitsigns").undo_stage_hunk() end,
+        mode = "n",
+        desc = "Undo stage hunk",
+    },
 }
