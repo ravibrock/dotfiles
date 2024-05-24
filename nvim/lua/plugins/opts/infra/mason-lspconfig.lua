@@ -1,12 +1,11 @@
-local foldsettings = { -- Needed for nvim-ufo to work properly
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-}
-
-local function on_attach(client, _)
-    if client.name == "ruff" then
-        client.server_capabilities.hoverProvider = false
-    end
+local function get_capabilities()
+    vim.cmd("LspStart") -- Workaround for language servers not starting automatically
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.foldingRange = { -- Needed for nvim-ufo to work properly
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+    }
+    return capabilities
 end
 
 require("mason-lspconfig").setup({
@@ -26,13 +25,11 @@ require("mason-lspconfig").setup({
     },
     handlers = {
         function(server)
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities.textDocument.foldingRange = foldsettings
-            require("lspconfig")[server].setup({ capabilities = capabilities })
-            vim.cmd("LspStart") -- Workaround for language servers not starting automatically
+            require("lspconfig")[server].setup({ capabilities = get_capabilities() })
         end,
         ["basedpyright"] = function()
             require("lspconfig").basedpyright.setup({
+                capabilities = get_capabilities(),
                 settings = {
                     basedpyright = {
                         disableOrganizeImports = true,
@@ -43,6 +40,7 @@ require("mason-lspconfig").setup({
         end,
         ["ltex"] = function()
             require("lspconfig").ltex.setup({
+                capabilities = get_capabilities(),
                 settings = {
                     ltex = {
                         language = "en-us",
@@ -61,34 +59,23 @@ require("mason-lspconfig").setup({
         ["lua_ls"] = function()
             require("neodev").setup()
             require("lspconfig").lua_ls.setup({
+                capabilities = get_capabilities(),
                 settings = {
                     Lua = {
                         diagnostics = {
                             disable = { "trailing-space" },
                             globals = { "vim" },
                         },
-                        unpack(foldsettings),
                     },
                 },
             })
         end,
         ["ruff"] = function()
             require("lspconfig").ruff.setup({
-                on_attach = on_attach,
-            })
-        end,
-        ["pylsp"] = function()
-            require("lspconfig").pylsp.setup({
-                settings = {
-                    pylsp = {
-                        plugins = {
-                            autopep8    = { enabled = false },
-                            pycodestyle = { enabled = false },
-                            pyflakes    = { enabled = false },
-                            yapf        = { enabled = false },
-                        },
-                    },
-                },
+                capabilities = get_capabilities(),
+                on_attach = function(client, _)
+                    client.server_capabilities.hoverProvider = false
+                end,
             })
         end,
     },
