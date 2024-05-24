@@ -13,16 +13,14 @@ return {
         dependencies = { "moll/vim-bbye" },
     },
     {
-        "moll/vim-bbye",
+        "kazhala/close-buffers.nvim",
         keys = {
-            { "[b", "<CMD>Bdelete<CR>", mode = "n", desc = "Delete buffer" },
-            { "]b", "<CMD>Bwipeout<CR>", mode = "n", desc = "Wipeout buffer" },
+            { "[b", "<CMD>BDelete this<CR>", mode = "n", desc = "Delete buffer" },
+            { "]b", "<CMD>BDelete other<CR>", mode = "n", desc = "Delete other buffers" },
+            { "[B", "<CMD>BDelete! this<CR>", mode = "n", desc = "Delete buffer" },
+            { "]B", "<CMD>BDelete! other<CR>", mode = "n", desc = "Delete other buffers" },
         },
-    },
-    {
-        "numToStr/BufOnly.nvim",
-        cmd = "BufOnly",
-        keys = {{ "[B", "<CMD>BufOnly<CR>", desc = "Close all buffers except current" }},
+        config = true,
     },
     {
         "nmac427/guess-indent.nvim",
