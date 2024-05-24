@@ -96,22 +96,6 @@ return {
         },
     },
     {
-        "code-biscuits/nvim-biscuits",
-        event = { "BufNewFile", "BufReadPost" },
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        opts = {
-            cursor_line_only = true,
-            default_config = {
-                max_length = 40,
-                min_distance = 1,
-                prefix_string = " 󰌵 ",
-            },
-        },
-        init = function()
-            vim.cmd("highlight BiscuitColor gui=italic guifg=#6c7086")
-        end,
-    },
-    {
         "yorickpeterse/nvim-pqf",
         event = "VeryLazy",
         config = true,
