@@ -3,8 +3,15 @@ local foldsettings = { -- Needed for nvim-ufo to work properly
     lineFoldingOnly = true,
 }
 
+local function on_attach(client, _)
+    if client.name == "ruff" then
+        client.server_capabilities.hoverProvider = false
+    end
+end
+
 require("mason-lspconfig").setup({
     ensure_installed = {
+        "basedpyright",
         "bashls",
         "clangd",
         "cssls",
@@ -13,8 +20,7 @@ require("mason-lspconfig").setup({
         "ltex",
         "lua_ls",
         "marksman",
-        "pylsp",
-        "ruff_lsp",
+        "ruff",
         "vimls",
         "yamlls",
     },
@@ -24,6 +30,16 @@ require("mason-lspconfig").setup({
             capabilities.textDocument.foldingRange = foldsettings
             require("lspconfig")[server].setup({ capabilities = capabilities })
             vim.cmd("LspStart") -- Workaround for language servers not starting automatically
+        end,
+        ["basedpyright"] = function()
+            require("lspconfig").basedpyright.setup({
+                settings = {
+                    basedpyright = {
+                        disableOrganizeImports = true,
+                        typeCheckingMode = "off",
+                    },
+                },
+            })
         end,
         ["ltex"] = function()
             require("lspconfig").ltex.setup({
@@ -54,6 +70,11 @@ require("mason-lspconfig").setup({
                         unpack(foldsettings),
                     },
                 },
+            })
+        end,
+        ["ruff"] = function()
+            require("lspconfig").ruff.setup({
+                on_attach = on_attach,
             })
         end,
         ["pylsp"] = function()
