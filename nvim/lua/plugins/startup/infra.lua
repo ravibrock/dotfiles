@@ -171,21 +171,14 @@ return {
         end,
     },
     {
-        "vyfor/cord.nvim",
+        "IogaMaster/neocord",
         event = "VeryLazy",
-        build = "./build",
         opts = {
-            display = {
-                show_repository = false,
-                show_cursor_position = false,
-            },
-            text = {
-                viewing = "Coding ✍️",
-                editing = "Coding ✍️",
-                file_browser = "Browsing files 📑",
-                plugin_manager = "Managing plugins 🔌",
-                workspace = "",
-            },
+            workspace_text = "  ", -- Disable workspace text (needs two spaces or Discord will error)
+            editing_text   = function() return "Writing " .. vim.bo.filetype:gsub("^%l", string.upper) end,
+            reading_text   = function() return "Reading " .. vim.bo.filetype:gsub("^%l", string.upper) end,
+            main_image     = "logo",
+            logo           = "https://styles.redditmedia.com/t5_30kix/styles/communityIcon_n2hvyn96zwk81.png",
         },
     },
     {
