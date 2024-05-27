@@ -220,10 +220,9 @@ return {
             animation = false,
             auto_hide  = 1,
             icons = {
-                pinned = { button = '' },
+                pinned = { button = "" },
             },
         },
-        version = "^1.0.0",
     },
     {
         "goolord/alpha-nvim",
