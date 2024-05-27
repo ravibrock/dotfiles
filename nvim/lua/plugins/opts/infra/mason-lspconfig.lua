@@ -1,5 +1,4 @@
 local function get_capabilities()
-    vim.cmd("LspStart") -- Workaround for language servers not starting automatically
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.foldingRange = { -- Needed for nvim-ufo to work properly
         dynamicRegistration = false,

@@ -191,7 +191,7 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
-        event = "VeryLazy",
+        event = "BufReadPre",
         dependencies = {
             "folke/neodev.nvim",
             "neovim/nvim-lspconfig",
@@ -203,7 +203,7 @@ return {
     },
     {
         "jay-babu/mason-null-ls.nvim",
-        event = "VeryLazy",
+        event = "BufReadPre",
         dependencies = {
             "nvimtools/none-ls.nvim",
             "williamboman/mason.nvim",
@@ -214,7 +214,7 @@ return {
     },
     {
         "williamboman/mason-nvim-dap.nvim",
-        event = "VeryLazy",
+        event = "BufReadPre",
         dependencies = {
             "mfussenegger/nvim-dap",
             "williamboman/mason.nvim",
