@@ -29,6 +29,34 @@ require("mason-lspconfig").setup({
         ["basedpyright"] = function()
             require("lspconfig").basedpyright.setup({
                 capabilities = get_capabilities(),
+                on_attach = function(_, _)
+                    local function filter(arr, func)
+                        local new_index = 1
+                        local size_orig = #arr
+                        for old_index, v in ipairs(arr) do
+                            if func(v, old_index) then
+                                arr[new_index] = v
+                                new_index = new_index + 1
+                            end
+                        end
+                        for i = new_index, size_orig do arr[i] = nil end
+                    end
+
+                    local function pyright_accessed_filter(diagnostic)
+                        if string.match(diagnostic.message, '".+" is not accessed') then return false end
+                        return true
+                    end
+
+                    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+                        ---@diagnostic disable-next-line: redundant-parameter
+                        function(a, params, client_id, c, config)
+                            filter(params.diagnostics, pyright_accessed_filter)
+                            ---@diagnostic disable-next-line: redundant-parameter
+                            vim.lsp.diagnostic.on_publish_diagnostics(a, params, client_id, c, config)
+                        end,
+                        {}
+                    )
+                end,
                 settings = {
                     basedpyright = {
                         disableOrganizeImports = true,
