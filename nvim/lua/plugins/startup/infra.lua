@@ -290,14 +290,14 @@ return {
             )
         end,
         keys = {
-            { "<leader>ga", "<CMD>Git add .<CR>", desc = "Add current file" },
+            { "<leader>ga", "<CMD>Git add %<CR>", desc = "Add current file" },
             { "<leader>gb", "<CMD>Git blame<CR>", desc = "Blame current file" },
             { "<leader>gc", "<CMD>Git commit <BAR> startinsert<CR>", desc = "Commit" },
             { "<leader>gf", "<CMD>GForcePush<CR>", desc = "Force push" },
             { "<leader>gl", "<CMD>Git pull<CR>", desc = "Pull" },
             { "<leader>go", "<CMD>.GBrowse<CR>", desc = "Open in GitHub" },
             { "<leader>gp", "<CMD>Git push<CR>", desc = "Push" },
-            { "<leader>gu", "<CMD>Git unstage .<CR>", desc = "Unstage current file" },
+            { "<leader>gu", "<CMD>Git unstage %<CR>", desc = "Unstage current file" },
         },
     },
     {
