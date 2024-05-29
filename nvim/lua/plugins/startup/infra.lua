@@ -261,12 +261,6 @@ return {
         end,
     },
     {
-        "chrisgrieser/nvim-origami",
-        dependencies = { "kevinhwang91/nvim-ufo" },
-        event = "BufReadPost",
-        opts = true,
-    },
-    {
         "stevearc/stickybuf.nvim",
         event = "VeryLazy",
         config = true,
