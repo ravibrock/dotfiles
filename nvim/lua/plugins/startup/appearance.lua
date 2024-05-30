@@ -195,6 +195,7 @@ return {
     },
     {
         "folke/trouble.nvim",
+        cmd = { "Trouble" },
         keys = require(prefix .. "trouble"),
         config = true,
     },

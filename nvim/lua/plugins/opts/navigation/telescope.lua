@@ -135,7 +135,7 @@ M.opts = {
                 ["<C-k>"] = "move_selection_previous",
                 ["<C-n>"] = "preview_scrolling_down",
                 ["<C-p>"] = "preview_scrolling_up",
-                ["<C-t>"] = require("trouble.providers.telescope").open_with_trouble,
+                ["<C-t>"] = require("trouble.sources.telescope").open,
                 ["<esc>"] = "close",
             },
         },
