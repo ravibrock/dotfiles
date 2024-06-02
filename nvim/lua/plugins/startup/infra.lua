@@ -193,7 +193,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         event = "BufReadPre",
         dependencies = {
-            "folke/neodev.nvim",
+            "folke/lazydev.nvim",
             "neovim/nvim-lspconfig",
             "williamboman/mason.nvim",
         },

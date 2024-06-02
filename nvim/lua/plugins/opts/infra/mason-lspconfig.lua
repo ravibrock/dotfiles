@@ -84,7 +84,7 @@ require("mason-lspconfig").setup({
             })
         end,
         ["lua_ls"] = function()
-            require("neodev").setup()
+            require("lazydev").setup()
             require("lspconfig").lua_ls.setup({
                 capabilities = get_capabilities(),
                 settings = {
