@@ -14,6 +14,23 @@ return {
         },
     },
     {
+        "ravibrock/spellwarn.nvim",
+        event = "VeryLazy",
+        opts = {
+            ft_default = false,
+            ft_config = {
+                markdown = true,
+                tex      = true,
+                text     = true,
+            },
+            severity = {
+                spellcap   = false,
+                spelllocal = false,
+                spellrare  = false,
+            },
+        },
+    },
+    {
         "m4xshen/smartcolumn.nvim",
         opts = {
             colorcolumn = "120",
