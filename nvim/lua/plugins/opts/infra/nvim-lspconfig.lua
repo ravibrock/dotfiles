@@ -17,19 +17,18 @@ vim.keymap.set("n", "<leader>qq", vim.diagnostic.setloclist, { desc = "Set locli
 -- Use LspAttach autocommand to only map the following keys after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
-        local opts = { buffer = ev.buf }
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
         vim.keymap.set(
             "n",
             "gD",
             vim.lsp.buf.declaration,
-            { desc = "Go to declaration", unpack(opts) }
+            { desc = "Go to declaration", buffer = ev.buf }
         )
         vim.keymap.set(
             "n",
             "gd",
             vim.lsp.buf.definition,
-            { desc = "Go to definition", unpack(opts) }
+            { desc = "Go to definition", buffer = ev.buf }
         )
         vim.keymap.set(
             "n",
@@ -41,31 +40,31 @@ vim.api.nvim_create_autocmd("LspAttach", {
             "n",
             "gi",
             vim.lsp.buf.implementation,
-            { desc = "Go to implementation", unpack(opts) }
+            { desc = "Go to implementation", buffer = ev.buf }
         )
         vim.keymap.set(
             "n",
             "<leader>wa",
             vim.lsp.buf.add_workspace_folder,
-            { desc = "Add workspace folder", unpack(opts) }
+            { desc = "Add workspace folder", buffer = ev.buf }
         )
         vim.keymap.set(
             "n",
             "<leader>wr",
             vim.lsp.buf.remove_workspace_folder,
-            { desc = "Remove workspace folder", unpack(opts) }
+            { desc = "Remove workspace folder", buffer = ev.buf }
         )
         vim.keymap.set(
             "n",
             "<leader>D",
             vim.lsp.buf.type_definition,
-            { desc = "Go to type definition", unpack(opts) }
+            { desc = "Go to type definition", buffer = ev.buf }
         )
         vim.keymap.set(
             { "n", "v" },
             "<leader>ca",
             vim.lsp.buf.code_action,
-            { desc = "Code action", unpack(opts) }
+            { desc = "Code action", buffer = ev.buf }
         )
     end,
     desc = "Create LSP keybinds",
