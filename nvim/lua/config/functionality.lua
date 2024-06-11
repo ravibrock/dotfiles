@@ -12,7 +12,7 @@ vim.opt.filetype = "on"
 vim.opt.autoindent = true
 vim.opt.cindent = true
 vim.opt.smartindent = true
-vim.opt.ffs = { "unix", "dos", "mac" }
+vim.opt.ffs = "unix"
 
 -- Ignore compiled files
 vim.opt.wildignore = { "*.o", "*~", "*.pyc", "*pycache*", "*/.git/*", "*/.hg/*", "*/.svn/*", "*/.DS_Store" }

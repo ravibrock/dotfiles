@@ -19,9 +19,9 @@ return {
         opts = {
             ft_default = false,
             ft_config = {
-                markdown = true,
-                tex      = true,
-                text     = true,
+                markdown = "iter",
+                tex      = "cursor",
+                text     = "iter",
             },
             severity = {
                 spellcap   = false,

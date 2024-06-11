@@ -191,7 +191,7 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
-        event = "BufReadPre",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "folke/lazydev.nvim",
             "neovim/nvim-lspconfig",
@@ -203,7 +203,7 @@ return {
     },
     {
         "jay-babu/mason-null-ls.nvim",
-        event = "BufReadPre",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "nvimtools/none-ls.nvim",
             "williamboman/mason.nvim",
@@ -214,7 +214,7 @@ return {
     },
     {
         "williamboman/mason-nvim-dap.nvim",
-        event = "BufReadPre",
+        lazy = true,
         dependencies = {
             "mfussenegger/nvim-dap",
             "williamboman/mason.nvim",
@@ -226,19 +226,24 @@ return {
     {
         "neovim/nvim-lspconfig",
         lazy = true,
-        dependencies = {
-            "aznhe21/actions-preview.nvim",
-            "chrisgrieser/nvim-rulebook",
-        },
+        dependencies = { "aznhe21/actions-preview.nvim" },
         config = function()
             require(prefix .. "nvim-lspconfig")
         end,
     },
     {
+        "chrisgrieser/nvim-rulebook",
+        keys = {
+            { "<leader>ri", function() require("rulebook").ignoreRule() end, desc = "Ignore rule" },
+            { "<leader>rl", function() require("rulebook").lookupRule() end, desc = "Lookup rule" },
+            { "<leader>ry", function() require("rulebook").yankDiagnosticCode() end, desc = "Yank diagnostic code" },
+        },
+    },
+    {
         "rcarriga/nvim-dap-ui",
         dependencies = {
-            "mfussenegger/nvim-dap",
             "nvim-neotest/nvim-nio",
+            "williamboman/mason-nvim-dap.nvim",
         },
         config = true,
         init = function()
