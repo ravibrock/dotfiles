@@ -7,6 +7,9 @@ autocmd("BufEnter", { command = "setlocal formatoptions-=ro" })
 vim.opt.autoread = true
 autocmd({ "FocusGained", "BufEnter" }, { command = "silent! checktime" })
 
+-- Automatically enter insert mode in terminal
+autocmd("TermOpen", { command = "startinsert" })
+
 -- Adjust highlighting
 autocmd({ "BufNewFile", "BufReadPre" }, {
     callback = function()
@@ -24,7 +27,7 @@ autocmd({ "BufNewFile", "BufReadPre" }, {
 })
 
 -- Clear command palette when cursor moves or entering insert mode
-autocmd({ "CursorMoved", "InsertEnter" }, { command = "echon ''" })
+autocmd({ "CursorMoved", "InsertEnter", "TermOpen" }, { command = "echon ''" })
 
 -- Set filetypes
 autocmd({ "BufRead", "BufNewFile" }, { command = "if expand('%:e') == 'err' | set ft=log | endif" })
