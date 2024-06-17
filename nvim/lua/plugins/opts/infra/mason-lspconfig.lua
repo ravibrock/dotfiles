@@ -70,12 +70,13 @@ require("mason-lspconfig").setup({
                 capabilities = get_capabilities(),
                 settings = {
                     ltex = {
-                        language = "en-us",
+                        language = "en-US",
                         disabledRules = {
-                            ["en-us"] = {
+                            ["en-US"] = {
                                 "EN_UNPAIRED_BRACKETS",
                                 "MAC_OS",
                                 "MORFOLOGIK_RULE_EN_US",
+                                "SENTENCE_WHITESPACE",
                                 "UPPERCASE_SENTENCE_START",
                             },
                         },
