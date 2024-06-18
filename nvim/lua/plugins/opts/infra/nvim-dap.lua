@@ -32,6 +32,13 @@ local function gotoBreakpoint(dir)
 	vim.cmd(("buffer +%s %s"):format(nextPoint.line, nextPoint.bufnr))
 end
 
+local dap = require("dap")
+local function focus_iterm(session, body)
+    vim.cmd("silent !osascript -e 'activate application \"iTerm\"'")
+end
+dap.listeners.after["event_stopped"]["focus_iterm"] = focus_iterm
+dap.listeners.after["event_exited"]["focus_iterm"] = focus_iterm
+
 return {
     { "<leader>db", "<CMD>DapToggleBreakpoint<CR>", mode = "n", desc = "DAP toggle breakpoint" },
     { "<leader>dl", "<CMD>DapStepInto<CR>", mode = "n", desc = "DAP step into" },
