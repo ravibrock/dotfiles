@@ -1,9 +1,8 @@
 local prefix = "plugins.opts.appearance."
 return {
     {
-        "nvimdev/hlsearch.nvim",
+        "romainl/vim-cool",
         event = { "BufReadPost", "BufNewFile" },
-        config = true,
     },
     {
         "ravibrock/nvim-cursorline",
