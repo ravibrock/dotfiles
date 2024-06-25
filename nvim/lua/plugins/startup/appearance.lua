@@ -15,9 +15,12 @@ return {
     },
     {
         "ravibrock/spellwarn.nvim",
-        event = "VeryLazy",
+        keys = {
+            { "<leader>wt", function() require("spellwarn").toggle() end, mode = "n", desc = "Toggle spell warnings" },
+        },
         opts = {
-            ft_default = false,
+            enable = false,
+            ft_default = "cursor",
             ft_config = {
                 markdown = "iter",
                 tex      = "cursor",
@@ -45,6 +48,7 @@ return {
                 "mason",
                 "tex",
                 "text",
+                "trouble",
             },
         },
     },

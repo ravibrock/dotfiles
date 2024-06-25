@@ -62,6 +62,7 @@ M.keys = {
     -- find
     { "<leader>fb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
     { "<leader>ff", telescope_util("files"), desc = "Find files (root dir)" },
+    { "<leader>fh", "<CMD>Telescope git_status<CR>", desc = "Git Status" },
     { "<leader>fF", telescope_util("files", { cwd = false }), desc = "Find files (cwd)" },
     { "<leader>fr", "<CMD>Telescope oldfiles<CR>", desc = "Recent" },
     { "<leader>fR", telescope_util("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },

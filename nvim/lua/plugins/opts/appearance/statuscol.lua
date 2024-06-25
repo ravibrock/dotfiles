@@ -1,6 +1,7 @@
 local builtin = require("statuscol.builtin")
 require("statuscol").setup({
     ft_ignore = { "alpha" },
+    bt_ignore = { "terminal" },
     clickmod = "c",
     relculright = true,
     segments = {
