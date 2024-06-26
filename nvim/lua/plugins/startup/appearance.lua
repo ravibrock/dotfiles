@@ -204,6 +204,7 @@ return {
                 barbar = true,
                 leap = true,
                 mason = true,
+                mini = { enabled = false },
                 which_key = true,
             },
         },
