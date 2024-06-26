@@ -13,6 +13,7 @@ require("mason-lspconfig").setup({
         "bashls",
         "clangd",
         "cssls",
+        "gopls",
         "html",
         "jsonls",
         "ltex",

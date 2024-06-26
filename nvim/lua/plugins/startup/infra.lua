@@ -91,6 +91,7 @@ return {
                 external = {
                     bash     = "bash %",
                     c        = "gcc -std=c99 -Wall % -o tempout && ./tempout; rm -f tempout",
+                    go       = "go run %",
                     markdown = "glow %",
                     python   = "python3 %",
                     zsh      = "zsh %",
