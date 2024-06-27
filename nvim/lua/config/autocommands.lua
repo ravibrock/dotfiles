@@ -9,7 +9,7 @@ autocmd({ "FocusGained", "BufEnter" }, { command = "silent! checktime" })
 
 -- Automatically enter insert mode in terminal
 vim.api.nvim_create_augroup("TerminalInsert", {})
-autocmd("TermOpen", { command = "startinsert" })
+autocmd("TermOpen", { command = "if &ft == '' | startinsert" })
 autocmd("TermOpen", { command = "setlocal nonumber norelativenumber" })
 
 -- Adjust highlighting
