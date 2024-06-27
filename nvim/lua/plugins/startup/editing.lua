@@ -8,6 +8,14 @@ return {
         },
     },
     {
+        "ckarnell/Antonys-macro-repeater",
+        keys = {
+            { ".", desc = "Repeat last action" },
+            { "@", desc = "Call macro" },
+            { "q", desc = "Start macro recording" },
+        },
+    },
+    {
         "inkarkat/vim-SpellCheck",
         dependencies = { "inkarkat/vim-ingo-library" },
         cmd = { "SpellCheck" },
