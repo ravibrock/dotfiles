@@ -16,6 +16,7 @@ require("lazy").setup({
     spec = { import = "plugins.startup" },
     install = { colorscheme = { "catppuccin" } },
     lockfile = "/dev/null", -- Disable lockfile; not used
+    headless = { colors = false },
     defaults = {
         lazy = false,
         version = false,
