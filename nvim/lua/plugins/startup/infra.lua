@@ -75,7 +75,7 @@ return {
         end,
     },
     {
-        "is0n/jaq-nvim",
+        "ravibrock/jaq-nvim",
         cmd = "Jaq",
         keys = {
             { "<leader>jb", "<CMD>Jaq bang<CR>", desc = "Jaq small popup" },
