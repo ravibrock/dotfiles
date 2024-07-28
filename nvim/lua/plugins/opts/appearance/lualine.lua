@@ -1,4 +1,41 @@
 local function nf() return "" end
+local function navic()
+    if not require("nvim-navic").is_available() then return vim.fn.expand("%:t") end
+    local location = require("nvim-navic").get_location()
+    if location == "" then return vim.fn.expand("%:t") end
+    return vim.fn.expand("%:t") .. " > " .. location
+end
+
+require("nvim-navic").setup({
+    icons = {
+        Array         = "󰅪 ",
+        Boolean       = "◩ ",
+        Class         = "󰠱 ",
+        Constant      = "󰏿 ",
+        Constructor   = " ",
+        Enum          = " ",
+        EnumMember    = " ",
+        Event         = " ",
+        Field         = "󰇽 ",
+        File          = "󰈙 ",
+        Function      = "󰊕 ",
+        Interface     = "  ",
+        Key           = "󰌋 ",
+        Method        = "󰆧 ",
+        Module        = " ",
+        Namespace     = "󰌗 ",
+        Null          = "󰟢 ",
+        Number        = "󰎠 ",
+        Object        = "󰅩 ",
+        Operator      = "󰆕 ",
+        Package       = " ",
+        Property      = "󰜢 ",
+        String        = "󰀬 ",
+        Struct        = "  ",
+        TypeParameter = "󰅲 ",
+        Variable      = "󰂡 ",
+    }
+})
 
 local function setup(colorscheme)
     require("lualine").setup({
@@ -28,7 +65,7 @@ local function setup(colorscheme)
                 "diff",
                 "diagnostics",
             },
-            lualine_c = { "filename" },
+            lualine_c = { navic },
             lualine_x = { "encoding" },
             lualine_y = { "searchcount", "progress" },
             lualine_z = { "%l/%L" },

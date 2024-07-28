@@ -177,8 +177,12 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
         init = function()
+            vim.g.navic_silence = true
             vim.g.lualine_laststatus = vim.opt.laststatus
             if vim.fn.argc(-1) > 0 then
                 -- set an empty statusline and ruler until lualine loads

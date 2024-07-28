@@ -6,6 +6,11 @@ local function get_capabilities()
     }
     return capabilities
 end
+local function navic(client, bufnr)
+    if client.server_capabilities.documentSymbolProvider then
+        require("nvim-navic").attach(client, bufnr)
+    end
+end
 
 require("mason-lspconfig").setup({
     ensure_installed = {
@@ -25,12 +30,16 @@ require("mason-lspconfig").setup({
     },
     handlers = {
         function(server)
-            require("lspconfig")[server].setup({ capabilities = get_capabilities() })
+            require("lspconfig")[server].setup({
+                capabilities = get_capabilities(),
+                on_attach = navic,
+            })
         end,
         ["basedpyright"] = function()
             require("lspconfig").basedpyright.setup({
                 capabilities = get_capabilities(),
-                on_attach = function(_, _)
+                on_attach = function(client, bufnr)
+                    navic(client, bufnr)
                     local function filter(arr, func)
                         local new_index = 1
                         local size_orig = #arr
@@ -69,6 +78,7 @@ require("mason-lspconfig").setup({
         ["ltex"] = function()
             require("lspconfig").ltex.setup({
                 capabilities = get_capabilities(),
+                on_attach = navic,
                 settings = {
                     ltex = {
                         language = "en-US",
@@ -89,6 +99,7 @@ require("mason-lspconfig").setup({
             require("lazydev").setup()
             require("lspconfig").lua_ls.setup({
                 capabilities = get_capabilities(),
+                on_attach = navic,
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -102,7 +113,8 @@ require("mason-lspconfig").setup({
         ["ruff"] = function()
             require("lspconfig").ruff.setup({
                 capabilities = get_capabilities(),
-                on_attach = function(client, _)
+                on_attach = function(client, bufnr)
+                    navic(client, bufnr)
                     client.server_capabilities.hoverProvider = false
                 end,
             })
