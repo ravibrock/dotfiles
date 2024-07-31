@@ -1,36 +1,34 @@
-local root_patterns = { ".git", "lua" }
+---@diagnostic disable: undefined-field -- vim.uv causes undefined-field warnings
+local patterns = { ".git", "lua", "requirements.txt", "Makefile" }
+local uv = vim.uv
 
-local function get_root()
-    local path = vim.api.nvim_buf_get_name(0)
-    --- @diagnostic disable-next-line: cast-local-type
-    path = path ~= "" and vim.loop.fs_realpath(path) or nil
-    local roots = {}
-    if path then
-        for _, client in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
-            local workspace = client.config.workspace_folders
-            local paths = workspace and vim.tbl_map(function(ws)
-                return vim.uri_to_fname(ws.uri)
-            end, workspace) or client.config.root_dir and { client.config.root_dir } or {}
-            for _, p in ipairs(paths) do
-                local r = vim.loop.fs_realpath(p)
-                --- @diagnostic disable-next-line: param-type-mismatch
-                if path:find(r, 1, true) then
-                    roots[#roots + 1] = r
-                end
+-- Get the root directory of the current project
+---@param nearest? boolean: If true, return the nearest root directory else the closest to $HOME
+local function get_root(nearest)
+    local cwd = uv.cwd()
+    local home = os.getenv("HOME")
+
+    local function contains_any(dir)
+        for _, pattern in ipairs(patterns) do
+            local path = uv.fs_realpath(dir .. '/' .. pattern)
+            if path then
+                return true
             end
         end
+        return false
     end
-    table.sort(roots, function(a, b)
-        return #a > #b
-    end)
-    local root = roots[1]
-    if not root then
-        --- @diagnostic disable-next-line: cast-local-type
-        path = path and vim.fs.dirname(path) or vim.loop.cwd()
-        root = vim.fs.find(root_patterns, { path = path, upward = true })[1]
-        root = root and vim.fs.dirname(root) or vim.loop.cwd()
+
+    local ret = nil
+    local dir = cwd
+    while dir ~= "/" do
+        if dir == home then return ret or cwd end
+        if contains_any(dir) then
+            if nearest then return dir end
+            ret = dir
+        end
+        dir = uv.fs_realpath(dir .. '/..')
     end
-    return root
+    return "/"
 end
 
 local function telescope_util(builtin, opts)
@@ -38,9 +36,8 @@ local function telescope_util(builtin, opts)
     return function()
         builtin = params.builtin
         opts = params.opts
-        opts = vim.tbl_deep_extend("force", { cwd = get_root() }, opts or {})
+        opts = vim.tbl_deep_extend("force", { cwd = get_root(opts and opts.nearest) }, opts or {})
         if builtin == "files" then
-            --- @diagnostic disable-next-line: need-check-nil
             if vim.loop.fs_stat((opts.cwd or vim.loop.cwd()) .. "/.git") then
                 opts.show_untracked = true
                 builtin = "git_files"
@@ -61,11 +58,12 @@ M.keys = {
     { "<leader><space>", telescope_util("files"), desc = "Find files (root dir)" },
     -- find
     { "<leader>fb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
-    { "<leader>ff", telescope_util("files"), desc = "Find files (root dir)" },
+    { "<leader>ff", telescope_util("files", { nearest = true }), desc = "Find files (root dir)" },
+    { "<leader>fg", "<CMD>Telescope git_files<CR>", desc = "Find files (git)" },
     { "<leader>fh", "<CMD>Telescope git_status<CR>", desc = "Git Status" },
-    { "<leader>fF", telescope_util("files", { cwd = false }), desc = "Find files (cwd)" },
+    { "<leader>fF", telescope_util("files"), desc = "Find files (cwd)" },
     { "<leader>fr", "<CMD>Telescope oldfiles<CR>", desc = "Recent" },
-    { "<leader>fR", telescope_util("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
+    { "<leader>fR", telescope_util("oldfiles", { cwd = uv.cwd() }), desc = "Recent (cwd)" },
     -- search
     { "<leader>sa", "<CMD>Telescope autocommands<CR>", desc = "Auto Commands" },
     { "<leader>sb", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Buffer" },
@@ -73,8 +71,8 @@ M.keys = {
     { "<leader>sC", "<CMD>Telescope commands<CR>", desc = "Commands" },
     { "<leader>sd", "<CMD>Telescope diagnostics bufnr=0<CR>", desc = "Document diagnostics" },
     { "<leader>sD", "<CMD>Telescope diagnostics<CR>", desc = "Workspace diagnostics" },
-    { "<leader>sg", telescope_util("live_grep"), desc = "Grep (root dir)" },
-    { "<leader>sG", telescope_util("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+    { "<leader>sg", telescope_util("live_grep", { nearest = true }), desc = "Grep (cwd)" },
+    { "<leader>sG", telescope_util("live_grep"), desc = "Grep (root dir)" },
     { "<leader>sh", "<CMD>Telescope help_tags<CR>", desc = "Help Pages" },
     { "<leader>sH", "<CMD>Telescope highlights<CR>", desc = "Search Highlight Groups" },
     { "<leader>sk", "<CMD>Telescope keymaps<CR>", desc = "Key Maps" },
