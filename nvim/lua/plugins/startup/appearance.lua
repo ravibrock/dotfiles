@@ -151,7 +151,9 @@ return {
             vim.opt.timeout = true
             vim.opt.timeoutlen = 500
         end,
-        config = true,
+        opts = {
+            icons = { mappings = false },
+        },
     },
     {
         "luukvbaal/statuscol.nvim",

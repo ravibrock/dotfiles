@@ -1,9 +1,14 @@
 local function nf() return "" end
 local function navic()
-    if not require("nvim-navic").is_available() then return vim.fn.expand("%:t") end
+    if vim.fn.expand("%:t") == "" then return "[No name]" end -- ignore unnamed buffer
+    local ft_str = require("nvim-web-devicons").get_icon_by_filetype(
+        vim.bo.filetype,
+        { default = true }
+    ) .. " " .. vim.fn.expand("%:t")
+    if not require("nvim-navic").is_available() then return ft_str end
     local location = require("nvim-navic").get_location()
-    if location == "" then return vim.fn.expand("%:t") end
-    return vim.fn.expand("%:t") .. " > " .. location
+    if location == "" then return ft_str end
+    return ft_str .. " > " .. location
 end
 
 require("nvim-navic").setup({
@@ -19,10 +24,10 @@ require("nvim-navic").setup({
         Field         = "󰇽 ",
         File          = "󰈙 ",
         Function      = "󰊕 ",
-        Interface     = "  ",
+        Interface     = "󰕘 ",
         Key           = "󰌋 ",
         Method        = "󰆧 ",
-        Module        = " ",
+        Module        = " ",
         Namespace     = "󰌗 ",
         Null          = "󰟢 ",
         Number        = "󰎠 ",
@@ -31,7 +36,7 @@ require("nvim-navic").setup({
         Package       = " ",
         Property      = "󰜢 ",
         String        = "󰀬 ",
-        Struct        = "  ",
+        Struct        = "󰌗 ",
         TypeParameter = "󰅲 ",
         Variable      = "󰂡 ",
     }
@@ -71,7 +76,7 @@ local function setup(colorscheme)
             lualine_z = { "%l/%L" },
         },
         inactive_sections = {
-            lualine_a = { "filename" },
+            lualine_a = { navic },
             lualine_b = {},
             lualine_c = {},
             lualine_x = {},
