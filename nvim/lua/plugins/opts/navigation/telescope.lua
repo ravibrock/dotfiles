@@ -63,7 +63,7 @@ M.keys = {
     { "<leader>fh", "<CMD>Telescope git_status<CR>", desc = "Git Status" },
     { "<leader>fF", telescope_util("files"), desc = "Find files (cwd)" },
     { "<leader>fr", "<CMD>Telescope oldfiles<CR>", desc = "Recent" },
-    { "<leader>fR", telescope_util("oldfiles", { cwd = uv.cwd() }), desc = "Recent (cwd)" },
+    { "<leader>fR", telescope_util("oldfiles"), desc = "Recent (root)" },
     -- search
     { "<leader>sa", "<CMD>Telescope autocommands<CR>", desc = "Auto Commands" },
     { "<leader>sb", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Buffer" },
@@ -80,8 +80,8 @@ M.keys = {
     { "<leader>sm", "<CMD>Telescope marks<CR>", desc = "Jump to Mark" },
     { "<leader>so", "<CMD>Telescope vim_options<CR>", desc = "Options" },
     { "<leader>sR", "<CMD>Telescope resume<CR>", desc = "Resume" },
-    { "<leader>sw", telescope_util("grep_string"), desc = "Word (root dir)" },
-    { "<leader>sW", telescope_util("grep_string", { cwd = false }), desc = "Word (cwd)" },
+    { "<leader>sw", telescope_util("grep_string", { nearest = true }), desc = "Word (cwd)" },
+    { "<leader>sW", telescope_util("grep_string"), desc = "Word (root)" },
     -- misc
     { "<leader>u", function() require("telescope").extensions.undo.undo() end, desc = "Undo tree" },
     { "<leader>bx", function() require("telescope").extensions.bibtex.bibtex() end, desc = "BibTeX" },
