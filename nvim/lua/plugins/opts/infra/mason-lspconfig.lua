@@ -24,7 +24,7 @@ require("mason-lspconfig").setup({
         "ltex",
         "lua_ls",
         "marksman",
-        "ruff",
+        "ruff_lsp",
         "vimls",
         "yamlls",
     },
@@ -110,8 +110,8 @@ require("mason-lspconfig").setup({
                 },
             })
         end,
-        ["ruff"] = function()
-            require("lspconfig").ruff.setup({
+        ["ruff_lsp"] = function()
+            require("lspconfig").ruff_lsp.setup({
                 capabilities = get_capabilities(),
                 on_attach = function(client, bufnr)
                     navic(client, bufnr)
