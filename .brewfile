@@ -43,6 +43,7 @@ brew "luarocks"
 brew "mas"
 brew "most"
 brew "neovim", args: ["HEAD"]
+brew "ocrmypdf"
 brew "pandoc"
 brew "pdftk-java"
 brew "pylint"
