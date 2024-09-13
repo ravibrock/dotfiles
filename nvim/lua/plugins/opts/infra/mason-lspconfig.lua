@@ -84,6 +84,7 @@ require("mason-lspconfig").setup({
                         language = "en-US",
                         disabledRules = {
                             ["en-US"] = {
+                                "COMMA_PARENTHESIS_WHITESPACE",
                                 "EN_UNPAIRED_BRACKETS",
                                 "MAC_OS",
                                 "MORFOLOGIK_RULE_EN_US",
