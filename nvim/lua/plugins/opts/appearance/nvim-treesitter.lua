@@ -13,6 +13,7 @@ require("nvim-treesitter.configs").setup({
         "python",
         "query",
         "regex",
+        "requirements",
         "sql",
         "ssh_config",
         "vim",
