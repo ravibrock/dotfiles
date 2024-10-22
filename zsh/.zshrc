@@ -71,7 +71,7 @@ function deferred_commands {
     # Clean history automatically
     function command-not-found {
         (( ? == 127 )) &&
-        sed -in '$d' ~/.zsh_history
+        sed -i '' '$d' ~/.zsh_history
     }
     add-zsh-hook precmd command-not-found
 
