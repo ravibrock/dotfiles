@@ -16,6 +16,10 @@ brew upgrade
 tag_log "brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes"
 brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes
 
+# Update Google Cloud SDK
+tag_log "gcloud components update --quiet"
+gcloud components update --quiet
+
 # Updates App Store apps
 OUTDATED="$(mas outdated | awk '{print $2}')"
 if [[ ! -z "$OUTDATED" ]]; then
