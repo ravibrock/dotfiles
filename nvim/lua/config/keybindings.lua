@@ -2,6 +2,10 @@
 vim.g.maplocalleader = ";"
 vim.g.mapleader = " "
 
+-- Better navigation in wrapped lines
+vim.keymap.set("n", "j", "(v:count ? 'j' : 'gj')", { expr = true })
+vim.keymap.set("n", "k", "(v:count ? 'k' : 'gk')", { expr = true })
+
 -- Remap window navigation commands
 vim.keymap.set({ "n", "v" }, "<C-h>", "<C-w>h", { noremap = true, desc = "Navigate to left window" })
 vim.keymap.set({ "n", "v" }, "<C-j>", "<C-w>j", { noremap = true, desc = "Navigate to lower window" })
