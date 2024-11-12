@@ -46,6 +46,7 @@ brew "neovim", args: ["HEAD"]
 brew "ocrmypdf"
 brew "pandoc"
 brew "pdftk-java"
+brew "pkgconf"
 brew "pygments"
 brew "pylint"
 brew "r"

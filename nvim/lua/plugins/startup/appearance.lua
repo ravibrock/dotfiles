@@ -79,6 +79,14 @@ return {
         end,
     },
     {
+        "mawkler/refjump.nvim",
+        keys = {
+            { "[r", mode = "n", desc = "Jump to previous reference" },
+            { "]r", mode = "n", desc = "Jump to next reference" },
+        },
+        config = true,
+    },
+    {
         "DrakulaD3a/silicon.lua",
         dependencies = { "nvim-lua/plenary.nvim" },
         keys = {
@@ -268,6 +276,7 @@ return {
         "lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPost", "BufNewFile" },
         main = "ibl",
+        tag = "v3.8.2",
         opts = {
             exclude = {
                 filetypes = {
