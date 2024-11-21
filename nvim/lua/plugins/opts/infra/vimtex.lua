@@ -3,7 +3,15 @@ vim.g.vimtex_view_sioyek_options = "--new-window"
 vim.g.tex_flavor = "latex"
 vim.g.vimtex_imaps_enabled = 0
 vim.g.vimtex_fold_enabled = 2
-vim.g.vimtex_compiler_latexmk = { options = { "-shell-escape" } } -- Needed for minted
+vim.g.vimtex_compiler_latexmk = {
+    options = {
+        "-file-line-error",
+        "-interaction=nonstopmode",
+        "-shell-escape",
+        "-synctex=1",
+        "-verbose",
+    },
+}
 vim.keymap.set("i", "<C-x><CR>", "<plug>(vimtex-delim-close)", { silent = true, desc = "Close delimiter" })
 vim.opt.conceallevel = 2 -- Enable VimTeX conceal
 
