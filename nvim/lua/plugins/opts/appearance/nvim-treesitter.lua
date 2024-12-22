@@ -11,6 +11,7 @@ require("nvim-treesitter.configs").setup({
         "gitignore",
         "go",
         "html",
+        "ini",
         "json",
         "lua",
         "markdown",
@@ -32,6 +33,7 @@ require("nvim-treesitter.configs").setup({
             "gitattributes",
             "gitcommit",
             "gitignore",
+            "ini",
             "latex",
         },
         enable = true,
@@ -39,3 +41,4 @@ require("nvim-treesitter.configs").setup({
     },
     matchup = { enable = true },
 })
+vim.treesitter.language.register("bash", "zsh")
