@@ -3,8 +3,8 @@ return {
     {
         "ku1ik/vim-pasta",
         keys = {
-            { "p", "<Plug>AfterPasta", mode = "n", desc = "Paste after" },
-            { "P", "<Plug>BeforePasta", mode = "n", desc = "Paste before" },
+            { "p", "<CMD>RegisfilterPaste<CR><Plug>AfterPasta", mode = "n", desc = "Paste after" },
+            { "P", "<CMD>RegisfilterPaste<CR><Plug>BeforePasta", mode = "n", desc = "Paste before" },
         },
     },
     {
@@ -46,14 +46,46 @@ return {
             highlight_substituted_text = { enabled = false },
         },
         keys = {
-            { "gr", function() require("substitute").operator() end, mode = "n", desc = "Replace operator" },
-            { "gR", function() require("substitute").eol() end, mode = "n", desc = "Replace until EOL" },
-            { "grr", function() require("substitute").line() end, mode = "n", desc = "Replace line" },
-            { "gr", function() require("substitute").visual() end, mode = "x", desc = "Replace selection" },
             { "gs", function() require("substitute.exchange").operator() end, mode = "n", desc = "Exchange operator" },
             { "gss", function() require("substitute.exchange").line() end, mode = "n", desc = "Exchange line" },
             { "gs", function() require("substitute.exchange").visual() end, mode = "x", desc = "Exchange selection" },
             { "<ESC>", function() require("substitute.exchange").cancel() end, mode = "n", desc = "Cancel exchange" },
+            {
+                "gr",
+                function()
+                    require("regisfilter").clipboard()
+                    require("substitute").operator()
+                end,
+                mode = "n",
+                desc = "Replace operator",
+            },
+            {
+                "gR",
+                function()
+                    require("regisfilter").clipboard()
+                    require("substitute").eol()
+                end,
+                mode = "n",
+                desc = "Replace until EOL",
+            },
+            {
+                "grr",
+                function()
+                    require("regisfilter").clipboard()
+                    require("substitute").line()
+                end,
+                mode = "n",
+                desc = "Replace line",
+            },
+            {
+                "gr",
+                function()
+                    require("regisfilter").clipboard()
+                    require("substitute").visual()
+                end,
+                mode = "x",
+                desc = "Replace selection",
+            },
         },
     },
     {

@@ -181,6 +181,16 @@ return {
         },
     },
     {
+        "ravibrock/regisfilter.nvim",
+        opts = {
+            global_patterns = {
+                "^.$",
+                "^%s*$",
+            },
+            remap_paste = false, -- Map this in `editing.lua/pasta.vim` to avoid conflicts
+        },
+    },
+    {
         "tpope/vim-eunuch",
         cmd = {
             "Rename",
