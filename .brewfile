@@ -59,7 +59,6 @@ brew "tealdeer"
 brew "texlive"
 brew "utf8proc", args: ["HEAD"]
 brew "tmux"
-brew "trash"
 brew "tree"
 brew "uv"
 brew "wget"
