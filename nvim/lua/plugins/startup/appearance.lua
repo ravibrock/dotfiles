@@ -187,6 +187,7 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
+        commit = "b431d22",
         dependencies = {
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons",
