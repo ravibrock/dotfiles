@@ -69,6 +69,7 @@ ln -sf "$DIR/zsh/.zshenv" "$DIR/zsh/zshenv"
 ln -sf "$DIR/zsh/.zshrc" "$DIR/zsh/zshrc"
 
 # Symlinks dotfiles into home directory
+mkdir -p "$HOME/.config/ghostty"
 mkdir -p "$HOME/.vim/spell"
 ln -sf "$DIR/.mostrc" "$HOME"
 ln -sf "$DIR/.sioyek.conf" "$HOME/Library/Application Support/sioyek/prefs_user.config"
@@ -76,6 +77,7 @@ ln -sf "$DIR/.tmux.conf" "$HOME"
 ln -sf "$DIR/.vimrc" "$HOME"
 ln -sf "$DIR/.vimrc" "$HOME/.ideavimrc"
 ln -sf "$DIR/nvim/spellfile.txt" "$HOME/.vim/spell/spellfile.utf-8.add"
+ln -sf "$DIR/.ghostty.conf" "$HOME/.config/ghostty/config"
 ln -sf "$DIR/git/.gitalias" "$HOME"
 ln -sf "$DIR/git/.gitconfig" "$HOME"
 ln -sf "$DIR/git/.gitconfig_local" "$HOME"
@@ -109,6 +111,6 @@ launchctl load -w "$DIR/upgrades/upgrade.apps.plist" &> /dev/null
 
 # Finishing touches
 touch "$HOME/.hushlogin"
-echo 'Installation complete! Switch from Terminal to iTerm2 and add credentials to `git/.gitconfig_local` and `zsh/.zprivate`.'
+echo 'Installation complete! Switch from Terminal to Ghostty and add credentials to `git/.gitconfig_local` and `zsh/.zprivate`.'
 echo "Caveats: MacOS settings, like the Dock, aren't synced. If using LaTeX, run \`tlmgr install scheme-full\` again to install remaining packages."
 killall caffeinate

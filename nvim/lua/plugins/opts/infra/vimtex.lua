@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd("User", {
     group = "VimTeX",
     pattern = "VimtexEventViewReverse",
     desc = "VimTeX: Return focus to vim after inverse search trigger in PDF",
-    command = vim.fn.system("osascript -e 'activate application \"iTerm\"'"),
+    command = vim.fn.system("osascript -e 'activate application \"Ghostty\"'"),
 })
 vim.api.nvim_create_autocmd("User", {
     group = "VimTeX",
