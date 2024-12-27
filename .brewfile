@@ -64,6 +64,7 @@ brew "uv"
 brew "wget"
 brew "wifi-password"
 brew "yt-dlp"
+brew "zoxide"
 brew "nextfire/tap/apple-music-discord-rpc"
 brew "ravibrock/formulae/auto-selfcontrol-rs", args: ["HEAD"]
 brew "ravibrock/formulae/fastfetch", args: ["HEAD"]

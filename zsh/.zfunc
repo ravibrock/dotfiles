@@ -1,4 +1,0 @@
-for file in $CONFIG/functions/*; do
-  autoload -Uz $file
-  alias -g $( basename $file .zsh )=$( basename $file )
-done

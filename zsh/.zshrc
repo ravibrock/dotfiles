@@ -102,9 +102,14 @@ function deferred_commands {
     }
     add-zsh-hook chpwd activate_venv && cd .
 
-    # More Zsh config
+    # Set aliases
     source $CONFIG/.zshalias
-    source $CONFIG/.zfunc
+
+    # Load functions
+    for file in $CONFIG/functions/*; do
+        autoload -Uz $file
+        alias -g $( basename $file .zsh )=$( basename $file )
+    done
 
     # Plugins
     source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
@@ -128,5 +133,8 @@ function deferred_commands {
         fi
     }
     zle -N zle-keymap-select
+
+    # Zoxide setup
+    eval "$(zoxide init zsh)"
 }
 zsh-defer deferred_commands

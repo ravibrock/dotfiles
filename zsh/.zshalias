@@ -20,8 +20,8 @@ alias "clm"="cloudconvert merge"
 alias "clo"="cloudconvert optimize --overwrite"
 
 # Filesystem
-alias ..='cd ..'
-alias ...='cd ../..'
+alias cd="custom_cd"
+alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
