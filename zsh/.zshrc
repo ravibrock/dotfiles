@@ -103,10 +103,10 @@ function deferred_commands {
     add-zsh-hook chpwd activate_venv && cd .
 
     # Set aliases
-    source $CONFIG/.zshalias
+    source $DOTFILES/zsh/.zshalias
 
     # Load functions
-    for file in $CONFIG/functions/*; do
+    for file in $DOTFILES/zsh/functions/*; do
         autoload -Uz $file
         alias -g $( basename $file .zsh )=$( basename $file )
     done
@@ -122,7 +122,7 @@ function deferred_commands {
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
     zstyle ':completion:*' menu no
     zstyle ':fzf-tab:*' switch-group '<' '>'
-    fast-theme $CONFIG/.zcolors.ini
+    fast-theme $DOTFILES/zsh/.zcolors.ini
 
     # Vi mode final config
     function zle-keymap-select {

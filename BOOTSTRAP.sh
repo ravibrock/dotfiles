@@ -55,6 +55,8 @@ if ! [[ -f "$DIR/zsh/.zprivate" ]]; then
     echo -e "\n# User environment variables" >> "$DIR/zsh/.zprivate"
     echo 'export PRIVATE_VARIABLE="[PRIVATE VARIABLE HERE]"' >> "$DIR/zsh/.zprivate"
 fi
+echo -e "\n# Set locations" >> "$DIR/zsh/.zprivate"
+echo "${"$(readlink "${(%):-%x}")"%/*}" >> "$DIR/zsh/.zprivate"
 
 # Symlinks within repo for easy editing of hidden files
 ln -sf "$DIR/.brewfile" "$DIR/brewfile"
@@ -85,6 +87,7 @@ ln -sf "$DIR/git/.gitignore_global" "$HOME"
 ln -sf "$DIR/.latexmkrc" "$HOME"
 ln -sf "$DIR/.lazygit.yml" "$(lazygit --print-config-dir)/config.yml"
 ln -sf "$DIR/nvim" "$HOME/.config/"
+ln -sf "$DIR/zsh/.zprivate" "$HOME"
 ln -sf "$DIR/zsh/.zshenv" "$HOME"
 ln -sf "$DIR/zsh/.zshenv" "$HOME/.zprofile" # Ensure $PATH is ordered properly
 ln -sf "$DIR/zsh/.zshrc" "$HOME"

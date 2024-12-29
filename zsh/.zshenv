@@ -1,9 +1,5 @@
-# Determines location
-export CONFIG="${"$(readlink "${(%):-%x}")"%/*}"
-export DOTFILES="$CONFIG/.."
-
 # Initializes other environment variables
-source $CONFIG/.zprivate
+source $HOME/.zprivate
 
 # Configures bat and pagers
 export BAT_PAGER=""
