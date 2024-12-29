@@ -41,4 +41,3 @@ require("nvim-treesitter.configs").setup({
     },
     matchup = { enable = true },
 })
-vim.treesitter.language.register("bash", "zsh")
