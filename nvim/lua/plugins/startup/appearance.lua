@@ -210,6 +210,11 @@ return {
         end,
     },
     {
+        "OXY2DEV/helpview.nvim",
+        ft = "help",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
+    {
         "catppuccin/nvim",
         lazy = true,
         name = "catppuccin",
