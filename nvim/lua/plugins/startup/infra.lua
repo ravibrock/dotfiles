@@ -92,6 +92,7 @@ return {
                     bash     = "bash %",
                     c        = "gcc -std=c99 -Wall % -o tempout && ./tempout; rm -f tempout",
                     go       = "go run %",
+                    java     = "java %",
                     markdown = "glow %",
                     python   = "python3 %",
                     zsh      = "zsh %",
@@ -179,6 +180,19 @@ return {
             main_image     = "logo",
             logo           = "https://styles.redditmedia.com/t5_30kix/styles/communityIcon_n2hvyn96zwk81.png",
         },
+    },
+    {
+        "mfussenegger/nvim-jdtls",
+        ft = { "java" },
+        config = function()
+            require("jdtls").start_or_attach({
+                cmd = { vim.fn.stdpath("data") .. "/mason/bin/jdtls" },
+                root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+                settings = {
+                    ["org.eclipse.jdt.core.compiler.taskTags"] = "",
+                },
+            })
+        end,
     },
     {
         "ravibrock/regisfilter.nvim",

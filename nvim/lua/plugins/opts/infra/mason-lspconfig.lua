@@ -20,6 +20,7 @@ require("mason-lspconfig").setup({
         "cssls",
         "gopls",
         "html",
+        "jdtls",
         "jsonls",
         "ltex",
         "lua_ls",
@@ -75,6 +76,7 @@ require("mason-lspconfig").setup({
                 },
             })
         end,
+        ["jdtls"] = function() end, -- Handled by nvim-jdtls
         ["ltex"] = function()
             require("lspconfig").ltex.setup({
                 capabilities = get_capabilities(),

@@ -138,7 +138,7 @@ return {
         build = ":Copilot auth",
         opts = {
             filetypes = {
-                c   = false,
+                java = false,
                 tex = false,
             },
             panel = { enabled = false },

@@ -61,6 +61,10 @@ set mat=2
 " Enables yank to system clipboard, use `unnamedplus` if broken on Linux
 set clipboard=unnamed
 
+" IntelliJ integration
+set clipboard^=ideaput
+set ideajoin
+
 " Return to last cursor position when reopening file
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
