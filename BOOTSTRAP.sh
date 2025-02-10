@@ -100,6 +100,9 @@ bat cache --build
 silicon --build-cache
 cd "$DIR"
 
+# Install Neovim required python packages
+uv pip install --system --break-system-packages pynvim neovim
+
 # Installs zsh plugins
 rm -rf ~/.zsh
 mkdir -p ~/.zsh
