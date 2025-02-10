@@ -2,6 +2,7 @@ local prefix = "plugins.opts.infra."
 return {
     {
         "farmergreg/vim-lastplace",
+        "samjwill/nvim-unception",
         "tpope/vim-repeat",
     },
     {
