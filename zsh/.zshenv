@@ -34,4 +34,5 @@ PATH="$HOME/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 PATH="$HOMEBREW_PREFIX/bin:$PATH"
 PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
+PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
 export PATH

@@ -17,8 +17,8 @@ $bibtex_use = 2;
 @generated_exts = (
     "aux",
     "auxlock",
-    "bbl",
-    "bcf",
+    "bbl*",
+    "bcf*",
     "blg",
     "brf",
     "cb",

@@ -118,6 +118,7 @@ homeomorphism
 hypergeometric
 hypervolume
 iff
+inegalitarian
 infimum
 infimums
 injective
