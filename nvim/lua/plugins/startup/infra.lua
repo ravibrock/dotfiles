@@ -92,6 +92,7 @@ return {
                 external = {
                     bash     = "bash %",
                     c        = "gcc -std=c99 -Wall % -o tempout && ./tempout; rm -f tempout",
+                    cpp      = "clang++ -std=c++17 -Wall % -o tempout && ./tempout; rm -f tempout",
                     go       = "go run %",
                     java     = "java %",
                     markdown = "glow %",

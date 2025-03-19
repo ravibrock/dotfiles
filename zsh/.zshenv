@@ -14,6 +14,11 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_HINTS=1
 
+# Make Clang++ happy
+CPLUS_INCLUDE_PATH="$HOMEBREW_PREFIX/opt/llvm/include/c++/v1:$CPLUS_INCLUDE_PATH"
+CPLUS_INCLUDE_PATH="$HOMEBREW_PREFIX/include:$CPLUS_INCLUDE_PATH"
+export CPLUS_INCLUDE_PATH
+
 # Other environment variables
 export BRAVE="/Applications/Brave.app/Contents/MacOS/Brave Browser"
 export EDITOR="nvim -e"

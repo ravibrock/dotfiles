@@ -4,6 +4,7 @@ require("nvim-treesitter.configs").setup({
         "bash",
         "c",
         "css",
+        "cpp",
         "git_config",
         "git_rebase",
         "gitattributes",
