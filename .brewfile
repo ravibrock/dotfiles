@@ -130,3 +130,11 @@ mas "Bitwarden", id: 1352778147
 mas "iMovie", id: 408981434
 mas "Pages", id: 409201541
 mas "Speedtest", id: 1153157709
+vscode "asvetliakov.vscode-neovim"
+vscode "catppuccin.catppuccin-vsc"
+vscode "catppuccin.catppuccin-vsc-icons"
+vscode "ms-toolsai.jupyter"
+vscode "ms-toolsai.jupyter-keymap"
+vscode "ms-toolsai.jupyter-renderers"
+vscode "ms-toolsai.vscode-jupyter-cell-tags"
+vscode "ms-toolsai.vscode-jupyter-slideshow"
