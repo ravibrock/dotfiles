@@ -35,3 +35,5 @@
     process = git-lfs filter-process
 [rerere]
     enabled = true
+[advice]
+    addIgnoredFile = false
