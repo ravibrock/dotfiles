@@ -110,6 +110,7 @@ eigenspaces
 equicontinuous
 equinumerous
 exponentiate
+externality
 fibered
 functorial
 gyrotop
@@ -125,6 +126,7 @@ injective
 injectively
 injectivity
 integrable
+interestedness
 invertible
 irreducibles
 liftings
@@ -146,6 +148,7 @@ nondegenerate
 nonisomorphic
 nonnegative
 nonnegatives
+nonparticipation
 nulhomotopic
 octonions
 orientability
@@ -158,6 +161,7 @@ presheaves
 pushout
 quasicompact
 reparametrization
+rivalrous
 schoolers
 semisimple
 sesquilinear
@@ -186,6 +190,10 @@ supremum
 supremums
 surjective
 surjectivity
+tradeable
+tradeoff
 triangularity
 ultrametric
+unequals
 unramified
+untradeable
