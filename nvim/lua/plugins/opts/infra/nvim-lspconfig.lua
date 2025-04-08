@@ -10,8 +10,18 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
 )
 
 vim.keymap.set("n", "<leader>ef", vim.diagnostic.open_float, { desc = "Open float" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+vim.keymap.set(
+    "n",
+    "[d",
+    function() vim.diagnostic.jump({ count = -1, float = false }) end,
+    { desc = "Go to previous diagnostic" }
+)
+vim.keymap.set(
+    "n",
+    "]d",
+    function() vim.diagnostic.jump({ count = 1, float = false }) end,
+    { desc = "Go to next diagnostic" }
+)
 vim.keymap.set("n", "<leader>qq", vim.diagnostic.setloclist, { desc = "Set loclist" })
 
 -- Use LspAttach autocommand to only map the following keys after the language server attaches to the current buffer

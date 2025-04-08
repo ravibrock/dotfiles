@@ -10,8 +10,12 @@ require("statuscol").setup({
             click = "v:lua.ScSa",
         },
         {
-            sign = { name = { ".*"  }, maxwidth = 1, colwidth = 2, auto = true },
+            sign = { name = { ".*" }, maxwidth = 1, colwidth = 2, auto = true },
             click = "v:lua.ScSa",
+        },
+        {
+            sign = { namespace = { "diagnostic" }, maxwidth = 1, auto = true },
+            click = "v:lua.ScSa"
         },
         {
             text = { builtin.lnumfunc, " " },

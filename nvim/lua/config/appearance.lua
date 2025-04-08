@@ -4,9 +4,10 @@ vim.opt.titlestring = "%F %r %m"
 vim.opt.laststatus = 3
 
 -- Configure line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
 vim.opt.cursorline = true
+vim.opt.number = true
+vim.opt.numberwidth = 1
+vim.opt.relativenumber = true
 
 -- Link sign column highlights to line number
 vim.cmd("highlight! link SignColumn LineNr")
@@ -31,3 +32,10 @@ vim.opt.showmode = false
 vim.opt.visualbell = true
 vim.opt.errorbells = false
 vim.opt.tm = 500
+
+-- Diagnostic config
+vim.diagnostic.config({
+    severity_sort = true,
+    signs = true,
+    virtual_lines = { current_line = true },
+})
