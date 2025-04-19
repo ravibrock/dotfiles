@@ -152,6 +152,7 @@ nonparticipation
 nulhomotopic
 octonions
 orientability
+overincarcerate
 pointwise
 posets
 precalculus
@@ -160,6 +161,12 @@ presheaf
 presheaves
 pushout
 quasicompact
+recidivate
+reincarcerated
+reoffend
+reoffender
+reoffending
+reoffends
 reparametrization
 rivalrous
 schoolers
@@ -192,6 +199,7 @@ surjective
 surjectivity
 tradeable
 tradeoff
+tradeoffs
 triangularity
 ultrametric
 unequals
