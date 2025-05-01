@@ -29,11 +29,13 @@ local function spellcheck()
     vim.opt.foldenable = false
     vim.cmd("normal! [s")
     if linenr == vim.fn.line(".") then vim.cmd("normal! 1z=") end
+    ---@diagnostic disable-next-line: assign-type-mismatch
     vim.fn.cursor({ linenr, "." })
     --- @diagnostic disable-next-line: param-type-mismatch
     local position = string.len(vim.fn.getline(".")) - (length - colnr)
     vim.opt.foldenable = foldstatus
     vim.fn.winrestview(window)
+    ---@diagnostic disable-next-line: assign-type-mismatch
     vim.fn.cursor({ ".", position })
 end
 vim.keymap.set("i", "<C-m>", spellcheck, { noremap = true, desc = "Fix last typo" })

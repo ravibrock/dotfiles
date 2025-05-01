@@ -1,3 +1,6 @@
+-- Clear keymaps to start
+vim.cmd("mapclear")
+
 -- Core
 require("config.keybindings")
 require("config.functionality")
