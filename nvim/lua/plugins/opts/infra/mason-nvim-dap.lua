@@ -1,4 +1,4 @@
-require ("mason-nvim-dap").setup({
+require("mason-nvim-dap").setup({
     ensure_installed = {
         "bash",
         "cppdbg",

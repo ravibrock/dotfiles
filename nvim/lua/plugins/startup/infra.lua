@@ -163,7 +163,7 @@ return {
         --- @diagnostic enable: missing-parameter
     },
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         event = "VeryLazy",
         build = ":MasonUpdate",
         config = function()
@@ -217,12 +217,12 @@ return {
         },
     },
     {
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason-lspconfig.nvim",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "folke/lazydev.nvim",
             "neovim/nvim-lspconfig",
-            "williamboman/mason.nvim",
+            "mason-org/mason.nvim",
         },
         config = function()
             require(prefix .. "mason-lspconfig")
@@ -233,18 +233,18 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "nvimtools/none-ls.nvim",
-            "williamboman/mason.nvim",
+            "mason-org/mason.nvim",
         },
         config = function()
             require(prefix .. "mason-null-ls")
         end,
     },
     {
-        "williamboman/mason-nvim-dap.nvim",
+        "jay-babu/mason-nvim-dap.nvim",
         lazy = true,
         dependencies = {
             "mfussenegger/nvim-dap",
-            "williamboman/mason.nvim",
+            "mason-org/mason.nvim",
         },
         config = function()
             require(prefix .. "mason-nvim-dap")
@@ -270,7 +270,7 @@ return {
         "rcarriga/nvim-dap-ui",
         dependencies = {
             "nvim-neotest/nvim-nio",
-            "williamboman/mason-nvim-dap.nvim",
+            "jay-babu/mason-nvim-dap.nvim",
         },
         config = true,
         init = function()

@@ -18,15 +18,14 @@ function M.update_all()
             return
         end
         for _, pkg in ipairs(registry.get_installed_packages()) do
-            pkg:check_new_version(function(new_available, version)
-                if new_available then
-                    updated = true
-                    print("[mason-update-all] updating " .. pkg.name)
-                    pkg:install():on("closed", function()
-                        print("[mason-update-all] updated " .. pkg.name .. " to " .. version.latest_version)
-                    end)
-                end
-            end)
+            local latest_version = pkg:get_latest_version()
+            if pkg:get_installed_version() ~= latest_version then
+                updated = true
+                print("[mason-update-all] updating " .. pkg.name)
+                pkg:install():on("closed", function()
+                    print("[mason-update-all] updated " .. pkg.name .. " to " .. latest_version)
+                end)
+            end
         end
     end)
     return updated
