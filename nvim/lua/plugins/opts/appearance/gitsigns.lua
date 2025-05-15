@@ -1,19 +1,54 @@
+local function preview_hunk() -- Workaround for previews not working properly
+    local gid = vim.api.nvim_create_augroup("GitsignsPreviewOnMove", { clear = true })
+
+    if require("gitsigns.popup").is_open("hunk") ~= nil then
+        require("gitsigns.popup").close("hunk")
+    end
+
+    vim.api.nvim_create_autocmd("CursorMoved", {
+        group = gid,
+        callback = function()
+            require("gitsigns").preview_hunk()
+            vim.api.nvim_clear_autocmds({ group = "GitsignsPreviewOnMove" })
+        end,
+    })
+end
+
+local function on_hunk()
+    local linenr = vim.fn.line(".")
+    local colnr = vim.fn.col(".")
+    if colnr ~= 1 then
+        return false
+    end
+    for _, hunk in ipairs(require("gitsigns").get_hunks()) do
+        if hunk.removed.start == linenr or hunk.added.start == linenr then
+            return true
+        end
+    end
+    return false
+end
+
+local function nav_hunk(dir)
+    if #require("gitsigns").get_hunks() == 1 and on_hunk() then
+        if not require("gitsigns.popup").is_open("hunk") then
+            require("gitsigns").preview_hunk()
+        end
+    else
+        preview_hunk()
+        require("gitsigns").nav_hunk(dir)
+    end
+end
+
 return {
     {
         "[h",
-        function()
-            require("gitsigns").nav_hunk("prev")
-            require("gitsigns").preview_hunk()
-        end,
+        function() nav_hunk("prev") end,
         mode = "n",
         desc = "Previous hunk",
     },
     {
         "]h",
-        function()
-            require("gitsigns").nav_hunk("next")
-            require("gitsigns").preview_hunk()
-        end,
+        function() nav_hunk("next") end,
         mode = "n",
         desc = "Next hunk",
     },
