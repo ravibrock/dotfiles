@@ -17,7 +17,8 @@ end
 local function on_hunk()
     local linenr = vim.fn.line(".")
     local colnr = vim.fn.col(".")
-    if colnr ~= 1 then
+    local first_char = vim.fn.getline(linenr):find("%S") or 1
+    if colnr ~= first_char then
         return false
     end
     for _, hunk in ipairs(require("gitsigns").get_hunks()) do
