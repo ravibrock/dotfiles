@@ -50,7 +50,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
         --- @diagnostic disable-next-line: param-type-mismatch
         local line, linenr = vim.fn.getline("."), vim.fn.line(".")
         local position = vim.api.nvim_win_get_cursor(0)[2] + 1
-        local _, quote_count = string.sub(line, 1, position):gsub('"', '')
+        local _, quote_count = string.sub(line, 1, position):gsub('"', "")
         vim.cmd('silent! %s/\\"\\([^\\"]*\\)\\"/\\`\\`\\1\'\'/')
         local new_line = vim.fn.getline(linenr)
         if line ~= new_line then vim.fn.cursor({ linenr, position + quote_count }) end

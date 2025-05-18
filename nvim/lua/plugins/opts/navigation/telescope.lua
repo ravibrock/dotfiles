@@ -10,7 +10,7 @@ local function get_root(nearest)
 
     local function contains_any(dir)
         for _, pattern in ipairs(patterns) do
-            local path = uv.fs_realpath(dir .. '/' .. pattern)
+            local path = uv.fs_realpath(dir .. "/" .. pattern)
             if path then
                 return true
             end
@@ -26,7 +26,7 @@ local function get_root(nearest)
             if nearest then return dir end
             ret = dir
         end
-        dir = uv.fs_realpath(dir .. '/..')
+        dir = uv.fs_realpath(dir .. "/..")
     end
     return "/"
 end

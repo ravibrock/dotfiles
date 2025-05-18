@@ -55,7 +55,7 @@ vim.opt.smartcase = true
 -- Set hidden buffers
 vim.opt.hidden = true
 
--- Don"t redraw
+-- Don't redraw
 vim.opt.lazyredraw = true
 
 -- Backup files
