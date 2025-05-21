@@ -7,6 +7,9 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.python3_host_prog = os.getenv("HOMEBREW_PREFIX") .. "/bin/python3"
 
+-- Diffing
+vim.g.diffopt = "histogram"
+
 -- Filetype plugins
 vim.opt.filetype = "on"
 vim.opt.autoindent = true
@@ -18,7 +21,6 @@ vim.opt.ffs = "unix"
 vim.opt.wildignore = { "*.o", "*~", "*.pyc", "*pycache*", "*/.git/*", "*/.hg/*", "*/.svn/*", "*/.DS_Store" }
 
 -- Silence deprecation warnings
----@diagnostic disable-next-line: duplicate-set-field
 vim.deprecate = function() end
 
 -- Configure working directory
