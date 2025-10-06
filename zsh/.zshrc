@@ -9,6 +9,7 @@ setopt pushdignoredups
 # Startup info
 function startup_printout {
     if [ ${TERM_PROGRAM+1} ]; then
+        sleep 0.018
         echo
         flashfetch
         echo
@@ -138,3 +139,4 @@ function deferred_commands {
     eval "$(zoxide init zsh)"
 }
 zsh-defer deferred_commands
+export GPG_TTY=$(tty)
