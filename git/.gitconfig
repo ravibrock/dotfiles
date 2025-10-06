@@ -12,6 +12,8 @@
 [diff]
     colorMoved = default
     algorithm = histogram
+[gpg]
+    program = gpg
 [interactive]
     diffFilter = delta --diff-so-fancy --syntax-theme Catppuccin-mocha --paging=auto
 [merge]

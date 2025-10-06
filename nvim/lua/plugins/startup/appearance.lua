@@ -18,6 +18,7 @@ return {
             { "<leader>wt", function() require("spellwarn").toggle() end, mode = "n", desc = "Toggle spell warnings" },
         },
         opts = {
+            suggest = true,
             enable = false,
             ft_default = "cursor",
             ft_config = {

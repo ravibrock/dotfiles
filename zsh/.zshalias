@@ -14,11 +14,6 @@ alias bucg="brew upgrade --cask --greedy"
 alias buh="brew upgrade --fetch-HEAD"
 alias bx="brew uninstall"
 
-# Cloudconvert
-alias "clc"="cloudconvert convert -f"
-alias "clm"="cloudconvert merge"
-alias "clo"="cloudconvert optimize --overwrite"
-
 # Filesystem
 alias cd="custom_cd"
 alias ...="cd ../.."

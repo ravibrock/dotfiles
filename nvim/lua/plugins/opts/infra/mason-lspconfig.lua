@@ -109,6 +109,13 @@ local lsp_configs = {
             navic(client, bufnr)
             client.server_capabilities.hoverProvider = false
         end,
+        init_options = {
+            settings = {
+                lint = {
+                    ignore = { "E741" },
+                }
+            }
+        }
     },
 }
 

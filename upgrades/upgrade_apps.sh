@@ -16,10 +16,6 @@ brew upgrade
 tag_log "brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes"
 brew cu --cleanup --no-brew-update --no-quarantine --quiet --yes
 
-# Update Google Cloud SDK
-tag_log "gcloud components update --quiet"
-gcloud components update --quiet
-
 # Updates App Store apps
 OUTDATED="$(mas outdated | awk '{print $2}')"
 if [[ ! -z "$OUTDATED" ]]; then
@@ -61,6 +57,7 @@ tag_log 'nvim --headless "+Lazy! sync" +qa'
 } < <((printf '\0%s\0' "$(nvim --headless "+Lazy! sync" +qa)" 1>&2) 2>&1)
 if [[ -n "${CAPTURED_STDOUT}" && -n "${CAPTURED_STDOUT//[:space:]/}" ]] printf "$CAPTURED_STDOUT\n"
 if [[ -n "${CAPTURED_STDERR}" && -n "${CAPTURED_STDERR//[:space:]/}" ]] printf "$CAPTURED_STDERR\n" >&2
+echo
 
 # Updates zsh plugins if needed
 cd ~/.zsh
