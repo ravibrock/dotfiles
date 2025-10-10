@@ -1,22 +1,23 @@
 [alias]
-    st = status -sb
-    ci = commit
     adog = log --all --decorate --oneline --graph
     all = commit -am
     br = branch
+    ci = commit
     co = checkout
     di = diff
     dic = diff --cached
+    discard = checkout --
+    ign = ls-files -o -i --exclude-standard
     lf = log --pretty=fuller
     lg = log -p
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
-    ign = ls-files -o -i --exclude-standard
-    shoot = push origin --delete
-    surm = submodule update --remote --merge
-    unstage = reset HEAD --
-    rewind = reset "HEAD^"
-    prev = checkout -
-    discard = checkout --
     open = ! git remote -v | awk '/origin.*push/ {print $2}' | xargs open
+    prev = checkout -
+    rewind = reset "HEAD^"
+    shoot = push origin --delete
+    st = status -sb
+    surm = submodule update --remote --merge
+    sync = ! git pull && git push
+    unstage = reset HEAD --
