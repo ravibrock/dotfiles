@@ -117,6 +117,7 @@ return {
     },
     {
         "lewis6991/hover.nvim",
+        commit = "24a43e0",
         opts = {
             init = function()
                 require("hover.providers.lsp")

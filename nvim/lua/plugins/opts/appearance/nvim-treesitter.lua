@@ -25,6 +25,7 @@ require("nvim-treesitter.configs").setup({
         "requirements",
         "sql",
         "ssh_config",
+        "typescript",
         "vim",
         "vimdoc",
     },

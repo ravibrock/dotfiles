@@ -26,6 +26,7 @@ require("mason-lspconfig").setup({
         "lua_ls",
         "marksman",
         "ruff",
+        "vtsls",
         "vimls",
         "yamlls",
     }
