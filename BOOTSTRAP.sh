@@ -40,10 +40,8 @@ DIR="$PWD"
 popd > /dev/null
 cd "$DIR"
 
-# Installs homebrew and tex packages
+# Installs homebrew
 brew bundle --no-lock --file="$DIR/.brewfile"
-tlmgr init-usertree
-tlmgr --usermode install scheme-full
 
 # Initialize private files if they don't exist
 if ! [[ -f "$DIR/git/.gitconfig_local" ]]; then
