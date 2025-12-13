@@ -10,6 +10,14 @@ if ! ping -q -c1 8.8.8.8 &> /dev/null; then
     exit 1
 fi
 
+# Updates mactex and latex packages iff mactex is outdated
+if brew outdated --cask --quiet 2> /dev/null | grep -qx "mactex-no-gui"; then
+    tag_log "brew upgrade --cask mactex-no-gui"
+    brew upgrade --cask mactex-no-gui
+    tag_log "sudo -A /Library/TeX/texbin/tlmgr update --self --all"
+    sudo -A /Library/TeX/texbin/tlmgr update --self --all
+fi
+
 # Updates formulae and casks
 tag_log "brew upgrade"
 brew upgrade
@@ -62,7 +70,7 @@ echo
 # Updates zsh plugins if needed
 cd ~/.zsh
 for folder in *; do
-    cd $folder
+    cd "$folder"
     tag_log "git pull ($folder)"
     git pull
     cd ..

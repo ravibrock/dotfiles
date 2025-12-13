@@ -9,7 +9,7 @@ setopt pushdignoredups
 # Startup info
 function startup_printout {
     if [ ${TERM_PROGRAM+1} ]; then
-        sleep 0.018
+        sleep 0.02
         echo
         flashfetch
         echo
