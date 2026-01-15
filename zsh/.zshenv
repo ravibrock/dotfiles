@@ -38,4 +38,5 @@ PATH="/usr/local/sbin:$PATH"
 PATH="$HOMEBREW_PREFIX/bin:$PATH"
 PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
+PATH="$HOMEBREW_PREFIX/opt/perl/bin:$PATH"
 export PATH
